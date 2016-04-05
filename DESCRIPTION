@@ -1,0 +1,12 @@
+Package: hcaidcs
+Type: Package
+Title: hcaidcs:  Contains multiple functions for working with data from the HCAI DCS
+Version: 0.0.0.9000
+Authors@R: person("Simon", "Thelwall", email = "simon.thelwall@phe.gov.uk", role = c("aut", "cre"))
+Description: Functions for interacting with data from the HCAI DCS.
+License: OGL
+LazyData: TRUE
+RoxygenNote: 5.0.1
+URL:
+BugReports:
+Imports: lubridate
