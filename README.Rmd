@@ -1,0 +1,23 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+This is a collection of functions to make working with data from the [https://hcaidcs.phe.org.uk/](HCAI DCS) easier. 
+The plan is to include Rmd documents to produce the IS six-monthly reports and other standard outputs. 
+
+## Installation
+
+
+## Use
