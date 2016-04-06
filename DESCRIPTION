@@ -1,13 +1,28 @@
 Package: hcaidcs
 Type: Package
-Title: R functions for the mandatory surveillance of MRSA, MSSA and *E. coli* bacteraemia and CDI.
+Title: R functions for the mandatory surveillance of MRSA, MSSA and E. coli
+    bacteraemia and CDI
 Version: 0.0.0.9000
 Authors@R: person("Simon", "Thelwall", email = "simon.thelwall@phe.gov.uk", role = c("aut", "cre"))
-Description: Functions for interacting with data from the HCAI DCS.
+Description: Functions for working with data from the HCAI DCS.
 License: OGL
 LazyData: TRUE
 RoxygenNote: 5.0.1
 URL: http://bioinformatics-git.phe.gov.uk/Simon.Thelwall/hcaidcs
 BugReports: http://bioinformatics-git.phe.gov.uk/Simon.Thelwall/hcaidcs/issues
-Imports: lubridate,
+Imports:
+    lubridate,
     stringr
+Collate:
+    'check_date_class.R'
+    'apportion.R'
+    'area_team_names.R'
+    'cal_q_long.R'
+    'fq_short.R'
+    'fy_long.R'
+    'fy_long_short.R'
+    'fy_short.R'
+    'mandatory_age.R'
+    'nice_names.R'
+    'pir_org_type.R'
+    'simple_cap.R'

@@ -27,13 +27,25 @@ A binary vector giving 1 for Trust-apportioned records and 0 for non-Trust appor
 Apportion CDI and MSSA records
 }
 \examples{
-apportion("mssa", "NHS Acute Trust", "In-patient", date_admitted = lubridate::dmy("01-01-2015"), specimen_date = lubridate::dmy("05-01-2015"), date_entered = lubridate::dmy("26-10-2015"))
+apportion("mssa", "NHS Acute Trust", "In-patient",
+date_admitted = lubridate::dmy("01-01-2015"), specimen_date =
+lubridate::dmy("05-01-2015"), date_entered = lubridate::dmy("26-10-2015"))
 \dontrun{
-apportion("mssa", "NHS Acute Trust", "In-patient", date_admitted = NA, specimen_date = lubridate::dmy("01-01-2015"), date_entered = lubridate::dmy("26-10-2015"))
-apportion("mssa", "NHS Acute Trust", "In-patient", date_admitted = lubridate::dmy(""), specimen_date = lubridate::dmy("01-01-2015"), date_entered = lubridate::dmy("26-10-2015"))
+apportion("mssa", "NHS Acute Trust", "In-patient", date_admitted = NA,
+specimen_date = lubridate::dmy("01-01-2015"), date_entered =
+lubridate::dmy("26-10-2015"))
+apportion("mssa", "NHS Acute Trust", "In-patient", date_admitted =
+lubridate::dmy(""), specimen_date = lubridate::dmy("01-01-2015"),
+date_entered = lubridate::dmy("26-10-2015"))
 }
-apportion("mssa", "NHS Acute Trust", "In-patient", date_admitted = lubridate::dmy("01-01-2015"),  specimen_date = lubridate::dmy("01-01-2015"), date_entered = lubridate::dmy("26-10-2015"))
-apportion("mssa", "NHS Acute Trust", "Outpatient", date_admitted = lubridate::dmy("01-01-2015"),  specimen_date = lubridate::dmy("05-01-2015"), date_entered = lubridate::dmy("26-10-2015"))
-apportion("cdi", "NHS Acute Trust", "In-patient", date_admitted = lubridate::dmy("01-01-2015"),  specimen_date = lubridate::dmy("05-01-2015"), date_entered = lubridate::dmy("26-10-2015"))
+apportion("mssa", "NHS Acute Trust", "In-patient", date_admitted =
+lubridate::dmy("01-01-2015"),  specimen_date = lubridate::dmy("01-01-2015"),
+date_entered = lubridate::dmy("26-10-2015"))
+apportion("mssa", "NHS Acute Trust", "Outpatient", date_admitted =
+lubridate::dmy("01-01-2015"),  specimen_date = lubridate::dmy("05-01-2015"),
+date_entered = lubridate::dmy("26-10-2015"))
+apportion("cdi", "NHS Acute Trust", "In-patient", date_admitted =
+lubridate::dmy("01-01-2015"),  specimen_date = lubridate::dmy("05-01-2015"),
+date_entered = lubridate::dmy("26-10-2015"))
 }
 
