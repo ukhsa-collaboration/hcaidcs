@@ -8,6 +8,7 @@
 #' @return A text string giving the financial year.
 #' @seealso \code{\link{fy_short}}
 #' @seealso \code{\link{fy_long_short}}
+#' @seealso \code{\link{ordered_fin_qtr}}
 #' @examples
 #' x <- lubridate::dmy("01/01/2001")
 #' fy_long(x)

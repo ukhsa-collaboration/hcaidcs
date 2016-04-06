@@ -12,17 +12,20 @@ URL: http://bioinformatics-git.phe.gov.uk/Simon.Thelwall/hcaidcs
 BugReports: http://bioinformatics-git.phe.gov.uk/Simon.Thelwall/hcaidcs/issues
 Imports:
     lubridate,
-    stringr
+    stringr,
+    dplyr,
+    lazyeval
 Collate:
     'check_date_class.R'
     'apportion.R'
     'area_team_names.R'
-    'cal_q_long.R'
+    'cq_long.R'
     'fq_short.R'
     'fy_long.R'
     'fy_long_short.R'
     'fy_short.R'
     'mandatory_age.R'
     'nice_names.R'
+    'ordered_fin_qtr.R'
     'pir_org_type.R'
     'simple_cap.R'

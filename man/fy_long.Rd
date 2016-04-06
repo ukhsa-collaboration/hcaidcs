@@ -24,5 +24,7 @@ fy_long(x)
 \code{\link{fy_short}}
 
 \code{\link{fy_long_short}}
+
+\code{\link{ordered_fin_qtr}}
 }
 
