@@ -14,12 +14,14 @@ Imports:
     lubridate,
     stringr,
     dplyr,
-    lazyeval
+    lazyeval,
+    magrittr
 Collate:
     'check_date_class.R'
     'apportion.R'
     'area_team_names.R'
     'cq_long.R'
+    'data.R'
     'fq_short.R'
     'fy_long.R'
     'fy_long_short.R'
@@ -28,4 +30,6 @@ Collate:
     'nice_names.R'
     'ordered_fin_qtr.R'
     'pir_org_type.R'
+    'show_hcaidcs_package_manual.R'
     'simple_cap.R'
+    'time_period2fyear.R'

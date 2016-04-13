@@ -13,5 +13,6 @@
 nice_names <- function(x){
   names(x) <- gsub("\\.", "\\_", tolower(names(x)))
   names(x) <- gsub("\\_{2,}", "\\_", names(x)) # where multiple underscores occur, are replaced by one.
+  names(x) <- gsub("\\s", "\\_", names(x)) # get rid of white space
   names(x) <- gsub("\\_$", "", names(x)) # remove trailing underscores.
 }

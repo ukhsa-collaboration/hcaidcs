@@ -14,6 +14,7 @@
 #' dat <- ordered_fin_qtr(dat, "sample_fy")
 #' class(dat$fin_qtr_ftr)
 #' levels(dat$fin_qtr_ftr)
+#' @importFrom magrittr "%>%"
 #' @export
 
 ordered_fin_qtr <- function(data, quarter_in_long_format){
