@@ -20,16 +20,27 @@ Collate:
     'check_date_class.R'
     'apportion.R'
     'area_team_names.R'
+    'assignment_algorithm.R'
     'cq_long.R'
     'data.R'
+    'days_in_fq.R'
+    'days_in_fyear.R'
     'fq_short.R'
     'fy_long.R'
     'fy_long_short.R'
     'fy_short.R'
+    'is_third_party.R'
     'mandatory_age.R'
+    'mandatory_age_group.R'
     'nice_names.R'
     'ordered_fin_qtr.R'
+    'patloc_for_pir_assignment.R'
     'pir_org_type.R'
+    'provis_orgname.R'
     'show_hcaidcs_package_manual.R'
     'simple_cap.R'
     'time_period2fyear.R'
+Suggests:
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
