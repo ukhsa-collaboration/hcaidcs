@@ -12,6 +12,12 @@
  \item{id}{Numeric id for Area Team, 0-9}
  \item{NHSATCD}{ONS code for Area Team}
  \item{NHSATNM}{Area Team name}
+ \item{OBJECTID}{Id for an object. Only used for plotting}
+ \item{hole}{Logical value for whether geography is a hole. Only used for plotting}
+ \item{piece}{Only used for plotting}
+ \item{order}{Gives plotting order}
+ \item{Shape_STAr}{Only used for plotting}
+ \item{Shape_STLe}{Only used for plotting}
 }}
 \source{
 Office for National Statistics

@@ -18,7 +18,7 @@ Want number of days per quarter and this varies by leap year.
 This method takes leap year into account.
 }
 \details{
-\strong{Note:} This function must be used in conjunction with \code{\link[dplyr]{rowwise()}} from dplyr or \code{\link[base]{sapply()}}.
+\strong{Note:} This function must be used in conjunction with \code{\link[dplyr]{rowwise}} from dplyr or \code{\link[base]{sapply}}.
 }
 \examples{
 days_in_fq("20131")

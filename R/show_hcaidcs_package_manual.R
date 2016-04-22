@@ -2,7 +2,7 @@
 #'
 #' This function is Windows only.
 #' A convenience function to create the pdf version of the help pages in the
-#' current working directory.
+#' **current working directory**.
 #' Requires pdflatex to be installed on your machine.
 #' The function takes no arguments and may run a little slowly.
 #' @export

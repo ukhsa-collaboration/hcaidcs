@@ -16,7 +16,9 @@ TRUE or FALSE
 Check whether assignment is third party
 }
 \examples{
+\dontrun{
 is_third_party(9)
 is_third_party(13)
+}
 }
 

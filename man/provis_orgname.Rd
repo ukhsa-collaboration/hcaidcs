@@ -16,7 +16,9 @@ provis_orgname(x)
 Check whether provisional organisation is Trust or CCG
 }
 \examples{
+\dontrun{
 provis_orgname("Cambridge University Hospitals NHS Foundation Trust")
 provis_orgname("NHS Central London CCG")
+}
 }
 

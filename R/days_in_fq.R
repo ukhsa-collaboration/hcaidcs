@@ -4,7 +4,7 @@
 #' Want number of days per quarter and this varies by leap year.
 #' This method takes leap year into account.
 #'
-#' \strong{Note:} This function must be used in conjunction with \code{\link[dplyr]{rowwise()}} from dplyr or \code{\link[base]{sapply()}}.
+#' \strong{Note:} This function must be used in conjunction with \code{\link[dplyr]{rowwise}} from dplyr or \code{\link[base]{sapply}}.
 #' @param  x A financial year quarter in format "yyyyq"
 #' @return The number of days in the quarter, accounting for leap years.
 #' @examples

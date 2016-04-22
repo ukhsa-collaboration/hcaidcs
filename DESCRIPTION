@@ -5,6 +5,7 @@ Title: R functions for the mandatory surveillance of MRSA, MSSA and E. coli
 Version: 0.0.0.9000
 Authors@R: person("Simon", "Thelwall", email = "simon.thelwall@phe.gov.uk", role = c("aut", "cre"))
 Description: Functions for working with data from the HCAI DCS.
+Depends: R (>= 2.10)
 License: OGL
 LazyData: TRUE
 RoxygenNote: 5.0.1
@@ -21,8 +22,10 @@ Collate:
     'apportion.R'
     'area_team_names.R'
     'assignment_algorithm.R'
+    'clear_console.R'
     'cq_long.R'
     'data.R'
+    'days_in_cyear.R'
     'days_in_fq.R'
     'days_in_fyear.R'
     'fq_short.R'

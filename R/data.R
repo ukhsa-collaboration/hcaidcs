@@ -10,6 +10,12 @@
 #'  \item{id}{Numeric id for Area Team, 0-9}
 #'  \item{NHSATCD}{ONS code for Area Team}
 #'  \item{NHSATNM}{Area Team name}
+#'  \item{OBJECTID}{Id for an object. Only used for plotting}
+#'  \item{hole}{Logical value for whether geography is a hole. Only used for plotting}
+#'  \item{piece}{Only used for plotting}
+#'  \item{order}{Gives plotting order}
+#'  \item{Shape_STAr}{Only used for plotting}
+#'  \item{Shape_STLe}{Only used for plotting}
 #' }
 #' @source Office for National Statistics
 "at_sp_df"
@@ -25,10 +31,16 @@
 #'  \item{group}{Group id for polygons}
 #'  \item{id}{Numeric id for subregion, 0-9}
 #'  \item{GSS_CD}{ONS code for subregion}
-#'  \item{GSS_CD}{ONS name for subregion}
+#'  \item{GSS_NM}{ONS name for subregion}
+#'  \item{GSS_P_CD}{ONS name for parent region}
 #'  \item{ODS_CD}{HSCIC ODS code for subregion}
 #'  \item{ODS_P_CD}{HSCIC ODS code for parent region}
-#'  \item{ODS_P_CD}{ONS code for parent region}
+#'  \item{OBJECTID}{Id for an object. Only used for plotting}
+#'  \item{hole}{Logical value for whether geography is a hole. Only used for plotting}
+#'  \item{piece}{Only used for plotting}
+#'  \item{order}{Gives plotting order}
+#'  \item{Shape_STAr}{Only used for plotting}
+#'  \item{Shape_STLe}{Only used for plotting}
 #' }
 #' @source Office for National Statistics
 "subregions_sp_df"
