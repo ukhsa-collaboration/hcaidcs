@@ -5,7 +5,7 @@
 \title{Replicate the PIR assignment algorithm}
 \usage{
 assignment_algorithm(pircasestatus, assignmentmethodcode, patientlocation,
-  provisionalorganisationname, finalpirassignedorganisation)
+  provisionalorganisationname, finalpirassignedorganisationtype)
 }
 \arguments{
 \item{pircasestatus}{Text string of either 'Final assignment' or 'Provisional assignment'}
@@ -16,7 +16,7 @@ assignment_algorithm(pircasestatus, assignmentmethodcode, patientlocation,
 
 \item{provisionalorganisationname}{Text string giving the name of the provisionally assigned organisation}
 
-\item{finalpirassignedorganisation}{Text string giving name of finally assigned pir organisation}
+\item{finalpirassignedorganisationtype}{Text string giving organisation type of finally assigned pir organisation. One of either "NHS Trust" or "Clinical Commissioning Group"}
 }
 \value{
 string giving the name of the finally assigned organisation or one of "NHS Trust" or "CCG"
@@ -48,21 +48,22 @@ dat <- structure(list(
     "Cambridge University Hospitals NHS Foundation Trust",
     "Cambridge University Hospitals NHS Foundation Trust",
     "NHS Central London CCG"),
-  finalpirassignedorganisation = c(
-    "Cambridge University Hospitals NHS Foundation Trust",
-    "Cambridge University Hospitals NHS Foundation Trust",
-    "NHS Central London CCG",
-    "NHS Central London CCG",
-    "Cambridge University Hospitals NHS Foundation Trust",
-    "Cambridge University Hospitals NHS Foundation Trust",
-    "Cambridge University Hospitals NHS Foundation Trust",
-    "Cambridge University Hospitals NHS Foundation Trust",
-    "Cambridge University Hospitals NHS Foundation Trust")),
+  finalpirassignedorganisationtype = c(
+    "NHS Trust",
+    "NHS Trust",
+    "Clinical Commissioning Group",
+    "Clinical Commissioning Group",
+    "NHS Trust",
+    "NHS Trust",
+    "NHS Trust",
+    "NHS Trust",
+    "NHS Trust")),
   .Names = c("pircasestatus", "assignmentmethodcode", "patientlocation",
              "provisionalorganisationname", "finalpirassignedorganisation"),
                  class = "data.frame", row.names = c(NA, -9L))
-dat$new <- assignment_algorithm(dat$pircasestatus, dat$assignmentmethodcode,
-           dat$patientlocation, dat$provisionalorganisationname,
+
+dat$new <- assignment_algorithm(dat$pircasestatus,
+         dat$assignmentmethodcode, dat$patientlocation, dat$provisionalorganisationname,
            dat$finalpirassignedorganisation)
 dat
 }

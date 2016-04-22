@@ -4,7 +4,7 @@
 #' @param assignmentmethodcode Numeric variable giving assignment method
 #' @param patientlocation Text string giving patient location
 #' @param provisionalorganisationname Text string giving the name of the provisionally assigned organisation
-#' @param finalpirassignedorganisation Text string giving name of finally assigned pir organisation
+#' @param finalpirassignedorganisationtype Text string giving organisation type of finally assigned pir organisation. One of either "NHS Trust" or "Clinical Commissioning Group"
 #' @return string giving the name of the finally assigned organisation or one of "NHS Trust" or "CCG"
 #' @examples
 #' dat <- structure(list(
@@ -30,33 +30,40 @@
 #'     "Cambridge University Hospitals NHS Foundation Trust",
 #'     "Cambridge University Hospitals NHS Foundation Trust",
 #'     "NHS Central London CCG"),
-#'   finalpirassignedorganisation = c(
-#'     "Cambridge University Hospitals NHS Foundation Trust",
-#'     "Cambridge University Hospitals NHS Foundation Trust",
-#'     "NHS Central London CCG",
-#'     "NHS Central London CCG",
-#'     "Cambridge University Hospitals NHS Foundation Trust",
-#'     "Cambridge University Hospitals NHS Foundation Trust",
-#'     "Cambridge University Hospitals NHS Foundation Trust",
-#'     "Cambridge University Hospitals NHS Foundation Trust",
-#'     "Cambridge University Hospitals NHS Foundation Trust")),
+#'   finalpirassignedorganisationtype = c(
+#'     "NHS Trust",
+#'     "NHS Trust",
+#'     "Clinical Commissioning Group",
+#'     "Clinical Commissioning Group",
+#'     "NHS Trust",
+#'     "NHS Trust",
+#'     "NHS Trust",
+#'     "NHS Trust",
+#'     "NHS Trust")),
 #'   .Names = c("pircasestatus", "assignmentmethodcode", "patientlocation",
 #'              "provisionalorganisationname", "finalpirassignedorganisation"),
 #'                  class = "data.frame", row.names = c(NA, -9L))
-#' dat$new <- assignment_algorithm(dat$pircasestatus, dat$assignmentmethodcode,
-#'            dat$patientlocation, dat$provisionalorganisationname,
+#'
+#' dat$new <- assignment_algorithm(dat$pircasestatus,
+#'          dat$assignmentmethodcode, dat$patientlocation, dat$provisionalorganisationname,
 #'            dat$finalpirassignedorganisation)
 #' dat
 #' @export
 
 assignment_algorithm <- function(pircasestatus, assignmentmethodcode, patientlocation,
-                        provisionalorganisationname, finalpirassignedorganisation){
-  z <- ifelse(is_third_party(assignmentmethodcode) == TRUE, "Third party",
-              ifelse(assignmentmethodcode == 15, provis_orgname(provisionalorganisationname),
-                      ifelse(pircasestatus == "Provisional assignment", provis_orgname(provisionalorganisationname),
-                             ifelse(pircasestatus == "Final assignment",
-                                    ifelse(assignmentmethodcode >= 9 & assignmentmethodcode <= 11, finalpirassignedorganisation,
-                                           ifelse(assignmentmethodcode == 10, patloc_for_pir_assignment(patientlocation), NA)),
-                                    NA))))
+                        provisionalorganisationname, finalpirassignedorganisationtype){
+  z <- ifelse(
+    tolower(pircasestatus) == "final assignment" & assignmentmethodcode <= 9,
+    finalpirassignedorganisationtype,
+    ifelse(
+    (tolower(pircasestatus) == "final assignment" & assignmentmethodcode == 10 & patientlocation == "NHS Acute Trust") |
+    (tolower(pircasestatus) == "provisional assignment" & (stringr::str_detect(tolower(provisionalorganisationname),"trust") == TRUE)) |
+    (assignmentmethodcode == 15 & (stringr::str_detect(tolower(provisionalorganisationname),"trust") == TRUE)),
+    "NHS Trust",
+    ifelse(
+      (tolower(pircasestatus) == "final assignment" & assignmentmethodcode == 10 & patientlocation != "NHS Acute Trust") |
+        (tolower(pircasestatus) == "provisional assignment" & (stringr::str_detect(tolower(provisionalorganisationname),"ccg") == TRUE)) |
+        (assignmentmethodcode == 15 & (stringr::str_detect(tolower(provisionalorganisationname),"ccg") == TRUE)), "Clinical Commissioning Group",
+      ifelse(assignmentmethodcode == 13 | assignmentmethodcode == 14, "Third Party", NA))))
   return(z)
 }
