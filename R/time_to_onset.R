@@ -12,7 +12,7 @@
 #' admitted <- dmy("01-01-2011")
 #' patient_loc <- "In-patient"
 #' time_to_onset(admitted, onset, patient_loc)
-#' \notrun{
+#' \dontrun{
 #' ## Should return NA
 #' onset <- NA
 #' time_to_onset(admitted, onset, patient_loc)
