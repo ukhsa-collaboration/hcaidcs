@@ -6,6 +6,11 @@
 \usage{
 ec_apportion_step1(patient_location, date_entered)
 }
+\arguments{
+\item{patient_location}{The patients location at time of sample}
+
+\item{date_entered}{Date format the record was created on the system}
+}
 \description{
 for ecoli apportioning
 }

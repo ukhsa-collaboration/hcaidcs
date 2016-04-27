@@ -26,6 +26,7 @@ Collate:
     'assignment_algorithm.R'
     'clear_console.R'
     'cq_long.R'
+    'cyear_to_fyear.R'
     'data.R'
     'days_in_cyear.R'
     'days_in_fq.R'
