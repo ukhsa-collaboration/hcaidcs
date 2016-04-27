@@ -12,6 +12,12 @@
 #' @param date_entered Date of admission (POSIXct, POSIXt or Date format)
 #' @return An ordered factor giving non-Trust; Trust, 48 hours to 7 days; Trust, > 7 days or Trust, no date of admission.
 #' @examples
+# apportion_ecoli("NHS Acute Trust", "In-patient",
+#           date_admitted = lubridate::dmy("01-01-2015"), specimen_date =
+#             lubridate::dmy("05-01-2015"),
+#           date_entered = lubridate::dmy("26-10-2015"))
+#' \dontrun{
+#' library(dplyr)
 #' dat <- structure(list(
 #'   patient_location = c("NHS Acute Trust", "NHS Acute Trust", "NHS Acute Trust",
 #'                        "NHS Acute Trust", "NHS Acute Trust", "", "", "", "", "",
@@ -43,12 +49,12 @@
 #'                              16728, 16728, 16728, 16728, 16728, 16728, 16765,
 #'                              16728, 16765, 16765, 16765, 16765, 16765, 16765),
 #'                            class = "Date")), class = "data.frame",
-#'   .Names = c("patient_location", "patient_category", "date_admitted
-#'              ", "specimen_date", "date_entered"), row.names = c(NA, -28L))
+#'   .Names = c("patient_location", "patient_category", "date_admitted",
+#'   "specimen_date", "date_entered"), row.names = c(NA, -28L))
 #'  dat %>% mutate(apportioned = apportion_ecoli(patient_location,
 #'  patient_category, date_admitted, specimen_date, date_entered))
-#'
-#'  @export
+#'  }
+#' @export
 
 apportion_ecoli <- function(patient_location, patient_category,
                             date_admitted, specimen_date, date_entered){

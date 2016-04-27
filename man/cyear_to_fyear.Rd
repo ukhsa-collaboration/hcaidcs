@@ -6,8 +6,16 @@
 \usage{
 cyear_to_fyear(x)
 }
+\arguments{
+\item{x}{Numeric year}
+}
+\value{
+Character string giving the six character financial year
+}
 \description{
-examples
+Convert calendar year to financial year
+}
+\examples{
 cyear_to_fyear(2012)
 }
 

@@ -28,6 +28,8 @@ Based on apportionment algorithm for MSSA and CDI, but with two options for Trus
 p48 of \href{https://hcaidcs.phe.org.uk/ContentManagement/LinksAndAnnouncements/HCAIDCS_Mandatory_Surveillance_Protocol_v4.0.pdf}{the mandatory surveillance protocol}.
 }
 \examples{
+\dontrun{
+library(dplyr)
 dat <- structure(list(
   patient_location = c("NHS Acute Trust", "NHS Acute Trust", "NHS Acute Trust",
                        "NHS Acute Trust", "NHS Acute Trust", "", "", "", "", "",
@@ -59,11 +61,10 @@ dat <- structure(list(
                              16728, 16728, 16728, 16728, 16728, 16728, 16765,
                              16728, 16765, 16765, 16765, 16765, 16765, 16765),
                            class = "Date")), class = "data.frame",
-  .Names = c("patient_location", "patient_category", "date_admitted
-             ", "specimen_date", "date_entered"), row.names = c(NA, -28L))
+  .Names = c("patient_location", "patient_category", "date_admitted",
+  "specimen_date", "date_entered"), row.names = c(NA, -28L))
  dat \%>\% mutate(apportioned = apportion_ecoli(patient_location,
  patient_category, date_admitted, specimen_date, date_entered))
-
- @export
+ }
 }
 

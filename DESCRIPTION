@@ -43,6 +43,7 @@ Collate:
     'is_third_party.R'
     'mandatory_age.R'
     'mandatory_age_group.R'
+    'mrsa_source_bacteraemia.R'
     'nice_names.R'
     'ordered_fin_qtr.R'
     'patloc_for_pir_assignment.R'
