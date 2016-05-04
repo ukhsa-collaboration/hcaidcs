@@ -16,7 +16,7 @@ apportion_ecoli(patient_location, patient_category, date_admitted,
 
 \item{specimen_date}{The date of the specimen (POSIXct, POSIXt or Date format)}
 
-\item{date_entered}{Date of admission (POSIXct, POSIXt or Date format)}
+\item{date_entered}{Date record created normally 'data collection date' (POSIXct, POSIXt or Date format)}
 
 \item{collection}{The collection (MRSA, MSSA, CDI, E. coli) to which the record belongs.}
 }

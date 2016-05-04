@@ -6,7 +6,7 @@
 #' @param patient_category The patient's category at time of sample
 #' @param date_admitted The date the patient was admitted for records from inpatients
 #' @param specimen_date The date of the specimen (POSIXct, POSIXt or Date format)
-#' @param date_entered Date of admission (POSIXct, POSIXt or Date format)
+#' @param date_entered Date record created normally 'data collection date' (POSIXct, POSIXt or Date format)
 #' @return A binary vector giving 1 for Trust-apportioned records and 0 for non-Trust apportioned records
 #' @examples
 #' apportion("mssa", "NHS Acute Trust", "In-patient",

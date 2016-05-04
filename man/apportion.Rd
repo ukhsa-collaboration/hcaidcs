@@ -18,7 +18,7 @@ apportion(collection, patient_location, patient_category, date_admitted,
 
 \item{specimen_date}{The date of the specimen (POSIXct, POSIXt or Date format)}
 
-\item{date_entered}{Date of admission (POSIXct, POSIXt or Date format)}
+\item{date_entered}{Date record created normally 'data collection date' (POSIXct, POSIXt or Date format)}
 }
 \value{
 A binary vector giving 1 for Trust-apportioned records and 0 for non-Trust apportioned records

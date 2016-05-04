@@ -6,8 +6,8 @@
 #' @seealso \code{\link{time_to_onset}}
 #' @seealso \code{\link{group_tto_cdi}}
 #' @examples
-#' onset <- dmy("05-01-2011")
-#' admitted <- dmy("01-01-2011")
+#' onset <- lubridate::dmy("05-01-2011")
+#' admitted <- lubridate::dmy("01-01-2011")
 #' patient_loc <- "In-patient"
 #' tto <- time_to_onset(admitted, onset, patient_loc)
 #' group_tto_bacteraemia(tto)

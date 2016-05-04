@@ -22,7 +22,9 @@ assignment_algorithm(pircasestatus, assignmentmethodcode, patientlocation,
 string giving the name of the finally assigned organisation or one of "NHS Trust" or "CCG"
 }
 \description{
-Replicate the PIR assignment algorithm
+Provisionally assigned cases are counted as if final assignment status, i.e.
+a case provisionally assigned to a Trust will be reported as Trust-assigned
+in any report.
 }
 \examples{
 dat <- structure(list(

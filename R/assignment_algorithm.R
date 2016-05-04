@@ -1,5 +1,8 @@
 #' Replicate the PIR assignment algorithm
 #'
+#' Provisionally assigned cases are counted as if final assignment status, i.e.
+#' a case provisionally assigned to a Trust will be reported as Trust-assigned
+#' in any report.
 #' @param pircasestatus Text string of either 'Final assignment' or 'Provisional assignment'
 #' @param assignmentmethodcode Numeric variable giving assignment method
 #' @param patientlocation Text string giving patient location
