@@ -41,6 +41,8 @@
 #'  \item{order}{Gives plotting order}
 #'  \item{Shape_STAr}{Only used for plotting}
 #'  \item{Shape_STLe}{Only used for plotting}
+#'  \item{centroid_lat}{Latitude values for subregion centroids for plotting labels}
+#'  \item{centroid_long}{Longitude values for subregion centroids for plotting labels}
 #' }
 #' @source Office for National Statistics
 "subregions_sp_df"
