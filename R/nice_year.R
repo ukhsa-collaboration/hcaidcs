@@ -15,19 +15,18 @@
 nice_year <- function(x, year_format){
   x <- gsub("[:alpha:] | [:punct:] | [:space:]" , "", x)
   x <-gsub("/", "", x)
-  z <- ifelse(year_format %in% c("fyear6", "fyear4", "cyear2") == FALSE ,
-         stop("Year format not one of \"fyear6\", \"fyear4\", \"cyear2\""),
-         ifelse(year_format == "fyear6",
-                paste0(substr(x, 1,4), "/", substr(x, 5, 6)),
-                ifelse(year_format == "fyear4",
-                       ifelse(substr(x, 1, 2) < 90,
-                              paste0(20, substr(x, 1,2), "/", substr(x, 3, 4)),
-                              paste0(19, substr(x, 1,2), "/", substr(x, 3, 4))),
-                       ifelse(year_format == "cyear2",
-                              ifelse(x > 90, paste0("19", x), paste0("20", x)),
-                              NA)
-                       )
-                )
-  )
+  year_format_list <- c("fyear6", "fyear4", "cyear2")
+  stopifnot(year_format %in% year_format_list)
+  z <- ifelse(year_format == "fyear6",
+              paste0(substr(x, 1,4), "/", substr(x, 5, 6)),
+              ifelse(year_format == "fyear4",
+                     ifelse(substr(x, 1, 2) < 90,
+                            paste0(20, substr(x, 1,2), "/", substr(x, 3, 4)),
+                            paste0(19, substr(x, 1,2), "/", substr(x, 3, 4))),
+                     ifelse(year_format == "cyear2",
+                            ifelse(x > 90, paste0("19", x), paste0("20", x)),
+                            NA)
+                     )
+              )
   return(z)
 }

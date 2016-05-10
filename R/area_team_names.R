@@ -13,9 +13,11 @@ area_team_names <- function(area_team_name){
     stop("stringr is needed for this function to work. Please install it.",
          call. = FALSE)
   }
-  area_team_name <- stringr::str_trim(stringr::str_replace(area_team_name, "\\(.*?\\)", "")) # remove bracketed text and trim white space
-  area_team_name <- simple_cap(area_team_name)
+#  area_team_name <- stringr::str_trim(stringr::str_replace(area_team_name, "\\(.*?\\)", "")) # remove bracketed text and trim white space
+  area_team_name <- stringr::str_trim(area_team_name)
+  area_team_name <- stringr::str_to_title(area_team_name)
   area_team_name <- stringr::str_replace_all(area_team_name, "Nhs", "NHS")
   area_team_name <- stringr::str_replace_all(area_team_name, "Ccg", "CCG")
+  area_team_name <- stringr::str_replace_all(area_team_name, "And", "and")
   return(area_team_name)
 }
