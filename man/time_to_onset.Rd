@@ -4,7 +4,7 @@
 \alias{time_to_onset}
 \title{Calculates time to onset for inpatients}
 \usage{
-time_to_onset(date_admitted, date_specimen, patient_category)
+time_to_onset(date_admitted, date_specimen, patient_category, patient_location)
 }
 \arguments{
 \item{date_admitted}{Admission date in date format}
@@ -25,13 +25,15 @@ admission, \code{NA} will be returned.
 onset <- lubridate::dmy("05-01-2011")
 admitted <- lubridate::dmy("01-01-2011")
 patient_cat <- "In-patient"
-time_to_onset(admitted, onset, patient_cat)
-dat <- data.frame(onset = onset, admitted = admitted, patient_cat = patient_cat)
-dat$tto <- time_to_onset(dat$onset, dat$admitted, dat$patient_cat)
+patient_loc <- "NHS Acute Trust"
+time_to_onset(admitted, onset, patient_cat, patient_loc)
+dat <- data.frame(onset = onset, admitted = admitted, patient_cat = patient_cat,
+patient_loc = patient_loc)
+dat$tto <- time_to_onset(dat$admitted, dat$onset, dat$patient_cat, dat$patient_loc)
 \dontrun{
 ## Should return NA
 onset <- NA
-time_to_onset(admitted, onset, patient_cat)
+time_to_onset(admitted, onset, patient_cat, patient_loc)
 patient_cat <- ""
 onset <- lubridate::dmy("05-01-2011")
 time_to_onset(admitted, onset, patient_cat)

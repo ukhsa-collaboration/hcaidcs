@@ -18,9 +18,10 @@ Provides grouped time to onset for bacteraemia cases
 \examples{
 onset <- lubridate::dmy("05-01-2011")
 admitted <- lubridate::dmy("01-01-2011")
-patient_loc <- "In-patient"
-tto <- time_to_onset(admitted, onset, patient_loc)
-group_tto_bacteraemia(tto)
+patient_cat <- "In-patient"
+patient_loc <- "NHS Acute Trust"
+tto <- time_to_onset(admitted, onset, patient_cat, patient_loc)
+group_tto_cdi(tto)
 }
 \seealso{
 \code{\link{time_to_onset}}

@@ -41,6 +41,7 @@ Collate:
     'ec_apportion_step2.R'
     'ec_apportion_step3a.R'
     'ec_apportion_step3b.R'
+    'ecoli_primary_focus.R'
     'fq_short.R'
     'fy_long.R'
     'fy_long_short.R'
