@@ -13,7 +13,7 @@
 #' @return A ggplot object
 #' @examples
 #' \dontrun{
-#' structure(list(fyear6 = c(201011L, 201011L, 201011L, 201516L, 201516L,
+#' dat <- structure(list(fyear6 = c(201011L, 201011L, 201011L, 201516L, 201516L,
 #' 201516L),
 #' tto_group = structure(c(3L, 2L, 1L, 3L, 2L, 1L),
 #' .Label = c("< 2 days", "2-6 days", ">= 7 days"), class = "factor"),
@@ -38,6 +38,9 @@ aec_tto_plot <- function(x){
                        labels = paste0(substr(unique(x$fyear6), 1,4), "/", substr(unique(x$fyear6), 5, 6))
     ) +
     ggplot2::scale_y_continuous("Per cent inpatient cases") +
-    ggplot2::scale_fill_discrete("", labels = c("< 2 days", "2 - 6 days", "\u2265 7 days"))
+    viridis::scale_fill_viridis("",
+                                labels = c("< 2 days", "2 - 6 days", "\u2265 7 days"),
+                                discrete = TRUE, begin = 1, end = 0,
+                                option="viridis")
 }
 

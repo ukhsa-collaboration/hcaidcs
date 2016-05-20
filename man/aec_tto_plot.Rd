@@ -24,7 +24,7 @@ it relies on the presence of the following variables to that data frame, which m
 }
 \examples{
 \dontrun{
-structure(list(fyear6 = c(201011L, 201011L, 201011L, 201516L, 201516L,
+dat <- structure(list(fyear6 = c(201011L, 201011L, 201011L, 201516L, 201516L,
 201516L),
 tto_group = structure(c(3L, 2L, 1L, 3L, 2L, 1L),
 .Label = c("< 2 days", "2-6 days", ">= 7 days"), class = "factor"),

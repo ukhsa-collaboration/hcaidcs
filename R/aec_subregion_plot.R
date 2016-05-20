@@ -34,13 +34,19 @@ aec_subregion_plot <- function(x){
     stop("ggplot2 needed for this function to work. Please install it.",
          call. = FALSE)
   }
+  if (!requireNamespace("viridis", quietly = TRUE)) {
+    stop("The package *viridis* needed for this function to work. Please install it.",
+         call. = FALSE)
+  }
   ggplot2::ggplot(data = x, ggplot2::aes(x = long, y = lat, group = group,
                        fill = rate, label = ODS_CD)) +
     ggplot2::geom_polygon() +
     ggplot2::geom_path(colour = "white") +
-    ggplot2::geom_text(ggplot2::aes(x = centroid_long, y = centroid_lat), colour = "orange") +
+    ggplot2::geom_text(ggplot2::aes(x = centroid_long, y = centroid_lat), colour = "aquamarine2") +
     ggplot2::scale_x_continuous("", labels = NULL, breaks = NULL) +
     ggplot2::scale_y_continuous("", labels = NULL, breaks = NULL) +
-    ggplot2::scale_fill_gradient("Rate, per\n100,000\npopulation", low = "#56B1F7", high = "#132B43") +
+    #viridis::scale_fill_viridis("Rate, per\n100,000\npopulation", low = "#56B1F7", high = "#132B43") +
+    viridis::scale_fill_viridis("Rate, per\n100,000\npopulation", option = "plasma",
+                                begin = 0, end = 0.8) +
     ggplot2::coord_equal()
 }

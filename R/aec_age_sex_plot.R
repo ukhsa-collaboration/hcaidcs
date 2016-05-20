@@ -56,5 +56,7 @@ aec_age_sex_plot <- function(x){
                                 expression(phantom(x) >=85)
                      )
     ) +
-    ggplot2::scale_y_continuous("Rate, per 100,000 population")
+    ggplot2::scale_y_continuous("Rate, per 100,000 population") +
+    viridis::scale_fill_viridis("Sex", discrete = TRUE, option = "viridis",
+                                begin = 0.5, end = 0)
 }
