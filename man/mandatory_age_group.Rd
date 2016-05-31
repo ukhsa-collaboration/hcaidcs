@@ -4,10 +4,12 @@
 \alias{mandatory_age_group}
 \title{Create age group from age}
 \usage{
-mandatory_age_group(x)
+mandatory_age_group(x, collection = NULL)
 }
 \arguments{
-\item{x}{a numeric vector}
+\item{x}{A numeric vector}
+
+\item{collection}{An optional parameter giving the collection for CDI age grouping}
 }
 \value{
 A factor vector with levels <1 1-14 15-44 45-64 65-74 75-84 ge85
@@ -18,11 +20,15 @@ Values are rounded down using floor before grouping.
 }
 \examples{
 mandatory_age_group(0)
+mandatory_age_group(0, "cdi")
+mandatory_age_group(1, "cdi")
+mandatory_age_group(2, "cdi")
 mandatory_age_group(0.038)
 mandatory_age_group(1)
 mandatory_age_group(14)
 mandatory_age_group(15)
 mandatory_age_group(seq(1,100, 1))
+mandatory_age_group(seq(1,100, 1), "cdi")
 }
 \seealso{
 \code{\link{mandatory_age}}

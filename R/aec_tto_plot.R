@@ -1,15 +1,16 @@
 #' AEC time to onset plot
 #'
 #' Plots the stacked area chart for time-to-onset for the AEC
-#' Although the function takes a single argument (a data frame containing the proportion of cases for inpatients, by time to onset and financial year,
+#' Although the function takes only two argument (a data frame containing the proportion of cases for inpatients, by time to onset and financial year),
 #' it relies on the presence of the following variables to that data frame, which must be precisely named:
 #' \describe{
 #' \item{\code{fyear6}}{The financial year in format YYYY/YY}
-#' \item{\code{tto_group}}{Sex variable, to allow side-by-side bars}
+#' \item{\code{tto_group}}{Grouped time to onset variable, to allow side-by-side bars}
 #' \item{\code{pc}}{Proportion of cases}
 #' }
 #'
 #' @param x A data frame as specified above.
+#' @param collection One of "mrsa", "mssa", "cdi" or "ecoli"
 #' @return A ggplot object
 #' @examples
 #' \dontrun{
@@ -25,22 +26,37 @@
 #' }
 #' @export
 
-aec_tto_plot <- function(x){
+aec_tto_plot <- function(x, collection = NULL){
   if (!requireNamespace("ggplot2", quietly = TRUE)) {
     stop("ggplot2 needed for this function to work. Please install it.",
          call. = FALSE)
   }
-  ggplot2::ggplot(data = x,
-                  ggplot2::aes(x = fyear6, y = pc)) +
-    ggplot2::geom_area(position = "stack", ggplot2::aes(fill = tto_group)) +
-    ggplot2:: scale_x_continuous("Financial year",
-                       breaks = unique(x$fyear6),
-                       labels = paste0(substr(unique(x$fyear6), 1,4), "/", substr(unique(x$fyear6), 5, 6))
-    ) +
-    ggplot2::scale_y_continuous("Per cent inpatient cases") +
-    viridis::scale_fill_viridis("",
-                                labels = c("< 2 days", "2 - 6 days", "\u2265 7 days"),
-                                discrete = TRUE, begin = 1, end = 0,
-                                option="viridis")
+  if(collection == "cdi"){
+    ggplot2::ggplot(data = x,
+                    ggplot2::aes(x = fyear6, y = pc)) +
+      ggplot2::geom_area(position = "stack", ggplot2::aes(fill = tto_group)) +
+      ggplot2:: scale_x_continuous("Financial year",
+                                   breaks = unique(x$fyear6),
+                                   labels = paste0(substr(unique(x$fyear6), 1,4), "/", substr(unique(x$fyear6), 5, 6))
+      ) +
+      ggplot2::scale_y_continuous("Per cent inpatient cases") +
+      viridis::scale_fill_viridis("",
+                                  labels = c("< 3 days", "3 - 6 days", "\u2265 7 days"),
+                                  discrete = TRUE, begin = 1, end = 0,
+                                  option="viridis")
+  }else{
+    ggplot2::ggplot(data = x,
+                    ggplot2::aes(x = fyear6, y = pc)) +
+      ggplot2::geom_area(position = "stack", ggplot2::aes(fill = tto_group)) +
+      ggplot2:: scale_x_continuous("Financial year",
+                                   breaks = unique(x$fyear6),
+                                   labels = paste0(substr(unique(x$fyear6), 1,4), "/", substr(unique(x$fyear6), 5, 6))
+      ) +
+      ggplot2::scale_y_continuous("Per cent inpatient cases") +
+      viridis::scale_fill_viridis("",
+                                  labels = c("< 2 days", "2 - 6 days", "\u2265 7 days"),
+                                  discrete = TRUE, begin = 1, end = 0,
+                                  option="viridis")
+  }
 }
 

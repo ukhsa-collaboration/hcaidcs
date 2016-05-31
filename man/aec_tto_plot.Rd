@@ -4,21 +4,23 @@
 \alias{aec_tto_plot}
 \title{AEC time to onset plot}
 \usage{
-aec_tto_plot(x)
+aec_tto_plot(x, collection = NULL)
 }
 \arguments{
 \item{x}{A data frame as specified above.}
+
+\item{collection}{One of "mrsa", "mssa", "cdi" or "ecoli"}
 }
 \value{
 A ggplot object
 }
 \description{
 Plots the stacked area chart for time-to-onset for the AEC
-Although the function takes a single argument (a data frame containing the proportion of cases for inpatients, by time to onset and financial year,
+Although the function takes only two argument (a data frame containing the proportion of cases for inpatients, by time to onset and financial year),
 it relies on the presence of the following variables to that data frame, which must be precisely named:
 \describe{
 \item{\code{fyear6}}{The financial year in format YYYY/YY}
-\item{\code{tto_group}}{Sex variable, to allow side-by-side bars}
+\item{\code{tto_group}}{Grouped time to onset variable, to allow side-by-side bars}
 \item{\code{pc}}{Proportion of cases}
 }
 }

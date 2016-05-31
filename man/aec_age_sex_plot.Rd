@@ -4,10 +4,12 @@
 \alias{aec_age_sex_plot}
 \title{Plot rates by age and sex structure, facetted by financial year.}
 \usage{
-aec_age_sex_plot(x)
+aec_age_sex_plot(x, collection = NULL)
 }
 \arguments{
 \item{x}{A dataframe as described above.}
+
+\item{collection}{An optional parameter. Specify "cdi" for CDI age and sex structure, otherwise omit.}
 }
 \value{
 A ggplot object
@@ -49,6 +51,9 @@ rate = c(0.633245773, 0.885480457, 0.064219518, 0.287795718, 0.804223429,
 row.names = c(NA, -28L))
 
 p <- aec_age_sex_plot(dat)
+p
+dat <- dat[dat$age_group_new != "<1", ]
+p <- aec_age_sex_plot(dat, "cdi")
 p
 }
 

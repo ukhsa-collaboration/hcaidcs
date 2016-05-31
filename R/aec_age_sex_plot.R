@@ -10,6 +10,7 @@
 #' \item{\code{fyear6}}{Financial year}
 #' }
 #' @param x A dataframe as described above.
+#' @param collection An optional parameter. Specify "cdi" for CDI age and sex structure, otherwise omit.
 #' @return A ggplot object
 #' @examples
 #' \dontrun{
@@ -38,25 +39,45 @@
 #'
 #' p <- aec_age_sex_plot(dat)
 #' p
+#' dat <- dat[dat$age_group_new != "<1", ]
+#' p <- aec_age_sex_plot(dat, "cdi")
+#' p
 #' }
 #'
 #' @export
 
-aec_age_sex_plot <- function(x){
+aec_age_sex_plot <- function(x, collection = NULL){
   if (!requireNamespace("ggplot2", quietly = TRUE)) {
     stop("ggplot2 needed for this function to work. Please install it.",
          call. = FALSE)
   }
-  ggplot2::ggplot(data = x,
-                  ggplot2::aes(x = age_group_new, y = rate, group = sex)) +
-    ggplot2::geom_bar(ggplot2::aes(fill = sex), stat = "identity", position = "dodge") +
-    ggplot2::facet_wrap( ~ fyear6) +
-    ggplot2::scale_x_discrete("Age group (years)",
-                     labels = c("<1", "1-14", "15-44", "45-64", "65-74", "75-84",
-                                expression(phantom(x) >=85)
-                     )
-    ) +
-    ggplot2::scale_y_continuous("Rate, per 100,000 population") +
-    viridis::scale_fill_viridis("Sex", discrete = TRUE, option = "viridis",
-                                begin = 0.5, end = 0)
+  if(missing(collection) == TRUE){
+    ggplot2::ggplot(data = x,
+                    ggplot2::aes(x = age_group_new, y = rate, group = sex)) +
+      ggplot2::geom_bar(ggplot2::aes(fill = sex), stat = "identity", position = "dodge") +
+      ggplot2::facet_wrap( ~ fyear6) +
+      ggplot2::scale_x_discrete("Age group (years)",
+                                labels = c("<1", "1-14", "15-44", "45-64", "65-74", "75-84",
+                                           expression(phantom(x) >=85)
+                                )
+      ) +
+      ggplot2::scale_y_continuous("Rate, per 100,000 population") +
+      viridis::scale_fill_viridis("Sex", discrete = TRUE, option = "viridis",
+                                  begin = 0.5, end = 0)
+  }else{
+    if(collection == "cdi"){
+      ggplot2::ggplot(data = x,
+                      ggplot2::aes(x = age_group_new, y = rate, group = sex)) +
+        ggplot2::geom_bar(ggplot2::aes(fill = sex), stat = "identity", position = "dodge") +
+        ggplot2::facet_wrap( ~ fyear6) +
+        ggplot2::scale_x_discrete("Age group (years)",
+                                  labels = c("2-14", "15-44", "45-64", "65-74", "75-84",
+                                             expression(phantom(x) >=85)
+                                  )
+        ) +
+        ggplot2::scale_y_continuous("Rate, per 100,000 population") +
+        viridis::scale_fill_viridis("Sex", discrete = TRUE, option = "viridis",
+                                    begin = 0.5, end = 0)
+    }
+  }
 }
