@@ -23,6 +23,10 @@
 #'
 #' p <- aec_tto_plot(dat)
 #' p
+#' p <- aec_tto_plot(dat, collection = "mrsa")
+#' p
+#' p <- aec_tto_plot(dat, collection = "cdi")
+#' p
 #' }
 #' @export
 
@@ -31,20 +35,8 @@ aec_tto_plot <- function(x, collection = NULL){
     stop("ggplot2 needed for this function to work. Please install it.",
          call. = FALSE)
   }
-  if(collection == "cdi"){
-    ggplot2::ggplot(data = x,
-                    ggplot2::aes(x = fyear6, y = pc)) +
-      ggplot2::geom_area(position = "stack", ggplot2::aes(fill = tto_group)) +
-      ggplot2:: scale_x_continuous("Financial year",
-                                   breaks = unique(x$fyear6),
-                                   labels = paste0(substr(unique(x$fyear6), 1,4), "/", substr(unique(x$fyear6), 5, 6))
-      ) +
-      ggplot2::scale_y_continuous("Per cent inpatient cases") +
-      viridis::scale_fill_viridis("",
-                                  labels = c("< 3 days", "3 - 6 days", "\u2265 7 days"),
-                                  discrete = TRUE, begin = 1, end = 0,
-                                  option="viridis")
-  }else{
+  bacteraemias <- c("mrsa", "mssa", "ecoli")
+  if(missing(collection) == TRUE || tolower(collection) %in% bacteraemias){
     ggplot2::ggplot(data = x,
                     ggplot2::aes(x = fyear6, y = pc)) +
       ggplot2::geom_area(position = "stack", ggplot2::aes(fill = tto_group)) +
@@ -57,6 +49,21 @@ aec_tto_plot <- function(x, collection = NULL){
                                   labels = c("< 2 days", "2 - 6 days", "\u2265 7 days"),
                                   discrete = TRUE, begin = 1, end = 0,
                                   option="viridis")
+  }else{
+    if(collection == "cdi"){
+      ggplot2::ggplot(data = x,
+                      ggplot2::aes(x = fyear6, y = pc)) +
+        ggplot2::geom_area(position = "stack", ggplot2::aes(fill = tto_group)) +
+        ggplot2:: scale_x_continuous("Financial year",
+                                     breaks = unique(x$fyear6),
+                                     labels = paste0(substr(unique(x$fyear6), 1,4), "/", substr(unique(x$fyear6), 5, 6))
+        ) +
+        ggplot2::scale_y_continuous("Per cent inpatient cases") +
+        viridis::scale_fill_viridis("",
+                                    labels = c("< 3 days", "3 - 6 days", "\u2265 7 days"),
+                                    discrete = TRUE, begin = 1, end = 0,
+                                    option="viridis")
+    }
   }
 }
 

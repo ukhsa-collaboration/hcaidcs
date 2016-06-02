@@ -9,10 +9,11 @@ mandatory_age_group(x, collection = NULL)
 \arguments{
 \item{x}{A numeric vector}
 
-\item{collection}{An optional parameter giving the collection for CDI age grouping}
+\item{collection}{An optional parameter giving the collection for CDI age grouping.
+If the collection is not given, the bacteraemia age grouping is applied.}
 }
 \value{
-A factor vector with levels <1 1-14 15-44 45-64 65-74 75-84 ge85
+A factor vector with levels <1 1-14 15-44 45-64 65-74 75-84 ge85 for bacteraemia or 2-14 15-44 45-64 65-74 75-84 ge85 for cdi.
 }
 \description{
 Creates age group as ordered factor according to standard ages for HCAIDCS.
@@ -20,6 +21,8 @@ Values are rounded down using floor before grouping.
 }
 \examples{
 mandatory_age_group(0)
+mandatory_age_group(x = 0)
+mandatory_age_group(0, "MRSA")
 mandatory_age_group(0, "cdi")
 mandatory_age_group(1, "cdi")
 mandatory_age_group(2, "cdi")

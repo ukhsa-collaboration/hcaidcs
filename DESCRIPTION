@@ -55,6 +55,8 @@ Collate:
     'is_third_party.R'
     'mandatory_age.R'
     'mandatory_age_group.R'
+    'mandatory_age_group_bacteraemia.R'
+    'mandatory_age_group_cdi.R'
     'mrsa_source_bacteraemia.R'
     'nice_names.R'
     'nice_year.R'

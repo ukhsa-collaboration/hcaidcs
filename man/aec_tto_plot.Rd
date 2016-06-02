@@ -35,6 +35,10 @@ row.names = c(NA, -6L), .Names = c("fyear6", "tto_group", "pc"))
 
 p <- aec_tto_plot(dat)
 p
+p <- aec_tto_plot(dat, collection = "mrsa")
+p
+p <- aec_tto_plot(dat, collection = "cdi")
+p
 }
 }
 
