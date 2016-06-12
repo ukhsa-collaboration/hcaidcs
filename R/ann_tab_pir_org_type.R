@@ -1,17 +1,14 @@
-#' Create ordered factor variable for PIR organisation type.
+#' Format pir org type for annual tables
 #'
-#' As imported, PIR organisation types are character variables.
-#' For the correct ordering when reshaping wide, this needs to be a factor variable.
-#'
-#' @param x The column of a data frame giving the PIR organisation type.
+#' @param x A string vector giving the final pir assignment type
+#' @return A factor variable with four levels: Total Reported Cases,
+#' Trust Assigned Cases, CCG Assigned Cases and Third Party Cases
 #' @examples
-#' x <- data.frame(pir = c("", "NHS Trust", "Clinical Commissioning Group",
-#' "Total Reported Cases", NA))
-#'
-#' x$pir2 <- pir_org_type(x$pir)
+#' x <- "NHS Trust"
+#' ann_tab_pir_org_type(x)
 #' @export
 
-pir_org_type <- function(x){
+ann_tab_pir_org_type <- function(x){
   z <- ifelse(x == "Third Party", "Third Party Cases",
               ifelse(x == "NHS Trust", "Trust Assigned Cases",
                      ifelse(x == "Clinical Commissioning Group", "CCG Assigned Cases",

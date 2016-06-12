@@ -12,6 +12,8 @@
 #' @examples
 #' x <- lubridate::dmy("01/01/2001")
 #' fy_long(x)
+#' x <- lubridate::ymd("2016-01-01")
+#' fy_long(x)
 #' @export
 
 fy_long <- function(date_var){

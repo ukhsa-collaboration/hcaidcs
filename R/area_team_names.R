@@ -3,6 +3,7 @@
 #' Removes brackets and sorts capitalisation.
 #'
 #' @param area_team_name A vector of area team names
+#' @seealso \code{\link{ann_tab_ccg_names}}
 #' @examples
 #' x <- "NHS ENGLAND NORTH (YORKSHIRE AND HUMBER)"
 #' area_team_names(x)

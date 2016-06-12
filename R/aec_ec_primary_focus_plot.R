@@ -38,11 +38,12 @@ aec_ec_source_plot <- function(x){
   ) +
     ggplot2::geom_bar(stat = "identity") +
     #facet_wrap(~tto_group) +
-    ggplot2::scale_x_discrete("Days between admission and positive specimen") +
+    ggplot2::scale_x_discrete("Days between admission and positive specimen",
+                              labels = c("<2", "2-6", "\u2265 7")) +
     ggplot2::scale_y_continuous("Per cent inpatient cases") +
     #theme(axis.ticks = element_blank(), axis.text.x = element_blank()) +
     #scale_fill_discrete("Primary focus\n of infection")
     viridis::scale_fill_viridis("Primary focus\n of infection", discrete = TRUE,
-                       option = "viridis",
+                       option = "viridis", begin = 0, end = 0.85,
                        guide = ggplot2::guide_legend(reverse = TRUE))
 }

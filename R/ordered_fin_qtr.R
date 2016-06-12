@@ -14,6 +14,12 @@
 #' dat <- ordered_fin_qtr(dat, "sample_fy")
 #' class(dat$fin_qtr_ftr)
 #' levels(dat$fin_qtr_ftr)
+#'
+#' dat <- data.frame(sample_date = lubridate::dmy("01/01/2001"))
+#' dat$sample_fq <- fq_long(dat$sample_date)
+#' dat <- ordered_fin_qtr(dat, "sample_fq")
+#' class(dat$fin_qtr_ftr)
+#' levels(dat$fin_qtr_ftr)
 #' @importFrom magrittr "%>%"
 #' @export
 

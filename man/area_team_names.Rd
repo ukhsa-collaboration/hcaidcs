@@ -16,4 +16,7 @@ Removes brackets and sorts capitalisation.
 x <- "NHS ENGLAND NORTH (YORKSHIRE AND HUMBER)"
 area_team_names(x)
 }
+\seealso{
+\code{\link{ann_tab_ccg_names}}
+}
 

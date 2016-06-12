@@ -36,8 +36,13 @@ rate = c(0.541357619, 0.509643862, 0.976268126, 0.480329843, 0.704037304,
 data("subregions_sp_df")
 
 subregions_sp_df <- dplyr::left_join(subregions_sp_df, dat)
+# Need to convert rate to factor and correctly label levels
+# Can't do this before left_join as factors are coerced to characters.
+subregions_sp_df$rate <- cut(subregions_sp_df$rate, c(0, 0.2, 0.4, 0.6, 0.8, 1.0),
+labels = c("0.0-0.2", "0.21-0.4", "0.41-0.6", "0.61-0.8", "0.81-1.0" ))
 p <- aec_subregion_plot(subregions_sp_df)
 p
+
 }
 }
 
