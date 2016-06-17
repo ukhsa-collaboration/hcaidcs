@@ -31,6 +31,18 @@ dat$sample_fq <- fq_long(dat$sample_date)
 dat <- ordered_fin_qtr(dat, "sample_fq")
 class(dat$fin_qtr_ftr)
 levels(dat$fin_qtr_ftr)
+
+dat <- data.frame(sample_date = c(lubridate::dmy("01/01/2001"),
+   lubridate::dmy("01/04/2001"),
+   lubridate::dmy("01/07/2001"),
+   lubridate::dmy("01/10/2001"),
+   lubridate::dmy("01/01/2002")
+   ))
+dat$sample_fq <- fq_long(dat$sample_date)
+dat <- ordered_fin_qtr(dat, "sample_fq")
+class(dat$fin_qtr_ftr)
+levels(dat$fin_qtr_ftr)
+
 }
 \seealso{
 \code{\link{fy_long}}
