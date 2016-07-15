@@ -9,7 +9,7 @@ nice_year(x, year_format)
 \arguments{
 \item{x}{A year variable}
 
-\item{year_format}{The format of x, one of "fyear6", "fyear4", "cyear2"}
+\item{year_format}{The current format of x, one of "fyear6", "fyear4", "cyear2"}
 }
 \value{
 A string formatted year

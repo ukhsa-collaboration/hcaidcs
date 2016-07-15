@@ -4,10 +4,12 @@
 \alias{fy_short}
 \title{Format date into short text financial year.}
 \usage{
-fy_short(date_var)
+fy_short(date_var, sep = "/")
 }
 \arguments{
 \item{date_var}{A date variable in class Date or POSIX}
+
+\item{sep}{A separator between two years. Defaults to "/"}
 }
 \value{
 A text string giving the financial year.
@@ -19,6 +21,7 @@ year as 'yy/yy'
 \examples{
 x <- lubridate::dmy("01/01/2001")
 fy_short(x)
+fy_short(x, sep = "_")
 }
 \seealso{
 \code{\link{fy_long}}

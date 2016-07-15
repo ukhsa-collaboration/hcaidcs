@@ -1,7 +1,7 @@
 #' Nicely print the most recent year
 #'
 #' @param x A year variable
-#' @param year_format The format of x, one of "fyear6", "fyear4", "cyear2"
+#' @param year_format The current format of x, one of "fyear6", "fyear4", "cyear2"
 #' @return A string formatted year
 #' @examples
 #' x <- 201516

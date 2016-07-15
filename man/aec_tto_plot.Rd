@@ -16,7 +16,7 @@ A ggplot object
 }
 \description{
 Plots the stacked area chart for time-to-onset for the AEC
-Although the function takes only two argument (a data frame containing the proportion of cases for inpatients, by time to onset and financial year),
+Although the function takes only two arguments (a data frame containing the proportion of cases for inpatients, by time to onset and financial year),
 it relies on the presence of the following variables to that data frame, which must be precisely named:
 \describe{
 \item{\code{fyear6}}{The financial year in format YYYY/YY}

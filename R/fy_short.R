@@ -5,14 +5,16 @@
 #'
 #' @include check_date_class.R
 #' @param date_var A date variable in class Date or POSIX
+#' @param sep A separator between two years. Defaults to "/"
 #' @return A text string giving the financial year.
 #' @seealso \code{\link{fy_long}}
 #' @examples
 #' x <- lubridate::dmy("01/01/2001")
 #' fy_short(x)
+#' fy_short(x, sep = "_")
 #' @export
 
-fy_short <- function(date_var){
+fy_short <- function(date_var, sep = "/"){
   if (!requireNamespace("lubridate", quietly = TRUE)) {
     stop("lubridate is needed for this function to work. Please install it.",
          call. = FALSE)
@@ -21,10 +23,8 @@ fy_short <- function(date_var){
   qtr <- lubridate::quarter(date_var)
   date_var <- as.Date(date_var)
   this_year <- as.numeric(substr(as.character(lubridate::year(date_var)), 3, 4))
-  if (qtr > 1) {
-    z <- paste(sprintf("%02i", this_year), sprintf("%02i", this_year + 1), sep = "/" )
-  } else {
-    z <- paste(sprintf("%02i", this_year - 1), sprintf("%02i", this_year), sep = "/" )
-  }
+  z <- ifelse(qtr > 1,
+    paste(sprintf("%02i", this_year), sprintf("%02i", this_year + 1), sep = sep ),
+    paste(sprintf("%02i", this_year - 1), sprintf("%02i", this_year), sep = sep ))
   return(z)
 }

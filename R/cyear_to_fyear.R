@@ -1,6 +1,7 @@
 #' Convert calendar year to financial year
 #'
-#' @param x Numeric year
+#' @param x Numeric calendar year
+#' @seealso \code{\link{fyear_to_cyear}}
 #' @examples
 #' cyear_to_fyear(2012)
 #' @return Character string giving the six character financial year

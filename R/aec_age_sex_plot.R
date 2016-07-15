@@ -62,8 +62,15 @@ aec_age_sex_plot <- function(x, collection = NULL){
                                 )
       ) +
       ggplot2::scale_y_continuous("Rate, per 100,000 population") +
-      viridis::scale_fill_viridis("Sex", discrete = TRUE, option = "viridis",
-                                  begin = 0.5, end = 0)
+      # viridis::scale_fill_viridis("Sex", discrete = TRUE, option = "viridis",
+      #                             begin = 0.5, end = 0) +
+      ggplot2::scale_fill_manual(values = c("#9ECAE1", "#3182BD")) +
+      ggplot2::theme(legend.position = c(0.9, 1), legend.justification = c(1,1),
+                     strip.background = ggplot2::element_rect(fill="white"),
+                     strip.text.x = ggplot2::element_text(face = "bold"),
+                     panel.margin = ggplot2::unit(1.5, "lines")
+                     ) +
+      ggplot2::guides(fill = ggplot2::guide_legend(nrow = 1))
   }else{
     if(collection == "cdi"){
       ggplot2::ggplot(data = x,
@@ -76,8 +83,15 @@ aec_age_sex_plot <- function(x, collection = NULL){
                                   )
         ) +
         ggplot2::scale_y_continuous("Rate, per 100,000 population") +
-        viridis::scale_fill_viridis("Sex", discrete = TRUE, option = "viridis",
-                                    begin = 0.5, end = 0)
+        # viridis::scale_fill_viridis("Sex", discrete = TRUE, option = "viridis",
+        #                             begin = 0.5, end = 0) +
+        ggplot2::scale_fill_manual(values = c("#9ECAE1", "#3182BD")) +
+        ggplot2::theme(legend.position = c(0.9,1), legend.justification = c(1,1),
+                       strip.background = ggplot2::element_rect(fill="white"),
+                       strip.text.x = ggplot2::element_text(face = "bold"),
+                       panel.margin = ggplot2::unit(1.5, "lines")
+                       ) +
+        ggplot2::guides(fill = ggplot2::guide_legend(nrow = 1))
     }
   }
 }

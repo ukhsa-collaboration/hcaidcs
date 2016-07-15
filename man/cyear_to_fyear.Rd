@@ -7,7 +7,7 @@
 cyear_to_fyear(x)
 }
 \arguments{
-\item{x}{Numeric year}
+\item{x}{Numeric calendar year}
 }
 \value{
 Character string giving the six character financial year
@@ -17,5 +17,8 @@ Convert calendar year to financial year
 }
 \examples{
 cyear_to_fyear(2012)
+}
+\seealso{
+\code{\link{fyear_to_cyear}}
 }
 

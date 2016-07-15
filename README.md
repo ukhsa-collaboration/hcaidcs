@@ -11,6 +11,15 @@ If installation is successful you will then be able to load the package with `li
 Use
 ---
 
-Functions that begin `aec_` are intended for producing tables or plots for the annual epidemiologic commentary. Functions beginning `ann_tab_` are intended for the production of the annual tables.
+Functions that begin `aec_` are intended for producing tables or plots for the annual epidemiologic commentary.
+
+Functions beginning `ann_tab_` are intended for the production of the annual tables.
 
 Functions prefixed `nice_` indicate that they format values for nice printing in text, such as financial year, or an estimate with its' 95% confidence interval.
+
+Functions prefixed `kh03_` indicate functions for use in the preparation of the kh03 denominator data.
+
+Contributions
+-------------
+
+Contributions to this package are welcome. Please see the [http://bioinformatics-git.phe.gov.uk/Simon.Thelwall/hcaidcs/blob/master/CONTRIBUTING.md](Contribution%20guidelines).

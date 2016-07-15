@@ -29,10 +29,6 @@ aec_ec_source_plot <- function(x){
     stop("ggplot2 needed for this function to work. Please install it.",
          call. = FALSE)
   }
-  if (!requireNamespace("viridis", quietly = TRUE)) {
-    stop("The package *viridis* needed for this function to work. Please install it.",
-         call. = FALSE)
-  }
   ggplot2::ggplot(x, ggplot2::aes(x= tto_group, y = pc, group = tto_group,
                         fill = primary_focus)
   ) +
@@ -43,7 +39,6 @@ aec_ec_source_plot <- function(x){
     ggplot2::scale_y_continuous("Per cent inpatient cases") +
     #theme(axis.ticks = element_blank(), axis.text.x = element_blank()) +
     #scale_fill_discrete("Primary focus\n of infection")
-    viridis::scale_fill_viridis("Primary focus\n of infection", discrete = TRUE,
-                       option = "viridis", begin = 0, end = 0.85,
-                       guide = ggplot2::guide_legend(reverse = TRUE))
+    ggplot2::scale_fill_manual("Primary focus\n of infection", values = c("#08519C", "#3182BD", "#6BAED6", "#9ECAE1", "#C6DBEF"),
+                               guide = ggplot2::guide_legend(reverse = TRUE))
 }
