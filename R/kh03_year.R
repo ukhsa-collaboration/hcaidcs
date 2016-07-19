@@ -1,5 +1,6 @@
-#' Convert KH03 formatted dates to Mandatory data formatted dates.
-#' NHS Englad provide periods with separate columns for financial year and quarter.
+#' Convert KH03-formatted dates to Mandatory data-formatted dates.
+#'
+#' NHS England provide KH03 data periods as separate columns for financial year and quarter.
 #' This converts to a format usable for the mandatory surveillance.
 #'
 #' @param year The year column from KH03 data. String of 7 characters in format "yyyy-yy"

@@ -2,9 +2,7 @@
 % Please edit documentation in R/kh03_year.R
 \name{kh03_year}
 \alias{kh03_year}
-\title{Convert KH03 formatted dates to Mandatory data formatted dates.
-NHS Englad provide periods with separate columns for financial year and quarter.
-This converts to a format usable for the mandatory surveillance.}
+\title{Convert KH03-formatted dates to Mandatory data-formatted dates.}
 \usage{
 kh03_year(year, quarter, format)
 }
@@ -19,8 +17,7 @@ kh03_year(year, quarter, format)
 A numeric variable giving year and quarter
 }
 \description{
-Convert KH03 formatted dates to Mandatory data formatted dates.
-NHS Englad provide periods with separate columns for financial year and quarter.
+NHS England provide KH03 data periods as separate columns for financial year and quarter.
 This converts to a format usable for the mandatory surveillance.
 }
 \examples{
