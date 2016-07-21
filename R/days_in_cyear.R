@@ -10,6 +10,6 @@
 #' @export
 
 days_in_cy <- function(x){
-  days_in_yr <- ifelse(lubridate::leap_year(x), 366, 365)
+  days_in_yr <- ifelse(lubridate::leap_year(as.numeric(x)), 366, 365)
   return(days_in_yr)
 }

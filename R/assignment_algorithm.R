@@ -3,6 +3,7 @@
 #' Provisionally assigned cases are counted as if final assignment status, i.e.
 #' a case provisionally assigned to a Trust will be reported as Trust-assigned
 #' in any report.
+#'
 #' @param pircasestatus Text string of either 'Final assignment' or 'Provisional assignment'
 #' @param assignmentmethodcode Numeric variable giving assignment method
 #' @param patientlocation Text string giving patient location
@@ -55,18 +56,23 @@
 
 assignment_algorithm <- function(pircasestatus, assignmentmethodcode, patientlocation,
                         provisionalorganisationname, finalpirassignedorganisationtype){
+  # Factors will stuff up the assignment algorithm.
+  pircasestatus <- as.character(pircasestatus)
+  patientlocation <- as.character(patientlocation)
+  provisionalorganisationname <- as.character(provisionalorganisationname)
+  finalpirassignedorganisationtype <- as.character(finalpirassignedorganisationtype)
   z <- ifelse(
     tolower(pircasestatus) == "final assignment" & assignmentmethodcode <= 9,
     finalpirassignedorganisationtype,
     ifelse(
-    (tolower(pircasestatus) == "final assignment" & assignmentmethodcode == 10 & patientlocation == "NHS Acute Trust") |
-    (tolower(pircasestatus) == "provisional assignment" & (stringr::str_detect(tolower(provisionalorganisationname),"trust") == TRUE)) |
-    (assignmentmethodcode == 15 & (stringr::str_detect(tolower(provisionalorganisationname),"trust") == TRUE)),
-    "NHS Trust",
-    ifelse(
-      (tolower(pircasestatus) == "final assignment" & assignmentmethodcode == 10 & patientlocation != "NHS Acute Trust") |
-        (tolower(pircasestatus) == "provisional assignment" & (stringr::str_detect(tolower(provisionalorganisationname),"ccg") == TRUE)) |
-        (assignmentmethodcode == 15 & (stringr::str_detect(tolower(provisionalorganisationname),"ccg") == TRUE)), "Clinical Commissioning Group",
-      ifelse(assignmentmethodcode == 13 | assignmentmethodcode == 14, "Third Party", NA))))
+      (tolower(pircasestatus) == "final assignment" & assignmentmethodcode == 10 & patientlocation == "NHS Acute Trust") |
+        (tolower(pircasestatus) == "provisional assignment" & (stringr::str_detect(tolower(provisionalorganisationname),"trust") == TRUE)) |
+        (assignmentmethodcode == 15 & (stringr::str_detect(tolower(provisionalorganisationname),"trust") == TRUE)),
+      "NHS Trust",
+      ifelse(
+        (tolower(pircasestatus) == "final assignment" & assignmentmethodcode == 10 & patientlocation != "NHS Acute Trust") |
+          (tolower(pircasestatus) == "provisional assignment" & (stringr::str_detect(tolower(provisionalorganisationname),"ccg") == TRUE)) |
+          (assignmentmethodcode == 15 & (stringr::str_detect(tolower(provisionalorganisationname),"ccg") == TRUE)), "Clinical Commissioning Group",
+        ifelse(assignmentmethodcode == 13 | assignmentmethodcode == 14, "Third Party", NA))))
   return(z)
 }
