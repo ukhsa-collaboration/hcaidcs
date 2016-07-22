@@ -37,54 +37,46 @@ apportion <- function(collection, patient_location, patient_category, date_admit
     stop("lubridate is needed for this function to work. Please install it.",
          call. = FALSE)
   }
-  trust_cats <- c("In-patient", "Day patient", "Emergency Assessment", "Unknown", "")
-  trust_locs <- c("NHS Acute Trust", "")
   check_date_class(date_admitted)
   check_date_class(specimen_date)
   check_date_class(date_entered)
   if(collection != "mssa" & collection != "cdi"){
     stop("Collection is not either \"mssa\" or \"cdi\" ")
-  }else{
-    if(collection == "mssa"){
-      if(is.na(date_admitted) == TRUE){
-        if( (patient_location %in% trust_locs | (patient_location == "Unknown" & date_entered >= lubridate::dmy("26-10-2015")) ) &
-            patient_category %in% trust_cats){
-          trust <- 1
-        }else{
-          trust <- 0
-        }
-      }else{
-        if( (specimen_date - date_admitted + 1 >= 3) &
-            (patient_location %in% trust_locs | (patient_location == "Unknown" & date_entered >= lubridate::dmy("26-10-2015")) ) &
-            patient_category %in% trust_cats
-        ){
-          trust <- 1
-        }else{
-          trust <- 0
-        }
-      }
-    }else{
-      if(collection == "cdi"){
-        if(is.na(date_admitted) == TRUE){
-          if( (patient_location %in% trust_locs | (patient_location == "Unknown" & date_entered >= lubridate::dmy("26-10-2015")) ) &
-              patient_category %in% trust_cats){
-            trust <- 1
-          }else{
-            trust <- 0
-          }
-        }else{
-          if( (specimen_date - date_admitted + 1 >= 4) &
-              (patient_location %in% trust_locs | (patient_location == "Unknown" & date_entered >= lubridate::dmy("26-10-2015")) ) &
-              patient_category %in% trust_cats
-          ){
-            trust <- 1
-          }else{
-            trust <- 0
-          }
-        }
-      }
-
-    }
   }
+  if(length(collection) == 1) {
+    collection <- rep(collection, length(patient_location))
+  }
+  trust <- ifelse(collection == "mssa",
+                  mssa_appt(patient_location, patient_category, date_admitted, specimen_date, date_entered),
+                  cdi_appt(patient_location, patient_category, date_admitted, specimen_date, date_entered)
+                  )
+
   return(trust)
+}
+
+
+mssa_appt <- function(patient_location, patient_category, date_admitted, specimen_date, date_entered){
+  trust_cats <- c("In-patient", "Day patient", "Emergency Assessment", "Unknown", "")
+  trust_locs <- c("NHS Acute Trust", "")
+  z <- ifelse(is.na(date_admitted) == TRUE,
+              ifelse( (patient_location %in% trust_locs | (patient_location == "Unknown" & date_entered >= lubridate::dmy("26-10-2015")) ) &
+                  patient_category %in% trust_cats, 1, 0),
+              ifelse( (specimen_date - date_admitted + 1 >= 3) &
+                (patient_location %in% trust_locs | (patient_location == "Unknown" & date_entered >= lubridate::dmy("26-10-2015")) ) &
+                patient_category %in% trust_cats,
+              1, 0))
+  return(z)
+}
+
+cdi_appt <- function(patient_location, patient_category, date_admitted, specimen_date, date_entered){
+  trust_cats <- c("In-patient", "Day patient", "Emergency Assessment", "Unknown", "")
+  trust_locs <- c("NHS Acute Trust", "")
+  z <- ifelse(is.na(date_admitted) == TRUE,
+              ifelse( (patient_location %in% trust_locs | (patient_location == "Unknown" & date_entered >= lubridate::dmy("26-10-2015")) ) &
+                        patient_category %in% trust_cats, 1, 0),
+              ifelse( (specimen_date - date_admitted + 1 >= 4) &
+                        (patient_location %in% trust_locs | (patient_location == "Unknown" & date_entered >= lubridate::dmy("26-10-2015")) ) &
+                        patient_category %in% trust_cats,
+              1, 0))
+  return(z)
 }
