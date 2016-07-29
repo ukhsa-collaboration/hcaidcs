@@ -8,6 +8,7 @@
 #' created using \code{\link{fy_long}}. Must be quoted.
 #' @return A dataframe with a new variable 'fin_qtr_ftr'
 #' @seealso \code{\link{fy_long}}
+#' @seealso \code{\link{ordered_m_y}}
 #' @examples
 #' dat <- data.frame(sample_date = lubridate::dmy("01/01/2001"))
 #' dat$sample_fy <- fy_long(dat$sample_date)
