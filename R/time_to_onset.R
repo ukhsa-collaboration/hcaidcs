@@ -23,6 +23,9 @@
 #' patient_cat <- ""
 #' onset <- lubridate::dmy("05-01-2011")
 #' time_to_onset(admitted, onset, patient_cat)
+#' time_to_onset(date_admitted = lubridate::dmy("01-01-2011"),
+#'  date_specimen = lubridate::dmy("05-01-2011"),
+#'  patient_category = "Outpatient", patient_location = "NHS Acute Trust")
 #' }
 #' @export
 
