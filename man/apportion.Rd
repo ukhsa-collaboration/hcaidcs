@@ -48,4 +48,3 @@ apportion("cdi", "NHS Acute Trust", "In-patient", date_admitted =
 lubridate::dmy("01-01-2015"),  specimen_date = lubridate::dmy("05-01-2015"),
 date_entered = lubridate::dmy("26-10-2015"))
 }
-

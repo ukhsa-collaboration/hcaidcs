@@ -20,4 +20,3 @@ Needs further work to return ordered factor.
 x <- lubridate::dmy("01-01-2012")
 fy_six(x)
 }
-

@@ -21,4 +21,3 @@ fq5(x)
 x <- lubridate::dmy("01/04/2012")
 fq5(x)
 }
-

@@ -14,4 +14,3 @@ Has no arguments.
 cat(rep("This is a line. \\n", 50)) # print some text to clear
 clear_console()
 }
-

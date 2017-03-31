@@ -11,4 +11,3 @@ mandatory_age_group_cdi(x)
 mandatory_age_group_cdi(0)
 mandatory_age_group_cdi(2)
 }
-

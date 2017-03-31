@@ -9,4 +9,3 @@ ec_apportion_step2(patient_category)
 \description{
 for e coli apportioning
 }
-

@@ -20,4 +20,3 @@ ecoli_primary_focus("Urinary tract")
 ecoli_primary_focus("Central nervous system")
 ecoli_primary_focus("")
 }
-

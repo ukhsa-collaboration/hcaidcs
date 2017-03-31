@@ -24,4 +24,3 @@ mo_pub_date()
 x <- lubridate::dmy("01/02/2015")
 mo_pub_date(x)
 }
-

@@ -32,4 +32,3 @@ head(dat$month_yr)
 \seealso{
 \code{\link{ordered_fin_qtr}}
 }
-

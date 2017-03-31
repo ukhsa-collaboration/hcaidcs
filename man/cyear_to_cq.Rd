@@ -21,4 +21,3 @@ cyear_to_cq(20112)
 \seealso{
 \code{\link{kh03_year}}, \code{\link{fyear_to_fq}}
 }
-

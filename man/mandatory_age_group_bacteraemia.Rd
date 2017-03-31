@@ -9,4 +9,3 @@ mandatory_age_group_bacteraemia(x)
 \description{
 mandatory_age_group_bacteraemia(0)
 }
-

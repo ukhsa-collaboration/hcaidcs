@@ -26,5 +26,6 @@ kh03_year("2010-11", "March", "cyear")
 kh03_year("2010-11", "June", "cyear")
 kh03_year("2010-11", "June", "fyear")
 kh03_year("2000-01", "March", "cyear")
+kh03_year("2010-11", "September", "fyear")
+kh03_year("2010-11", "December", "fyear")
 }
-

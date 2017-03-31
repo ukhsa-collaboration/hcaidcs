@@ -17,4 +17,3 @@ From https://stat.ethz.ch/R-manual/R-devel/library/base/html/chartr.html
 x <- "NHS ENGLAND NORTH"
 simple_cap(x)
 }
-

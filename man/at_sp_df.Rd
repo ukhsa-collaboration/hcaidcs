@@ -29,4 +29,3 @@ at_sp_df
 A dataframe containing the geographies for NHS Area Teams.
 }
 \keyword{datasets}
-

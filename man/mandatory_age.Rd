@@ -26,4 +26,3 @@ mandatory_age(dob, spec)
 # Counter example :
 round(as.numeric(spec-dob)/365.25, 1)
 }
-

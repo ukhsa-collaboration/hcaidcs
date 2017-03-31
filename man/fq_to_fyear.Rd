@@ -18,4 +18,3 @@ Takes financial quarter in format yyyyq and returns yyyy/yy format financial yea
 \examples{
 fq_to_fyear(20151)
 }
-

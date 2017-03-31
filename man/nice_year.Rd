@@ -25,4 +25,3 @@ nice_year(12, "cyear2")
 nice_year(0708, "fyear4")
 nice_year("07/08", "fyear4")
 }
-

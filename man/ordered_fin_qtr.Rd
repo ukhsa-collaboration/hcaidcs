@@ -49,4 +49,3 @@ levels(dat$fin_qtr_ftr)
 
 \code{\link{ordered_m_y}}
 }
-

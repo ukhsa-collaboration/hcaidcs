@@ -19,4 +19,3 @@ Need to obtain the number of days in a year
 \examples{
 days_in_fy("200708")
 }
-

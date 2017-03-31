@@ -13,4 +13,3 @@ A convenience function to create the pdf version of the help pages in the
 Requires pdflatex to be installed on your machine.
 The function takes no arguments and may run a little slowly.
 }
-

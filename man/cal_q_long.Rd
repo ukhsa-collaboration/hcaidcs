@@ -23,4 +23,3 @@ cal_q_long(x)
 \seealso{
 \code{\link{fy_long}}
 }
-

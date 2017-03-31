@@ -39,4 +39,3 @@ specimen_date <- NA
 aec_inpatient(patient_loc, patient_cat, specimen_date, date_admitted)
 }
 }
-

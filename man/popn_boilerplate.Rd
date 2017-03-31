@@ -20,4 +20,3 @@ This is a function to add common variables to a data frame
 dat <- data.frame(trustcode = rep("AAA", 2), period = c(201415, 201516), stringsAsFactors = FALSE)
 dat <- popn_boilerplate(dat)
 }
-

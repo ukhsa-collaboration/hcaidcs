@@ -34,4 +34,3 @@ subregions_sp_df
 A dataframe containing the geographies for NHS subregions.
 }
 \keyword{datasets}
-

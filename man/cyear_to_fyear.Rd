@@ -21,4 +21,3 @@ cyear_to_fyear(2012)
 \seealso{
 \code{\link{fyear_to_cyear}}
 }
-

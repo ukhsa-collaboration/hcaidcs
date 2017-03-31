@@ -21,4 +21,3 @@ quarter as integer from 1 to 4.
 x <- lubridate::dmy("01/01/2001")
 fq_short(x)
 }
-

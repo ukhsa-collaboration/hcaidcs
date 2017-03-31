@@ -21,4 +21,3 @@ patloc_for_pir_assignment("NHS Acute Trust")
 patloc_for_pir_assignment("Non-acute NHS Provider")
 }
 }
-

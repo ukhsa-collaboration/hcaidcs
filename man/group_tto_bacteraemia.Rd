@@ -28,4 +28,3 @@ group_tto_bacteraemia(tto)
 
 \code{\link{group_tto_cdi}}
 }
-

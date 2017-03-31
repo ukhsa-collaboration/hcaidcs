@@ -70,6 +70,11 @@ Hubs are all recoded to `zSCH` and `zSpecialist Commissioning Hubs`.
 The `z` is to ensure that hubs are sorted to the bottom of the table. 
 
 ## Special functions
+
+### data_compare
+Used to compare data from one month to another to identify cells which have changed from one publication to another. 
+This can then be used in the export to format the background fill of cells.
+
 ### the_months
 The function `the_months()` returns a vector of 13 months from a supplied date. 
 ```{r, message=FALSE}

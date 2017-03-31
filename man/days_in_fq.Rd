@@ -28,4 +28,3 @@ days_in_fq("20154")
 x <- data.frame(fyear = c(20151, 20152, 20153, 20154))
 x$days <- days_in_fq(x$fyear)
 }
-
