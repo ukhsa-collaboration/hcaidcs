@@ -73,6 +73,7 @@ Collate:
     'mandatory_age_group.R'
     'mandatory_age_group_bacteraemia.R'
     'mandatory_age_group_cdi.R'
+    'mo_curr_months.R'
     'mo_pub_date.R'
     'mrsa_source_bacteraemia.R'
     'nice_estimate.R'
