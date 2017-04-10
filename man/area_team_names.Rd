@@ -19,4 +19,3 @@ area_team_names(x)
 \seealso{
 \code{\link{ann_tab_ccg_names}}
 }
-

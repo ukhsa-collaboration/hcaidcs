@@ -14,4 +14,3 @@ ec_apportion_step1(patient_location, date_entered)
 \description{
 for ecoli apportioning
 }
-

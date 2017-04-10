@@ -12,4 +12,3 @@ check_date_class(date_var)
 \description{
 Checks that dates are in class date or POSIX. Called by other functions.
 }
-

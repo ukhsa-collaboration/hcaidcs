@@ -24,4 +24,3 @@ up_or_down(100, 200)
 up_or_down(200, 100)
 up_or_down(100, 100)
 }
-

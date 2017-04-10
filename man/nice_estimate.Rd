@@ -23,4 +23,3 @@ Rounds estimates to 1 decimal place and copies similarly formatted confidence in
 nice_estimate(100.111, 90.0, 110.000002)
 nice_estimate(0.9, 0.8001, 0.95)
 }
-

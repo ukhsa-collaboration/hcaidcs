@@ -16,4 +16,3 @@ This turns CCG names into title case format and removes strings 'NHS' and 'CCG'.
 x <- "NHS DARLINGTON CCG"
 ann_tab_ccg_names(x)
 }
-

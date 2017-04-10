@@ -21,4 +21,3 @@ For fyear, q1 is April-June and q4 is Jan-Feb.
 x <- "Oct-Dec 2015"
 time_period2fyear(x)
 }
-

@@ -9,4 +9,3 @@ ec_apportion_step3a(specimen_date, date_admitted)
 \description{
 For e coli apportioning
 }
-

@@ -26,4 +26,3 @@ fy_short(x, sep = "_")
 \seealso{
 \code{\link{fy_long}}
 }
-

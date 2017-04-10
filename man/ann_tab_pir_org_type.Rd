@@ -20,4 +20,3 @@ Format pir org type for annual tables
 x <- "NHS Trust"
 ann_tab_pir_org_type(x)
 }
-

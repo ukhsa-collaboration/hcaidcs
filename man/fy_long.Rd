@@ -29,4 +29,3 @@ fy_long(x)
 
 \code{\link{ordered_fin_qtr}}
 }
-

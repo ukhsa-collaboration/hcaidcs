@@ -37,4 +37,3 @@ p
 \seealso{
 \code{\link{group_tto_bacteraemia}} \code{\link{ecoli_primary_focus}}
 }
-

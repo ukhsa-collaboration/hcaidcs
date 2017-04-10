@@ -21,4 +21,3 @@ is_sch(x)
 x <- "NHS NEWCASTLE GATESHEAD CCG"
 is_sch(x)
 }
-

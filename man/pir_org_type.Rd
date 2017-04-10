@@ -19,4 +19,3 @@ x <- data.frame(pir = c("", "NHS Trust", "Clinical Commissioning Group",
 
 x$pir2 <- pir_org_type(x$pir)
 }
-

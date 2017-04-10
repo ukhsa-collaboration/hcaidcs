@@ -39,4 +39,3 @@ onset <- lubridate::dmy("05-01-2011")
 time_to_onset(admitted, onset, patient_cat)
 }
 }
-

@@ -36,4 +36,3 @@ mandatory_age_group(seq(1,100, 1), "cdi")
 \seealso{
 \code{\link{mandatory_age}}
 }
-

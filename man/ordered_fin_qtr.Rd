@@ -47,4 +47,3 @@ levels(dat$fin_qtr_ftr)
 \seealso{
 \code{\link{fy_long}}
 }
-

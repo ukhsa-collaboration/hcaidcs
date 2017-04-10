@@ -21,4 +21,3 @@ change(200, 100, "percent")
 change(200, 100, "value")
 change(100, 200, "percent")
 }
-

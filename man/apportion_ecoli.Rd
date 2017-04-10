@@ -67,4 +67,3 @@ dat <- structure(list(
  patient_category, date_admitted, specimen_date, date_entered))
  }
 }
-

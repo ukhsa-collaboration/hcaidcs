@@ -69,4 +69,3 @@ dat$new <- assignment_algorithm(dat$pircasestatus,
            dat$finalpirassignedorganisation)
 dat
 }
-

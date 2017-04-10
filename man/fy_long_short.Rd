@@ -25,4 +25,3 @@ fy_long_short(x)
 \seealso{
 \code{\link{fy_long}}
 }
-

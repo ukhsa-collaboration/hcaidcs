@@ -19,4 +19,3 @@ Converts from five-character financial year quarter to five character calendar y
 fq_to_cq(20154)
 fq_to_cq(20151)
 }
-

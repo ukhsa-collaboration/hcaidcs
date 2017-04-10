@@ -28,4 +28,3 @@ date_end_period(dat$x, "cq")
 \seealso{
 \code{\link{date_start_period}}
 }
-

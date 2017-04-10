@@ -18,4 +18,3 @@ data(mtcars)
 names(mtcars) <- toupper(names(mtcars))
 names(mtcars) <- nice_names(mtcars)
 }
-
