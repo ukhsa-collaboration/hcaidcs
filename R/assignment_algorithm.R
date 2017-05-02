@@ -15,15 +15,16 @@
 #'   pircasestatus = c("Final assignment", "Final assignment","Final assignment",
 #'                     "Final assignment", "Provisional assignment",
 #'                     "Provisional assignment", "Provisional assignment",
+#'                     "Provisional assignment", "Provisional assignment",
 #'                     "Provisional assignment", "Provisional assignment"),
-#'   assignmentmethodcode = c(9L, 10L, 10L, 8L, 10L, 10L, 13L, 15L, 15L),
+#'   assignmentmethodcode = c(9L, 10L, 10L, 8L, 10L, 10L, 13L, 15L, 15L, 11L, 11L),
 #'   patientlocation = c("NHS Acute Trust", "NHS Acute Trust",
 #'                       "Independent Sector Provider",
 #'                       "Independent Sector Provider",
 #'                                           "NHS Acute Trust",
 #'                       "Independent Sector Provider", "NHS Acute Trust",
 #'                                           "NHS Acute Trust",
-#'                       "NHS Acute Trust"),
+#'                       "NHS Acute Trust", "NHS Acute Trust", "NHS Acute Trust"),
 #'   provisionalorganisationname = c(
 #'     "Cambridge University Hospitals NHS Foundation Trust",
 #'     "Cambridge University Hospitals NHS Foundation Trust",
@@ -32,6 +33,8 @@
 #'     "Cambridge University Hospitals NHS Foundation Trust",
 #'     "NHS Central London CCG",
 #'     "Cambridge University Hospitals NHS Foundation Trust",
+#'     "Cambridge University Hospitals NHS Foundation Trust",
+#'     "NHS Central London CCG",
 #'     "Cambridge University Hospitals NHS Foundation Trust",
 #'     "NHS Central London CCG"),
 #'   finalpirassignedorganisationtype = c(
@@ -43,10 +46,12 @@
 #'     "NHS Trust",
 #'     "NHS Trust",
 #'     "NHS Trust",
+#'     "NHS Trust",
+#'     "NHS Trust",
 #'     "NHS Trust")),
 #'   .Names = c("pircasestatus", "assignmentmethodcode", "patientlocation",
 #'              "provisionalorganisationname", "finalpirassignedorganisation"),
-#'                  class = "data.frame", row.names = c(NA, -9L))
+#'                  class = "data.frame", row.names = c(NA, -11L))
 #'
 #' dat$new <- assignment_algorithm(dat$pircasestatus,
 #'          dat$assignmentmethodcode, dat$patientlocation, dat$provisionalorganisationname,
@@ -67,12 +72,12 @@ assignment_algorithm <- function(pircasestatus, assignmentmethodcode, patientloc
     ifelse(
       (tolower(pircasestatus) == "final assignment" & assignmentmethodcode == 10 & patientlocation == "NHS Acute Trust") |
         (tolower(pircasestatus) == "provisional assignment" & (stringr::str_detect(tolower(provisionalorganisationname),"trust") == TRUE)) |
-        (assignmentmethodcode == 15 & (stringr::str_detect(tolower(provisionalorganisationname),"trust") == TRUE)),
+        ( assignmentmethodcode %in% c(11, 15) & (stringr::str_detect(tolower(provisionalorganisationname),"trust") == TRUE)),
       "NHS Trust",
       ifelse(
         (tolower(pircasestatus) == "final assignment" & assignmentmethodcode == 10 & patientlocation != "NHS Acute Trust") |
           (tolower(pircasestatus) == "provisional assignment" & (stringr::str_detect(tolower(provisionalorganisationname),"ccg") == TRUE)) |
-          (assignmentmethodcode == 15 & (stringr::str_detect(tolower(provisionalorganisationname),"ccg") == TRUE)), "Clinical Commissioning Group",
+          ( assignmentmethodcode %in% c(11, 15) & (stringr::str_detect(tolower(provisionalorganisationname),"ccg") == TRUE)), "Clinical Commissioning Group",
         ifelse(assignmentmethodcode == 13 | assignmentmethodcode == 14, "Third Party", NA))))
   return(z)
 }

@@ -31,15 +31,16 @@ dat <- structure(list(
   pircasestatus = c("Final assignment", "Final assignment","Final assignment",
                     "Final assignment", "Provisional assignment",
                     "Provisional assignment", "Provisional assignment",
+                    "Provisional assignment", "Provisional assignment",
                     "Provisional assignment", "Provisional assignment"),
-  assignmentmethodcode = c(9L, 10L, 10L, 8L, 10L, 10L, 13L, 15L, 15L),
+  assignmentmethodcode = c(9L, 10L, 10L, 8L, 10L, 10L, 13L, 15L, 15L, 11L, 11L),
   patientlocation = c("NHS Acute Trust", "NHS Acute Trust",
                       "Independent Sector Provider",
                       "Independent Sector Provider",
                                           "NHS Acute Trust",
                       "Independent Sector Provider", "NHS Acute Trust",
                                           "NHS Acute Trust",
-                      "NHS Acute Trust"),
+                      "NHS Acute Trust", "NHS Acute Trust", "NHS Acute Trust"),
   provisionalorganisationname = c(
     "Cambridge University Hospitals NHS Foundation Trust",
     "Cambridge University Hospitals NHS Foundation Trust",
@@ -48,6 +49,8 @@ dat <- structure(list(
     "Cambridge University Hospitals NHS Foundation Trust",
     "NHS Central London CCG",
     "Cambridge University Hospitals NHS Foundation Trust",
+    "Cambridge University Hospitals NHS Foundation Trust",
+    "NHS Central London CCG",
     "Cambridge University Hospitals NHS Foundation Trust",
     "NHS Central London CCG"),
   finalpirassignedorganisationtype = c(
@@ -59,10 +62,12 @@ dat <- structure(list(
     "NHS Trust",
     "NHS Trust",
     "NHS Trust",
+    "NHS Trust",
+    "NHS Trust",
     "NHS Trust")),
   .Names = c("pircasestatus", "assignmentmethodcode", "patientlocation",
              "provisionalorganisationname", "finalpirassignedorganisation"),
-                 class = "data.frame", row.names = c(NA, -9L))
+                 class = "data.frame", row.names = c(NA, -11L))
 
 dat$new <- assignment_algorithm(dat$pircasestatus,
          dat$assignmentmethodcode, dat$patientlocation, dat$provisionalorganisationname,
