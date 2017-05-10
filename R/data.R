@@ -46,3 +46,20 @@
 #' }
 #' @source Office for National Statistics
 "subregions_sp_df"
+
+#' Trends in age of patients with *C. difficile* infection
+#'
+#' A data set containing data on trends in population rates of patients with
+#' *C. difficile* infection in England, between 2007/08 and 2015/16
+#'
+#' @format A data frame with 108 rows and 7 variables:
+#' \describe{
+#'   \item{fyear6}{Financial year}
+#'   \item{age_group_new}{Mandatory surveillance age group}
+#'   \item{n}{Count of cases for age group-year}
+#'   \item{popn}{Count of population for England for age group-year}
+#'   \item{rate}{Rate of CDI per 100,000 population}
+#'   \item{age_sex_pc}{Per cent of cases for age group-year}
+#' }
+#' @source \url{https://hcaidcs.phe.org.uk/WebPages/GeneralHomePage.aspx}
+"age_trends_data"
