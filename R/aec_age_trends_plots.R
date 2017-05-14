@@ -89,7 +89,7 @@ aec_age_trend_rate <- function(collection, data, x, y, sex, group){
   }else if(tolower(collection) == "bacteraemia" ){
     age_group_values <- c('#007EE5','#228BE5','#4599E5','#68A7E5','#8AB5E5',
                           '#ADC3E5', '#D0D1E6')
-    age_group_labels <- c("<1-1", "2-14", "15-44", "45-64", "65-74", "75-84",
+    age_group_labels <- c("<1", "1-14", "15-44", "45-64", "65-74", "75-84",
                           expression(phantom(x) >=85))
   }else{
     stop("Please enter either CDI or Bacteraemia")
