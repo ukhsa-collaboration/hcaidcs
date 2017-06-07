@@ -68,7 +68,7 @@ aec_age_trend_pc <- function(collection, data, x, y, sex, group){
 #' @return A ggplot2 object
 #' @examples
 #' data(age_trends_data)
-#' q <- aec_age_trend_rate(collection = "CDI", data = trends_data,
+#' q <- aec_age_trend_rate(collection = "CDI", data = age_trends_data,
 #'     x = "fyear6", y = "rate", sex = "sex", group = "age_group_new")
 #' q
 #' @export
@@ -107,10 +107,13 @@ aec_age_trend_rate <- function(collection, data, x, y, sex, group){
                        labels = paste0(substr(unique(data$fyear6), 1,4), "/",
                                        substr(unique(data$fyear6), 5, 6)) ) +
     #  guides(colour = FALSE) +
-    ggplot2::theme(legend.position = c(1,1), legend.justification = c(1,1),
-          axis.text.x = ggplot2::element_text(angle = 45, hjust = 1, vjust = 1),
-          strip.background = ggplot2::element_rect(fill="white"),
-          strip.text.x = ggplot2::element_text(face = "bold")
+    ggplot2::theme(legend.position = c(1,1),
+                   legend.justification = c(1,1),
+                   axis.text.x = ggplot2::element_text(angle = 45, hjust = 1,
+                                                       vjust = 1),
+                   strip.background = ggplot2::element_rect(fill="white"),
+                   strip.text.x = ggplot2::element_text(face = "bold")
     )
   return(q)
 }
+
