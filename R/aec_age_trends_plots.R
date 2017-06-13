@@ -14,7 +14,7 @@
 #' @param group Variable giving age group (using mandatory age groupings)
 #' @examples
 #' data(age_trends_data)
-#' p <- aec_age_trend_pc(collection = "CDI", data = trends_data,
+#' p <- aec_age_trend_pc(collection = "CDI", data = age_trends_data,
 #'     x = "fyear6", y = "age_sex_pc", sex = "sex", group = "age_group_new")
 #' p
 #' @return A ggplot2 object
@@ -108,7 +108,7 @@ aec_age_trend_rate <- function(collection, data, x, y, sex, group){
                                        substr(unique(data$fyear6), 5, 6)) ) +
     #  guides(colour = FALSE) +
     ggplot2::theme(legend.position = c(1,1),
-                   legend.justification = c(1,1),
+                   legend.justification = c(0.5,0),
                    axis.text.x = ggplot2::element_text(angle = 45, hjust = 1,
                                                        vjust = 1),
                    strip.background = ggplot2::element_rect(fill="white"),

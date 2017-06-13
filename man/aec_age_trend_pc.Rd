@@ -29,7 +29,7 @@ See \code{\link{trends_data}} for example of format for data to be used with thi
 }
 \examples{
 data(age_trends_data)
-p <- aec_age_trend_pc(collection = "CDI", data = trends_data,
+p <- aec_age_trend_pc(collection = "CDI", data = age_trends_data,
     x = "fyear6", y = "age_sex_pc", sex = "sex", group = "age_group_new")
 p
 }
