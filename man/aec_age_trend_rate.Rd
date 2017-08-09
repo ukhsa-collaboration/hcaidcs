@@ -4,7 +4,7 @@
 \alias{aec_age_trend_rate}
 \title{Graph trend in rate of cases by age and sex}
 \usage{
-aec_age_trend_rate(collection, data, x, y, sex, group)
+aec_age_trend_rate(collection, data, x, y, sex, group, log_scale = FALSE)
 }
 \arguments{
 \item{collection}{One of CDI or Bacteraemia}
@@ -18,6 +18,8 @@ aec_age_trend_rate(collection, data, x, y, sex, group)
 \item{sex}{Variable giving the sex group}
 
 \item{group}{Variable giving age group (using mandatory age groupings)}
+
+\item{log_scale}{Logical for whether a log y scale should be used. Defaults to FALSE}
 }
 \value{
 A ggplot2 object
@@ -30,7 +32,8 @@ See \code{\link{trends_data}} for example of format for data to be used with thi
 \examples{
 data(age_trends_data)
 q <- aec_age_trend_rate(collection = "CDI", data = age_trends_data,
-    x = "fyear6", y = "rate", sex = "sex", group = "age_group_new")
+    x = "fyear6", y = "rate", sex = "sex", group = "age_group_new",
+    log_scale = TRUE)
 q
 }
 \seealso{

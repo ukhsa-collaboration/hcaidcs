@@ -45,6 +45,7 @@ Collate:
     'date_end_period.R'
     'date_start_period.R'
     'days_in_cyear.R'
+    'days_in_fmonth.R'
     'days_in_fq.R'
     'days_in_fy.R'
     'days_in_fyear.R'
@@ -75,6 +76,7 @@ Collate:
     'mandatory_age_group.R'
     'mandatory_age_group_bacteraemia.R'
     'mandatory_age_group_cdi.R'
+    'mo_next_pub_date.R'
     'mrsa_source_bacteraemia.R'
     'nice_estimate.R'
     'nice_names.R'
@@ -91,5 +93,6 @@ Collate:
     'up_or_down.R'
 Suggests:
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat
 VignetteBuilder: knitr

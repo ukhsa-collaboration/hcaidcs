@@ -60,6 +60,7 @@
 #'   \item{popn}{Count of population for England for age group-year}
 #'   \item{rate}{Rate of CDI per 100,000 population}
 #'   \item{age_sex_pc}{Per cent of cases for age group-year}
+#'   \item{sex}{Sex}
 #' }
 #' @source \url{https://hcaidcs.phe.org.uk/WebPages/GeneralHomePage.aspx}
 "age_trends_data"

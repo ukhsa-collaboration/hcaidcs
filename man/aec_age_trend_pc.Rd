@@ -4,7 +4,7 @@
 \alias{aec_age_trend_pc}
 \title{Graph trend in percentage of cases by age group}
 \usage{
-aec_age_trend_pc(collection, data, x, y, sex, group)
+aec_age_trend_pc(collection, data, x, y, sex, group, log_scale = FALSE)
 }
 \arguments{
 \item{collection}{One of CDI or Bacteraemia}
@@ -18,6 +18,8 @@ aec_age_trend_pc(collection, data, x, y, sex, group)
 \item{sex}{Variable giving the sex group}
 
 \item{group}{Variable giving age group (using mandatory age groupings)}
+
+\item{log_scale}{Logical for whether a log y scale should be used. Defaults to FALSE}
 }
 \value{
 A ggplot2 object

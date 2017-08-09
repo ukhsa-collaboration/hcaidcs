@@ -13,6 +13,8 @@ time_to_onset(date_admitted, date_specimen, patient_category, patient_location)
 
 \item{patient_category}{Category of patient at time of specimen. One of:
 "In-patient", "Day patient" or "Emergency Assessment"}
+
+\item{patient_location}{Location of patient at time of specimen}
 }
 \value{
 A numeric value

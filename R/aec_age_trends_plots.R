@@ -12,6 +12,7 @@
 #' @param y Variable giving percentage of cases the age group makes for all cases for year
 #' @param sex Variable giving the sex group
 #' @param group Variable giving age group (using mandatory age groupings)
+#' @param log_scale Logical for whether a log y scale should be used. Defaults to FALSE
 #' @examples
 #' data(age_trends_data)
 #' p <- aec_age_trend_pc(collection = "CDI", data = age_trends_data,
@@ -20,7 +21,7 @@
 #' @return A ggplot2 object
 #' @export
 
-aec_age_trend_pc <- function(collection, data, x, y, sex, group){
+aec_age_trend_pc <- function(collection, data, x, y, sex, group, log_scale = FALSE){
   if (!requireNamespace("ggplot2", quietly = TRUE)) {
     stop("ggplot2 needed for this function to work. Please install it.",
          call. = FALSE)
@@ -65,15 +66,17 @@ aec_age_trend_pc <- function(collection, data, x, y, sex, group){
 #' @param y Variable giving rate for age group by sex and year
 #' @param sex Variable giving the sex group
 #' @param group Variable giving age group (using mandatory age groupings)
+#' @param log_scale Logical for whether a log y scale should be used. Defaults to FALSE
 #' @return A ggplot2 object
 #' @examples
 #' data(age_trends_data)
 #' q <- aec_age_trend_rate(collection = "CDI", data = age_trends_data,
-#'     x = "fyear6", y = "rate", sex = "sex", group = "age_group_new")
+#'     x = "fyear6", y = "rate", sex = "sex", group = "age_group_new",
+#'     log_scale = TRUE)
 #' q
 #' @export
 
-aec_age_trend_rate <- function(collection, data, x, y, sex, group){
+aec_age_trend_rate <- function(collection, data, x, y, sex, group,log_scale = FALSE){
   if(!requireNamespace("ggplot2", quietly = TRUE)) {
     stop("ggplot2 needed for this function to work. Please install it.",
          call. = FALSE)
@@ -99,7 +102,9 @@ aec_age_trend_rate <- function(collection, data, x, y, sex, group){
     # facet_wrap(~ sex, ncol = 1) +
     ggplot2::facet_grid(sex ~ .) +
     ggplot2::scale_colour_manual("Age group", values = age_group_values, labels = age_group_labels) +
-    ggplot2::scale_y_continuous("Rate, per 100,000 population", labels = scales::comma) +
+    ggplot2::scale_y_continuous("Rate, per 100,000 population",
+                                trans = ifelse(log_scale == TRUE, "log10", "identity"),
+                                labels = scales::comma) +
 #    ggplot2::scale_y_continuous("Rate, per 100,000 population") +
     # guides(colour = FALSE) +
     ggplot2::scale_x_continuous("Financial year",
