@@ -24,7 +24,8 @@ days_in_fmonth <- function(month_no, fyear){
     month_no == 8  ~ 30,
     month_no == 9  ~ 31,
     month_no == 10 ~ 31, # January
-    month_no == 11 ~ 28 + lubridate::leap_year(lubridate::dmy(paste0("01/01/", fyear))),
+    month_no == 11 ~ 28 + lubridate::leap_year(lubridate::dmy(paste0("01/01/",
+                                                                     fyear + 1))),
     month_no == 12 ~ 31  # March
   )
   return(z)

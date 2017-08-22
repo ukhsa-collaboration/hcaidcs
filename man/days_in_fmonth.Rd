@@ -2,9 +2,7 @@
 % Please edit documentation in R/days_in_fmonth.R
 \name{days_in_fmonth}
 \alias{days_in_fmonth}
-\title{days in fmonth
-Calculates days in a financial month.
-Used for calculating denominators in monthly scripts.}
+\title{Calculates number of days in a financial month.}
 \usage{
 days_in_fmonth(month_no, fyear)
 }
@@ -17,8 +15,6 @@ days_in_fmonth(month_no, fyear)
 numeric value for number of days in month
 }
 \description{
-days in fmonth
-Calculates days in a financial month.
 Used for calculating denominators in monthly scripts.
 }
 \examples{
