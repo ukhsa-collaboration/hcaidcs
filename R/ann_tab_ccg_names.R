@@ -1,7 +1,7 @@
 #' Format CCG names for printing in the annual tables.
 #'
 #' This turns CCG names into title case format and removes strings 'NHS' and 'CCG'.
-#' @param A vector of CCG names
+#' @param x A vector of CCG names
 #' @examples
 #' x <- "NHS DARLINGTON CCG"
 #' ann_tab_ccg_names(x)

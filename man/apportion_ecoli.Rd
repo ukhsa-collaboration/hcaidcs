@@ -17,8 +17,6 @@ apportion_ecoli(patient_location, patient_category, date_admitted,
 \item{specimen_date}{The date of the specimen (POSIXct, POSIXt or Date format)}
 
 \item{date_entered}{Date record created normally 'data collection date' (POSIXct, POSIXt or Date format)}
-
-\item{collection}{The collection (MRSA, MSSA, CDI, E. coli) to which the record belongs.}
 }
 \value{
 An ordered factor giving non-Trust; Trust, 48 hours to 7 days; Trust, > 7 days or Trust, no date of admission.

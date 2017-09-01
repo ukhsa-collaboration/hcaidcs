@@ -108,7 +108,7 @@ assignment_algorithm <- function(pircasestatus, assignmentmethodcode, patientloc
     finalpirassignedorganisationtype,
     ifelse(
       ((pircasestatus == "final assignment" & assignmentmethodcode == 10 & patientlocation == "NHS Acute Trust") |
-        (pircasestatus == "provisional assignment" & (stringr::str_detect(provisionalorganisationname,"trust") == TRUE)) |
+        (pircasestatus == "provisional assignment" & (stringr::str_detect(provisionalorganisationname,"trust") == TRUE)) & !(assignmentmethodcode %in% c(13, 14)) |
         (assignmentmethodcode %in% 11 & # %in% necessary here to get FALSE for NA values
            (patientlocation == "NHS Acute Trust" & patientcategory %in% trust_pat_locs)
            ) |
@@ -116,7 +116,7 @@ assignment_algorithm <- function(pircasestatus, assignmentmethodcode, patientloc
       "NHS Trust",
       ifelse(
         (pircasestatus == "final assignment" & assignmentmethodcode == 10 & patientlocation != "NHS Acute Trust") |
-          (pircasestatus == "provisional assignment" & stringr::str_detect(provisionalorganisationname,"ccg") == TRUE) |
+          (pircasestatus == "provisional assignment" & stringr::str_detect(provisionalorganisationname,"ccg") == TRUE) & !(assignmentmethodcode %in% c(13, 14)) |
           (assignmentmethodcode %in% c(11) &
              (patientlocation == "NHS Acute Trust" & !(patientcategory %in% trust_pat_locs))) |
           ((assignmentmethodcode %in% c(11)) & patientlocation != "NHS Acute Trust")  |

@@ -4,7 +4,7 @@
 #' p48 of \href{https://hcaidcs.phe.org.uk/ContentManagement/LinksAndAnnouncements/HCAIDCS_Mandatory_Surveillance_Protocol_v4.0.pdf}{the mandatory surveillance protocol}.
 #'
 #' @include check_date_class.R
-#' @param collection The collection (MRSA, MSSA, CDI, E. coli) to which the record belongs.
+#' # @param collection The collection (MRSA, MSSA, CDI, E. coli) to which the record belongs.
 #' @param patient_location The patient's location at time of sample
 #' @param patient_category The patient's category at time of sample
 #' @param date_admitted The date the patient was admitted for records from inpatients
