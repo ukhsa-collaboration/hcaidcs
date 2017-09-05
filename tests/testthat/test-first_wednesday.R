@@ -10,5 +10,3 @@ test_that("first_wednesday returns a Wednesday", {
   y <- first_wednesday(x)
   expect_equal(weekdays(first_wednesday(y)), "Wednesday")
 })
-
-rm(x, y)

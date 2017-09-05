@@ -1,4 +1,9 @@
 #' mandatory_age_group_bacteraemia(0)
+#'
+#' Sub-function for creating mandatory age groups for bacteraemia cases
+#'
+#' @param x Age as a numeric value
+#' @return An ordered factor giving the age group
 
 mandatory_age_group_bacteraemia <- function(x){
   z <- cut(floor(x),

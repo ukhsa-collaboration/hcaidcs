@@ -15,6 +15,8 @@ first_wednesday(x)
 \item{x}{A date in Year, Month, Day format}
 }
 \value{
+A date giving the first Wednesday of the month.
+
 A date object
 }
 \description{
