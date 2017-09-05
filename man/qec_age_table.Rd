@@ -4,10 +4,10 @@
 \alias{qec_age_table}
 \title{Create age group table for QEC}
 \usage{
-qec_age_table(data, age_var, denom)
+qec_age_table(df, age_var, denom)
 }
 \arguments{
-\item{data}{A data frame}
+\item{df}{A data frame}
 
 \item{age_var}{A variable giving the age group for the record}
 
@@ -22,6 +22,6 @@ It's **really** important that the value for the denominator is the same across 
 }
 \examples{
 dat <- data.frame(age_group = c(1, 1, 1, 2, 2, 2, 2),
-                  denom = c(500000,500000,500000, 600000, 600000, 600000, 600000))
-qec_age_table(data = dat, age_var = "age_group", denom = "denom")
+                  denominator = c(500000,500000,500000, 600000, 600000, 600000, 600000))
+qec_age_table(df = dat, age_var = age_group, denom = denominator)
 }
