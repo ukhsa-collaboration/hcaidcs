@@ -2,7 +2,7 @@
 % Please edit documentation in R/ecoli_primary_focus.R
 \name{ecoli_primary_focus}
 \alias{ecoli_primary_focus}
-\title{Classify the source of bacteramia for E. coli}
+\title{Classify the source of bactaeramia for E. coli}
 \usage{
 ecoli_primary_focus(x)
 }

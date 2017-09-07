@@ -1,4 +1,4 @@
-#' Plot rates by age and sex structure, facetted by financial year.
+#' Plot rates by age and sex structure, faceted by financial year.
 #'
 #' Each collection is plotted by age and sex. This function provides a quick way of doing so.
 #' Although the function takes a single argument (a data frame containing rates by age and sex, by financial year),

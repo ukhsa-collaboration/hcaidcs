@@ -1,4 +1,4 @@
-#' Classify the source of bacteramia for E. coli
+#' Classify the source of bactaeramia for E. coli
 #'
 #' Groups the most likely primary focus of E. coli bacteraemia according to AEC table.
 #' @param x Character variable giving the most likely primary focus of bacteraemia

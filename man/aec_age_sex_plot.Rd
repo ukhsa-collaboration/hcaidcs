@@ -2,7 +2,7 @@
 % Please edit documentation in R/aec_age_sex_plot.R
 \name{aec_age_sex_plot}
 \alias{aec_age_sex_plot}
-\title{Plot rates by age and sex structure, facetted by financial year.}
+\title{Plot rates by age and sex structure, faceted by financial year.}
 \usage{
 aec_age_sex_plot(x, collection = NULL)
 }

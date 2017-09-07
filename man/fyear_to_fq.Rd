@@ -7,7 +7,7 @@
 fyear_to_fq(fyear)
 }
 \arguments{
-\item{fyear}{A numeric or string variable giving the finacial year and quarter, e.g. 20112 - July-September 2011}
+\item{fyear}{A numeric or string variable giving the financial year and quarter, e.g. 20112 - July-September 2011}
 }
 \value{
 A text string giving the quarter and then the year.

@@ -7,7 +7,7 @@
 date_end_period(x, period_type)
 }
 \arguments{
-\item{x}{A period, either string or numerif}
+\item{x}{A period, either string or numeric}
 
 \item{period_type}{A string, one of "fq", "cq" or "fyear6"}
 }

@@ -31,7 +31,7 @@ cmonth_to_string <- function(x){
 
 fmonth_to_string <- function(x){
   y <- ifelse(x > 9, 13 - x , x + 3)
-  z <- format(as.Date(paste0("01-", sprintf("%02d", y), "-2016"),
+  z <- format(as.Date(paste0("01-", sprintf("%02d", as.integer(y)), "-2016"),
                       format = "%d-%m-%Y"), "%B")
   return(z)
 }
