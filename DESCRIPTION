@@ -21,8 +21,9 @@ Imports:
     evaluate,
     ggplot2,
     viridis,
-    scales
-Collate: 
+    scales,
+    tidyr
+Collate:
     'aec_age_sex_plot.R'
     'aec_age_trends_plots.R'
     'aec_ec_primary_focus_plot.R'
@@ -73,6 +74,7 @@ Collate:
     'mandatory_age_group.R'
     'mandatory_age_group_bacteraemia.R'
     'mandatory_age_group_cdi.R'
+    'mo_ccg_table.R'
     'mo_next_pub_date.R'
     'month_to_string.R'
     'mrsa_source_bacteraemia.R'

@@ -30,43 +30,17 @@ a case provisionally assigned to a Trust will be reported as Trust-assigned
 in any report.
 }
 \examples{
-dat <- structure(list(pircasestatus = c("Final assignment", "Final assignment",
-"Final assignment", "Final assignment", "Provisional assignment",
-"Provisional assignment", "Provisional assignment", "Provisional assignment",
-"Provisional assignment", "Provisional assignment", "Provisional assignment",
-"Provisional assignment", "Provisional assignment", "Provisional assignment"),
-assignmentmethodcode = c(9L, 10L, 10L, 8L, 10L, 10L, 13L,15L, 15L, 11L, 11L, 11L, NA, NA),
-patientlocation = c("NHS Acute Trust", "NHS Acute Trust",
-"Independent Sector Provider", "Independent Sector Provider",
-    "NHS Acute Trust", "Independent Sector Provider", "NHS Acute Trust",
-    "NHS Acute Trust", "NHS Acute Trust", "NHS Acute Trust", "NHS Acute Trust",
-    "NHS Acute Trust", "NHS Acute Trust", "NHS Acute Trust"),
-provisionalorganisationname = c("Cambridge University Hospitals NHS Foundation Trust",
-                                                               "Cambridge University Hospitals NHS Foundation Trust", "Cambridge University Hospitals NHS Foundation Trust",
-                                                               "Cambridge University Hospitals NHS Foundation Trust", "Cambridge University Hospitals NHS Foundation Trust",
-                                                               "NHS Central London CCG", "Cambridge University Hospitals NHS Foundation Trust",
-                                                               "Cambridge University Hospitals NHS Foundation Trust", "NHS Central London CCG",
-                                                               "Cambridge University Hospitals NHS Foundation Trust", "NHS Central London CCG", "NHS Central London CCG",
-                                                               "NHS Central London CCG", "NHS Central London CCG"
-                            ), finalpirassignedorganisation = c("NHS Trust", "NHS Trust",
-                                                                "Clinical Commissioning Group", "Clinical Commissioning Group",
-                                                                "NHS Trust", "NHS Trust", "NHS Trust", "NHS Trust", "NHS Trust",
-                                                                "NHS Trust", "NHS Trust", "NHS Trust", "NHS Trust", "NHS Trust"),
-                             patient_category = c("In-patient", "In-patient", "In-patient", "In-patient", "In-patient", "In-patient",
-                             "In-patient", "In-patient", "In-patient", "In-patient", "A&E only", "In-patient", "In-patient", "In-patient"
-                             )), .Names = c("pircasestatus", "assignmentmethodcode", "patientlocation",
-                                                                               "provisionalorganisationname", "finalpirassignedorganisation",
-                                                                               "patient_category"), row.names = c(NA, -14L), class = "data.frame")
 
-dat$new <- assignment_algorithm(pircasestatus = dat$pircasestatus,
-        assignmentmethodcode = dat$assignmentmethodcode,
-        patientlocation = dat$patientlocation,
-        patientcategory = dat$patient_category,
-        provisionalorganisationname = dat$provisionalorganisationname,
-        finalpirassignedorganisationtype = dat$finalpirassignedorganisation)
-dat
+data(assignment_data)
+assignment_data$new <- assignment_algorithm(pircasestatus = assignment_data$pircasestatus,
+        assignmentmethodcode = assignment_data$assignmentmethodcode,
+        patientlocation = assignment_data$patientlocation,
+        patientcategory = assignment_data$patient_category,
+        provisionalorganisationname = assignment_data$provisionalorganisationname,
+        finalpirassignedorganisationtype = assignment_data$finalpirassignedorganisation)
+assignment_data
 
-dat2 <- dat[13, ]
+dat2 <- assignment_data[13, ]
 dat2$new <- NULL
 dat2$new <- assignment_algorithm(pircasestatus = dat2$pircasestatus,
         assignmentmethodcode = dat2$assignmentmethodcode,
@@ -76,38 +50,12 @@ dat2$new <- assignment_algorithm(pircasestatus = dat2$pircasestatus,
         finalpirassignedorganisationtype = dat2$finalpirassignedorganisation)
 dat2
 
-dat3 <- structure(list(pir_case_status = c("Provisional Assignment",
-"Provisional Assignment", "Provisional Assignment", "Provisional Assignment",
-"Provisional Assignment", "Provisional Assignment", "Provisional Assignment",
-"Provisional Assignment", "Provisional Assignment", "Provisional Assignment",
-"Provisional Assignment", "Provisional Assignment", "Provisional Assignment",
-"Provisional Assignment", "Provisional Assignment"), assignment_method_code = c(NA_real_,
-                                                                                NA_real_, NA_real_, NA_real_, NA_real_, NA_real_, NA_real_, NA_real_,
-                                                                                NA_real_, NA_real_, NA_real_, NA_real_, NA_real_, NA_real_, NA_real_
-), patient_location = c("NHS Acute Trust", "NHS Acute Trust",
-                        "NHS Acute Trust", "NHS Acute Trust", "NHS Acute Trust", "NHS Acute Trust",
-                        "NHS Acute Trust", "NHS Acute Trust", "NHS Acute Trust", "NHS Acute Trust",
-                        "NHS Acute Trust", "NHS Acute Trust", "NHS Acute Trust", "NHS Acute Trust",
-                        "NHS Acute Trust"), patient_category = c("In-patient", "In-patient",
-                                                                 "In-patient", "Emergency Assessment", "In-patient", "Emergency Assessment",
-                                                                 "In-patient", "In-patient", "In-patient", "In-patient", "Emergency Assessment",
-                                                                 "In-patient", "In-patient", "Emergency Assessment", "Day patient"
-                        ), provisional_organisation_name = c("NHS TOWER HAMLETS CCG",
-                                                             "NHS CHILTERN CCG", "NHS GLOUCESTERSHIRE CCG", "NHS BRISTOL CCG",
-                                                             "NHS DARTFORD, GRAVESHAM AND SWANLEY CCG", "NHS CRAWLEY CCG",
-                                                             "NHS BRACKNELL AND ASCOT CCG", "NHS SOMERSET CCG", "NHS SOUTH GLOUCESTERSHIRE CCG",
-                                                             "NHS HIGH WEALD LEWES HAVENS CCG", "NHS BRISTOL CCG", "NHS TOWER HAMLETS CCG",
-                                                             "NHS NORTHUMBERLAND CCG", "NHS BRISTOL CCG", "NHS WEST ESSEX CCG"
-                        ), final_pir_assigned_organisation_type = c("", "", "", "", "",
-                                                                    "", "", "", "", "", "", "", "", "", ""), id = 1:15), .Names = c("pir_case_status",
-                                                                                                                                    "assignment_method_code", "patient_location", "patient_category",
-                                                                                                                                    "provisional_organisation_name", "final_pir_assigned_organisation_type",
-                                                                                                                                    "id"), row.names = c(NA, -15L), class = "data.frame")
-dat3$new <- assignment_algorithm(pircasestatus = dat3$pir_case_status,
-        assignmentmethodcode = dat3$assignment_method_code,
-        patientlocation = dat3$patient_location,
-        patientcategory = dat3$patient_category,
-        provisionalorganisationname = dat3$provisional_organisation_name,
-        finalpirassignedorganisationtype = dat3$final_pir_assigned_organisation_type)
-dat3
+data(assignment_data2)
+assignment_data2$new <- assignment_algorithm(pircasestatus = assignment_data2$pir_case_status,
+        assignmentmethodcode = assignment_data2$assignment_method_code,
+        patientlocation = assignment_data2$patient_location,
+        patientcategory = assignment_data2$patient_category,
+        provisionalorganisationname = assignment_data2$provisional_organisation_name,
+        finalpirassignedorganisationtype = assignment_data2$final_pir_assigned_organisation_type)
+assignment_data2
 }

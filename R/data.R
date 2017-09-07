@@ -64,3 +64,53 @@
 #' }
 #' @source \url{https://hcaidcs.phe.org.uk/WebPages/GeneralHomePage.aspx}
 "age_trends_data"
+
+#' Data for monthly CCG table for MRSA
+#'
+#' A sample data set for use with the mo_ccg_table function.
+#' Is output in intermediate step in production of monthly tables and has counts of cases, by CCG and month in long format.
+#' @format A data frame with 714 rows and 12 variables:
+#' \describe{
+#'     \item{data_collection}{String giving the data collection}
+#'     \item{ccg_code}{String giving the ccg code}
+#'     \item{fyear6}{String giving 6 character financial year}
+#'     \item{year_no}{Numeric giving calendar year}
+#'     \item{month_no}{Numeric giving month number}
+#'     \item{total_cases}{Count of all cases for CCG and month}
+#'     \item{apportioned}{Count giving apportioned cases for CCG and month}
+#'     \item{nhs_trust_pir}{Count of trust-assigned PIR cases}
+#'     \item{ccg_pir}{Count of CCG-assigned PIR cases}
+#'     \item{third_party_pir}{Count of third party-assigned PIR cases}
+#'     \item{fmonth}{Numeric giving financial year month, i.e. April = 1}
+#'     \item{month_string}{Character string giving name of month}
+#' }
+"monthly_ccg_data_raw"
+
+#' Data for testing assignement algorithm
+#'
+#' A sample data set for testing the assignment_algorithm function.
+#' @format A data frame with 14 rows of 6 variables:
+#' \describe{
+#'  \item{pircasestatus}{string}
+#'  \item{assignmentmethodcode}{Numeric giving assignment method}
+#'  \item{patientlocation}{string}
+#'  \item{provisionalorganisationname}{string}
+#'  \item{finalpirassignedorganisation}{string}
+#'  \item{patient_category}{string}
+#' }
+"assignment_data"
+
+#' Data for testing assignement algorithm
+#'
+#' A sample data set for testing the assignment_algorithm function.
+#' @format A data frame with 15 rows of 7 variables:
+#' \describe{
+#'  \item{pircasestatus}{string}
+#'  \item{assignmentmethodcode}{Numeric giving assignment method}
+#'  \item{patientlocation}{string}
+#'  \item{provisionalorganisationname}{string}
+#'  \item{finalpirassignedorganisation}{string}
+#'  \item{patient_category}{string}
+#'  \item{id}{numeric}
+#' }
+"assignment_data2"
