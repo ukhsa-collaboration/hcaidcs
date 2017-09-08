@@ -4,12 +4,14 @@
 \alias{mo_gnabsi_table}
 \title{Monthly table for Gram-negative blood stream infection data}
 \usage{
-mo_gnabsi_table(data_fm, collection)
+mo_gnabsi_table(data_fm, collection, org_type)
 }
 \arguments{
 \item{data_fm}{A data frame to work on, usually either trust_dat_all or ccg_dat_all}
 
 \item{collection}{A text string giving the data collection}
+
+\item{org_type}{A string giving the organisation type, one of trust or ccg. Lower case.}
 }
 \value{
 A wide data.frame with counts of cases by org and month.
@@ -27,7 +29,8 @@ ccg_dat_all <- monthly_ccg_data_raw \%>\%
     rename(org_code = ccg_code, ho = apportioned) \%>\%
     mutate(data_collection = "E. coli", co = total_cases - ho)
 
-my_out_dat <- mo_gnabsi_table(data_fm = ccg_dat_all, collection = "E. coli")
+my_out_dat <- mo_gnabsi_table(data_fm = ccg_dat_all, collection = "E. coli",
+    org_type = "ccg")
 
 head(my_out_dat)
 }
