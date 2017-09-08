@@ -5,6 +5,7 @@
 #' Hard coded to operate on dataframe 'ccg_dat_all', it filters the data to a given collection, e.g. "MRSA" or "E. coli" as exported in the HCAI DCS line lists.
 #'
 #' @param collection A text string giving the data collection
+#' @return A wide data.frame with counts of cases per month in columns with CCGs as rows
 #' @examples
 #' data(monthly_ccg_data_raw)
 #' ccg_dat_all <- monthly_ccg_data_raw

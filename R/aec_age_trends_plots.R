@@ -2,9 +2,8 @@
 #'
 #' Prepares a graph for the trend in the proportion of cases that are from a particular age group.
 #' Intended to be used in conjunction with \code{\link{aec_age_trend_rate}} to plot a side-by-side figure.
-#' See \code{\link{trends_data}} for example of format for data to be used with this function.
+#' See \code{\link{age_trends_data}} for example of format for data to be used with this function.
 #' @seealso \code{\link{aec_age_trend_rate}}
-#' #' @seealso \code{\link{trends_data}}
 #'
 #' @param collection One of CDI or Bacteraemia
 #' @param data A data frame
@@ -57,7 +56,7 @@ aec_age_trend_pc <- function(collection, data, x, y, sex, group, log_scale = FAL
 #'
 #' Prepares a graph for the trend in the rate of cases that are from a particular age group.
 #' Intended to be used in conjunction with \code{\link{aec_age_trend_pc}} to plot a side-by-side figure.
-#' See \code{\link{trends_data}} for example of format for data to be used with this function.
+#' See \code{\link{age_trends_data}} for example of format for data to be used with this function.
 #' @seealso \code{\link{aec_age_trend_pc}}
 #'
 #' @param collection One of CDI or Bacteraemia

@@ -105,11 +105,11 @@
 #' A sample data set for testing the assignment_algorithm function.
 #' @format A data frame with 15 rows of 7 variables:
 #' \describe{
-#'  \item{pircasestatus}{string}
-#'  \item{assignmentmethodcode}{Numeric giving assignment method}
-#'  \item{patientlocation}{string}
-#'  \item{provisionalorganisationname}{string}
-#'  \item{finalpirassignedorganisation}{string}
+#'  \item{pir_case_status}{string}
+#'  \item{assignment_method_code}{Numeric giving assignment method}
+#'  \item{patient_location}{string}
+#'  \item{provisional_organisation_name}{string}
+#'  \item{final_pir_assigned_organisation_type}{string}
 #'  \item{patient_category}{string}
 #'  \item{id}{numeric}
 #' }

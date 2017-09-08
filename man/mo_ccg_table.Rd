@@ -9,6 +9,9 @@ mo_ccg_table(collection)
 \arguments{
 \item{collection}{A text string giving the data collection}
 }
+\value{
+A wide data.frame with counts of cases per month in columns with CCGs as rows
+}
 \description{
 Produce the monthly wide-format table for CCGs.
 Takes long format data for CCGs and turns it wide with 13 months as variables.

@@ -27,7 +27,7 @@ A ggplot2 object
 \description{
 Prepares a graph for the trend in the proportion of cases that are from a particular age group.
 Intended to be used in conjunction with \code{\link{aec_age_trend_rate}} to plot a side-by-side figure.
-See \code{\link{trends_data}} for example of format for data to be used with this function.
+See \code{\link{age_trends_data}} for example of format for data to be used with this function.
 }
 \examples{
 data(age_trends_data)
@@ -37,5 +37,4 @@ p
 }
 \seealso{
 \code{\link{aec_age_trend_rate}}
-#' @seealso \code{\link{trends_data}}
 }

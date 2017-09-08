@@ -1,7 +1,6 @@
 Package: hcaidcs
 Type: Package
-Title: R functions for the mandatory surveillance of MRSA, MSSA and E. coli
-    bacteraemia and CDI
+Title: R functions for the mandatory surveillance of bacteraemia and C. difficile infection
 Version: 0.0.0.9000
 Authors@R: person("Simon", "Thelwall", email = "simon.thelwall@phe.gov.uk", role = c("aut", "cre"))
 Description: Functions for working with data from the HCAI DCS.
@@ -10,8 +9,8 @@ Depends:
 License: OGL
 LazyData: TRUE
 RoxygenNote: 6.0.1
-URL: http://bioinformatics-git.phe.gov.uk/Simon.Thelwall/hcaidcs
-BugReports: http://bioinformatics-git.phe.gov.uk/Simon.Thelwall/hcaidcs/issues
+URL: https://gitlab.phe.gov.uk/Simon.Thelwall/hcaidcs
+BugReports: https://gitlab.phe.gov.uk/Simon.Thelwall/hcaidcs/issues
 Imports:
     lubridate,
     stringr,
@@ -23,7 +22,7 @@ Imports:
     viridis,
     scales,
     tidyr
-Collate:
+Collate: 
     'aec_age_sex_plot.R'
     'aec_age_trends_plots.R'
     'aec_ec_primary_focus_plot.R'
@@ -75,6 +74,7 @@ Collate:
     'mandatory_age_group_bacteraemia.R'
     'mandatory_age_group_cdi.R'
     'mo_ccg_table.R'
+    'mo_gnabsi_table.R'
     'mo_next_pub_date.R'
     'month_to_string.R'
     'mrsa_source_bacteraemia.R'
