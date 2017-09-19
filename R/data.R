@@ -114,3 +114,18 @@
 #'  \item{id}{numeric}
 #' }
 "assignment_data2"
+
+#' Data for monthly factsheet figure 1 function
+#'
+#' A sample data set from the preparation of the monthly HCAI factsheet giving the monthly counts of collections under mandatory surveillance over time.
+#' @format
+#' \describe{
+#'  \item{t}{A date giving the first of the month}
+#'  \item{year}{Integer giving year}
+#'  \item{month}{Integer for month}
+#'  \item{cdi}{Integer giving counts of cases}
+#'  \item{ecoli}{Integer giving counts of cases}
+#'  \item{mrsa}{Integer giving counts of cases}
+#'  \item{mssa}{Integer giving counts of cases}
+#' }
+"mf_trend_data"

@@ -9,6 +9,7 @@
 #' @param column A column which will be transposed
 #' @return A wide data.frame with counts of cases per month in columns with CCGs as rows
 #' @examples
+#' library(dplyr)
 #' data(monthly_ccg_data_raw)
 #' ccg_dat_all <- monthly_ccg_data_raw %>%
 #'     rename(org_code = ccg_code)

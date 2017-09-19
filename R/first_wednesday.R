@@ -5,11 +5,16 @@
 #' Relies on lubridate for date calculations.
 #' @param x A date
 #' @return A date giving the first Wednesday of the month.
-#' @export
+#' @importFrom lubridate "%m+%"
+#' @importFrom lubridate "%m-%"
 #' @examples
-#' x <- lubridate::dmy("01/01/1970")
-#' first_wednesday(x)
+#' first_wednesday(lubridate::floor_date(lubridate::today(), "month"))
+#' \dontrun{
+#' first_wednesday(lubridate::floor_date(today(), "month") %m+%
+#'     lubridate::months(1))
+#'     }
 #' weekdays(first_wednesday(x))
+#' @export
 
 first_wednesday <- function(x){
   # Returns first wednesday of a month
