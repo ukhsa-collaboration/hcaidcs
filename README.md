@@ -26,6 +26,8 @@ Functions prefixed `nice_` indicate that they format values for nice printing in
 
 Functions prefixed `kh03_` indicate functions for use in the preparation of the kh03 denominator data.
 
+Functions prefixed `mf_` indicate functions for use in the preparation of the HCAI monthly factsheet for the department of health.
+
 Contributions
 -------------
 
