@@ -47,7 +47,8 @@ mo_gnabsi_table <- function(data_fm, collection, org_type){
       dplyr::filter(data_collection == !!collection) %>%
       dplyr::select(org_code, total_cases, ho, co, year_no, month_no,
                     month_string) %>%
-      dplyr::mutate(month_year = paste(month_string, year_no, sep = "_"))
+      dplyr::mutate(month_year = paste(month_string, year_no, sep = "_")) %>%
+      dplyr::arrange(year_no, month_no)
 
     out_dat <- out_dat %>%
       # turn year and month into a factor for sorting
@@ -76,7 +77,8 @@ mo_gnabsi_table <- function(data_fm, collection, org_type){
       dplyr::filter(data_collection == !!collection) %>%
       dplyr::select(org_code, total_cases, ho, co, year_no, month_no,
                     month_string) %>%
-      dplyr::mutate(month_year = paste(month_string, year_no, sep = "_"))
+      dplyr::mutate(month_year = paste(month_string, year_no, sep = "_")) %>%
+      dplyr::arrange(year_no, month_no)
 
     out_dat <- out_dat %>%
       # turn year and month into a factor for sorting
