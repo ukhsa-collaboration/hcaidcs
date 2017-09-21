@@ -11,8 +11,8 @@
 #' @export
 
 cmonth_to_fmonth <- function(numeric_month){
-  z <- ifelse(numeric_month < 3,
-              13 - numeric_month,
+  z <- ifelse(numeric_month <= 3,
+              9 + numeric_month,
               numeric_month - 3)
   return(z)
 }
