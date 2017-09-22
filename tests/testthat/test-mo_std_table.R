@@ -1,6 +1,6 @@
 context("Producing monthly tables")
 
-test_that("The first month forms the first column in the output"{
+test_that("The first month forms the first column in the output", {
   library(dplyr)
   data(monthly_ccg_data_raw)
   ccg_dat_all <- monthly_ccg_data_raw %>%

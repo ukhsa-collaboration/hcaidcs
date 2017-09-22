@@ -45,6 +45,7 @@ Collate:
     'data.R'
     'date_end_period.R'
     'date_start_period.R'
+    'date_to_fyear.R'
     'days_in_cyear.R'
     'days_in_fmonth.R'
     'days_in_fq.R'
