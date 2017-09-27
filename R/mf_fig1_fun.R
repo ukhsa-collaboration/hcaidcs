@@ -15,6 +15,11 @@
 #' my_plot
 #' my_plot <- mf_fig1_fun(data = mf_trend_data, collection = "mssa")
 #' my_plot
+#' my_plot <- mf_fig1_fun(data = mf_trend_data, collection = "ecoli")
+#' my_plot
+#' names(mf_trend_data)[5] <- "kleb"
+#' my_plot <- mf_fig1_fun(data = mf_trend_data, collection = "kleb")
+#' my_plot
 #'
 #' @export
 
@@ -25,6 +30,25 @@ mf_fig1_fun <- function(data, collection){
   my_major_breaks <- subset(data, lubridate::day(t) == 1 & lubridate::month(t) == 12, select = t)
   my_major_breaks <- as.data.frame(my_major_breaks)
   my_major_breaks <- my_major_breaks[,1]
+
+  # title_collection <- dplyr::case_when(
+  #   collection == "mssa" ~ "MSSA",
+  #   collection == "mrsa" ~ "MRSA",
+  #   collection == "cdi" ~ expression(italic("C. difficile")),
+  #   collection == "ecoli" ~ expression(italic("C. difficile")),
+  #   collection == "kleb" ~ expression(paste(italic("Klebsiella"), "\sspp.") ),
+  #   collection == "paer" ~ expression(italic("P. aeruginosa"))
+  # )
+
+  collection_title <- switch(collection,
+    mssa = "MSSA",
+    mrsa = "MRSA",
+    cdi = expression(italic("C. difficile")),
+    ecoli = expression(italic("E. coli")),
+    kleb = expression(paste(italic("Klebsiella"), " spp.") ),
+    paer = expression(italic("P. aeruginosa"))
+  )
+
   z <- ggplot2::ggplot(data, ggplot2::aes_string(x = "t", y = collection)) +
     ggplot2::geom_line() + ggplot2::geom_point() +
     ggplot2::scale_x_date("",
@@ -35,6 +59,8 @@ mf_fig1_fun <- function(data, collection){
                                expand = c(0, 0),
                        limits = c(0, max(data[, collection]) * 1.05)
     ) + # force y to zero and NA gives max y. expand = c(0,0) at J. Giltrow's request
+    ggplot2::labs(title = collection_title) +
+    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0)) +
     cowplot::background_grid(major = "xy", minor = "x", colour.major = "grey82",
                     colour.minor = "grey92")
   return(z)
