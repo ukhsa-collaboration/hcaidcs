@@ -26,5 +26,10 @@ my_plot <- mf_fig1_fun(data = mf_trend_data, collection = "mrsa")
 my_plot
 my_plot <- mf_fig1_fun(data = mf_trend_data, collection = "mssa")
 my_plot
+my_plot <- mf_fig1_fun(data = mf_trend_data, collection = "ecoli")
+my_plot
+names(mf_trend_data)[5] <- "kleb"
+my_plot <- mf_fig1_fun(data = mf_trend_data, collection = "kleb")
+my_plot
 
 }
