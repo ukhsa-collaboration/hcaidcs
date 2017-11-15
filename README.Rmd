@@ -18,7 +18,17 @@ This is a collection of functions to make working with data from the [HCAI DCS](
 The plan is to include Rmd documents to produce the IS six-monthly reports and other standard outputs, including the quarterly epidemiologic commentary. 
 
 ## Installation
-Please email me for the zip file of the package. 
+
+The quickest way to install the package is to use `install_git` from the devtools package. 
+
+```{r, eval=FALSE}
+# install devtools if necessary
+install.packages("devtools")
+
+# then install the hcaidcs package
+devtools::install_git('https://gitlab.phe.gov.uk/Simon.Thelwall/hcaidcs.git')
+```
+
 Once you have received the file, please do the following:
 
 1.	Save the zip file to `H:\`     but do not unzip

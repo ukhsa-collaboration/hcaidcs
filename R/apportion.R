@@ -1,5 +1,10 @@
 #' Apportion CDI and MSSA records
 #'
+#' Apportions records to apportioning algorithm.
+#' Includes a clause whereby records created prior to 26th October 2015 are not trust apportioned if patient location is Unknown.
+#' This is to ensure consistency with previous reports. See p 47 of Mandatory Surveillance protocol.
+#' Prior to the launch of the new DCS, users could create records where the patient location was Null and these cases would not have been apportioned automatically.
+#'
 #' @include check_date_class.R
 #' @param collection The collection (MRSA, MSSA, CDI, E. coli) to which the record belongs.
 #' @param patient_location The patient's location at time of sample
@@ -57,20 +62,24 @@ apportion <- function(collection, patient_location, patient_category, date_admit
 
 mssa_appt <- function(patient_location, patient_category, date_admitted, specimen_date, date_entered){
   trust_cats <- c("In-patient", "Day patient", "Emergency Assessment", "Unknown", "")
-  trust_locs <- c("NHS Acute Trust", "", "Unknown")
+  # trust_locs <- c("NHS Acute Trust", "", "Unknown")
+  trust_locs <- c("NHS Acute Trust", "")
   z <- ifelse(is.na(date_admitted) == TRUE,
+              # value if is.na(date_admitted) == TRUE
               ifelse( (patient_location %in% trust_locs | (patient_location == "Unknown" & date_entered >= lubridate::dmy("26-10-2015")) ) &
                   (patient_category %in% trust_cats | is.na(patient_category)), 1, 0),
+              # value if is.na(date_admitted) == FALSE
               ifelse( (specimen_date - date_admitted + 1 >= 3) &
                 (patient_location %in% trust_locs | (patient_location == "Unknown" & date_entered >= lubridate::dmy("26-10-2015")) ) &
                 patient_category %in% trust_cats,
-              1, 0))
+                1, 0))
   return(z)
 }
 
 cdi_appt <- function(patient_location, patient_category, date_admitted, specimen_date, date_entered){
   trust_cats <- c("In-patient", "Day patient", "Emergency Assessment", "Unknown", "")
-  trust_locs <- c("NHS Acute Trust", "", "Unknown")
+  # trust_locs <- c("NHS Acute Trust", "", "Unknown")
+  trust_locs <- c("NHS Acute Trust", "")
   z <- ifelse(is.na(date_admitted) == TRUE,
               ifelse( (patient_location %in% trust_locs | (patient_location == "Unknown" & date_entered >= lubridate::dmy("26-10-2015")) ) &
                         (patient_category %in% trust_cats | is.na(patient_category)), 1, 0),

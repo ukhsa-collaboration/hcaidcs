@@ -24,7 +24,10 @@ apportion(collection, patient_location, patient_category, date_admitted,
 A binary vector giving 1 for Trust-apportioned records and 0 for non-Trust apportioned records
 }
 \description{
-Apportion CDI and MSSA records
+Apportions records to apportioning algorithm.
+Includes a clause whereby records created prior to 26th October 2015 are not trust apportioned if patient location is Unknown.
+This is to ensure consistency with previous reports. See p 47 of Mandatory Surveillance protocol.
+Prior to the launch of the new DCS, users could create records where the patient location was Null and these cases would not have been apportioned automatically.
 }
 \examples{
 apportion("mssa", "NHS Acute Trust", "In-patient",

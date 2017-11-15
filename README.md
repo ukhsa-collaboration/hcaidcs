@@ -4,7 +4,17 @@ This is a collection of functions to make working with data from the [HCAI DCS](
 Installation
 ------------
 
-Please email me for the zip file of the package. Once you have received the file, please do the following:
+The quickest way to install the package is to use `install_git` from the devtools package.
+
+``` r
+# install devtools if necessary
+install.packages("devtools")
+
+# then install the hcaidcs package
+devtools::install_git('https://gitlab.phe.gov.uk/Simon.Thelwall/hcaidcs.git')
+```
+
+Once you have received the file, please do the following:
 
 1.  Save the zip file to `H:\` but do not unzip
 2.  Open RStudio
