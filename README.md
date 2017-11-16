@@ -14,7 +14,7 @@ install.packages("devtools")
 devtools::install_git('https://gitlab.phe.gov.uk/Simon.Thelwall/hcaidcs.git')
 ```
 
-Once you have received the file, please do the following:
+Alternatively, one can download the zip file from gitlab and do the following:
 
 1.  Save the zip file to `H:\` but do not unzip
 2.  Open RStudio

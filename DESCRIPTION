@@ -22,8 +22,9 @@ Imports:
     viridis,
     scales,
     tidyr,
-    cowplot
-Collate: 
+    cowplot,
+    assertthat
+Collate:
     'aec_age_sex_plot.R'
     'aec_age_trends_plots.R'
     'aec_ec_primary_focus_plot.R'
@@ -34,6 +35,7 @@ Collate:
     'ann_tab_pir_org_type.R'
     'check_date_class.R'
     'apportion.R'
+    'apportion_prior_healthcare.R'
     'area_team_names.R'
     'assignment_algorithm.R'
     'change.R'
