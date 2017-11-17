@@ -30,7 +30,7 @@
 #' testdat$apportioned_prior_hc <- apportion_prior_healthcare(
 #'   adm_date = testdat$date_admitted,
 #'   spec_date = testdat$specimen_date,
-#'   adm_3_mo = admission_in_3,
+#'   adm_3_mo = testdat$admission_in_3,
 #'   adm_4_weeks = testdat$adm_4_wks,
 #'   adm_12_weeks = testdat$adm_12_wks,
 #'   date_record_created = testdat$date_entered
@@ -51,11 +51,31 @@
 #' testdat$apportioned_prior_hc <- apportion_prior_healthcare(
 #'   adm_date = testdat$date_admitted,
 #'   spec_date = testdat$specimen_date,
-#'   adm_3_mo = testdat$admission_in_3
+#'   adm_3_mo = testdat$admission_in_3,
 #'   adm_4_weeks = testdat$adm_4_wks,
 #'   adm_12_weeks = testdat$adm_12_wks,
 #'   date_record_created = testdat$date_entered
 #' )
+#' testdat
+#'
+#' testdat <- structure(list(
+#' adm_3_mo = c("Don't know", "Don't know", "Don't know", "Don't know", "No", "No", "No", "No", "Yes", "Yes", "Yes", "Yes"),
+#' adm_12 = c("No", "No", "Yes", "Yes", "No", "No", "Yes", "Yes", "No", "No", "Yes", "Yes"),
+#' adm_4 = c("No", "Yes", "No", "Yes", "No", "Yes", "No", "Yes", "No", "Yes", "No", "Yes"),
+#' date_admitted = structure(c(17287,  17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287), class = "Date"),
+#' date_specimen = structure(c(17287, 17287, 17287, 17287, 17291, 17287, 17287, 17287, 17287, 17287, 17287, 17287), class = "Date"),
+#' date_created = structure(c(17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287), class = "Date")),
+#' class = "data.frame", .Names = c("adm_3_mo", "adm_12", "adm_4",
+#' "date_admitted", "date_specimen", "date_created"),
+#' row.names = c(NA, -12L))
+#'
+#' testdat$apportioned_prior_hc <- apportion_prior_healthcare(
+#'    adm_date = testdat$date_admitted,
+#'    spec_date = testdat$date_specimen,
+#'    adm_3_mo = testdat$adm_3_mo,
+#'    adm_4_weeks = testdat$adm_4,
+#'    adm_12_weeks = testdat$adm_12,
+#'    date_record_created = testdat$date_created)
 #' testdat
 #' }
 
@@ -73,8 +93,17 @@ apportion_prior_healthcare<- function(adm_date, spec_date, adm_3_mo, adm_4_weeks
 
   # Add assertions here
 
-  assertthat::assert_that(tolower(adm_3_mo) %in% c("yes", "no", "don't know", NA),
-                          msg = "adm_3_mo must be one of yes, no, don't know or NA")
+  assertthat::assert_that(class(adm_date) == "Date",
+                          msg = "adm_date must be a date")
+  # cat(class(spec_date))
+  assertthat::assert_that(class(spec_date) == "Date",
+                          msg = "spec_date must be a date")
+  assertthat::assert_that(class(date_record_created) == "Date",
+                          msg = "date_record_created must be a date")
+
+  assertthat::assert_that(
+    length(adm_3_mo[!(tolower(adm_3_mo) %in% c("yes", "no", "don't know", NA))]) == 0,
+    msg = "adm_3_mo must be one of yes, no, don't know or NA")
 
   days_diff <- spec_date - adm_date
   adm_4_weeks <- tolower(adm_4_weeks)
@@ -83,7 +112,7 @@ apportion_prior_healthcare<- function(adm_date, spec_date, adm_3_mo, adm_4_weeks
 
   hoha <- is_hoha(days_diff, date_record_created)
   coha <- is_coha(days_diff, date_record_created, adm_3_mo, adm_4_weeks)
-  coia <- is_coia(days_diff, date_record_created, adm_12_weeks)
+  coia <- is_coia(days_diff, date_record_created, adm_3_mo, adm_12_weeks)
   coca <- is_coca(days_diff, date_record_created, adm_3_mo, adm_4_weeks, adm_12_weeks)
 
   z <- ifelse(hoha == 1, "hoha",

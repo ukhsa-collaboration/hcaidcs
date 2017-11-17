@@ -24,7 +24,7 @@ test_that("apportion.R does not trust apportion records less than two days after
                          date_entered = lubridate::dmy("26-10-2015")), 0)
 })
 
-# Test apportion_prior_healthcare
+# Test apportion_prior_healthcare ####
 
 test_that("apportion_prior_healthcare returns correct result depending on difference between date of admission and date of specimen",
           {
@@ -32,19 +32,22 @@ test_that("apportion_prior_healthcare returns correct result depending on differ
             testdat <- data.frame(
               date_admitted = as.Date("01/01/2017", format = "%d/%m/%Y"),
               date_specimen = as.Date("01/01/2017", format = "%d/%m/%Y"),
+              adm_3_mos = "no",
               adm_4_wks = "no",
               adm_12_wks = "no",
               date_entered = as.Date("01/04/2017", format = "%d/%m/%Y"),
               stringsAsFactors = FALSE)
             expect_equal(
               apportion_prior_healthcare(
-                testdat$date_admitted, testdat$date_specimen, testdat$adm_4_wks,
+                testdat$date_admitted, testdat$date_specimen,
+                adm_3_mo = testdat$adm_3_mos, testdat$adm_4_wks,
                 testdat$adm_12_wks, testdat$date_entered), "coca")
 
             # 1 day difference
             testdat <- data.frame(
               date_admitted = as.Date("01/01/2017", format = "%d/%m/%Y"),
               date_specimen = as.Date("02/01/2017", format = "%d/%m/%Y"),
+              adm_3_mos = "no",
               adm_4_wks = "no",
               adm_12_wks = "no",
               date_entered = as.Date("01/04/2017", format = "%d/%m/%Y"),
@@ -52,13 +55,15 @@ test_that("apportion_prior_healthcare returns correct result depending on differ
 
             expect_equal(
               apportion_prior_healthcare(
-                testdat$date_admitted, testdat$date_specimen, testdat$adm_4_wks,
+                testdat$date_admitted, testdat$date_specimen,
+                adm_3_mo = testdat$adm_3_mos, testdat$adm_4_wks,
                 testdat$adm_12_wks, testdat$date_entered), "coca")
 
             # 2 days difference
             testdat <- data.frame(
               date_admitted = as.Date("01/01/2017", format = "%d/%m/%Y"),
               date_specimen = as.Date("03/01/2017", format = "%d/%m/%Y"),
+              adm_3_mos = "no",
               adm_4_wks = "no",
               adm_12_wks = "no",
               date_entered = as.Date("01/04/2017", format = "%d/%m/%Y"),
@@ -66,7 +71,8 @@ test_that("apportion_prior_healthcare returns correct result depending on differ
 
             expect_equal(
               apportion_prior_healthcare(
-                testdat$date_admitted, testdat$date_specimen, testdat$adm_4_wks,
+                testdat$date_admitted, testdat$date_specimen,
+                adm_3_mo = testdat$adm_3_mos, testdat$adm_4_wks,
                 testdat$adm_12_wks, testdat$date_entered), "hoha")
           })
 
@@ -74,6 +80,7 @@ test_that("Apportioning to coha works", {
   testdat <- data.frame(
     date_admitted = as.Date("01/01/2017", format = "%d/%m/%Y"),
     date_specimen = as.Date("01/01/2017", format = "%d/%m/%Y"),
+    adm_3_mos = "no",
     adm_4_wks = "yes",
     adm_12_wks = "no",
     date_entered = as.Date("01/04/2017", format = "%d/%m/%Y"),
@@ -81,7 +88,8 @@ test_that("Apportioning to coha works", {
 
   expect_equal(
     apportion_prior_healthcare(
-      testdat$date_admitted, testdat$date_specimen, testdat$adm_4_wks,
+      testdat$date_admitted, testdat$date_specimen,
+      adm_3_mo = testdat$adm_3_mos, testdat$adm_4_wks,
       testdat$adm_12_wks, testdat$date_entered), "coha")
 })
 
@@ -89,6 +97,7 @@ test_that("Apportioning to coia works", {
   testdat <- data.frame(
     date_admitted = as.Date("01/01/2017", format = "%d/%m/%Y"),
     date_specimen = as.Date("01/01/2017", format = "%d/%m/%Y"),
+    adm_3_mos = "no",
     adm_4_wks = "no",
     adm_12_wks = "yes",
     date_entered = as.Date("01/04/2017", format = "%d/%m/%Y"),
@@ -96,7 +105,8 @@ test_that("Apportioning to coia works", {
 
   expect_equal(
     apportion_prior_healthcare(
-      testdat$date_admitted, testdat$date_specimen, testdat$adm_4_wks,
+      testdat$date_admitted, testdat$date_specimen,
+      adm_3_mo = testdat$adm_3_mos, testdat$adm_4_wks,
       testdat$adm_12_wks, testdat$date_entered), "coia")
 })
 
@@ -104,6 +114,7 @@ test_that("Apportioning to coca works", {
   testdat <- data.frame(
     date_admitted = as.Date("01/01/2017", format = "%d/%m/%Y"),
     date_specimen = as.Date("01/01/2017", format = "%d/%m/%Y"),
+    adm_3_mos = "no",
     adm_4_wks = "no",
     adm_12_wks = "no",
     date_entered = as.Date("01/04/2017", format = "%d/%m/%Y"),
@@ -111,7 +122,8 @@ test_that("Apportioning to coca works", {
 
   expect_equal(
     apportion_prior_healthcare(
-      testdat$date_admitted, testdat$date_specimen, testdat$adm_4_wks,
+      testdat$date_admitted, testdat$date_specimen,
+      adm_3_mo = testdat$adm_3_mos, testdat$adm_4_wks,
       testdat$adm_12_wks, testdat$date_entered), "coca")
 })
 
@@ -119,6 +131,7 @@ test_that("Apportioning by prior health care is vectorised", {
   testdat <- data.frame(
     date_admitted = rep(as.Date("01/01/2017", format = "%d/%m/%Y"), 2),
     date_specimen = as.Date(c("01/01/2017", "05/01/2017"), format = "%d/%m/%Y"),
+    adm_3_mos = rep("no", 2),
     adm_4_wks = rep("no", 2),
     adm_12_wks = rep("no", 2),
     date_entered = rep(as.Date("01/04/2017", format = "%d/%m/%Y"), 2),
@@ -126,7 +139,8 @@ test_that("Apportioning by prior health care is vectorised", {
 
   expect_equal(
     length(unique(apportion_prior_healthcare(
-      testdat$date_admitted, testdat$date_specimen, testdat$adm_4_wks,
+      testdat$date_admitted, testdat$date_specimen,
+      adm_3_mo = testdat$adm_3_mos, testdat$adm_4_wks,
       testdat$adm_12_wks, testdat$date_entered))), 2)
 })
 
@@ -134,13 +148,15 @@ test_that("Apportioning by prior health care returns NA when date record created
   testdat <- data.frame(
     date_admitted = as.Date("01/01/2017", format = "%d/%m/%Y"),
     date_specimen = as.Date("01/01/2017", format = "%d/%m/%Y"),
+    adm_3_mos = "no",
     adm_4_wks = "no",
     adm_12_wks = "no",
     date_entered = as.Date("31/03/2017", format = "%d/%m/%Y"),
     stringsAsFactors = FALSE)
 
   expect_equal(apportion_prior_healthcare(
-    testdat$date_admitted, testdat$date_specimen, testdat$adm_4_wks,
+    testdat$date_admitted, testdat$date_specimen, adm_3_mo = testdat$adm_3_mos,
+    testdat$adm_4_wks,
     testdat$adm_12_wks, testdat$date_entered), NA)
 })
 
@@ -148,6 +164,7 @@ test_that("Apportioning by prior health care works inside dplyr", {
   testdat <- data.frame(
     date_admitted = rep(as.Date("01/01/2017", format = "%d/%m/%Y"), 2),
     date_specimen = as.Date(c("01/01/2017", "05/01/2017"), format = "%d/%m/%Y"),
+    adm_3_mos = rep("no", 2),
     adm_4_wks = rep("no", 2),
     adm_12_wks = rep("no", 2),
     date_entered = rep(as.Date("01/04/2017", format = "%d/%m/%Y"), 2),
@@ -155,7 +172,65 @@ test_that("Apportioning by prior health care works inside dplyr", {
 
   expect_equal(ncol(dplyr::mutate(testdat,
                                new_apportioned = apportion_prior_healthcare(
-                                 date_admitted, date_specimen, adm_4_wks,
-                                 adm_12_wks, date_entered))), 6
+                                 date_admitted, date_specimen, adm_3_mos,
+                                 adm_4_wks, adm_12_wks, date_entered))), 7
                  )
 })
+
+test_that("assertions work for healthcare apportioning algorithm", {
+  # 3 mo is one of Yes, No, Don't know
+
+  testdat <- data.frame(
+    date_admitted = as.Date("01/01/2017", format = "%d/%m/%Y"),
+    date_specimen = as.Date("01/01/2017", format = "%d/%m/%Y"),
+    adm_3_mos = "Aardvark",
+    adm_4_wks = "yes",
+    adm_12_wks = "no",
+    date_entered = as.Date("01/04/2017", format = "%d/%m/%Y"),
+    stringsAsFactors = FALSE)
+  expect_error(apportion_prior_healthcare(
+    testdat$date_admitted, testdat$date_specimen, adm_3_mo = testdat$adm_3_mos,
+    testdat$adm_4_wks,
+    testdat$adm_12_wks, testdat$date_entered))
+
+  # dates are dates
+
+  testdat <- data.frame(
+    date_admitted = "01/01/2017",
+    date_specimen = as.Date("01/01/2017", format = "%d/%m/%Y"),
+    adm_3_mos = "yes",
+    adm_4_wks = "yes",
+    adm_12_wks = "no",
+    date_entered = as.Date("01/04/2017", format = "%d/%m/%Y"),
+    stringsAsFactors = FALSE)
+  expect_error(apportion_prior_healthcare(
+    testdat$date_admitted, testdat$date_specimen, adm_3_mo = testdat$adm_3_mos,
+    testdat$adm_4_wks,
+    testdat$adm_12_wks, testdat$date_entered))
+
+  testdat <- data.frame(
+    date_admitted = as.Date("01/01/2017", format = "%d/%m/%Y"),
+    date_specimen = "01/01/2017",
+    adm_3_mos = "yes",
+    adm_4_wks = "yes",
+    adm_12_wks = "no",
+    date_entered = as.Date("01/04/2017", format = "%d/%m/%Y"),
+    stringsAsFactors = FALSE)
+  expect_error(apportion_prior_healthcare(
+    testdat$date_admitted, testdat$date_specimen, adm_3_mo = testdat$adm_3_mos,
+    testdat$adm_4_wks,
+    testdat$adm_12_wks, testdat$date_entered))
+
+  testdat <- data.frame(
+    date_admitted = as.Date("01/04/2017", format = "%d/%m/%Y"),
+    date_specimen = as.Date("01/01/2017", format = "%d/%m/%Y"),
+    adm_3_mos = "yes",
+    adm_4_wks = "yes",
+    adm_12_wks = "no",
+    date_entered = "01/01/2017",
+    stringsAsFactors = FALSE)
+  expect_error(apportion_prior_healthcare(
+    testdat$date_admitted, testdat$date_specimen, adm_3_mo = testdat$adm_3_mos,
+    testdat$adm_4_wks,
+    testdat$adm_12_wks, testdat$date_entered))
+  })

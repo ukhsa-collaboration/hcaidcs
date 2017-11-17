@@ -4,13 +4,15 @@
 \alias{apportion_prior_healthcare}
 \title{Apportion CDI cases on basis of prior healthcare interactions}
 \usage{
-apportion_prior_healthcare(adm_date, spec_date, adm_4_weeks, adm_12_weeks,
-  date_record_created)
+apportion_prior_healthcare(adm_date, spec_date, adm_3_mo, adm_4_weeks,
+  adm_12_weeks, date_record_created)
 }
 \arguments{
 \item{adm_date}{Date of admission}
 
 \item{spec_date}{Date of specimen}
+
+\item{adm_3_mo}{Was the patient an inpatient at the trust in previous three months. String yes, no or don't know}
 
 \item{adm_4_weeks}{Was the patient admitted at any point 4 weeks prior to specimen. String yes or no}
 
@@ -34,7 +36,7 @@ Records created prior to 01/04/2017 should not be apportioned.
 }
 \examples{
 testdat <- data.frame(date_admitted = lubridate::dmy("01-01-2017"),
-specimen_date = lubridate::dmy("05-01-2017"),
+specimen_date = lubridate::dmy("05-01-2017"), admission_in_3 = "yes",
 adm_4_wks = "yes", adm_12_wks = "yes",
 date_entered = lubridate::dmy("01-04-2017"),
 stringsAsFactors = FALSE)
@@ -43,6 +45,7 @@ testdat
 testdat$apportioned_prior_hc <- apportion_prior_healthcare(
   adm_date = testdat$date_admitted,
   spec_date = testdat$specimen_date,
+  adm_3_mo = testdat$admission_in_3,
   adm_4_weeks = testdat$adm_4_wks,
   adm_12_weeks = testdat$adm_12_wks,
   date_record_created = testdat$date_entered
@@ -52,6 +55,7 @@ testdat
 testdat$apportioned_prior_hc <- NULL
 testdat2 <- data.frame(date_admitted = rep(lubridate::dmy("01-01-2017"), 3),
                        specimen_date = rep(lubridate::dmy("01-01-2017"), 3),
+                       admission_in_3 = c("yes", "yes", "yes"),
                        adm_4_wks = c("yes", "no", "no"),
                        adm_12_wks = c("no", "yes", "no"),
                        date_entered = lubridate::dmy("01-04-2017"),
@@ -62,10 +66,31 @@ testdat
 testdat$apportioned_prior_hc <- apportion_prior_healthcare(
   adm_date = testdat$date_admitted,
   spec_date = testdat$specimen_date,
+  adm_3_mo = testdat$admission_in_3,
   adm_4_weeks = testdat$adm_4_wks,
   adm_12_weeks = testdat$adm_12_wks,
   date_record_created = testdat$date_entered
 )
+testdat
+
+testdat <- structure(list(
+adm_3_mo = c("Don't know", "Don't know", "Don't know", "Don't know", "No", "No", "No", "No", "Yes", "Yes", "Yes", "Yes"),
+adm_12 = c("No", "No", "Yes", "Yes", "No", "No", "Yes", "Yes", "No", "No", "Yes", "Yes"),
+adm_4 = c("No", "Yes", "No", "Yes", "No", "Yes", "No", "Yes", "No", "Yes", "No", "Yes"),
+date_admitted = structure(c(17287,  17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287), class = "Date"),
+date_specimen = structure(c(17287, 17287, 17287, 17287, 17291, 17287, 17287, 17287, 17287, 17287, 17287, 17287), class = "Date"),
+date_created = structure(c(17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287), class = "Date")),
+class = "data.frame", .Names = c("adm_3_mo", "adm_12", "adm_4",
+"date_admitted", "date_specimen", "date_created"),
+row.names = c(NA, -12L))
+
+testdat$apportioned_prior_hc <- apportion_prior_healthcare(
+   adm_date = testdat$date_admitted,
+   spec_date = testdat$date_specimen,
+   adm_3_mo = testdat$adm_3_mo,
+   adm_4_weeks = testdat$adm_4,
+   adm_12_weeks = testdat$adm_12,
+   date_record_created = testdat$date_created)
 testdat
 }
 }
