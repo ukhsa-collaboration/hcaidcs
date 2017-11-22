@@ -4,10 +4,14 @@
 \alias{apportion_prior_healthcare}
 \title{Apportion CDI cases on basis of prior healthcare interactions}
 \usage{
-apportion_prior_healthcare(adm_date, spec_date, adm_3_mo, adm_4_weeks,
-  adm_12_weeks, date_record_created)
+apportion_prior_healthcare(patient_location, patient_category, adm_date,
+  spec_date, adm_3_mo, adm_4_weeks, adm_12_weeks, date_record_created)
 }
 \arguments{
+\item{patient_location}{The patient's location at time of sample}
+
+\item{patient_category}{The patient's category at time of sample}
+
 \item{adm_date}{Date of admission}
 
 \item{spec_date}{Date of specimen}
@@ -35,14 +39,19 @@ This new apportioning algorithm takes into account prior healthcare interactions
 Records created prior to 01/04/2017 should not be apportioned.
 }
 \examples{
-testdat <- data.frame(date_admitted = lubridate::dmy("01-01-2017"),
-specimen_date = lubridate::dmy("05-01-2017"), admission_in_3 = "yes",
-adm_4_wks = "yes", adm_12_wks = "yes",
-date_entered = lubridate::dmy("01-04-2017"),
-stringsAsFactors = FALSE)
+testdat <- data.frame(
+  patient_location = "NHS Acute Trust",
+  patient_category = "In-patient",
+  date_admitted = lubridate::dmy("01-01-2017"),
+  specimen_date = lubridate::dmy("05-01-2017"), admission_in_3 = "yes",
+  adm_4_wks = "yes", adm_12_wks = "yes",
+  date_entered = lubridate::dmy("01-04-2017"),
+  stringsAsFactors = FALSE)
 testdat
 
 testdat$apportioned_prior_hc <- apportion_prior_healthcare(
+  patient_location = testdat$patient_location,
+  patient_category = testdat$patient_category,
   adm_date = testdat$date_admitted,
   spec_date = testdat$specimen_date,
   adm_3_mo = testdat$admission_in_3,
@@ -53,17 +62,22 @@ testdat$apportioned_prior_hc <- apportion_prior_healthcare(
 testdat
 \dontrun{
 testdat$apportioned_prior_hc <- NULL
-testdat2 <- data.frame(date_admitted = rep(lubridate::dmy("01-01-2017"), 3),
-                       specimen_date = rep(lubridate::dmy("01-01-2017"), 3),
-                       admission_in_3 = c("yes", "yes", "yes"),
-                       adm_4_wks = c("yes", "no", "no"),
-                       adm_12_wks = c("no", "yes", "no"),
-                       date_entered = lubridate::dmy("01-04-2017"),
-                       stringsAsFactors = FALSE)
-testdat <- bind_rows(testdat, testdat2)
+testdat2 <- data.frame(
+  patient_location = rep("NHS Acute trust", 3),
+  patient_category = rep("In-patient", 3),
+  date_admitted = rep(lubridate::dmy("01-01-2017"), 3),
+  specimen_date = rep(lubridate::dmy("01-01-2017"), 3),
+  admission_in_3 = c("yes", "yes", "yes"),
+  adm_4_wks = c("yes", "no", "no"),
+  adm_12_wks = c("no", "yes", "no"),
+  date_entered = lubridate::dmy("01-04-2017"),
+  stringsAsFactors = FALSE)
+testdat <- dplyr::bind_rows(testdat, testdat2)
 testdat
 
 testdat$apportioned_prior_hc <- apportion_prior_healthcare(
+  patient_location = testdat$patient_location,
+  patient_category = testdat$patient_category,
   adm_date = testdat$date_admitted,
   spec_date = testdat$specimen_date,
   adm_3_mo = testdat$admission_in_3,
