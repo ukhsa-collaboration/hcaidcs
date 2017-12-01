@@ -46,7 +46,8 @@ mf_fig1_fun <- function(data, collection){
     cdi = expression(italic("C. difficile")),
     ecoli = expression(italic("E. coli")),
     kleb = expression(paste(italic("Klebsiella"), " spp.") ),
-    paer = expression(italic("P. aeruginosa"))
+    paer = expression(italic("P. aeruginosa")),
+    ecoli_ta = expression(paste("Trust-apportioned ", (italic("E. coli"))))
   )
 
   z <- ggplot2::ggplot(data, ggplot2::aes_string(x = "t", y = collection)) +
