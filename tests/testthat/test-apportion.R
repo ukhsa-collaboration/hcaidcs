@@ -16,6 +16,21 @@ test_that("apportion.R does apportion cases that should be apportioned", {
   expect_equal(apportion("mssa", "Unknown", "",
                          date_admitted = lubridate::dmy(NA), specimen_date =
                            lubridate::ymd("2012-10-16"), date_entered = lubridate::ymd("2012-10-23")), 0)
+  expect_equal(apportion("mssa", "", "In-patient",
+                         date_admitted = lubridate::dmy("01-01-2015"), specimen_date =
+                           lubridate::dmy("05-01-2015"), date_entered = lubridate::dmy("26-10-2015")), 1)
+  # trust apportion when patient location is blank
+  expect_equal(apportion("mssa", "", "Unknown",
+                         date_admitted = lubridate::dmy("01-01-2015"), specimen_date =
+                           lubridate::dmy("05-01-2015"), date_entered = lubridate::dmy("26-10-2015")), 1)
+  # trust apportion when patient category is blank
+  expect_equal(apportion("mssa", "NHS Acute Trust", "",
+                         date_admitted = lubridate::dmy("01-01-2015"), specimen_date =
+                           lubridate::dmy("05-01-2015"), date_entered = lubridate::dmy("26-10-2015")), 1)
+  # when both patient location and category are blank
+  expect_equal(apportion("mssa", NA_character_, NA_character_,
+                         date_admitted = lubridate::dmy("01-01-2013"), specimen_date =
+                           lubridate::dmy("05-01-2013"), date_entered = lubridate::dmy("26-10-2013")), 1)
 })
 
 test_that("apportion.R does not trust apportion records less than two days after admission", {

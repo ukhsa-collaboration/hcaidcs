@@ -61,9 +61,9 @@ apportion <- function(collection, patient_location, patient_category, date_admit
 
 
 mssa_appt <- function(patient_location, patient_category, date_admitted, specimen_date, date_entered){
-  trust_cats <- c("In-patient", "Day patient", "Emergency Assessment", "Unknown", "")
+  trust_cats <- c("In-patient", "Day patient", "Emergency Assessment", "Unknown", "", NA_character_)
   # trust_locs <- c("NHS Acute Trust", "", "Unknown")
-  trust_locs <- c("NHS Acute Trust", "")
+  trust_locs <- c("NHS Acute Trust", "", NA_character_)
   z <- ifelse(is.na(date_admitted) == TRUE,
               # value if is.na(date_admitted) == TRUE
               ifelse( (patient_location %in% trust_locs | (patient_location == "Unknown" & date_entered >= lubridate::dmy("26-10-2015")) ) &
@@ -77,9 +77,9 @@ mssa_appt <- function(patient_location, patient_category, date_admitted, specime
 }
 
 cdi_appt <- function(patient_location, patient_category, date_admitted, specimen_date, date_entered){
-  trust_cats <- c("In-patient", "Day patient", "Emergency Assessment", "Unknown", "")
+  trust_cats <- c("In-patient", "Day patient", "Emergency Assessment", "Unknown", "", NA_character_)
   # trust_locs <- c("NHS Acute Trust", "", "Unknown")
-  trust_locs <- c("NHS Acute Trust", "")
+  trust_locs <- c("NHS Acute Trust", "", NA_character_)
   z <- ifelse(is.na(date_admitted) == TRUE,
               ifelse( (patient_location %in% trust_locs | (patient_location == "Unknown" & date_entered >= lubridate::dmy("26-10-2015")) ) &
                         (patient_category %in% trust_cats | is.na(patient_category)), 1, 0),
