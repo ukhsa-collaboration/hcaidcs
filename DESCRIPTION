@@ -88,6 +88,7 @@ Collate:
     'nice_names.R'
     'nice_year.R'
     'ordered_fin_qtr.R'
+    'organism_labeller.R'
     'patloc_for_pir_assignment.R'
     'pir_org_type.R'
     'provis_orgname.R'
@@ -97,6 +98,7 @@ Collate:
     'time_period2fyear.R'
     'time_to_onset.R'
     'up_or_down.R'
+    'update_orgs_dcs.R'
     'zzz.R'
 Suggests:
     knitr,
