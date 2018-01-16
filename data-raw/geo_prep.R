@@ -30,12 +30,14 @@ rownames(centroids_df) <- c(1:nrow(centroids_df))
 names(centroids_df) <- c("id" ,"centroid_long", "centroid_lat")
 # offset east and central mids
 centroids_df$centroid_long[centroids_df$id == 6] <- centroids_df$centroid_long[centroids_df$id == 6] - (centroids_df$centroid_long[centroids_df$id == 6] * 0.05)
+# Q78 (E39000030) could be more central, i.e. shifted left
+centroids_df$centroid_long[centroids_df$id == 5] <- centroids_df$centroid_long[centroids_df$id == 5] - (centroids_df$centroid_long[centroids_df$id == 5] * 0.05)
 # And Q70
 centroids_df$centroid_long[centroids_df$id == 1] <- centroids_df$centroid_long[centroids_df$id == 1] - (centroids_df$centroid_long[centroids_df$id == 1] * 0.01)
 centroids_df$centroid_lat[centroids_df$id == 1] <- centroids_df$centroid_lat[centroids_df$id == 1] - (centroids_df$centroid_lat[centroids_df$id == 1] * 0.05)
 subregions_sp_df <- left_join(subregions_sp_df, centroids_df)
 
-ggplot(subregions_sp_df, aes(long, lat, group = group, label = ODS_CD)) +
+ggplot(subregions_sp_df, aes(long, lat, group = group, label = GSS_CD)) +
   geom_polygon() +
   geom_path(colour = "white") + coord_equal() +
   geom_text(aes(x = centroid_long, y = centroid_lat), colour = "white")
