@@ -28,21 +28,22 @@
 #' \describe{
 #'  \item{long}{Longitude}
 #'  \item{lat}{Lattitude}
-#'  \item{group}{Group id for polygons}
-#'  \item{id}{Numeric id for subregion, 0-9}
-#'  \item{GSS_CD}{ONS code for subregion}
-#'  \item{GSS_NM}{ONS name for subregion}
-#'  \item{GSS_P_CD}{ONS name for parent region}
-#'  \item{ODS_CD}{HSCIC ODS code for subregion}
-#'  \item{ODS_P_CD}{HSCIC ODS code for parent region}
 #'  \item{OBJECTID}{Id for an object. Only used for plotting}
 #'  \item{hole}{Logical value for whether geography is a hole. Only used for plotting}
 #'  \item{piece}{Only used for plotting}
 #'  \item{order}{Gives plotting order}
+#'  \item{group}{Group id for polygons}
+#'  \item{id}{Numeric id for subregion, 0-9}
+#'  \item{GSS_CD}{ONS code for subregion}
+#'  \item{GSS_NM}{ONS name for subregion}
 #'  \item{Shape_STAr}{Only used for plotting}
 #'  \item{Shape_STLe}{Only used for plotting}
 #'  \item{centroid_lat}{Latitude values for subregion centroids for plotting labels}
 #'  \item{centroid_long}{Longitude values for subregion centroids for plotting labels}
+#'  \item{ONS_P_NM}{ONS Parent Name}
+#'  \item{ODS_CD}{ODS ODS code for subregion}
+#'  \item{ODS_P_CD}{ODS ODS code for parent region}
+#'  \item{ONS_P_CD}{ONS Parent Code}
 #' }
 #' @source Office for National Statistics
 "subregions_sp_df"
