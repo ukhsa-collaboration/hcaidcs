@@ -6,6 +6,7 @@
 #' Update independent sector providers and independent sector sites.
 #'
 #' This function takes two csv files: ephp.csv and ephpsite.csv limits data to the specified organisation(s) then exports to zip files.
+#' The returned .csv files must have characters for all variables otherwise upload to the DCS will fail.
 #' The returned zip files can be used to upload to the HCAI DCS to update organisation mappings.
 #'
 #' @param organisation A character giving the organisation to be updated.
@@ -42,10 +43,14 @@ update_independent <- function(
   # select just the org(s) that we want
   ephp <- read.csv(file = paste0(input_file_path, "ephp.csv"), header = FALSE)
   ephp <- ephp[ephp$V1 == organisation, ]
-  ephp$V22 <- 1
+  ephp$V22 <- "1"
   ephpsite <- read.csv(file = paste0(input_file_path, "ephpsite.csv"), header = FALSE)
   ephpsite <- ephpsite[grepl(organisation, ephpsite$V1) == TRUE, ]
-  ephpsite$V22 <- 1
+  ephpsite$V22 <- "1"
+
+  # ensure that every var is a character
+  ephp <- data.frame(lapply(ephp, as.character))
+  ephpsite <- data.frame(lapply(ephpsite, as.character))
 
   # write csvs out
   if(dir.exists(output_file_path)){

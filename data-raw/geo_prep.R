@@ -56,6 +56,8 @@ ggplot(subregions_sp_df, aes(long, lat, group = group, label = GSS_CD)) +
   geom_path(colour = "white") + coord_equal() +
   geom_text(aes(x = centroid_long, y = centroid_lat), colour = "white")
 
-save(subregions_sp_df, file = "H:\\hcaidcs\\data\\subregions_sp_df.RData")
+setwd("H:/hcaidcs/")
+devtools::use_data(subregions_sp_df, overwrite = TRUE)
+# save(subregions_sp_df, file = "H:\\hcaidcs\\data\\subregions_sp_df.RData")
 setwd("H:/spatial/")
 rm(list = ls())

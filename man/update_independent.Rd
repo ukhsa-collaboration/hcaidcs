@@ -20,6 +20,7 @@ Four files, two csv and two zip for each ephp and ephpsite files.
 }
 \description{
 This function takes two csv files: ephp.csv and ephpsite.csv limits data to the specified organisation(s) then exports to zip files.
+The returned .csv files must have characters for all variables otherwise upload to the DCS will fail.
 The returned zip files can be used to upload to the HCAI DCS to update organisation mappings.
 }
 \examples{
