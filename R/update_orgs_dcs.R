@@ -51,6 +51,15 @@ update_independent <- function(
   # ensure that every var is a character
   ephp <- data.frame(lapply(ephp, as.character))
   ephpsite <- data.frame(lapply(ephpsite, as.character))
+  if(ncol(ephp) < 27){
+    ephp <- ephp %>%
+      mutate(v23 = "", v24 = "", v25 = "", v26 = "", v27 = "")
+  }
+
+  if(ncol(ephpsite) < 27){
+    ephpsite <- ephpsite %>%
+      mutate(v23 = "", v24 = "", v25 = "", v26 = "", v27 = "")
+  }
 
   # write csvs out
   if(dir.exists(output_file_path)){
