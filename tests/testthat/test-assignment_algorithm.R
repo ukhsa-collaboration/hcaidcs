@@ -49,4 +49,14 @@ test_that("Cases with assignmentmethodcode < 10 give final pir status as new sta
                          finalpirassignedorganisationtype = "Clinical Commissioning Group"),
     "Clinical Commissioning Group"
   )
+    # Added test to account for Commissioning Hubs, based on case id 613241
+    expect_equal(
+      assignment_algorithm(pircasestatus = "provisional assignment",
+                           assignmentmethodcode = NA_real_,
+                           patientlocation = "NHS Acute Trust",
+                           patientcategory = "A&E only",
+                           provisionalorganisationname = "NATIONAL COMMISSIONING HUB",
+                           finalpirassignedorganisationtype = "Clinical Commissioning Group"),
+      "Clinical Commissioning Group"
+    )
 })

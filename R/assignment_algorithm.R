@@ -64,7 +64,7 @@ assignment_algorithm <- function(pircasestatus, assignmentmethodcode, patientloc
       "NHS Trust",
       ifelse(
         (pircasestatus == "final assignment" & assignmentmethodcode == 10 & patientlocation != "NHS Acute Trust") |
-          (pircasestatus == "provisional assignment" & stringr::str_detect(provisionalorganisationname,"ccg") == TRUE) & !(assignmentmethodcode %in% c(13, 14)) |
+          (pircasestatus == "provisional assignment" & stringr::str_detect(provisionalorganisationname,paste(c("ccg", "hub"), collapse = "|")) == TRUE) & !(assignmentmethodcode %in% c(13, 14)) |
           (assignmentmethodcode %in% c(11) &
              (patientlocation == "NHS Acute Trust" & !(patientcategory %in% trust_pat_locs))) |
           ((assignmentmethodcode %in% c(11)) & patientlocation != "NHS Acute Trust")  |
