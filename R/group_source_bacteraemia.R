@@ -63,11 +63,12 @@ sa_source <- function(source_col){
                       "Dialysis line") ~ "Catheters & lines",
     source_col == "Skin/Soft tissue infection" ~ "SSTI",
     source_col == "Pneumonia" ~ "Pneumonia",
+    source_col == "" ~ "Not reported",
     is.na(source_col) ~ NA_character_,
     TRUE ~ "Others"
   )
   z <- factor(z, levels = c("Catheters & lines", "SSTI", "Pneumonia", "Others",
-                            "Unknown"))
+                            "Unknown", "Not reported"))
   return(z)
 }
 

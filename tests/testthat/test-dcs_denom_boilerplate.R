@@ -1,0 +1,27 @@
+context("Testing DCS denominator functions")
+
+test_that("dcs_popn_boilerplate produces expected output", {
+  test_df <- data.frame(ccg_code = "13Q", stringsAsFactors = FALSE)
+  expect_is(test_df <- dcs_popn_boilerplate(test_df), "data.frame")
+  test_df <- dcs_popn_boilerplate(test_df)
+  expect_true(any(names(test_df) == "denominator_code"))
+  expect_true(any(names(test_df) == "denominator_descriptionnotrequd"))
+  expect_true(any(names(test_df) == "denominator_type_code"))
+  expect_true(any(names(test_df) == "denominator_type_descriptionnotd"))
+  expect_true(any(names(test_df) == "range_from"))
+  expect_true(any(names(test_df) == "range_to"))
+  expect_true(any(names(test_df) == "per_factor"))
+})
+
+test_that("kh03_boilerplate produces expected output", {
+  test_df <- data.frame(ccg_code = "13Q", stringsAsFactors = FALSE)
+  expect_is(test_df <- kh03_boilerplate(test_df), "data.frame")
+  test_df <- kh03_boilerplate(test_df)
+  expect_true(any(names(test_df) == "denominator_code"))
+  expect_true(any(names(test_df) == "denominator_descriptionnotrequd"))
+  expect_true(any(names(test_df) == "denominator_type_code"))
+  expect_true(any(names(test_df) == "denominator_type_descriptionnotd"))
+  expect_true(any(names(test_df) == "range_from"))
+  expect_true(any(names(test_df) == "range_to"))
+  expect_true(any(names(test_df) == "per_factor"))
+})

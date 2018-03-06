@@ -54,6 +54,7 @@ Collate:
     'days_in_fmonth.R'
     'days_in_fq.R'
     'days_in_fy.R'
+    'dcs_denom_boilerplate.R'
     'detach_hcaidcs.R'
     'ecoli_primary_focus.R'
     'first_wednesday.R'

@@ -14,10 +14,10 @@
 kh03_boilerplate <- function(x){
   x$denominator_code <- "KH03BEDYR"
   x$denominator_descriptionnotrequd <- "KH03 Bed Days Year"
-    x$denominator_type_code <- "BEDDAY"
-    x$denominator_type_descriptionnotd <- "Bed Days"
-    x$range_from <- 0
-    x$range_to <- 0
-    x$per_factor <- 100000
+  x$denominator_type_code <- "BEDDAY"
+  x$denominator_type_descriptionnotd <- "Bed Days"
+  x$range_from <- 0
+  x$range_to <- 0
+  x$per_factor <- 100000
   return(x)
 }
