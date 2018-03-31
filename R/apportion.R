@@ -42,16 +42,25 @@ apportion <- function(collection, patient_location, patient_category, date_admit
     stop("lubridate is needed for this function to work. Please install it.",
          call. = FALSE)
   }
-  # check_date_class(date_admitted)
-  # check_date_class(specimen_date)
-  # check_date_class(date_entered)
-  if(collection != "mssa" & collection != "cdi"){
-    stop("Collection is not either \"mssa\" or \"cdi\" ")
-  }
+
+  collection <- tolower(collection)
+
+  assertthat::assert_that(assertthat::is.date(date_admitted))
+  assertthat::assert_that(assertthat::is.date(specimen_date))
+  assertthat::assert_that(assertthat::is.date(date_entered))
+  assertthat::assert_that(all(collection %in%
+                            c("mssa", "mrsa", "e. coli", "cdi", "c. difficile",
+                              "klebsiella spp", "klebsiella spp.",
+                              "p. aeruginosa")),
+                          msg = "Collection must be one of MRSA, MSSA, E. coli,
+                          CDI, Klebsiella spp or P. aeruginosa")
+
   if(length(collection) == 1) {
     collection <- rep(collection, length(patient_location))
   }
-  trust <- ifelse(collection == "mssa",
+  trust <- ifelse(collection %in% c("mssa", "mrsa", "e. coli",
+                                    "klebsiella spp", "klebsiella spp.",
+                                    "p. aeruginosa"),
                   mssa_appt(patient_location, patient_category, date_admitted, specimen_date, date_entered),
                   cdi_appt(patient_location, patient_category, date_admitted, specimen_date, date_entered)
                   )
