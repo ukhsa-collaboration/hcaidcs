@@ -17,6 +17,10 @@ Convert numeric FY month to string.
 Mostly important for monthly reports
 }
 \examples{
+#April
 fmonth_to_string(1)
+fmonth_to_string(10)
+fmonth_to_string(11)
+# March
 fmonth_to_string(12)
 }

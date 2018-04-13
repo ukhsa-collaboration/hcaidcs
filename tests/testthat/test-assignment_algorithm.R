@@ -60,3 +60,22 @@ test_that("Cases with assignmentmethodcode < 10 give final pir status as new sta
       "Clinical Commissioning Group"
     )
 })
+
+test_that("On Hold cases are assigned to provisional organisations", {
+  expect_equal(
+    assignment_algorithm(pircasestatus = "On-Hold",
+                         assignmentmethodcode = NA_real_,
+                         patientlocation = "NHS Acute Trust",
+                         patientcategory = "In-patient",
+                         provisionalorganisationname = "NHS SOUTH GLOUCESTERSHIRE CCG",
+                         finalpirassignedorganisationtype = NA_character_),
+    "Clinical Commissioning Group")
+  expect_equal(
+    assignment_algorithm(pircasestatus = "On-Hold",
+                         assignmentmethodcode = NA_real_,
+                         patientlocation = "NHS Acute Trust",
+                         patientcategory = "In-patient",
+                         provisionalorganisationname = "Some Random Trust",
+                         finalpirassignedorganisationtype = NA_character_),
+    "NHS Trust" )
+})
