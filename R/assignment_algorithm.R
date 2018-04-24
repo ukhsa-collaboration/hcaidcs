@@ -79,7 +79,8 @@ assignment_algorithm <- function(pircasestatus, assignmentmethodcode, patientloc
     "NHS Trust",
     ifelse(
       (pircasestatus == "on-hold" & stringr::str_detect(provisionalorganisationname,"ccg") == TRUE),
-              "Clinical Commissioning Group", "Something else"))
+              "Clinical Commissioning Group", z))
+
   z <- ifelse(z == "nhs trust", "NHS Trust", z)
   z <- ifelse(z == "clinical commissioning group", "Clinical Commissioning Group", z)
   return(z)

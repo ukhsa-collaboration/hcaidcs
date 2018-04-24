@@ -1,5 +1,7 @@
 context("Testing apportioning")
 
+# Test standard apportioning ####
+
 test_that("NA values in admission date are correctly handled", {
   expect_equal(
     apportion("mssa", patient_location = "Unknown", patient_category = NA,
