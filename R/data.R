@@ -99,6 +99,32 @@
 #'  \item{finalpirassignedorganisation}{string}
 #'  \item{patient_category}{string}
 #' }
+
+"cdi_prior_hc_data"
+
+#' Data for testing prior healthcare exposure monthly table
+#'
+#' A sample data set to test the monthly table preparation for prior healthcare exposure
+#' @format A data frame with 13 rows of 16 variables
+#' \describe{
+#'  \item{org_code}{Organisation code (CCG or NHS trust)}
+#'  \item{year_no}{Four-digit year}
+#'  \item{month_no}{Numeric month}
+#'  \item{data_collection}{Data collection}
+#'  \item{fyear6}{Financial year}
+#'  \item{total_cases}{Count of total cases}
+#'  \item{apportioned}{Count of apportioned cases}
+#'  \item{nhs_trust_pir}{Count of trust-assigned cases}
+#'  \item{ccg_pir}{Count of ccg-assigned cases}
+#'  \item{third_party_pir}{Count of third-party cases}
+#'  \item{hoha}{Count of hoha cases}
+#'  \item{coha}{Count of coha cases}
+#'  \item{coia}{Count of coia cases}
+#'  \item{coca}{Count of coca cases}
+#'  \item{fmonth}{Numeric financial year month (i.e. 1 = April)}
+#'  \item{month_string}{String cal month}
+#' }
+
 "assignment_data"
 
 #' Data for testing assignement algorithm

@@ -720,4 +720,45 @@ monthly_ccg_data_raw <- structure(list(data_collection = c("MRSA", "MRSA", "MRSA
                                                                                                                                                                                                                                                                                                                                                                      "third_party_pir", "fmonth", "month_string"))
 
 head(monthly_ccg_data_raw)
+
+cdi_prior_hc_data <- structure(list(
+  org_code = c("R0A", "R0A", "R0A", "R0A", "R0A", "R0A", "R0A", "R0A", "R0A",
+               "R0A", "R0A", "R0A", "R0A"),
+  year_no = c(2017, 2017, 2017, 2017, 2017, 2017, 2017, 2017, 2017, 2017, 2018,
+              2018, 2018),
+  month_no = c(10, 11, 12, 3, 4, 5, 6, 7, 8, 9, 1, 2,3),
+  data_collection = c("C. difficile", "C. difficile", "C. difficile",
+                      "C. difficile", "C. difficile", "C. difficile",
+                      "C. difficile", "C. difficile", "C. difficile",
+                      "C. difficile", "C. difficile", "C. difficile",
+                      "C. difficile"),
+  fyear6 = c("201718", "201718", "201718", "201617", "201718", "201718",
+             "201718", "201718", "201718", "201718", "201718", "201718",
+             "201718"),
+  total_cases = c(15, 13, 16, 22, 15, 12, 16, 20, 19, 21, 23, 18, 25),
+  apportioned = c(7, 12, 6, 12, 13, 8, 10, 14, 11, 12, 16, 12, 17),
+  nhs_trust_pir = c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_,
+                    NA_real_, NA_real_, NA_real_, NA_real_, NA_real_, NA_real_,
+                    NA_real_, NA_real_),
+  ccg_pir = c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_, NA_real_,
+              NA_real_, NA_real_, NA_real_, NA_real_, NA_real_, NA_real_,
+              NA_real_),
+  third_party_pir = c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_, NA_real_,
+                      NA_real_, NA_real_, NA_real_, NA_real_, NA_real_, NA_real_,
+                      NA_real_),
+  hoha = c(8, 12, 7, NA, 13, 8, 11, 14, 11, 15, 16, 12, 17),
+  coha = c(7, 1, 6, NA, 2, 4, 5, 6, 8, 5, 5, 2, 2),
+  coia = c(0, 0, 2, NA, 0, 0, 0, 0, 0, 0, 1, 1, 2),
+  coca = c(0, 0, 1, NA, 0, 0, 0, 0, 0, 1, 1, 3, 4),
+  fmonth = c(7, 8, 9, 12, 1, 2, 3, 4, 5, 6, 10, 11, 12),
+  month_string = c("October", "November", "December", "March", "April", "May",
+                   "June", "July", "August", "September", "January", "February",
+                   "March")),
+  class = c("tbl_df", "tbl", "data.frame"), row.names = c(NA, -13L),
+  .Names = c("org_code", "year_no", "month_no", "data_collection", "fyear6",
+             "total_cases", "apportioned", "nhs_trust_pir", "ccg_pir",
+             "third_party_pir", "hoha", "coha","coia", "coca", "fmonth",
+             "month_string"))
+
 devtools::use_data(monthly_ccg_data_raw)
+devtools::use_data(cdi_prior_hc_data)

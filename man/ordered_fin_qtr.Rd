@@ -46,4 +46,6 @@ levels(dat$fin_qtr_ftr)
 }
 \seealso{
 \code{\link{fy_long}}
+
+\code{\link{ordered_m_y}}
 }

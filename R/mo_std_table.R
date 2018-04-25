@@ -23,6 +23,10 @@ mo_std_table <- function(data_fm, collection, column){
     stop("dplyr needed for this function to work. Please install it.",
          call. = FALSE)
   }
+  if (!requireNamespace("tidyr", quietly = TRUE)) {
+    stop("tidyr needed for this function to work. Please install it.",
+         call. = FALSE)
+  }
 
   collection <- dplyr::enquo(collection)
   column <- dplyr::enquo(column)
