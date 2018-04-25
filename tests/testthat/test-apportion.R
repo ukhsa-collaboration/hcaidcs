@@ -163,9 +163,9 @@ test_that("Apportioning to coha works", {
       testdat$patient_category,
       testdat$date_admitted, testdat$date_specimen,
       adm_3_mo = testdat$adm_3_mos, testdat$adm_4_wks,
-      testdat$adm_12_wks, testdat$date_entered), "coha")
+      testdat$adm_12_wks, testdat$date_entered), "all_blank")
 
-  # this is not working atm
+
   testdat <- data.frame(
     patient_location = "NHS Acute Trust",
     patient_category = "In-patient",
@@ -227,7 +227,6 @@ test_that("Apportioning to coia works", {
       testdat$adm_12_wks, testdat$date_entered), "coia")
 })
 
-# tests failed
 test_that("Apportioning to coca works", {
   testdat <- data.frame(
     patient_location = "NHS Acute Trust",
@@ -308,6 +307,48 @@ test_that("Apportioning to coca works", {
       adm_3_mo = testdat$adm_3_mos, testdat$adm_4_wks,
       testdat$adm_12_wks, testdat$date_entered
     ), "coca")
+})
+
+test_that("Missings are correctly labelled", {
+  testdat <- data.frame(
+    patient_location = "NHS Acute Trust",
+    patient_category = "In-patient",
+    date_admitted = as.Date("01/01/2017", format = "%d/%m/%Y"),
+    date_specimen = as.Date("01/01/2017", format = "%d/%m/%Y"),
+    adm_3_mos = "Don't know",
+    adm_4_wks = "",
+    adm_12_wks = "",
+    date_entered = as.Date("01/04/2017", format = "%d/%m/%Y"),
+    stringsAsFactors = FALSE)
+
+  expect_equal(
+    apportion_prior_healthcare(
+      patient_location = testdat$patient_location,
+      patient_category = testdat$patient_category,
+      testdat$date_admitted, testdat$date_specimen,
+      adm_3_mo = testdat$adm_3_mos, testdat$adm_4_wks,
+      testdat$adm_12_wks, testdat$date_entered
+    ), "unknown_3_mo")
+
+  testdat <- data.frame(
+    patient_location = "NHS Acute Trust",
+    patient_category = "In-patient",
+    date_admitted = as.Date("01/01/2017", format = "%d/%m/%Y"),
+    date_specimen = as.Date("01/01/2017", format = "%d/%m/%Y"),
+    adm_3_mos = NA_character_,
+    adm_4_wks = NA_character_,
+    adm_12_wks = NA_character_,
+    date_entered = as.Date("01/04/2017", format = "%d/%m/%Y"),
+    stringsAsFactors = FALSE)
+
+  expect_equal(
+    apportion_prior_healthcare(
+      patient_location = testdat$patient_location,
+      patient_category = testdat$patient_category,
+      testdat$date_admitted, testdat$date_specimen,
+      adm_3_mo = testdat$adm_3_mos, testdat$adm_4_wks,
+      testdat$adm_12_wks, testdat$date_entered
+    ), "all_blank")
 })
 
 test_that("Apportioning by prior health care is vectorised", {

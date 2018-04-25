@@ -25,16 +25,20 @@ apportion_prior_healthcare(patient_location, patient_category, adm_date,
 \item{date_record_created}{Date record entered onto DCS}
 }
 \value{
-A string variable giving the apportioning type; one of hoha, coha, coia or coca, or NA if date record created < 01/04/2017
+A string variable giving the apportioning type; one of hoha, coha,
+  coia or coca, all_blank if all of the prior healthcare exposures were NA,
+  unknown_3_mo if prior health care in past three months was "Don't know" or
+  NA if date record created < 01/04/2017
 }
 \description{
 The mandatory surveillance launched a new apportioning algorithm on 01/04/2017.
-This new apportioning algorithm takes into account prior healthcare interactions as recorded by trust users to apportion to one of four categories:
+This new apportioning algorithm takes into account prior healthcare interactions
+  as recorded by trust users to apportion to one of four categories:
 \itemize{
  \item Healthcare onset - healthcare associated
  \item Community onset - healthcare associated
- \item Community onset - Indeterminate association
- \item Community onset - Community associated
+ \item Community onset - indeterminate association
+ \item Community onset - community associated
 }
 Records created prior to 01/04/2017 should not be apportioned.
 }

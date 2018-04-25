@@ -1,12 +1,13 @@
 #' Apportion CDI cases on basis of prior healthcare interactions
 #'
 #' The mandatory surveillance launched a new apportioning algorithm on 01/04/2017.
-#' This new apportioning algorithm takes into account prior healthcare interactions as recorded by trust users to apportion to one of four categories:
+#' This new apportioning algorithm takes into account prior healthcare interactions
+#'   as recorded by trust users to apportion to one of four categories:
 #' \itemize{
 #'  \item Healthcare onset - healthcare associated
 #'  \item Community onset - healthcare associated
-#'  \item Community onset - Indeterminate association
-#'  \item Community onset - Community associated
+#'  \item Community onset - indeterminate association
+#'  \item Community onset - community associated
 #' }
 #' Records created prior to 01/04/2017 should not be apportioned.
 #'
@@ -19,7 +20,10 @@
 #' @param adm_12_weeks Was the patient admitted at any point 12 weeks prior to specimen. String yes or no
 #' @param date_record_created Date record entered onto DCS
 #'
-#' @return A string variable giving the apportioning type; one of hoha, coha, coia or coca, or NA if date record created < 01/04/2017
+#' @return A string variable giving the apportioning type; one of hoha, coha,
+#'   coia or coca, all_blank if all of the prior healthcare exposures were NA,
+#'   unknown_3_mo if prior health care in past three months was "Don't know" or
+#'   NA if date record created < 01/04/2017
 #' @export
 #' @examples
 #' testdat <- data.frame(
@@ -136,6 +140,9 @@ apportion_prior_healthcare <- function(patient_location, patient_category,
                      ifelse(hoha == 0 & coha == 0 & coia == 1, "coia",
                             ifelse(hoha == 0 & coha == 0 & coia == 0 & coca == 1, "coca", NA)
                      )))
+  z <- ifelse(adm_3_mo == "don't know" & !is.na(adm_3_mo) & z != "hoha", "unknown_3_mo", z)
+  z <- ifelse(z != "hoha" & is.na(adm_3_mo) & is.na(adm_4_weeks) &
+                is.na(adm_12_weeks), "all_blank", z)
   return(z)
 }
 
