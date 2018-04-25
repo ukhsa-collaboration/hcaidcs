@@ -11,10 +11,13 @@ area_team_names(area_team_name)
 }
 \description{
 Removes brackets and sorts capitalisation.
+Also replace ampersands with "and" and hyphenates name places such as Stockton-on-Tees.
 }
 \examples{
 x <- "NHS ENGLAND NORTH (YORKSHIRE AND HUMBER)"
 area_team_names(x)
+area_team_names("nhs Stockton on Tees ccg")
+area_team_names("Nhs Fylde & Wyre CCG")
 }
 \seealso{
 \code{\link{ann_tab_ccg_names}}

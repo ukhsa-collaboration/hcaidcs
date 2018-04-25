@@ -4,7 +4,17 @@ This is a collection of functions to make working with data from the [HCAI DCS](
 Installation
 ------------
 
-Please email me for the zip file of the package. Once you have received the file, please do the following:
+The quickest way to install the package is to use `install_git` from the devtools package.
+
+``` r
+# install devtools if necessary
+install.packages("devtools")
+
+# then install the hcaidcs package
+devtools::install_git('https://gitlab.phe.gov.uk/Simon.Thelwall/hcaidcs.git')
+```
+
+Alternatively, one can download the zip file from gitlab and do the following:
 
 1.  Save the zip file to `H:\` but do not unzip
 2.  Open RStudio
@@ -25,6 +35,8 @@ Functions beginning `ann_tab_` are intended for the production of the annual tab
 Functions prefixed `nice_` indicate that they format values for nice printing in text, such as financial year, or an estimate with its' 95% confidence interval.
 
 Functions prefixed `kh03_` indicate functions for use in the preparation of the kh03 denominator data.
+
+Functions prefixed `mf_` indicate functions for use in the preparation of the HCAI monthly factsheet for the department of health.
 
 Contributions
 -------------

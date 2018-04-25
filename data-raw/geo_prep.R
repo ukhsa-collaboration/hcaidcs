@@ -19,6 +19,8 @@ save(at_sp_df, file = "at_sp_df.RData")
 
 rm(list = ls())
 
+# Create subregions ####
+
 subregions <- readOGR(dsn = ".", layer = "nhs_subregions")
 subregions@data$id = rownames(subregions@data)
 subregions_points <- fortify(subregions)
@@ -30,16 +32,32 @@ rownames(centroids_df) <- c(1:nrow(centroids_df))
 names(centroids_df) <- c("id" ,"centroid_long", "centroid_lat")
 # offset east and central mids
 centroids_df$centroid_long[centroids_df$id == 6] <- centroids_df$centroid_long[centroids_df$id == 6] - (centroids_df$centroid_long[centroids_df$id == 6] * 0.05)
+# Q78 (E39000030) could be more central, i.e. shifted left
+centroids_df$centroid_long[centroids_df$id == 5] <- centroids_df$centroid_long[centroids_df$id == 5] - (centroids_df$centroid_long[centroids_df$id == 5] * 0.05)
 # And Q70
 centroids_df$centroid_long[centroids_df$id == 1] <- centroids_df$centroid_long[centroids_df$id == 1] - (centroids_df$centroid_long[centroids_df$id == 1] * 0.01)
 centroids_df$centroid_lat[centroids_df$id == 1] <- centroids_df$centroid_lat[centroids_df$id == 1] - (centroids_df$centroid_lat[centroids_df$id == 1] * 0.05)
 subregions_sp_df <- left_join(subregions_sp_df, centroids_df)
 
-ggplot(subregions_sp_df, aes(long, lat, group = group, label = ODS_CD)) +
+# Add in ODS codes here
+# Need ODS parent code and ODS code for region
+# codes is manually created from ODS and PHE GIS data
+codes <- read.csv("H:/hcaidcs/data-raw/subregion_lut.csv",
+                  stringsAsFactors = FALSE)
+
+subregions_sp_df <- subregions_sp_df %>%
+  left_join(., select(codes, -GSS_NM))
+
+names(subregions_sp_df)
+rm(codes)
+
+ggplot(subregions_sp_df, aes(long, lat, group = group, label = GSS_CD)) +
   geom_polygon() +
   geom_path(colour = "white") + coord_equal() +
   geom_text(aes(x = centroid_long, y = centroid_lat), colour = "white")
 
-save(subregions_sp_df, file = "H:\\hcaidcs\\data\\subregions_sp_df.RData")
-
+setwd("H:/hcaidcs/")
+devtools::use_data(subregions_sp_df, overwrite = TRUE)
+# save(subregions_sp_df, file = "H:\\hcaidcs\\data\\subregions_sp_df.RData")
+setwd("H:/spatial/")
 rm(list = ls())

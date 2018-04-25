@@ -2,7 +2,7 @@
 #'
 #' Takes a period used in mandatory surveillance data and returns first date in the period.
 #'
-#' @param x A period, either string or numerif
+#' @param x A period, either string or numeric
 #' @param period_type A string, one of "fq", "cq" or "fyear6"
 #'
 #' @return A \strong{string} in format dd/mm/yyyy

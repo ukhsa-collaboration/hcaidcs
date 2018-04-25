@@ -7,7 +7,7 @@
 mandatory_age_group(x, collection = NULL)
 }
 \arguments{
-\item{x}{A numeric vector}
+\item{x}{A numeric vector giving age in years, calculated by \code{\link{mandatory_age}}}
 
 \item{collection}{An optional parameter giving the collection for CDI age grouping.
 If the collection is not given, the bacteraemia age grouping is applied.}

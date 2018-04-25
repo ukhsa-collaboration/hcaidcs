@@ -4,3 +4,4 @@
 .Ruserdata
 *.pdf
 inst/doc
+data-raw/*.csv

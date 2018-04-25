@@ -6,6 +6,7 @@
 #' @param date_specimen Date specimen taken in date format
 #' @param patient_category Category of patient at time of specimen. One of:
 #' "In-patient", "Day patient" or "Emergency Assessment"
+#' @param patient_location Location of patient at time of specimen
 #' @return A numeric value
 #' @examples
 #' onset <- lubridate::dmy("05-01-2011")

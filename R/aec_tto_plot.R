@@ -46,7 +46,8 @@ aec_tto_plot <- function(x, collection = NULL){
       ) +
       ggplot2::scale_y_continuous("Per cent inpatient cases") +
       ggplot2::scale_fill_brewer("", palette = "Blues", labels = c("< 2 days", "2 - 6 days", "\u2265 7 days")) +
-      ggplot2::scale_colour_brewer("", palette = "Blues", labels = c("< 2 days", "2 - 6 days", "\u2265 7 days"))
+      ggplot2::scale_colour_brewer("", palette = "Blues", labels = c("< 2 days", "2 - 6 days", "\u2265 7 days")) +
+      ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 0.5, vjust = 0.5))
   }else{
     if(collection == "cdi"){
       ggplot2::ggplot(data = x,
@@ -58,7 +59,8 @@ aec_tto_plot <- function(x, collection = NULL){
         ) +
         ggplot2::scale_y_continuous("Per cent inpatient cases") +
       ggplot2::scale_fill_brewer("", palette = "Blues", labels = c("< 3 days", "3 - 6 days", "\u2265 7 days")) +
-        ggplot2::scale_colour_brewer("", palette = "Blues", labels = c("< 3 days", "3 - 6 days", "\u2265 7 days"))
+        ggplot2::scale_colour_brewer("", palette = "Blues", labels = c("< 3 days", "3 - 6 days", "\u2265 7 days")) +
+        ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 0.5, vjust = 0.5))
     }
   }
 }

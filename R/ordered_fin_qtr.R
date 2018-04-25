@@ -36,6 +36,7 @@
 #' @importFrom magrittr "%>%"
 #' @export
 
+
 ordered_fin_qtr <- function(data, quarter_in_long_format){
   if (!requireNamespace("dplyr", quietly = TRUE)) {
     stop("lubridate is needed for this function to work. Please install it.",
@@ -46,13 +47,15 @@ ordered_fin_qtr <- function(data, quarter_in_long_format){
                                text_qtr = lazyeval::interp(~substr(var, 1, nchar(var)-5),
                                                            var = as.name(quarter_in_long_format) )) %>%
     dplyr::mutate(temp_year = as.numeric(temp_year),
-      temp_year = ifelse(text_qtr == "January to March", temp_year-1, temp_year)) %>%
+                  temp_year = ifelse(text_qtr == "January to March", temp_year-1, temp_year)) %>%
     dplyr::mutate(text_qtr2 = factor(text_qtr, levels = c("April to June",
-                                                   "July to September",
-                                                   "October to December",
-                                                   "January to March"))) %>%
+                                                          "July to September",
+                                                          "October to December",
+                                                          "January to March"))) %>%
     dplyr::arrange(temp_year, text_qtr2) %>%
-    dplyr::mutate_(fin_qtr_ftr = lazyeval::interp(~factor(var, levels = as.ordered(var)), var = as.name(quarter_in_long_format))
+    dplyr::mutate_(fin_qtr_ftr = lazyeval::interp(~factor(var, levels = as.ordered(unique(var))),
+                                                  var = as.name(quarter_in_long_format))
     ) %>%
     dplyr::select(-temp_year, -text_qtr, -text_qtr2)
 }
+

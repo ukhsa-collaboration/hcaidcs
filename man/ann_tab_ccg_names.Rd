@@ -7,7 +7,7 @@
 ann_tab_ccg_names(x)
 }
 \arguments{
-\item{A}{vector of CCG names}
+\item{x}{A vector of CCG names}
 }
 \description{
 This turns CCG names into title case format and removes strings 'NHS' and 'CCG'.

@@ -6,6 +6,12 @@
 \usage{
 mandatory_age_group_bacteraemia(x)
 }
+\arguments{
+\item{x}{Age as a numeric value}
+}
+\value{
+An ordered factor giving the age group
+}
 \description{
-mandatory_age_group_bacteraemia(0)
+Sub-function for creating mandatory age groups for bacteraemia cases
 }

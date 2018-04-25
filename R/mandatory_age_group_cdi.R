@@ -1,3 +1,6 @@
+#' Mandatory age group for CDI cases
+#' Calculates the mandatory age grouping based on numeric age
+#' @param x Age in years, calculated by \code{\link{mandatory_age}}
 #' mandatory_age_group_cdi(0)
 #' mandatory_age_group_cdi(2)
 

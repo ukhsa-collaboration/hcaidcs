@@ -15,8 +15,6 @@
 #' kh03_year("2010-11", "June", "cyear")
 #' kh03_year("2010-11", "June", "fyear")
 #' kh03_year("2000-01", "March", "cyear")
-#' kh03_year("2010-11", "September", "fyear")
-#' kh03_year("2010-11", "December", "fyear")
 #' @export
 
 kh03_year <- function(year, quarter, format){
@@ -28,23 +26,26 @@ kh03_year <- function(year, quarter, format){
                                ifelse(second_year > 0 & second_year <= 80,
                                       as.numeric(paste0("20", sprintf("%02i", second_year))), NA))
   )
+  format <- rep(format, length(first_year))
+
   fy_quarter <- ifelse(quarter %in% c("January", "February", "March"), 4,
                        ifelse(quarter %in% c("April", "May", "June"), 1,
                               ifelse(quarter %in% c("July", "August", "September"), 2,
-                                                    ifelse(quarter %in% c("October", "November", "December"), 3, NA)
-                                     )))
+                                     ifelse(quarter %in% c("October", "November", "December"), 3, NA))))
 
   cy_quarter <- ifelse(quarter %in% c("January", "February", "March"), 1,
                        ifelse(quarter %in% c("April", "May", "June"), 2,
                               ifelse(quarter %in% c("July", "August", "September"), 3,
-                                                    ifelse(quarter %in% c("October", "November", "December"), 4, NA)
-                                     )))
+                                     ifelse(quarter %in% c("October", "November", "December"), 4, NA))))
 
   z <- ifelse(format == "fyear",
               as.numeric(paste0(first_year, fy_quarter)),
               ifelse(format == "cyear",
                      ifelse(cy_quarter == 1,
                             as.numeric(paste0(second_year, cy_quarter)),
-                            as.numeric(paste0(first_year, cy_quarter)))))
+                            as.numeric(paste0(first_year, cy_quarter))),
+                     stop("Please make sure format is one of cyear or fyear")
+              )
+  )
   return(z)
 }

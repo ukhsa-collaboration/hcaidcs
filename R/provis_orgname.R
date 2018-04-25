@@ -10,6 +10,6 @@
 
 provis_orgname <- function(x){
   z <- ifelse(grepl("trust", tolower(x), fixed = TRUE) == TRUE, "NHS Trust",
-              ifelse(grepl("ccg", tolower(x), fixed = TRUE) == TRUE, "CCG", NA))
+              ifelse(grepl(paste(c("ccg", "hub"), collapse = "|" ), fixed = TRUE) == TRUE, "CCG", NA))
   return(z)
 }

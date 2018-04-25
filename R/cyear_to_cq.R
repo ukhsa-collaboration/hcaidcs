@@ -1,7 +1,7 @@
 #' Cyear to long calendar quarter
 #'
 #' Converts a five digit financial year into a long text string
-#' @param fyear A numeric or string variable giving the finacial year and quarter, e.g. 20112 - July-September 2011
+#' @param cyear A numeric or string variable giving the calendar year and quarter, e.g. 20112 - July-September 2011
 #' @return A text string giving the quarter and then the year.
 #' @seealso \code{\link{kh03_year}}, \code{\link{fyear_to_fq}}
 #' @examples
