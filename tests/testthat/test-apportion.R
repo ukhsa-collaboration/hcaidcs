@@ -62,8 +62,9 @@ test_that("apportion_prior_healthcare returns correct result depending on differ
                 patient_location = testdat$patient_location,
                 patient_category = testdat$patient_category,
                 testdat$date_admitted, testdat$date_specimen,
-                adm_3_mo = testdat$adm_3_mos, testdat$adm_4_wks,
-                testdat$adm_12_wks, testdat$date_entered), "coca")
+                adm_3_mo = testdat$adm_3_mos, adm_4_weeks = testdat$adm_4_wks,
+                adm_12_weeks = testdat$adm_12_wks,
+                date_record_created = testdat$date_entered), "coca")
 
             # 1 day difference
             testdat <- data.frame(
@@ -288,14 +289,37 @@ test_that("Apportioning to coca works", {
       testdat$adm_12_wks, testdat$date_entered
     ), "coca")
 
+ # Changed following on 26/04/2018 after discussion with Olisa. Moved such cases from COCA to COIA
+  # testdat <- data.frame(
+  #   patient_location = "GP",
+  #   patient_category = NA_character_,
+  #   date_admitted = as.Date("NA", format = "%d/%m/%Y"),
+  #   date_specimen = as.Date("01/01/2017", format = "%d/%m/%Y"),
+  #   adm_3_mos = "yes",
+  #   adm_4_wks = "no",
+  #   adm_12_wks = "no",
+  #   date_entered = as.Date("01/04/2017", format = "%d/%m/%Y"),
+  #   stringsAsFactors = FALSE)
+  #
+  # expect_equal(
+  #   apportion_prior_healthcare(
+  #     patient_location = testdat$patient_location,
+  #     patient_category = testdat$patient_category,
+  #     testdat$date_admitted, testdat$date_specimen,
+  #     adm_3_mo = testdat$adm_3_mos, testdat$adm_4_wks,
+  #     testdat$adm_12_wks, testdat$date_entered
+  #   ), "coca")
+})
+
+test_that("Irritating cases that are yes for 3 mo, but no for 4 weeks AND 12 weeks are coia", {
   testdat <- data.frame(
-    patient_location = "GP",
-    patient_category = NA_character_,
-    date_admitted = as.Date("NA", format = "%d/%m/%Y"),
+    patient_location = "NHS Acute Trust",
+    patient_category = "In-patient",
+    date_admitted = as.Date("01/01/2017", format = "%d/%m/%Y"),
     date_specimen = as.Date("01/01/2017", format = "%d/%m/%Y"),
-    adm_3_mos = "yes",
-    adm_4_wks = "no",
-    adm_12_wks = "no",
+    adm_3_mos = "Yes",
+    adm_4_wks = "No",
+    adm_12_wks = "No",
     date_entered = as.Date("01/04/2017", format = "%d/%m/%Y"),
     stringsAsFactors = FALSE)
 
@@ -306,7 +330,7 @@ test_that("Apportioning to coca works", {
       testdat$date_admitted, testdat$date_specimen,
       adm_3_mo = testdat$adm_3_mos, testdat$adm_4_wks,
       testdat$adm_12_wks, testdat$date_entered
-    ), "coca")
+    ), "coia")
 })
 
 test_that("Missings are correctly labelled", {

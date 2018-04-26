@@ -132,7 +132,7 @@ apportion_prior_healthcare <- function(patient_location, patient_category,
   hoha <- is_hoha(patient_location, patient_category, adm_date, spec_date, days_diff,
                   date_record_created)
   coha <- is_coha(days_diff, date_record_created, adm_3_mo, adm_4_weeks)
-  coia <- is_coia(days_diff, date_record_created, adm_3_mo, adm_12_weeks)
+  coia <- is_coia(days_diff, date_record_created, adm_3_mo, adm_4_weeks, adm_12_weeks)
   coca <- is_coca(days_diff, date_record_created, adm_3_mo, adm_4_weeks, adm_12_weeks)
 
   z <- ifelse(hoha == 1, "hoha",
@@ -164,7 +164,7 @@ is_hoha <- function(patient_location, patient_category, adm_date, spec_date, day
   return(z)
 }
 
-is_coha <- function(days_diff, date_record_created, adm_3_mo, adm_4_weeks){
+is_coha <- function(days_diff, date_record_created, adm_3_mo, adm_4_weeks, adm_12_weeks){
   z <- ifelse(
     # cases >= 2 days post-admission
     (!is.na(days_diff) & days_diff < 2 & (tolower(adm_4_weeks) == "yes" & !is.na(adm_4_weeks)) & date_record_created >= lubridate::dmy("01/04/2017")) |
@@ -175,9 +175,10 @@ is_coha <- function(days_diff, date_record_created, adm_3_mo, adm_4_weeks){
   return(z)
 }
 
-is_coia <- function(days_diff, date_record_created, adm_3_mo, adm_12_weeks){
+is_coia <- function(days_diff, date_record_created, adm_3_mo, adm_4_weeks, adm_12_weeks){
   z <- ifelse((!is.na(days_diff) & tolower(adm_3_mo) == "yes" & tolower(adm_12_weeks) == "yes" & !is.na(tolower(adm_12_weeks)) & date_record_created >= lubridate::dmy("01/04/2017")) |
-                (tolower(adm_3_mo) == "yes" & (tolower(adm_12_weeks) == "yes" | is.na(tolower(adm_12_weeks))) ) & date_record_created >= lubridate::dmy("01/04/2017"),
+                (tolower(adm_3_mo) == "yes" & (tolower(adm_12_weeks) == "yes" | is.na(tolower(adm_12_weeks))) ) & date_record_created >= lubridate::dmy("01/04/2017") |
+                (adm_3_mo == "yes" & adm_4_weeks == "no" & adm_12_weeks == "no" & date_record_created >= lubridate::dmy("01/04/2017")),
               1, 0)
   return(z)
 }
@@ -185,8 +186,7 @@ is_coia <- function(days_diff, date_record_created, adm_3_mo, adm_12_weeks){
 is_coca <- function(days_diff, date_record_created, adm_3_mo, adm_4_weeks, adm_12_weeks){
   z <- ifelse((!is.na(days_diff) & tolower(adm_4_weeks) == "no" & tolower(adm_12_weeks) == "no" & date_record_created >= lubridate::dmy("01/04/2017")) |
                 # cases where patients have not been admitted in past 3 months
-                adm_3_mo == "no" & date_record_created >= lubridate::dmy("01/04/2017") |
-                (adm_3_mo == "yes" & adm_4_weeks == "no" & adm_12_weeks == "no" & date_record_created >= lubridate::dmy("01/04/2017")),
+                adm_3_mo == "no" & date_record_created >= lubridate::dmy("01/04/2017"),
               1, 0)
   return(z)
 }
