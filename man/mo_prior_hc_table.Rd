@@ -4,17 +4,17 @@
 \alias{mo_prior_hc_table}
 \title{mo_prior_hc_table}
 \usage{
-mo_prior_hc_table(dat, collection)
+mo_prior_hc_table(dat, collection = "C. difficile")
 }
 \arguments{
 \item{dat}{a data frame containing at least following columns:
 data_collection, org_code, year_no, month_no, total_cases, hoha, coha, coia,
 coca, month_string}
 
-\item{collection}{A string giving the data collection}
+\item{collection}{A string giving the data collection, default = "C. difficile"}
 }
 \value{
-A dataframe with the table in long format
+A dataframe with the table in wide format
 }
 \description{
 Create monthly table for prior healthcare exposures
@@ -23,5 +23,5 @@ Create monthly table for prior healthcare exposures
 library(dplyr)
 library(tidyr)
 data(cdi_prior_hc_data)
-mo_prior_hc_table(cdi_prior_hc_data)
+mo_prior_hc_table(cdi_prior_hc_data, collection = "C. difficile")
 }

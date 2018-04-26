@@ -15,3 +15,4 @@ test_that("The first month forms the first column in the output", {
       org_type = "ccg")
   expect_match(names(my_out_dat)[2], "July_2016_total_cases")
 })
+
