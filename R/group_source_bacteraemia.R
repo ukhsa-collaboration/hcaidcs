@@ -83,10 +83,11 @@ gn_source <- function(source_col){
                       "Upper Respiraotry Tract and ENT") ~ "Respiratory Tract",
     source_col %in% c("Unknown","Unassessed") ~ "Unknown",
     source_col == "" ~ "Not reported",
+    is.na(source_col) == TRUE ~ "Not reported",
     TRUE ~ "Others"
   )
   z <- factor(z, levels = c("Gastrointestinal (not hepatobiliary)", "Hepatobiliary", "UTI", "Respiratory Tract",
-                            "Others", "Not reported", "Unknown"))
+                            "Others", "Unknown", "Not reported"))
   return(z)
 }
 

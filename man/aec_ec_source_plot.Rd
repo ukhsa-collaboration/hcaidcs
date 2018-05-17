@@ -22,13 +22,17 @@ it relies on the presence of several variables to that data frame:
 \examples{
 \dontrun{
 dat <- structure(list(
-tto_group = structure(c(1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L),
+tto_group = structure(c(1L, 1L, 1L, 1L, 1L, 1L,
+2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L),
 .Label = c("<2", "2-6", "ge7"), class = "factor"),
-primary_focus = structure(c(1L, 2L, 3L, 4L, 5L, 1L, 2L, 3L, 4L, 5L, 1L, 2L, 3L, 4L, 5L),
-.Label = c("gastro", "hepatobil", "other", "unknown", "uti"), class = "factor"),
-pc = c(0.2, 0.2, 0.2, 0.2, 0.2, 0.5, 0.2, 0.2, 0.1, 0.3, 0.2, 0.2, 0.1, 0.1,
+primary_focus = structure(c(1L, 2L, 3L, 4L, 5L, 6L, 1L,
+2L, 3L, 4L, 5L, 6L, 1L, 2L, 3L, 4L, 5L, 6L),
+.Label = c("gastro", "hepatobil", "other", "respiratory", "unknown", "uti"),
+class = "factor"),
+pc = c(0.2, 0.2, 0.2, 0.2, 0.1, 0.1,
+0.5, 0.2, 0.1, 0.1, 0.1, 0.3, 0.2, 0.1, 0.1, 0.1, 0.1,
 0.1)), .Names = c("tto_group", "primary_focus", "pc"),
-class = "data.frame", row.names = c(NA, -15L))
+class = "data.frame", row.names = c(NA, -18L))
 
 p <- aec_ec_source_plot(dat)
 p

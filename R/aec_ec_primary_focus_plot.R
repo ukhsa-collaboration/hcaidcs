@@ -11,13 +11,17 @@
 #' @examples
 #' \dontrun{
 #' dat <- structure(list(
-#' tto_group = structure(c(1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L),
+#' tto_group = structure(c(1L, 1L, 1L, 1L, 1L, 1L,
+#' 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L),
 #' .Label = c("<2", "2-6", "ge7"), class = "factor"),
-#' primary_focus = structure(c(1L, 2L, 3L, 4L, 5L, 1L, 2L, 3L, 4L, 5L, 1L, 2L, 3L, 4L, 5L),
-#' .Label = c("gastro", "hepatobil", "other", "unknown", "uti"), class = "factor"),
-#' pc = c(0.2, 0.2, 0.2, 0.2, 0.2, 0.5, 0.2, 0.2, 0.1, 0.3, 0.2, 0.2, 0.1, 0.1,
+#' primary_focus = structure(c(1L, 2L, 3L, 4L, 5L, 6L, 1L,
+#' 2L, 3L, 4L, 5L, 6L, 1L, 2L, 3L, 4L, 5L, 6L),
+#' .Label = c("gastro", "hepatobil", "other", "respiratory", "unknown", "uti"),
+#' class = "factor"),
+#' pc = c(0.2, 0.2, 0.2, 0.2, 0.1, 0.1,
+#' 0.5, 0.2, 0.1, 0.1, 0.1, 0.3, 0.2, 0.1, 0.1, 0.1, 0.1,
 #' 0.1)), .Names = c("tto_group", "primary_focus", "pc"),
-#' class = "data.frame", row.names = c(NA, -15L))
+#' class = "data.frame", row.names = c(NA, -18L))
 #'
 #' p <- aec_ec_source_plot(dat)
 #' p
@@ -39,6 +43,9 @@ aec_ec_source_plot <- function(x){
     ggplot2::scale_y_continuous("Per cent inpatient cases") +
     #theme(axis.ticks = element_blank(), axis.text.x = element_blank()) +
     #scale_fill_discrete("Primary focus\n of infection")
-    ggplot2::scale_fill_manual("Primary focus\n of infection", values = c("#08519C", "#3182BD", "#6BAED6", "#9ECAE1", "#C6DBEF"),
-                               guide = ggplot2::guide_legend(reverse = TRUE))
+    ggplot2::scale_fill_manual(
+      "Primary focus\n of infection",
+      values = c("#08519C", "#2E6CAC", "#5488BD", "#7AA3CD", "#A0BFDE",
+                 "#C6DBEF"),
+      guide = ggplot2::guide_legend(reverse = TRUE))
 }

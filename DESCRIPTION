@@ -40,7 +40,6 @@ Collate:
     'area_team_names.R'
     'assignment_algorithm.R'
     'change.R'
-    'clear_console.R'
     'cmonth_to_fmonth.R'
     'cq_long.R'
     'cyear_to_cq.R'
@@ -57,7 +56,6 @@ Collate:
     'days_in_fy.R'
     'dcs_denom_boilerplate.R'
     'detach_hcaidcs.R'
-    'ecoli_primary_focus.R'
     'first_wednesday.R'
     'fq5.R'
     'fq_long.R'
@@ -91,9 +89,6 @@ Collate:
     'mo_std_table.R'
     'month_to_string.R'
     'mrsa_source_bacteraemia.R'
-    'nice_estimate.R'
-    'nice_names.R'
-    'nice_year.R'
     'ordered_fin_qtr.R'
     'ordered_m_y.R'
     'organism_labeller.R'
@@ -104,7 +99,6 @@ Collate:
     'qec_age_table.R'
     'query_dcs.R'
     'show_hcaidcs_package_manual.R'
-    'simple_cap.R'
     'time_period2fyear.R'
     'time_to_onset.R'
     'up_or_down.R'
@@ -113,5 +107,6 @@ Collate:
 Suggests:
     knitr,
     rmarkdown,
-    testthat
+    testthat,
+    covr
 VignetteBuilder: knitr

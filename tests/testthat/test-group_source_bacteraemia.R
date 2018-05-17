@@ -51,4 +51,6 @@ test_that("E. coli returns expected values", {
   expect_equal(as.character(group_source_bacteraemia("E. coli", "Unknown")), "Unknown")
   expect_equal(as.character(group_source_bacteraemia("E. coli", "Upper Respiraotry Tract and ENT")), "Respiratory Tract")
   expect_equal(as.character(group_source_bacteraemia("E. coli", "Upper Urinary Tract (pyelonephritis/ abscess)")), "UTI")
+  expect_equal(as.character(group_source_bacteraemia("E. coli", NA_character_)), "Not reported")
+  expect_equal(as.character(group_source_bacteraemia("E. coli", "")), "Not reported")
 })

@@ -1,5 +1,7 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-This is a collection of functions to make working with data from the [HCAI DCS](https://hcaidcs.phe.org.uk/) easier. The plan is to include Rmd documents to produce the IS six-monthly reports and other standard outputs, including the quarterly epidemiologic commentary.
+[![Travis-CI Build Status](https://travis-ci.org/PublicHealthEngland/hcaidcs.svg?branch=master)](https://travis-ci.org/) [![codecov](https://codecov.io/gh/PublicHealthEngland/hcaidcs/branch/master/graph/badge.svg)](https://codecov.io/gh/PublicHealthEngland/hcaidcs)
+
+This is a collection of functions to make working with data from the [HCAI DCS](https://hcaidcs.phe.org.uk/) easier.
 
 Installation
 ------------
@@ -11,10 +13,10 @@ The quickest way to install the package is to use `install_git` from the devtool
 install.packages("devtools")
 
 # then install the hcaidcs package
-devtools::install_git('https://gitlab.phe.gov.uk/Simon.Thelwall/hcaidcs.git')
+devtools::install_git('https://github.com/publichealthengland/hcaidcs.git')
 ```
 
-Alternatively, one can download the zip file from gitlab and do the following:
+Alternatively, one can download the zip file from github and do the following:
 
 1.  Save the zip file to `H:\` but do not unzip
 2.  Open RStudio
@@ -37,6 +39,13 @@ Functions prefixed `nice_` indicate that they format values for nice printing in
 Functions prefixed `kh03_` indicate functions for use in the preparation of the kh03 denominator data.
 
 Functions prefixed `mf_` indicate functions for use in the preparation of the HCAI monthly factsheet for the department of health.
+
+Copyright notice
+----------------
+
+This package was developed at Public Health England and caries the Open Government Licence as a result. However, it also includes geographic data from Office for National Statistics (ONS) and so the following copyright statement also applies. Contains National Statistics data © Crown copyright and database right 2018
+
+Contains OS data © Crown copyright and database right 2018
 
 Contributions
 -------------
