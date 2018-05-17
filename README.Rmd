@@ -48,8 +48,6 @@ Functions that begin `aec_` are intended for producing tables or plots for the a
 
 Functions beginning `ann_tab_` are intended for the production of the annual tables. 
 
-Functions prefixed `nice_` indicate that they format values for nice printing in text, such as financial year, or an estimate with its' 95% confidence interval. 
-
 Functions prefixed `kh03_` indicate functions for use in the preparation of the kh03 denominator data. 
 
 Functions prefixed `mf_` indicate functions for use in the preparation of the HCAI monthly factsheet for the department of health. 

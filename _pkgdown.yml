@@ -1,0 +1,13 @@
+authors:
+  Simon Thelwall:
+  href: http://simonthelwall.github.io/
+
+reference:
+  - title: AEC functions
+    desc: Functions used in the preparation of the Annual Epidemiological Commentary
+    contents:
+    - starts_with("aec_")
+  - title: Monthly output functions
+    desc: Functions used in preparation of monthly outputs
+    contents:
+    - starts_with("mo_")

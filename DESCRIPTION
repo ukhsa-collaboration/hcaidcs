@@ -9,8 +9,8 @@ Depends:
 License: OGL
 LazyData: TRUE
 RoxygenNote: 6.0.1
-URL: https://gitlab.phe.gov.uk/Simon.Thelwall/hcaidcs
-BugReports: https://gitlab.phe.gov.uk/Simon.Thelwall/hcaidcs/issues
+URL: https://github.com/PublicHealthEngland/hcaidcs
+BugReports: https://github.com/PublicHealthEngland/hcaidcs/issues
 Imports:
     lubridate,
     stringr,
