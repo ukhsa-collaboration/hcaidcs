@@ -18,7 +18,7 @@ devtools::install_git('https://github.com/publichealthengland/hcaidcs.git')
 
 Alternatively, one can download the zip file from github and do the following:
 
-1.  Save the zip file to `H:\` but do not unzip
+1.  Save the zip file to a local drive (normally `C:`, but often `H:` if you are at PHE)\` but do not unzip
 2.  Open RStudio
 3.  Run the following line: `install.packages(file.choose(), repos=NULL)`
 4.  This will launch a file chooser where you can select the zip file you have just downloaded.
