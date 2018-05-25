@@ -18,9 +18,9 @@
 #' 2L, 3L, 4L, 5L, 6L, 1L, 2L, 3L, 4L, 5L, 6L),
 #' .Label = c("gastro", "hepatobil", "other", "respiratory", "unknown", "uti"),
 #' class = "factor"),
-#' pc = c(0.2, 0.2, 0.2, 0.2, 0.1, 0.1,
-#' 0.5, 0.2, 0.1, 0.1, 0.1, 0.3, 0.2, 0.1, 0.1, 0.1, 0.1,
-#' 0.1)), .Names = c("tto_group", "primary_focus", "pc"),
+#' pc = c(20, 20, 20, 20, 10, 10,
+#' 30, 20, 10, 10, 10, 20, 50, 10, 10, 10, 10,
+#' 10)), .Names = c("tto_group", "primary_focus", "pc"),
 #' class = "data.frame", row.names = c(NA, -18L))
 #'
 #' p <- aec_ec_source_plot(dat)
@@ -40,7 +40,7 @@ aec_ec_source_plot <- function(x){
     #facet_wrap(~tto_group) +
     ggplot2::scale_x_discrete("Days between admission and positive specimen",
                               labels = c("<2", "2-6", "\u2265 7")) +
-    ggplot2::scale_y_continuous("Per cent inpatient cases") +
+    ggplot2::scale_y_continuous("Percent inpatient cases") +
     #theme(axis.ticks = element_blank(), axis.text.x = element_blank()) +
     #scale_fill_discrete("Primary focus\n of infection")
     ggplot2::scale_fill_manual(

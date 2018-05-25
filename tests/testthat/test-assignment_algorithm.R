@@ -29,6 +29,56 @@ test_that("Cases with 13 or 14 and provisional assignment are Third Party", {
     "Third Party")
 })
 
+test_that("Cases with 13 or 14 and final assignment are Third Party", {
+  expect_equal(
+    assignment_algorithm(pircasestatus = "Final Assignment",
+                         assignmentmethodcode = 13,
+                         patientlocation = "NHS Acute Trust",
+                         patientcategory = "In-patient",
+                         provisionalorganisationname = "Some trust",
+                         finalpirassignedorganisationtype = NA) ,
+    "Third Party")
+
+  expect_equal(
+    assignment_algorithm(pircasestatus = "Final Assignment",
+                         assignmentmethodcode = 14,
+                         patientlocation = "NHS Acute Trust",
+                         patientcategory = "In-patient",
+                         provisionalorganisationname = "Some trust",
+                         finalpirassignedorganisationtype = NA) ,
+    "Third Party")
+
+  expect_equal(
+    assignment_algorithm(pircasestatus = "Final Assignment",
+                         assignmentmethodcode = 14,
+                         patientlocation = "NHS Acute Trust",
+                         patientcategory = "In-patient",
+                         provisionalorganisationname = "Some CCG",
+                         finalpirassignedorganisationtype = NA) ,
+    "Third Party")
+})
+
+test_that("Cases with non-numeric assignmentmethodcode do work", {
+  expect_equal(
+    assignment_algorithm(pircasestatus = "final assignment",
+                         assignmentmethodcode = "9",
+                         patientlocation = "NHS Acute Trust",
+                         patientcategory = "In-patient",
+                         provisionalorganisationname = "some trust",
+                         finalpirassignedorganisationtype = "NHS Trust"),
+    "NHS Trust"
+  )
+  expect_equal(
+    assignment_algorithm(pircasestatus = "final assignment",
+                         assignmentmethodcode = "09",
+                         patientlocation = "NHS Acute Trust",
+                         patientcategory = "In-patient",
+                         provisionalorganisationname = "some trust",
+                         finalpirassignedorganisationtype = "NHS Trust"),
+    "NHS Trust"
+  )
+})
+
 test_that("Cases with assignmentmethodcode < 10 give final pir status as new status", {
   expect_equal(
     assignment_algorithm(pircasestatus = "final assignment",

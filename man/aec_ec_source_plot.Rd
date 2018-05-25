@@ -29,9 +29,9 @@ primary_focus = structure(c(1L, 2L, 3L, 4L, 5L, 6L, 1L,
 2L, 3L, 4L, 5L, 6L, 1L, 2L, 3L, 4L, 5L, 6L),
 .Label = c("gastro", "hepatobil", "other", "respiratory", "unknown", "uti"),
 class = "factor"),
-pc = c(0.2, 0.2, 0.2, 0.2, 0.1, 0.1,
-0.5, 0.2, 0.1, 0.1, 0.1, 0.3, 0.2, 0.1, 0.1, 0.1, 0.1,
-0.1)), .Names = c("tto_group", "primary_focus", "pc"),
+pc = c(20, 20, 20, 20, 10, 10,
+30, 20, 10, 10, 10, 20, 50, 10, 10, 10, 10,
+10)), .Names = c("tto_group", "primary_focus", "pc"),
 class = "data.frame", row.names = c(NA, -18L))
 
 p <- aec_ec_source_plot(dat)

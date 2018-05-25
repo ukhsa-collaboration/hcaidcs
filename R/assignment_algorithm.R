@@ -51,6 +51,9 @@ assignment_algorithm <- function(pircasestatus, assignmentmethodcode, patientloc
   provisionalorganisationname <- tolower(as.character(provisionalorganisationname))
   finalpirassignedorganisationtype <- tolower(as.character(finalpirassignedorganisationtype))
   trust_pat_locs <- c("In-patient", "Day patient", "Emergency Assessment", "Unknown", "")
+  assignmentmethodcode <- as.numeric(assignmentmethodcode)
+  assertthat::assert_that(all(assignmentmethodcode %in% c(1:15)), "assignmentmethodcode must be in range 1 to 15")
+
   z <- ifelse(
     pircasestatus == "final assignment" & assignmentmethodcode <= 9,
     finalpirassignedorganisationtype,

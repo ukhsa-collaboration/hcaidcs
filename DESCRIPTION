@@ -2,7 +2,11 @@ Package: hcaidcs
 Type: Package
 Title: R functions for the mandatory surveillance of bacteraemia and C. difficile infection
 Version: 0.0.0.9000
-Authors@R: person("Simon", "Thelwall", email = "simon.thelwall@phe.gov.uk", role = c("aut", "cre"))
+Authors@R: c(
+    person("Simon", "Thelwall", , "simon.thelwall@phe.gov.uk", role = c("aut", "cre"), 
+      comment = c(ORCID = "0000-0002-0434-2724")
+    )
+    )
 Description: Functions for working with data from the HCAI DCS.
 Depends:
     R (>= 2.10)
@@ -48,6 +52,7 @@ Collate:
     'data_compare.R'
     'date_end_period.R'
     'date_start_period.R'
+    'date_to_fmonth.R'
     'date_to_fq.R'
     'date_to_fyear.R'
     'days_in_cyear.R'
