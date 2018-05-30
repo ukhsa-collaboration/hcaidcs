@@ -34,6 +34,8 @@ pc = c(20, 20, 20, 20, 10, 10,
 10)), .Names = c("tto_group", "primary_focus", "pc"),
 class = "data.frame", row.names = c(NA, -18L))
 
+pal <- brewer_phe("phe", length(levels(dat$primary_focus)))
+
 p <- aec_ec_source_plot(dat)
 p
 }

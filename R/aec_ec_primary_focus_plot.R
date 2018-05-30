@@ -23,6 +23,8 @@
 #' 10)), .Names = c("tto_group", "primary_focus", "pc"),
 #' class = "data.frame", row.names = c(NA, -18L))
 #'
+#' pal <- brewer_phe("phe", length(levels(dat$primary_focus)))
+#'
 #' p <- aec_ec_source_plot(dat)
 #' p
 #' }
@@ -33,7 +35,11 @@ aec_ec_source_plot <- function(x){
     stop("ggplot2 needed for this function to work. Please install it.",
          call. = FALSE)
   }
-  ggplot2::ggplot(x, ggplot2::aes(x= tto_group, y = pc, group = tto_group,
+  assertthat::assert_that(is.factor(x$primary_focus), msg = "primary_focus must be a factor")
+
+  cc <- scales::seq_gradient_pal(low = "#08519C", high = "#C6DBEF", space = "Lab")((unique(as.numeric(dat$primary_focus)))/length(levels(dat$primary_focus)))
+
+  ggplot2::ggplot(x, ggplot2::aes(x = tto_group, y = pc, group = tto_group,
                         fill = primary_focus)
   ) +
     ggplot2::geom_bar(stat = "identity") +
@@ -41,11 +47,10 @@ aec_ec_source_plot <- function(x){
     ggplot2::scale_x_discrete("Days between admission and positive specimen",
                               labels = c("<2", "2-6", "\u2265 7")) +
     ggplot2::scale_y_continuous("Percent inpatient cases") +
-    #theme(axis.ticks = element_blank(), axis.text.x = element_blank()) +
-    #scale_fill_discrete("Primary focus\n of infection")
+    # ggplot2::theme(axis.ticks = element_blank(), axis.text.x = element_blank()) +
+    # scale_fill_discrete("Primary focus\n of infection")
     ggplot2::scale_fill_manual(
-      "Primary focus\n of infection",
-      values = c("#08519C", "#2E6CAC", "#5488BD", "#7AA3CD", "#A0BFDE",
-                 "#C6DBEF"),
+      "Primary focus\nof infection",
+      values = cc,
       guide = ggplot2::guide_legend(reverse = TRUE))
 }
