@@ -21,16 +21,12 @@ fy_long <- function(date_var){
     stop("lubridate is needed for this function to work. Please install it.",
          call. = FALSE)
   }
-  check_date_class(date_var)
+  assertthat::assert_that(lubridate::is.Date(date_var), msg = "date_var is not a date")
+  # check_date_class(date_var)
   qtr <- lubridate::quarter(date_var)
   this_year <- as.numeric(lubridate::year(date_var))
-  if (qtr > 1) {
-    start_year <- this_year
-    end_year <- this_year+1
-  } else {
-    start_year <- this_year-1
-    end_year <- this_year
-  }
+  start_year <- ifelse(qtr > 1, this_year, this_year - 1)
+  end_year <- ifelse(qtr > 1, this_year + 1, this_year)
   z <- paste("April", start_year, "to March", end_year)
   return(z)
 }
