@@ -17,8 +17,33 @@ fq_short <- function(date_var){
     stop("lubridate is needed for this function to work. Please install it.",
          call. = FALSE)
   }
-  check_date_class(date_var)
+  assertthat::assert_that(lubridate::is.Date(date_var),
+               msg = "date_var must be a date")
   qtr <- lubridate::quarter(date_var)
   qtr <- ifelse(qtr == 1, 4, qtr - 1)
   return(qtr)
+}
+
+#' fq_short_to_date
+#'
+#' Convert short financial quarter to date
+#' @seealso \code{\link{fq_short}}
+#'
+#' @param x A short financial year quarter e.g. 20171
+#' @return The first day of the first month of the financial year quarter
+#' @examples
+#' fq_short_to_date(20124)
+#' @export
+
+fq_short_to_date <- function(x){
+  assertthat::are_equal(nchar(as.character(x)), 5)
+
+  qtr <- as.numeric(substr(x, 5, 5))
+  year <- as.numeric(substr(x, 1, 4))
+  month <- ifelse(qtr == 1, "January",
+                  ifelse(qtr == 2, "April",
+                         ifelse(qtr == 3, "June", "October")))
+  cyear <- ifelse(qtr == 4, year + 1, year)
+  z <- lubridate::dmy(paste0("01-", month, "-", cyear))
+  return(z)
 }

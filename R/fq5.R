@@ -12,6 +12,8 @@
 #' @export
 
 fq5 <- function(x){
+  assertthat::assert_that(lubridate::is.Date(x),
+                          msg = "x must be a date")
   qtr <- fq_short(x)
   yr <- ifelse(qtr == 4,
                lubridate::year(x) - 1,
