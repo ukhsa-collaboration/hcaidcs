@@ -41,7 +41,7 @@ Functions prefixed `mf_` indicate functions for use in the preparation of the HC
 Copyright notice
 ----------------
 
-This package was developed at Public Health England and caries the Open Government Licence as a result. However, it also includes geographic data from Office for National Statistics (ONS) and so the following copyright statement also applies. Contains National Statistics data © Crown copyright and database right 2018
+This package was developed at Public Health England and carries the Open Government Licence as a result. However, it also includes geographic data from Office for National Statistics (ONS) and so the following copyright statement also applies. Contains National Statistics data © Crown copyright and database right 2018
 
 Contains OS data © Crown copyright and database right 2018
 

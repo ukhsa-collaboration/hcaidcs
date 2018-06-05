@@ -7,7 +7,21 @@ reference:
     desc: Functions used in the preparation of the Annual Epidemiological Commentary
     contents:
     - starts_with("aec_")
+    - starts_with("ann_")
   - title: Monthly output functions
     desc: Functions used in preparation of monthly outputs
     contents:
     - starts_with("mo_")
+  - title: Date functions
+    desc: Functions used to manipulate dates and time periods into those used in routine outputs
+    contents:
+    - starts_with("cyear_")
+    - starts_with("date_")
+    - starts_with("days_")
+    - starts_with("fq_")
+    - starts_with("fy_")
+    - starts_with("fyear_")
+    - starts_with("ordered_")
+  - title: "Other functions"
+    contents:
+    - matches('^(?!.*(aec_|ann_|mo_)).*$')

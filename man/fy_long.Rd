@@ -28,4 +28,6 @@ fy_long(x)
 \code{\link{fy_long_short}}
 
 \code{\link{ordered_fin_qtr}}
+
+\code{\link{fy_six_to_long}}
 }
