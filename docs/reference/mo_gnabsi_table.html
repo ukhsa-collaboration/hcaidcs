@@ -75,10 +75,18 @@ The function will filter the data to a given collection, i.e. "K. pneumoniae", "
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/PublicHealthEngland/hcaidcs">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -92,7 +100,7 @@ The function will filter the data to a given collection, i.e. "K. pneumoniae", "
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Monthly table for Gram-negative blood stream infection data</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/mo_gnabsi_table.R'><code>R/mo_gnabsi_table.R</code></a></small>
     <div class="hidden name"><code>mo_gnabsi_table.Rd</code></div>
     </div>
 
@@ -129,8 +137,14 @@ The function will filter the data to a given collection, i.e. "K. pneumoniae", "
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
-<span class='fu'>data</span>(<span class='no'>monthly_ccg_data_raw</span>)
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: package ‘dplyr’ was built under R version 3.4.4</span></div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:lubridate’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    intersect, setdiff, union</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='fu'>data</span>(<span class='no'>monthly_ccg_data_raw</span>)
 <span class='fu'>head</span>(<span class='no'>monthly_ccg_data_raw</span>)</div><div class='output co'>#&gt;   data_collection ccg_code fyear6 year_no month_no total_cases apportioned
 #&gt; 1            MRSA      00C 201617    2016       10           2           1
 #&gt; 2            MRSA      00D 201617    2016        7           1           1
@@ -146,8 +160,7 @@ The function will filter the data to a given collection, i.e. "K. pneumoniae", "
 #&gt; 5             1       0               0      8     November
 #&gt; 6             1       0               0     12      January</div><div class='input'><span class='no'>ccg_dat_all</span> <span class='kw'>&lt;-</span> <span class='no'>monthly_ccg_data_raw</span> <span class='kw'>%&gt;%</span>
     <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>rename</a></span>(<span class='kw'>org_code</span> <span class='kw'>=</span> <span class='no'>ccg_code</span>, <span class='kw'>ho</span> <span class='kw'>=</span> <span class='no'>apportioned</span>) <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>data_collection</span> <span class='kw'>=</span> <span class='st'>"E. coli"</span>, <span class='kw'>co</span> <span class='kw'>=</span> <span class='no'>total_cases</span> - <span class='no'>ho</span>)
-
+    <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>data_collection</span> <span class='kw'>=</span> <span class='st'>"E. coli"</span>, <span class='kw'>co</span> <span class='kw'>=</span> <span class='no'>total_cases</span> - <span class='no'>ho</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: package ‘bindrcpp’ was built under R version 3.4.4</span></div><div class='input'>
 <span class='no'>my_out_dat</span> <span class='kw'>&lt;-</span> <span class='fu'>mo_gnabsi_table</span>(<span class='kw'>data_fm</span> <span class='kw'>=</span> <span class='no'>ccg_dat_all</span>, <span class='kw'>collection</span> <span class='kw'>=</span> <span class='st'>"E. coli"</span>,
     <span class='kw'>org_type</span> <span class='kw'>=</span> <span class='st'>"ccg"</span>)
 

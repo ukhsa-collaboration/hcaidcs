@@ -75,10 +75,18 @@ in any report." />
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/PublicHealthEngland/hcaidcs">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -92,7 +100,7 @@ in any report." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Replicate the PIR assignment algorithm</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/assignment_algorithm.R'><code>R/assignment_algorithm.R</code></a></small>
     <div class="hidden name"><code>assignment_algorithm.Rd</code></div>
     </div>
 
@@ -150,8 +158,7 @@ in any report.</p>
         <span class='kw'>patientlocation</span> <span class='kw'>=</span> <span class='no'>assignment_data</span>$<span class='no'>patientlocation</span>,
         <span class='kw'>patientcategory</span> <span class='kw'>=</span> <span class='no'>assignment_data</span>$<span class='no'>patient_category</span>,
         <span class='kw'>provisionalorganisationname</span> <span class='kw'>=</span> <span class='no'>assignment_data</span>$<span class='no'>provisionalorganisationname</span>,
-        <span class='kw'>finalpirassignedorganisationtype</span> <span class='kw'>=</span> <span class='no'>assignment_data</span>$<span class='no'>finalpirassignedorganisation</span>)
-<span class='no'>assignment_data</span></div><div class='output co'>#&gt;             pircasestatus assignmentmethodcode             patientlocation
+        <span class='kw'>finalpirassignedorganisationtype</span> <span class='kw'>=</span> <span class='no'>assignment_data</span>$<span class='no'>finalpirassignedorganisation</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: coercing argument of type 'double' to logical</span></div><div class='input'><span class='no'>assignment_data</span></div><div class='output co'>#&gt;             pircasestatus assignmentmethodcode             patientlocation
 #&gt; 1        Final assignment                    9             NHS Acute Trust
 #&gt; 2        Final assignment                   10             NHS Acute Trust
 #&gt; 3        Final assignment                   10 Independent Sector Provider
@@ -203,8 +210,7 @@ in any report.</p>
         <span class='kw'>patientlocation</span> <span class='kw'>=</span> <span class='no'>dat2</span>$<span class='no'>patientlocation</span>,
         <span class='kw'>patientcategory</span> <span class='kw'>=</span> <span class='no'>dat2</span>$<span class='no'>patient_category</span>,
         <span class='kw'>provisionalorganisationname</span> <span class='kw'>=</span> <span class='no'>dat2</span>$<span class='no'>provisionalorganisationname</span>,
-        <span class='kw'>finalpirassignedorganisationtype</span> <span class='kw'>=</span> <span class='no'>dat2</span>$<span class='no'>finalpirassignedorganisation</span>)
-<span class='no'>dat2</span></div><div class='output co'>#&gt;             pircasestatus assignmentmethodcode patientlocation
+        <span class='kw'>finalpirassignedorganisationtype</span> <span class='kw'>=</span> <span class='no'>dat2</span>$<span class='no'>finalpirassignedorganisation</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: coercing argument of type 'double' to logical</span></div><div class='input'><span class='no'>dat2</span></div><div class='output co'>#&gt;             pircasestatus assignmentmethodcode patientlocation
 #&gt; 13 Provisional assignment                   NA NHS Acute Trust
 #&gt;    provisionalorganisationname finalpirassignedorganisation patient_category
 #&gt; 13      NHS Central London CCG                    NHS Trust       In-patient
@@ -216,8 +222,7 @@ in any report.</p>
         <span class='kw'>patientlocation</span> <span class='kw'>=</span> <span class='no'>assignment_data2</span>$<span class='no'>patient_location</span>,
         <span class='kw'>patientcategory</span> <span class='kw'>=</span> <span class='no'>assignment_data2</span>$<span class='no'>patient_category</span>,
         <span class='kw'>provisionalorganisationname</span> <span class='kw'>=</span> <span class='no'>assignment_data2</span>$<span class='no'>provisional_organisation_name</span>,
-        <span class='kw'>finalpirassignedorganisationtype</span> <span class='kw'>=</span> <span class='no'>assignment_data2</span>$<span class='no'>final_pir_assigned_organisation_type</span>)
-<span class='no'>assignment_data2</span></div><div class='output co'>#&gt;           pir_case_status assignment_method_code patient_location
+        <span class='kw'>finalpirassignedorganisationtype</span> <span class='kw'>=</span> <span class='no'>assignment_data2</span>$<span class='no'>final_pir_assigned_organisation_type</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: coercing argument of type 'double' to logical</span></div><div class='input'><span class='no'>assignment_data2</span></div><div class='output co'>#&gt;           pir_case_status assignment_method_code patient_location
 #&gt; 1  Provisional Assignment                     NA  NHS Acute Trust
 #&gt; 2  Provisional Assignment                     NA  NHS Acute Trust
 #&gt; 3  Provisional Assignment                     NA  NHS Acute Trust

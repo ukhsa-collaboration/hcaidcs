@@ -73,10 +73,18 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/PublicHealthEngland/hcaidcs">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -90,7 +98,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Create months for monthly outputs</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/mo_curr_months.R'><code>R/mo_curr_months.R</code></a></small>
     <div class="hidden name"><code>mo_curr_months.Rd</code></div>
     </div>
 
@@ -117,10 +125,10 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>mo_curr_months</span>(<span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/today.html'>today</a></span>())</div><div class='output co'>#&gt;  [1] May 2017       June 2017      July 2017      August 2017    September 2017
-#&gt;  [6] October 2017   November 2017  December 2017  January 2018   February 2018 
-#&gt; [11] March 2018     April 2018     May 2018      
-#&gt; 13 Levels: May 2017 June 2017 July 2017 August 2017 ... May 2018</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>mo_curr_months</span>(<span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/today.html'>today</a></span>())</div><div class='output co'>#&gt;  [1] June 2017      July 2017      August 2017    September 2017 October 2017  
+#&gt;  [6] November 2017  December 2017  January 2018   February 2018  March 2018    
+#&gt; [11] April 2018     May 2018       June 2018     
+#&gt; 13 Levels: June 2017 July 2017 August 2017 September 2017 ... June 2018</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

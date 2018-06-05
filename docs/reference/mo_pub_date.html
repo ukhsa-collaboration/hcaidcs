@@ -77,10 +77,18 @@ This assumption can be over-ridden by supplying an actual date as an argument." 
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/PublicHealthEngland/hcaidcs">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -94,7 +102,7 @@ This assumption can be over-ridden by supplying an actual date as an argument." 
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Nicely formats date of publication for monthly data</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/mo_pub_date.R'><code>R/mo_pub_date.R</code></a></small>
     <div class="hidden name"><code>mo_pub_date.Rd</code></div>
     </div>
 
@@ -125,7 +133,7 @@ This assumption can be over-ridden by supplying an actual date as an argument.</
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>mo_pub_date</span>()</div><div class='output co'>#&gt; [1] "Wednesday, June 06, 2018"</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span>(<span class='st'>"01/02/2015"</span>)
+    <pre class="examples"><div class='input'><span class='fu'>mo_pub_date</span>()</div><div class='output co'>#&gt; [1] "Wednesday, July 04, 2018"</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span>(<span class='st'>"01/02/2015"</span>)
 <span class='fu'>mo_pub_date</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "Wednesday, February 04, 2015"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

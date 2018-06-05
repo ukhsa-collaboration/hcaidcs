@@ -99,6 +99,7 @@ Collate:
     'organism_labeller.R'
     'patloc_for_pir_assignment.R'
     'pir_org_type.R'
+    'pir_qtr_testdat.R'
     'popn_boilerplate.R'
     'provis_orgname.R'
     'qec_age_table.R'
