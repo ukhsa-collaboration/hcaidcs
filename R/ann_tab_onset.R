@@ -136,7 +136,7 @@ ann_tab_onset_annual <- function(dat, timeperiod, org_code, denominator,
     dplyr::select(-!!denominator, -table_type) %>%
     tidyr::gather(key = "measure", value = "value", -!!timeperiod, -timeperiod2,
                   -!!org_code, -onset_rate_type) %>%
-    dplyr::mutate(measure = case_when(
+    dplyr::mutate(measure = dplyr::case_when(
       measure == gsub("~", "", rlang::expr_text(total)) ~ "Total cases*",
       measure == gsub("~", "", rlang::expr_text(ho)) & onset_rate_type == "HO"  ~ "HO cases**",
       measure == gsub("~", "", rlang::expr_text(ho)) & onset_rate_type == "CO" ~ "HO cases***",
@@ -146,7 +146,7 @@ ann_tab_onset_annual <- function(dat, timeperiod, org_code, denominator,
       measure == "onset_rate" ~ paste0(onset_rate_type, " rate"),
       TRUE ~ measure
     )) %>%
-    select(-onset_rate_type)
+    dplyr::select(-onset_rate_type)
 
 
     z <- z %>%
