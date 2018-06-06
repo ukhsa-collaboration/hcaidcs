@@ -108,3 +108,46 @@ test_that("Rate calculations are correct", {
     10000
   )
 })
+
+context("Testing annual tables - quarterly counts")
+
+test_that("Assertions work for ann_tab_onset_qtrly", {
+  test_dat <- "x"
+  expect_error(ann_tab_onset_qtrly(dat = test_dat, timeperiod = "time_period",
+                                    org_code = "org_code",
+                                    total= "this_is_the_total", ho = "ho",
+                                    co = "co", org_type = "trust"))
+})
+
+test_that("ann_tab_onset_qtrly produces expected results", {
+  ann_onset_testdat <- data.frame(
+    stringsAsFactors=FALSE,
+    time_period = c(20141L, 20142L, 20153L, 20164L, 20141L, 20152L, 20163L,
+                    20174L),
+    org_code = c("W1A", "W1A", "W1A", "W1A", "E17", "E17", "E17","E17"),
+    denominator = c(100L, 100L, 100L, 100L, 100L, 100L, 100L, 100L),
+    this_is_the_total = c(10L, 20L, 30L, 40L, 50L, 0L, 40L, 30L),
+    ho = c(8L, 16L, 22L, 31L, 40L, 0L, 35L, 15L),
+    co = c(2L, 4L, 8L, 9L, 10L, 0L, 5L, 15L),
+    pir_trust_assigned = c(4L, 10L, 5L, 30L, 10L, 0L, 5L, 5L),
+    pir_ccg_assigned = c(3L, 5L, 20L, 5L, 40L, 0L, 30L, 20L),
+    third_party = c(3L, 5L, 5L, 5L, 0L, 0L, 5L, 5L))
+
+  expect_equal(
+    ann_tab_onset_qtrly(ann_onset_testdat, timeperiod = time_period,
+                        org_code = org_code, total= this_is_the_total, ho = ho,
+                        co = co, org_type = "trust")[1,2],
+    50)
+
+  expect_equal(
+    ann_tab_onset_qtrly(ann_onset_testdat, timeperiod = time_period,
+                        org_code = org_code, total= this_is_the_total, ho = ho,
+                        co = co, org_type = "trust")[1,3],
+    40)
+
+  expect_equal(
+    ann_tab_onset_qtrly(ann_onset_testdat, timeperiod = time_period,
+                        org_code = org_code, total= this_is_the_total, ho = ho,
+                        co = co, org_type = "trust")[1,4],
+    10)
+    })

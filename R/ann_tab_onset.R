@@ -170,16 +170,16 @@ ann_tab_onset_annual <- function(dat, timeperiod, org_code, denominator,
 #' @seealso \code{\link{fy_long}}
 #' @seealso \code{\link{ordered_fin_qtr}}
 #'
+#' @param dat A data frame with the necessary columns
 #' @param timeperiod A financial year quarter
 #' @param org_code Character vector giving organisation code
-#' @param denominator The denominator value
 #' @param total Total count of cases
 #' @param ho Count of hospital-onset cases
 #' @param co Count of community-onset cases
 #' @param org_type The only parameter which should not be a column in the data frame a character giving either "Trust" or "CCG"
 #'
 #' @return A wide dataframe with total counts, total rates, onset count, onset rate, other onset count by financial year
-
+#' @importFrom magrittr %>%
 #' @examples
 #'
 #' ann_onset_testdat <- data.frame(stringsAsFactors=FALSE,
@@ -210,6 +210,10 @@ ann_tab_onset_qtrly <- function(dat, timeperiod, org_code, total, ho, co,
     stop("tidyr needed for this function to work. Please install it.",
          call. = FALSE)
   }
+  if (!requireNamespace("rlang", quietly = TRUE)) {
+    stop("rlang needed for this function to work. Please install it.",
+         call. = FALSE)
+  }
 
   assertthat::assert_that(is.data.frame(dat), msg = "dat must be a dataframe")
 
@@ -230,7 +234,13 @@ ann_tab_onset_qtrly <- function(dat, timeperiod, org_code, total, ho, co,
     ) %>%
     dplyr::select(-qtr_date) %>%
     tidyr::gather(key = "measure", value = "value", -!!timeperiod, -timeperiod2,
-                  -!!org_code)
+                  -!!org_code) %>%
+    dplyr::mutate(measure = dplyr::case_when(
+      measure == gsub("~", "", rlang::expr_text(total)) ~ "Total cases",
+      measure == gsub("~", "", rlang::expr_text(ho)) ~ "HO cases",
+      measure == gsub("~", "", rlang::expr_text(co)) ~ "CO cases",
+      TRUE ~ measure
+    ))
 
   z <- z %>%
     dplyr::mutate(measure = factor(measure, levels = onset_levels)) %>%
@@ -240,7 +250,7 @@ ann_tab_onset_qtrly <- function(dat, timeperiod, org_code, total, ho, co,
                     factor(.$time_measure,
                            levels = as.ordered(unique(.$time_measure)))) %>%
     dplyr::select(-time_period) %>%
-    tidyr::spread(key = time_measure, value = value)
+    tidyr::spread(key = time_measure, value = value, fill = 0)
 
   return(z)
 }
