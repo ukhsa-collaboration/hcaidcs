@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compare two data frames to identify cells which are different — data_compare • hcaidcs</title>
+<title>fq_short_to_date — fq_short_to_date • hcaidcs</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,11 +28,9 @@
 
 
 
-<meta property="og:title" content="Compare two data frames to identify cells which are different — data_compare" />
+<meta property="og:title" content="fq_short_to_date — fq_short_to_date" />
 
-<meta property="og:description" content="Used to identify cells which have changed between publications for later highlighting in Excel export.
-With thanks to Amy Mikhail for writing this function for me.
-Not currently production." />
+<meta property="og:description" content="Convert short financial quarter to date" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,59 +97,39 @@ Not currently production." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Compare two data frames to identify cells which are different</h1>
-    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/data_compare.R'><code>R/data_compare.R</code></a></small>
-    <div class="hidden name"><code>data_compare.Rd</code></div>
+    <h1>fq_short_to_date</h1>
+    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/fq_short.R'><code>R/fq_short.R</code></a></small>
+    <div class="hidden name"><code>fq_short_to_date.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Used to identify cells which have changed between publications for later highlighting in Excel export.
-With thanks to Amy Mikhail for writing this function for me.
-Not currently production.</p>
+    <p>Convert short financial quarter to date</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>data_compare</span>(<span class='no'>currentdf</span>, <span class='no'>lastdf</span>)</pre>
+    <pre class="usage"><span class='fu'>fq_short_to_date</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>currentdf</th>
-      <td><p>A data frame in wide format giving the values for the current publication.</p></td>
-    </tr>
-    <tr>
-      <th>lastdf</th>
-      <td><p>A data frame in wide format giving the values for the most recent publication prior to the one being prepared.</p></td>
+      <th>x</th>
+      <td><p>A short financial year quarter e.g. 20171</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A matrix specifying cells that have changed.</p>
+    <p>The first day of the first month of the financial year quarter</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='fq_short.html'>fq_short</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"># NOT RUN {
-dontrun added while in development otherwise travis fails
-last_pub <- data.frame(org = c("a", "b", "c"),
-jan16 = sample(1:100, 3, replace=TRUE),
-feb16 = sample(1:100, 3, replace=TRUE),
-mar16 = sample(1:100, 3, replace=TRUE),
-jan17 = sample(1:100, 3, replace=TRUE))
-
-# copy the last pub, but drop the oldest month
-this_pub <- last_pub[c(1,3:5)]
-# add new month
-this_pub$feb17 <- sample(1:100, 3, replace=TRUE)
-# change one value only
-this_pub$mar16[2] <- this_pub$mar16[2] + 1
-# Checki it out:
-this_pub
-highlight <- data_compare(this_pub, last_pub)
-# }
-</pre>
+    <pre class="examples"><div class='input'><span class='fu'>fq_short_to_date</span>(<span class='fl'>20124</span>)</div><div class='output co'>#&gt; [1] "2013-10-01"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -159,6 +137,8 @@ highlight <- data_compare(this_pub, last_pub)
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

@@ -36,13 +36,14 @@ fq_short <- function(date_var){
 #' @export
 
 fq_short_to_date <- function(x){
-  assertthat::are_equal(nchar(as.character(x)), 5)
+  # assertthat::assert_that(assertthat::are_equal(nchar(as.character(x)), 5),
+  #                         msg = "x must be 5 digits long")
 
   qtr <- as.numeric(substr(x, 5, 5))
   year <- as.numeric(substr(x, 1, 4))
-  month <- ifelse(qtr == 1, "January",
-                  ifelse(qtr == 2, "April",
-                         ifelse(qtr == 3, "June", "October")))
+  month <- ifelse(qtr == 1, "April",
+                  ifelse(qtr == 2, "July",
+                         ifelse(qtr == 3, "October", "January")))
   cyear <- ifelse(qtr == 4, year + 1, year)
   z <- lubridate::dmy(paste0("01-", month, "-", cyear))
   return(z)

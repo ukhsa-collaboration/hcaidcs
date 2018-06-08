@@ -19,3 +19,24 @@ test_that("Function returns correct quarter", {
   expect_equal(date_to_fq(z), 20172)
   expect_equal(date_to_fq(a), 20173)
 })
+
+context("Check that fq_short_to_date works")
+
+test_that("Function returns a date", {
+  expect_true(lubridate::is.Date(fq_short_to_date(20091)))
+})
+
+# test_that("Assertions work", {
+#   expect_error(fq_short_to_date(200912))
+# })
+
+test_that("Function returns correct date", {
+  expect_equal(fq_short_to_date(20091),
+               as.Date("01/04/2009", format = "%d/%m/%Y"))
+  expect_equal(fq_short_to_date(20092),
+               as.Date("01/07/2009", format = "%d/%m/%Y"))
+  expect_equal(fq_short_to_date(20093),
+               as.Date("01/10/2009", format = "%d/%m/%Y"))
+  expect_equal(fq_short_to_date(20094),
+               as.Date("01/01/2010", format = "%d/%m/%Y"))
+})

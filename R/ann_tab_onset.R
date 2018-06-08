@@ -151,12 +151,12 @@ ann_tab_onset_annual <- function(dat, timeperiod, org_code, denominator,
 
     z <- z %>%
       dplyr::mutate(measure = factor(measure, levels = onset_levels)) %>%
-      dplyr::arrange(time_period, measure) %>%
+      dplyr::arrange(!!timeperiod, measure) %>%
       tidyr::unite(col = time_measure, timeperiod2, measure) %>%
       dplyr::mutate(time_measure =
                       factor(.$time_measure,
                              levels = as.ordered(unique(.$time_measure)))) %>%
-      dplyr::select(-time_period) %>%
+      dplyr::select(-!!timeperiod) %>%
       tidyr::spread(key = time_measure, value = value)
 
   return(z)
@@ -244,12 +244,12 @@ ann_tab_onset_qtrly <- function(dat, timeperiod, org_code, total, ho, co,
 
   z <- z %>%
     dplyr::mutate(measure = factor(measure, levels = onset_levels)) %>%
-    dplyr::arrange(time_period, measure) %>%
+    dplyr::arrange(!!timeperiod, measure) %>%
     tidyr::unite(col = time_measure, timeperiod2, measure) %>%
     dplyr::mutate(time_measure =
                     factor(.$time_measure,
                            levels = as.ordered(unique(.$time_measure)))) %>%
-    dplyr::select(-time_period) %>%
+    dplyr::select(-!!timeperiod) %>%
     tidyr::spread(key = time_measure, value = value, fill = 0)
 
   return(z)
