@@ -154,7 +154,8 @@ The function will filter the data to a given collection, i.e. "K. pneumoniae", "
 #&gt; 5             1       0               0      8     November
 #&gt; 6             1       0               0     12      January</div><div class='input'><span class='no'>ccg_dat_all</span> <span class='kw'>&lt;-</span> <span class='no'>monthly_ccg_data_raw</span> <span class='kw'>%&gt;%</span>
     <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>rename</a></span>(<span class='kw'>org_code</span> <span class='kw'>=</span> <span class='no'>ccg_code</span>, <span class='kw'>ho</span> <span class='kw'>=</span> <span class='no'>apportioned</span>) <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>data_collection</span> <span class='kw'>=</span> <span class='st'>"E. coli"</span>, <span class='kw'>co</span> <span class='kw'>=</span> <span class='no'>total_cases</span> - <span class='no'>ho</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: package ‘bindrcpp’ was built under R version 3.4.4</span></div><div class='input'>
+    <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>data_collection</span> <span class='kw'>=</span> <span class='st'>"E. coli"</span>, <span class='kw'>co</span> <span class='kw'>=</span> <span class='no'>total_cases</span> - <span class='no'>ho</span>)
+
 <span class='no'>my_out_dat</span> <span class='kw'>&lt;-</span> <span class='fu'>mo_gnabsi_table</span>(<span class='kw'>data_fm</span> <span class='kw'>=</span> <span class='no'>ccg_dat_all</span>, <span class='kw'>collection</span> <span class='kw'>=</span> <span class='st'>"E. coli"</span>,
     <span class='kw'>org_type</span> <span class='kw'>=</span> <span class='st'>"ccg"</span>)
 
