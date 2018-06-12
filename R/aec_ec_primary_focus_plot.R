@@ -37,7 +37,7 @@ aec_ec_source_plot <- function(x){
   }
   assertthat::assert_that(is.factor(x$primary_focus), msg = "primary_focus must be a factor")
 
-  cc <- scales::seq_gradient_pal(low = "#08519C", high = "#C6DBEF", space = "Lab")((unique(as.numeric(dat$primary_focus)))/length(levels(dat$primary_focus)))
+  cc <- scales::seq_gradient_pal(low = "#08519C", high = "#C6DBEF", space = "Lab")((unique(as.numeric(x$primary_focus)))/length(levels(x$primary_focus)))
 
   ggplot2::ggplot(x, ggplot2::aes(x = tto_group, y = pc, group = tto_group,
                         fill = primary_focus)

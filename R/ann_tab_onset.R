@@ -157,7 +157,8 @@ ann_tab_onset_annual <- function(dat, timeperiod, org_code, denominator,
                       factor(.$time_measure,
                              levels = as.ordered(unique(.$time_measure)))) %>%
       dplyr::select(-!!timeperiod) %>%
-      tidyr::spread(key = time_measure, value = value)
+      # This should probably be an expand poss nesting, earlier up.
+      tidyr::spread(key = time_measure, value = value, fill = 0)
 
   return(z)
 }
