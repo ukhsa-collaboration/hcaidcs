@@ -48,4 +48,4 @@ Contains OS data © Crown copyright and database right 2018
 Contributions
 -------------
 
-Contributions to this package are welcome. Please see the [Contribution guidelines](http://bioinformatics-git.phe.gov.uk/Simon.Thelwall/hcaidcs/blob/master/CONTRIBUTING.md).
+Contributions to this package are welcome. Please see the [Contribution guidelines](https://github.com/PublicHealthEngland/hcaidcs/blob/master/CONTRIBUTING.md). Please also see the [Code of Conduct](https://github.com/PublicHealthEngland/hcaidcs/blob/master/CODE_OF_CONDUCT.md)

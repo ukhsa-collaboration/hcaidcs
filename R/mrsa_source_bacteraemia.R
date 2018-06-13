@@ -10,6 +10,7 @@
 #' @export
 
 mrsa_source_bacteraemia <- function(x){
+  .Deprecated("group_source_bacteraemia")
   lines <- c("CVC associated", "Dialysis line", "PVC associated", "Tunnelled IV line")
   other <- c("Endocarditis", "Osteomyelitis", "Other",
              "Prosthetic joint infection", "SSI", "Septic arthritis",

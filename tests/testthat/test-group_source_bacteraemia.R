@@ -28,7 +28,7 @@ test_that("S. aureus returns expected outputs", {
   expect_equal(as.character(group_source_bacteraemia("MRSA", "UTI")), "Others")
   expect_equal(as.character(group_source_bacteraemia("MRSA", "")), "Not reported")
   expect_equal(as.character(group_source_bacteraemia("MRSA", "Ventilator associated pneumonia")), "Others")
-  expect_equal(as.character(group_source_bacteraemia("MRSA", NA_character_)), NA_character_)
+  expect_equal(as.character(group_source_bacteraemia("MRSA", NA_character_)), "Not reported")
 })
 
 # test outputs as expected for Gram negatives
