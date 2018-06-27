@@ -289,6 +289,50 @@ test_that("Apportioning to coca works", {
       testdat$adm_12_wks, testdat$date_entered
     ), "coca")
 
+  # This shouldn't happen, but agreed change on basis that want worst case
+  # scenario to encourage trusts to enter data accurately.
+  testdat <- data.frame(
+    patient_location = "NHS Acute Trust",
+    patient_category = "In-patient",
+    date_admitted = as.Date("01/01/2017", format = "%d/%m/%Y"),
+    date_specimen = as.Date("01/01/2017", format = "%d/%m/%Y"),
+    adm_3_mos = "no",
+    adm_4_wks = "no",
+    adm_12_wks = "yes",
+    date_entered = as.Date("01/04/2017", format = "%d/%m/%Y"),
+    stringsAsFactors = FALSE)
+
+  expect_equal(
+    apportion_prior_healthcare(
+      patient_location = testdat$patient_location,
+      patient_category = testdat$patient_category,
+      testdat$date_admitted, testdat$date_specimen,
+      adm_3_mo = testdat$adm_3_mos, testdat$adm_4_wks,
+      testdat$adm_12_wks, testdat$date_entered
+    ), "coia")
+
+  # This shouldn't happen, but agreed change on basis that want worst case
+  # scenario to encourage trusts to enter data accurately.
+  testdat <- data.frame(
+    patient_location = "NHS Acute Trust",
+    patient_category = "In-patient",
+    date_admitted = as.Date("01/01/2017", format = "%d/%m/%Y"),
+    date_specimen = as.Date("01/01/2017", format = "%d/%m/%Y"),
+    adm_3_mos = "no",
+    adm_4_wks = "yes",
+    adm_12_wks = "yes",
+    date_entered = as.Date("01/04/2017", format = "%d/%m/%Y"),
+    stringsAsFactors = FALSE)
+
+  expect_equal(
+    apportion_prior_healthcare(
+      patient_location = testdat$patient_location,
+      patient_category = testdat$patient_category,
+      testdat$date_admitted, testdat$date_specimen,
+      adm_3_mo = testdat$adm_3_mos, testdat$adm_4_wks,
+      testdat$adm_12_wks, testdat$date_entered
+    ), "coha")
+
  # Changed following on 26/04/2018 after discussion with Olisa. Moved such cases from COCA to COIA
   # testdat <- data.frame(
   #   patient_location = "GP",

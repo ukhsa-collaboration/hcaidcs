@@ -15,3 +15,4 @@ This is the first public release of the HCAIDCS package.
  * `fy_long` is now vectorised.
  * `ordered_m_y` has been updated to use tidyeval and now works (fixes github issue #5)
  * `group_source_bacteraemia` now recodes `NA` to `Not reported`
+ * fixed `apportion_prior_healthcare` so that contradictory information indicating no admission in past 3 months, but admission in past 12 weeks now apportions to COIA.
