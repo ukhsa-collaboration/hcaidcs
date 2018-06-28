@@ -3,6 +3,7 @@
 export(aec_age_sex_plot)
 export(aec_age_trend_pc)
 export(aec_age_trend_rate)
+export(aec_age_trend_rate_bar)
 export(aec_age_trend_rate_pc_change)
 export(aec_create_folder_structure)
 export(aec_ec_source_plot)

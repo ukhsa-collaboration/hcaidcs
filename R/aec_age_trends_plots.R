@@ -148,6 +148,86 @@ aec_age_trend_rate <- function(collection, data, x, y, sex, group,log_scale = FA
   return(q)
 }
 
+#' aec_age_trend_rate
+#'
+#' Produce a bar graph showing the change in rate of infection over time, by age group.
+#' This replaces \code{\link{aec_age_trend_pc}} in the Annual Epidemiological Commentary.
+#' See \code{\link{age_trends_data}} for example of format for data to be used with this function.
+#' @seealso \code{\link{aec_age_trend_pc}}
+#' @seealso \code{\link{aec_age_trend_rate_pc_change}}
+#'
+#' @param collection One of CDI or Bacteraemia
+#' @param data A data frame
+#' @param x Variable giving financial year
+#' @param y Variable giving rate for age group by sex and year
+#' @param sex Variable giving the sex group
+#' @param group Variable giving age group (using mandatory age groupings)
+#' @param log_scale Logical for whether a log y scale should be used. Defaults to FALSE
+#'
+#' @return A ggplot2 object
+#' @examples
+#' data(age_trends_data)
+#' q <- aec_age_trend_rate_bar(collection = "CDI", data = age_trends_data,
+#'     x = "fyear6", y = "rate", sex = "sex", group = "age_group_new",
+#'     log_scale = FALSE)
+#' q
+#' @export
+aec_age_trend_rate_bar <- function(collection, data, x, y, sex, group,log_scale = FALSE){
+  if(!requireNamespace("ggplot2", quietly = TRUE)) {
+    stop("ggplot2 needed for this function to work. Please install it.",
+         call. = FALSE)
+  }
+  if(!requireNamespace("scales", quietly = TRUE)) {
+    stop("The package scales is needed for this function to work. Please install it.",
+         call. = FALSE)
+  }
+
+  assertthat::assert_that("age_group_new" %in% names(data),
+                          msg = "data must contain a variable named age_group_new")
+
+
+  if(tolower(collection) == "cdi"){
+    data$age_group_new <- as.character(data$age_group_new)
+    data$age_group_new = factor(data$age_group_new,
+                                levels = c("2-14", "15-44", "45-64", "65-74",
+                                  "75-84", "ge85"),
+                           labels = c("2-14", "15-44", "45-64", "65-74",
+                                      "75-84", "\u2265 85"))
+  }else if(tolower(collection) == "bacteraemia" ){
+    data$age_group_new <- as.character(data$age_group_new)
+    data$age_group_new = factor(data$age_group_new,
+                                levels = c("< 1", "2-14", "15-44", "45-64", "65-74",
+                                           "75-84", "ge85"),
+                                labels = c("< 1", "2-14", "15-44", "45-64", "65-74",
+                                           "75-84", "\u2265 85"))
+  }else{
+    stop("Please enter either CDI or Bacteraemia")
+  }
+
+  p <- ggplot2::ggplot(data = data,
+                       ggplot2::aes(x = age_group_new, y = rate, group = fyear6)) +
+    ggplot2::geom_bar(ggplot2::aes(fill = fyear6), stat = "identity",
+                      position = ggplot2::position_dodge()) +
+    ggplot2::facet_wrap( ~ sex) +
+    # ggplot2::scale_fill_manual("Financial\nyear", values = my_palette) +
+    ggplot2::scale_fill_continuous("Financial\nyear",
+                                   breaks = unique(data$fyear6),
+                                   labels = paste0(substr(unique(data$fyear6), 1,4),
+                                                   "/",
+                                                   substr(unique(data$fyear6), 5, 6)
+                                                   )
+                                   ) +
+    ggplot2::scale_x_discrete("Age group") +
+    ggplot2::scale_y_continuous("Rate, per 100,000 population",
+                                label = scales::comma,
+                                trans = ifelse(log_scale == TRUE, "log10",
+                                               "identity")) +
+    ggplot2::guides(fill = ggplot2::guide_legend(reverse = FALSE)) +
+    NULL # this is added for tinkering, allows commenting out lines without breaking
+
+  return(p)
+}
+
 #' aec_age_trend_rate_pc_change
 #'
 #' Plot the change in rate as a percentage from first year of surveillance.

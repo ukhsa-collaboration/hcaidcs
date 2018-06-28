@@ -61,7 +61,8 @@ aec_age_sex_plot <- function(x, collection = NULL){
                                            expression(phantom(x) >=85)
                                 )
       ) +
-      ggplot2::scale_y_continuous("Rate, per 100,000 population") +
+      ggplot2::scale_y_continuous("Rate, per 100,000 population",
+                                  labels = scales::commas) +
       ggplot2::scale_fill_manual("Sex", values = c("#9ECAE1", "#3182BD")) +
       ggplot2::theme(#legend.position = c(0.9, 1), legend.justification = c(1,1),
         legend.position = "bottom",
@@ -81,7 +82,8 @@ aec_age_sex_plot <- function(x, collection = NULL){
                                              expression(phantom(x) >=85)
                                   )
         ) +
-        ggplot2::scale_y_continuous("Rate, per 100,000 population") +
+        ggplot2::scale_y_continuous("Rate, per 100,000 population",
+                                    labels = scales::comma) +
         ggplot2::scale_fill_manual("Sex", values = c("#9ECAE1", "#3182BD")) +
         ggplot2::theme(#legend.position = c(0.9,1),
           legend.position = "bottom",
