@@ -62,8 +62,6 @@ aec_age_sex_plot <- function(x, collection = NULL){
                                 )
       ) +
       ggplot2::scale_y_continuous("Rate, per 100,000 population") +
-      # viridis::scale_fill_viridis("Sex", discrete = TRUE, option = "viridis",
-      #                             begin = 0.5, end = 0) +
       ggplot2::scale_fill_manual("Sex", values = c("#9ECAE1", "#3182BD")) +
       ggplot2::theme(#legend.position = c(0.9, 1), legend.justification = c(1,1),
         legend.position = "bottom",
@@ -84,8 +82,6 @@ aec_age_sex_plot <- function(x, collection = NULL){
                                   )
         ) +
         ggplot2::scale_y_continuous("Rate, per 100,000 population") +
-        # viridis::scale_fill_viridis("Sex", discrete = TRUE, option = "viridis",
-        #                             begin = 0.5, end = 0) +
         ggplot2::scale_fill_manual("Sex", values = c("#9ECAE1", "#3182BD")) +
         ggplot2::theme(#legend.position = c(0.9,1),
           legend.position = "bottom",

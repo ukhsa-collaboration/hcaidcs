@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Data for testing assignement algorithm — assignment_data • hcaidcs</title>
+<title>aec_age_trend_rate_pc_change — aec_age_trend_rate_pc_change • hcaidcs</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,9 +28,9 @@
 
 
 
-<meta property="og:title" content="Data for testing assignement algorithm — assignment_data" />
+<meta property="og:title" content="aec_age_trend_rate_pc_change — aec_age_trend_rate_pc_change" />
 
-<meta property="og:description" content="A sample data set for testing the assignment_algorithm function." />
+<meta property="og:description" content="Plot the change in rate as a percentage from first year of surveillance." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -97,38 +97,58 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Data for testing assignement algorithm</h1>
-    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>assignment_data.Rd</code></div>
+    <h1>aec_age_trend_rate_pc_change</h1>
+    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/aec_age_trends_plots.R'><code>R/aec_age_trends_plots.R</code></a></small>
+    <div class="hidden name"><code>aec_age_trend_rate_pc_change.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>A sample data set for testing the assignment_algorithm function.</p>
+    <p>Plot the change in rate as a percentage from first year of surveillance.</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>assignment_data</span></pre>
-        
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <pre class="usage"><span class='fu'>aec_age_trend_rate_pc_change</span>(<span class='no'>data</span>, <span class='no'>collection</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>data</th>
+      <td><p>a dataframe containing the following variables: fyear6, age_group_new, sex, rate</p></td>
+    </tr>
+    <tr>
+      <th>collection</th>
+      <td><p>A string giving either "CDI" or "bacteraemia". This determines the age groups</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame with 14 rows of 6 variables:</p><dl class='dl-horizontal'>
- <dt>pircasestatus</dt><dd><p>string</p></dd>
- <dt>assignmentmethodcode</dt><dd><p>Numeric giving assignment method</p></dd>
- <dt>patientlocation</dt><dd><p>string</p></dd>
- <dt>provisionalorganisationname</dt><dd><p>string</p></dd>
- <dt>finalpirassignedorganisation</dt><dd><p>string</p></dd>
- <dt>patient_category</dt><dd><p>string</p></dd>
-</dl>
+    <p>A ggplot2 object</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='aec_age_trend_pc.html'>aec_age_trend_pc</a></code></p>
+<p><code><a href='aec_age_trend_rate.html'>aec_age_trend_rate</a></code></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>age_trends_data</span>)
+<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'>aec_age_trend_rate_pc_change</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>age_trends_data</span>, <span class='kw'>collection</span> <span class='kw'>=</span> <span class='st'>"CDI"</span>)
+<span class='no'>p</span></div><div class='img'><img src='aec_age_trend_rate_pc_change-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#format">Format</a></li>
-          </ul>
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

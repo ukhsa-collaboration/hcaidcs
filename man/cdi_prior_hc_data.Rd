@@ -3,20 +3,32 @@
 \docType{data}
 \name{cdi_prior_hc_data}
 \alias{cdi_prior_hc_data}
-\title{Data for testing assignement algorithm}
-\format{A data frame with 14 rows of 6 variables:
+\title{Data for testing prior healthcare exposure monthly table}
+\format{A data frame with 13 rows of 16 variables
 \describe{
- \item{pircasestatus}{string}
- \item{assignmentmethodcode}{Numeric giving assignment method}
- \item{patientlocation}{string}
- \item{provisionalorganisationname}{string}
- \item{finalpirassignedorganisation}{string}
- \item{patient_category}{string}
+ \item{org_code}{Organisation code (CCG or NHS trust)}
+ \item{year_no}{Four-digit year}
+ \item{month_no}{Numeric month}
+ \item{data_collection}{Data collection}
+ \item{fyear6}{Financial year}
+ \item{total_cases}{Count of total cases}
+ \item{apportioned}{Count of apportioned cases}
+ \item{nhs_trust_pir}{Count of trust-assigned cases}
+ \item{ccg_pir}{Count of ccg-assigned cases}
+ \item{third_party_pir}{Count of third-party cases}
+ \item{hoha}{Count of hoha cases}
+ \item{coha}{Count of coha cases}
+ \item{coia}{Count of coia cases}
+ \item{coca}{Count of coca cases}
+ \item{phc_all_blank}{Count of cases for which all prior health care fields are all blank}
+ \item{phc_unknown_3_mo}{Count of cases for which the three-month prior health care fields is blank}
+ \item{fmonth}{Numeric financial year month (i.e. 1 = April)}
+ \item{month_string}{String cal month}
 }}
 \usage{
 cdi_prior_hc_data
 }
 \description{
-A sample data set for testing the assignment_algorithm function.
+A sample data set to test the monthly table preparation for prior healthcare exposure
 }
 \keyword{datasets}

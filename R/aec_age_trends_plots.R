@@ -153,6 +153,7 @@ aec_age_trend_rate <- function(collection, data, x, y, sex, group,log_scale = FA
 #' Plot the change in rate as a percentage from first year of surveillance.
 #'
 #' @param data a dataframe containing the following variables: fyear6, age_group_new, sex, rate
+#' @param collection A string giving either "CDI" or "bacteraemia". This determines the age groups
 #' @return A ggplot2 object
 #' @seealso \code{\link{aec_age_trend_pc}}
 #' @seealso \code{\link{aec_age_trend_rate}}

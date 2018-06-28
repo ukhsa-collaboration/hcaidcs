@@ -39,10 +39,6 @@ aec_subregion_plot <- function(x){
     stop("ggplot2 needed for this function to work. Please install it.",
          call. = FALSE)
   }
-  if (!requireNamespace("viridis", quietly = TRUE)) {
-    stop("The package *viridis* needed for this function to work. Please install it.",
-         call. = FALSE)
-  }
   ggplot2::ggplot(data = x,
                   ggplot2::aes(x = long, y = lat, group = group,
                        fill = rate,

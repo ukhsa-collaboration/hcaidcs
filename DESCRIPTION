@@ -23,7 +23,6 @@ Imports:
     magrittr,
     evaluate,
     ggplot2,
-    viridis,
     scales,
     tidyr,
     cowplot,

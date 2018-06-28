@@ -2,7 +2,19 @@
 #'
 #' Prepare quarterly MRSA PIR tables
 #'
+#' @param data  A data frame
+#' @param timeperiod A string giving the time period
+#' @param org_code A string giving the organisation code
+#' @param denominator A numeric variable giving the denominator (popn or bed days)
+#' @param total Count of total cases
+#' @param pir_trust_assigned Count of PIR trust-assigned cases
+#' @param pir_ccg_assigned Count of PIR CCG-assigned cases
+#' @param third_party Count of PIR third-party-assigned cases
+#' @param org_type String giving trust or CCG
+#' @return A data frame spread into format for wide tables.
+#' @export
 #' @examples
+#'
 #'
 #' pir_qtr_testdat <- data.frame(stringsAsFactors=FALSE,
 #'     time_period = c("April - June 2013", "July - September 2013",

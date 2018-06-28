@@ -112,6 +112,7 @@
 <li>
 <code>mrsa_source_of_bacteraemia</code> is now deprecated in favour of <code>group_source_bacteraemia</code>
 </li>
+<li>Added function <code>aec_age_trend_rate_pc_change</code> to produce new age/sex rate trend graphs</li>
 </ul>
 </div>
 <div id="bug-fixes" class="section level2">
@@ -127,6 +128,9 @@
 <li>
 <code>group_source_bacteraemia</code> now recodes <code>NA</code> to <code>Not reported</code>
 </li>
+<li>fixed <code>apportion_prior_healthcare</code> so that contradictory information indicating no admission in past 3 months, but admission in past 12 weeks now apportions to COIA.</li>
+<li>Updated documentation on built in data for assignment_data, cdi_prior_hc_data and assignment_data2</li>
+<li>Removed Viridis package dependency as this is no longer used in any function</li>
 </ul>
 </div>
 </div>

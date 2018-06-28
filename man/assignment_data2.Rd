@@ -9,10 +9,10 @@
  \item{pir_case_status}{string}
  \item{assignment_method_code}{Numeric giving assignment method}
  \item{patient_location}{string}
+ \item{patient_category}{string}
  \item{provisional_organisation_name}{string}
  \item{final_pir_assigned_organisation_type}{string}
- \item{patient_category}{string}
- \item{id}{numeric}
+ \item{id}{A numeric variable giving an anonymous HCAIDCS case id}
 }}
 \usage{
 assignment_data2

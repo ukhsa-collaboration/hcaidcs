@@ -141,8 +141,12 @@ apportion_prior_healthcare <- function(patient_location, patient_category,
                             ifelse(hoha == 0 & coha == 0 & coia == 0 & coca == 1, "coca", NA)
                      )))
   z <- ifelse(adm_3_mo == "don't know" & !is.na(adm_3_mo) & z != "hoha", "unknown_3_mo", z)
-  z <- ifelse(adm_3_mo == "no" & adm_4_weeks == "no" & adm_12_weeks == "yes", "coia", z)
-  z <- ifelse(adm_3_mo == "no" & adm_4_weeks == "yes" & adm_12_weeks == "yes", "coha", z)
+  z <- ifelse((adm_3_mo == "no"  & !is.na(adm_3_mo)) &
+                (adm_4_weeks == "no"  & !is.na(adm_4_weeks)) &
+                (adm_12_weeks == "yes" & !is.na(adm_4_weeks)), "coia", z)
+  z <- ifelse((adm_3_mo == "no"  & !is.na(adm_3_mo)) &
+                (adm_4_weeks == "yes"  & !is.na(adm_4_weeks)) &
+                (adm_12_weeks == "yes" & !is.na(adm_12_weeks)), "coha", z)
   z <- ifelse(z != "hoha" & is.na(adm_3_mo) & is.na(adm_4_weeks) &
                 is.na(adm_12_weeks), "all_blank", z)
   return(z)

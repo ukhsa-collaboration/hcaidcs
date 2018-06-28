@@ -99,8 +99,7 @@
 #'  \item{finalpirassignedorganisation}{string}
 #'  \item{patient_category}{string}
 #' }
-
-"cdi_prior_hc_data"
+"assignment_data"
 
 #' Data for testing prior healthcare exposure monthly table
 #'
@@ -121,11 +120,12 @@
 #'  \item{coha}{Count of coha cases}
 #'  \item{coia}{Count of coia cases}
 #'  \item{coca}{Count of coca cases}
+#'  \item{phc_all_blank}{Count of cases for which all prior health care fields are all blank}
+#'  \item{phc_unknown_3_mo}{Count of cases for which the three-month prior health care fields is blank}
 #'  \item{fmonth}{Numeric financial year month (i.e. 1 = April)}
 #'  \item{month_string}{String cal month}
 #' }
-
-"assignment_data"
+"cdi_prior_hc_data"
 
 #' Data for testing assignement algorithm
 #'
@@ -135,10 +135,10 @@
 #'  \item{pir_case_status}{string}
 #'  \item{assignment_method_code}{Numeric giving assignment method}
 #'  \item{patient_location}{string}
+#'  \item{patient_category}{string}
 #'  \item{provisional_organisation_name}{string}
 #'  \item{final_pir_assigned_organisation_type}{string}
-#'  \item{patient_category}{string}
-#'  \item{id}{numeric}
+#'  \item{id}{A numeric variable giving an anonymous HCAIDCS case id}
 #' }
 "assignment_data2"
 

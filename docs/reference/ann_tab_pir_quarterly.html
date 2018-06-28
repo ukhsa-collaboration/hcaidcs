@@ -110,10 +110,56 @@
 
     <pre class="usage"><span class='fu'>ann_tab_pir_quarterly</span>(<span class='no'>data</span>, <span class='no'>timeperiod</span>, <span class='no'>org_code</span>, <span class='no'>denominator</span>, <span class='no'>total</span>,
   <span class='no'>pir_trust_assigned</span>, <span class='no'>pir_ccg_assigned</span>, <span class='no'>third_party</span>, <span class='no'>org_type</span>)</pre>
-        
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>data</th>
+      <td><p>A data frame</p></td>
+    </tr>
+    <tr>
+      <th>timeperiod</th>
+      <td><p>A string giving the time period</p></td>
+    </tr>
+    <tr>
+      <th>org_code</th>
+      <td><p>A string giving the organisation code</p></td>
+    </tr>
+    <tr>
+      <th>denominator</th>
+      <td><p>A numeric variable giving the denominator (popn or bed days)</p></td>
+    </tr>
+    <tr>
+      <th>total</th>
+      <td><p>Count of total cases</p></td>
+    </tr>
+    <tr>
+      <th>pir_trust_assigned</th>
+      <td><p>Count of PIR trust-assigned cases</p></td>
+    </tr>
+    <tr>
+      <th>pir_ccg_assigned</th>
+      <td><p>Count of PIR CCG-assigned cases</p></td>
+    </tr>
+    <tr>
+      <th>third_party</th>
+      <td><p>Count of PIR third-party-assigned cases</p></td>
+    </tr>
+    <tr>
+      <th>org_type</th>
+      <td><p>String giving trust or CCG</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A data frame spread into format for wide tables.</p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
+
 <span class='no'>pir_qtr_testdat</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>stringsAsFactors</span><span class='kw'>=</span><span class='fl'>FALSE</span>,
     <span class='kw'>time_period</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"April - June 2013"</span>, <span class='st'>"July - September 2013"</span>,
                     <span class='st'>"October - December 2013"</span>,
@@ -135,7 +181,10 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-            
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

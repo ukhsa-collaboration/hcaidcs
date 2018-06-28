@@ -38,4 +38,6 @@ q
 }
 \seealso{
 \code{\link{aec_age_trend_pc}}
+
+\code{\link{aec_age_trend_rate_pc_change}}
 }

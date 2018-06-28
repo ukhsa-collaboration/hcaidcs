@@ -7,10 +7,33 @@
 ann_tab_pir_quarterly(data, timeperiod, org_code, denominator, total,
   pir_trust_assigned, pir_ccg_assigned, third_party, org_type)
 }
+\arguments{
+\item{data}{A data frame}
+
+\item{timeperiod}{A string giving the time period}
+
+\item{org_code}{A string giving the organisation code}
+
+\item{denominator}{A numeric variable giving the denominator (popn or bed days)}
+
+\item{total}{Count of total cases}
+
+\item{pir_trust_assigned}{Count of PIR trust-assigned cases}
+
+\item{pir_ccg_assigned}{Count of PIR CCG-assigned cases}
+
+\item{third_party}{Count of PIR third-party-assigned cases}
+
+\item{org_type}{String giving trust or CCG}
+}
+\value{
+A data frame spread into format for wide tables.
+}
 \description{
 Prepare quarterly MRSA PIR tables
 }
 \examples{
+
 
 pir_qtr_testdat <- data.frame(stringsAsFactors=FALSE,
     time_period = c("April - June 2013", "July - September 2013",
