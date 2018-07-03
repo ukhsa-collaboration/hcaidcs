@@ -40,7 +40,6 @@ Collate:
     'ann_tab_ccg_names.R'
     'ann_tab_onset.R'
     'ann_tab_pir_org_type.R'
-    'check_date_class.R'
     'apportion.R'
     'apportion_prior_healthcare.R'
     'area_team_names.R'

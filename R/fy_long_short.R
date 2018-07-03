@@ -3,7 +3,6 @@
 #' Formats date from long financial as 'yyyyyy+1'.
 #' Used for linking HCAI DCS data to formatted kh03 data.
 #'
-#' @include check_date_class.R
 #' @param x A string variable giving long financial year created using
 #' \code{\link{fy_long}}
 #' @return A text string giving the financial year.

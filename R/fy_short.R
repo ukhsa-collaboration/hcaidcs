@@ -3,7 +3,6 @@
 #' Formats date from date or POSIX class to a text string giving the financial
 #' year as 'yy/yy'
 #'
-#' @include check_date_class.R
 #' @param date_var A date variable in class Date or POSIX
 #' @param sep A separator between two years. Defaults to "/"
 #' @return A text string giving the financial year.
@@ -19,7 +18,8 @@ fy_short <- function(date_var, sep = "/"){
     stop("lubridate is needed for this function to work. Please install it.",
          call. = FALSE)
   }
-  check_date_class(date_var)
+  assertthat::assert_that(lubridate::is.Date(date_var),
+                          msg = "date_var must be of class date")
   qtr <- lubridate::quarter(date_var)
   date_var <- as.Date(date_var)
   this_year <- as.numeric(substr(as.character(lubridate::year(date_var)), 3, 4))

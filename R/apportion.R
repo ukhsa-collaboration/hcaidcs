@@ -5,7 +5,6 @@
 #' This is to ensure consistency with previous reports. See p 47 of Mandatory Surveillance protocol.
 #' Prior to the launch of the new DCS, users could create records where the patient location was Null and these cases would not have been apportioned automatically.
 #'
-#' @include check_date_class.R
 #' @param collection The collection (MRSA, MSSA, CDI, E. coli) to which the record belongs.
 #' @param patient_location The patient's location at time of sample
 #' @param patient_category The patient's category at time of sample

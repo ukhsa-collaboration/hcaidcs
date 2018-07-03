@@ -3,7 +3,6 @@
 #' Formats date from date or POSIX class to a text string giving the financial
 #' quarter as integer from 1 to 4.
 #'
-#' @include check_date_class.R
 #' @param date_var A date variable in class Date or POSIX
 #' @return A text string giving the financial quarter, where April to June is
 #' quarter 1 and January to March is quarter 4.

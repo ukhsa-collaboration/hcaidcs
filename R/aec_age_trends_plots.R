@@ -196,9 +196,9 @@ aec_age_trend_rate_bar <- function(collection, data, x, y, sex, group,log_scale 
   }else if(tolower(collection) == "bacteraemia" ){
     data$age_group_new <- as.character(data$age_group_new)
     data$age_group_new = factor(data$age_group_new,
-                                levels = c("< 1", "2-14", "15-44", "45-64", "65-74",
+                                levels = c("<1", "1-14", "15-44", "45-64", "65-74",
                                            "75-84", "ge85"),
-                                labels = c("< 1", "2-14", "15-44", "45-64", "65-74",
+                                labels = c("<1", "1-14", "15-44", "45-64", "65-74",
                                            "75-84", "\u2265 85"))
   }else{
     stop("Please enter either CDI or Bacteraemia")
@@ -223,6 +223,13 @@ aec_age_trend_rate_bar <- function(collection, data, x, y, sex, group,log_scale 
                                 trans = ifelse(log_scale == TRUE, "log10",
                                                "identity")) +
     ggplot2::guides(fill = ggplot2::guide_legend(reverse = FALSE)) +
+    ggplot2::theme(#legend.position = c(0.9,1),
+      legend.position = "bottom",
+      #legend.justification = c(1,1),
+      strip.background = ggplot2::element_rect(fill="white"),
+      strip.text.x = ggplot2::element_text(face = "bold"),
+      panel.spacing = ggplot2::unit(1.5, "lines")
+    ) +
     NULL # this is added for tinkering, allows commenting out lines without breaking
 
   return(p)
