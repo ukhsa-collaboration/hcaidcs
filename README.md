@@ -30,6 +30,8 @@ If installation is successful you will then be able to load the package with `li
 Use
 ---
 
+Please see [the online documentation](https://publichealthengland.github.io/hcaidcs/) for descriptions of functions. Vignettes on the use of the package will follow soon.
+
 Functions that begin `aec_` are intended for producing tables or plots for the annual epidemiologic commentary.
 
 Functions beginning `ann_tab_` are intended for the production of the annual tables.

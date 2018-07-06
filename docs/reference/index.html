@@ -27,6 +27,11 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
 <meta property="og:title" content="Function reference" />
 
@@ -83,6 +88,12 @@
   </a>
 </li>
       </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
       
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -571,12 +582,6 @@ Used in construction of file paths to get to raw data and also for printing in t
       </tr><tr>
         <!--  -->
         <td>
-          <p><code><a href="check_date_class.html">check_date_class()</a></code> </p>
-        </td>
-        <td><p>Check that date variables are in required format</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
           <p><code><a href="cmonth_to_fmonth.html">cmonth_to_fmonth()</a></code> </p>
         </td>
         <td><p>cmonth_to_fmonth</p></td>
@@ -1008,6 +1013,23 @@ between two values</p></td>
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '0bdffd5e43d5ef11862f19d621d11bb5',
+    indexName: 'hcaidcs',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
   </body>
 </html>

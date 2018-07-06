@@ -27,6 +27,11 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
 <meta property="og:title" content="aec_age_trend_rate_pc_change — aec_age_trend_rate_pc_change" />
 
@@ -87,6 +92,12 @@
 </li>
       </ul>
       
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -135,8 +146,7 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>age_trends_data</span>)
-<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'>aec_age_trend_rate_pc_change</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>age_trends_data</span>, <span class='kw'>collection</span> <span class='kw'>=</span> <span class='st'>"CDI"</span>)
-<span class='no'>p</span></div><div class='img'><img src='aec_age_trend_rate_pc_change-1.png' alt='' width='700' height='433' /></div></pre>
+<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'>aec_age_trend_rate_pc_change</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>age_trends_data</span>, <span class='kw'>collection</span> <span class='kw'>=</span> <span class='st'>"CDI"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: package ‘bindrcpp’ was built under R version 3.4.4</span></div><div class='output co'>#&gt; <span class='warning'>Warning: hybrid evaluation forced for `row_number`. Please use dplyr::row_number() or library(dplyr) to remove this warning.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: hybrid evaluation forced for `row_number`. Please use dplyr::row_number() or library(dplyr) to remove this warning.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: hybrid evaluation forced for `row_number`. Please use dplyr::row_number() or library(dplyr) to remove this warning.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: hybrid evaluation forced for `row_number`. Please use dplyr::row_number() or library(dplyr) to remove this warning.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: hybrid evaluation forced for `row_number`. Please use dplyr::row_number() or library(dplyr) to remove this warning.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: hybrid evaluation forced for `row_number`. Please use dplyr::row_number() or library(dplyr) to remove this warning.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: hybrid evaluation forced for `row_number`. Please use dplyr::row_number() or library(dplyr) to remove this warning.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: hybrid evaluation forced for `row_number`. Please use dplyr::row_number() or library(dplyr) to remove this warning.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: hybrid evaluation forced for `row_number`. Please use dplyr::row_number() or library(dplyr) to remove this warning.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: hybrid evaluation forced for `row_number`. Please use dplyr::row_number() or library(dplyr) to remove this warning.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: hybrid evaluation forced for `row_number`. Please use dplyr::row_number() or library(dplyr) to remove this warning.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: hybrid evaluation forced for `row_number`. Please use dplyr::row_number() or library(dplyr) to remove this warning.</span></div><div class='input'><span class='no'>p</span></div><div class='img'><img src='aec_age_trend_rate_pc_change-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -166,6 +176,23 @@
    </div>
 
   
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '0bdffd5e43d5ef11862f19d621d11bb5',
+    indexName: 'hcaidcs',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
   </body>
 </html>
