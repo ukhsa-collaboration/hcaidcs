@@ -25,3 +25,9 @@ reference:
   - title: "Other functions"
     contents:
     - matches('^(?!.*(aec_|ann_|mo_)).*$')
+template:
+  params:
+    docsearch:
+      api_key: 0bdffd5e43d5ef11862f19d621d11bb5
+      index_name: hcaidcs
+url: http://publichealthengland.github.io/hcaidcs
