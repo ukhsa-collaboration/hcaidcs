@@ -16,3 +16,12 @@ test_that("The first month forms the first column in the output", {
   expect_match(names(my_out_dat)[2], "July_2016_total_cases")
 })
 
+test_that("Expected output is returned", {
+  library(dplyr)
+  data(monthly_ccg_data_raw)
+  ccg_dat_all <- monthly_ccg_data_raw %>%
+    rename(org_code = ccg_code, ho = apportioned) %>%
+    mutate(data_collection = "E. coli", co = total_cases - ho)
+  expect_equal(mo_gnabsi_table(data_fm = ccg_dat_all, "E. coli",
+                               org_type = "trust")[2,2], 1)
+})
