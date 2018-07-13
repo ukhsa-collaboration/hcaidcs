@@ -8,8 +8,8 @@
 <title>R functions for the mandatory surveillance of bacteraemia and C. difficile infection • hcaidcs</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><!-- docsearch --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="pkgdown.js"></script><!-- docsearch --><script src="docsearch.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
 <link href="docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script><meta property="og:title" content="R functions for the mandatory surveillance of bacteraemia and C. difficile infection">
 <meta property="og:description" content="Functions for working with data from the HCAI DCS.">
@@ -90,7 +90,27 @@
 
 <span class="co"># then install the hcaidcs package</span>
 devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_git">install_git</a></span>(<span class="st">'https://github.com/publichealthengland/hcaidcs.git'</span>)</code></pre></div>
-<p>Alternatively, one can download the zip file from github and do the following:</p>
+<div id="github-installation-problems" class="section level3">
+<h3 class="hasAnchor">
+<a href="#github-installation-problems" class="anchor"></a>Github installation problems</h3>
+<p>The above command may return the following error:</p>
+<pre><code>Installation failed: Error in 'git2r_clone': failed to send request: A connection with the server could not be established</code></pre>
+<p>This is likely to happen if you are installing it in a work environment, where local IT have set up a proxy server to connect to the internet. You may be able to get around this by telling R to use your proxy settings.</p>
+<p>To determine your proxy settings go to ‘Internet options’ and select the ‘Connections’ tab. Choose the ‘LAN settings’ button and make a note of the address and port number. <img src="proxy1.png" alt="proxy settings"></p>
+<p>then, in R do the following:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"httr"</span>)<span class="co"># only if you don't already have it installed</span>
+<span class="kw">library</span>(httr)
+<span class="kw">set_config</span>(
+  <span class="kw">use_proxy</span>(<span class="dt">url=</span><span class="st">"ddd.ddd.ddd.dd"</span>, <span class="dt">port=</span>dddd, <span class="dt">username=</span><span class="st">"windowsuser.name"</span>, 
+            <span class="dt">password=</span><span class="st">"windows_pwdtext"</span>)
+)
+devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_git">install_git</a></span>(<span class="st">'https://github.com/publichealthengland/hcaidcs.git'</span>)</code></pre></div>
+<p>where <code>d</code> is a digit, url is the address you recorded above and port is the port, commonly 8080.</p>
+</div>
+<div id="alternative-installation" class="section level3">
+<h3 class="hasAnchor">
+<a href="#alternative-installation" class="anchor"></a>Alternative installation</h3>
+<p>If you are unable to identify your local proxy settings, one can download the zip file from github and do the following:</p>
 <ol style="list-style-type: decimal">
 <li>Save the zip file to a local drive (normally <code>C:</code>, but often <code>H:</code> if you are at PHE)` but do not unzip</li>
 <li>Open RStudio</li>
@@ -100,6 +120,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 </ol>
 <p>This should install the package to the R package library.</p>
 <p>If installation is successful you will then be able to load the package with <code>library(hcaidcs)</code></p>
+</div>
 </div>
 <div id="use" class="section level2">
 <h2 class="hasAnchor">
