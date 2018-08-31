@@ -1,3 +1,8 @@
+# Version 0.1.1.9999
+
+## Minor changes 
+Tweaks to `mf_fig1_fun` so that the x axis labels are at a 45 degree angle and so that MRSA and MSSA are no longer bold face.
+
 # Version 0.1.0
 
 This is the first public release of the HCAIDCS package.
