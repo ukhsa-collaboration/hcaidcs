@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot rates by NHS subregion — aec_subregion_plot • hcaidcs</title>
+<title>subregion_test_data — subregion_test_data • hcaidcs</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -36,19 +36,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Plot rates by NHS subregion — aec_subregion_plot" />
+<meta property="og:title" content="subregion_test_data — subregion_test_data" />
 
-<meta property="og:description" content="Subregions (aka local offices) are subdivisions of the four NHS regions.
-This plots rates by region in a choropleth map.
-Although the function takes a single argument (the spatial data frame),
-it relies on the presence of several variables to that data frame:
-* long The longitude
-* lat The latitude
-* rate The rate to be plotted as a filled value
-* ODC_CD The ODS code for the subregion for labelling
-* centroid_long The longitude for the centroid of a polygon
-* centroid_lat The latitude for the centroid of a polygon
-Both of the last two are used for the plotting of the labels within the polygon." />
+<meta property="og:description" content="A data frame with random data for plotting on subregions" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -122,67 +112,34 @@ Both of the last two are used for the plotting of the labels within the polygon.
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot rates by NHS subregion</h1>
-    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/aec_subregion_plot.R'><code>R/aec_subregion_plot.R</code></a></small>
-    <div class="hidden name"><code>aec_subregion_plot.Rd</code></div>
+    <h1>subregion_test_data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>subregion_test_data.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Subregions (aka local offices) are subdivisions of the four NHS regions.
-This plots rates by region in a choropleth map.
-Although the function takes a single argument (the spatial data frame),
-it relies on the presence of several variables to that data frame:
-* <code>long</code> The longitude
-* <code>lat</code> The latitude
-* <code>rate</code> The rate to be plotted as a filled value
-* <code>ODC_CD</code> The ODS code for the subregion for labelling
-* <code>centroid_long</code> The longitude for the centroid of a polygon
-* <code>centroid_lat</code> The latitude for the centroid of a polygon
-Both of the last two are used for the plotting of the labels within the polygon.</p>
+    <p>A data frame with random data for plotting on subregions</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>aec_subregion_plot</span>(<span class='no'>x</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>A spatial dataframe as described above.</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <pre class="usage"><span class='no'>subregion_test_data</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A ggplot2 object</p>
+    <p>A data frame with 14 observations on two columns</p><dl class='dl-horizontal'>
+<dt>ODS_CD</dt><dd><p>ODS code of subregion for joining</p></dd>
+<dt>rand_val</dt><dd><p>A random value for filling the areas</p></dd>
+</dl>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>data</span>(<span class='no'>subregion_test_data</span>)
-
-<span class='co'># Join example data to subregions_sp_df based on ODS_CD variable</span>
-<span class='no'>subregions_sp_df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/join.html'>left_join</a></span>(<span class='no'>subregions_sp_df</span>, <span class='no'>subregion_test_data</span>)</div><div class='output co'>#&gt; <span class='message'>Joining, by = "ODS_CD"</span></div><div class='input'>
-<span class='co'># Need to convert rand_val to factor and correctly label levels</span>
-<span class='co'># Can't do this before left_join as factors are coerced to characters.</span>
-<span class='no'>subregions_sp_df</span>$<span class='no'>rand_val</span> <span class='kw'>&lt;-</span> <span class='fu'>cut</span>(<span class='no'>subregions_sp_df</span>$<span class='no'>rand_val</span>,
-  <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>0.2</span>, <span class='fl'>0.4</span>, <span class='fl'>0.6</span>, <span class='fl'>0.8</span>, <span class='fl'>1.0</span>),
-  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"0.0-0.2"</span>, <span class='st'>"0.21-0.4"</span>, <span class='st'>"0.41-0.6"</span>, <span class='st'>"0.61-0.8"</span>, <span class='st'>"0.81-1.0"</span> ))
-<span class='co'># Rename for plotting</span>
-<span class='no'>subregions_sp_df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>rename</a></span>(<span class='no'>subregions_sp_df</span>, <span class='kw'>rate</span> <span class='kw'>=</span> <span class='no'>rand_val</span>)
-<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'>aec_subregion_plot</span>(<span class='no'>subregions_sp_df</span>)
-<span class='no'>p</span></div><div class='img'><img src='aec_subregion_plot-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      <li><a href="#format">Format</a></li>
+          </ul>
 
   </div>
 </div>

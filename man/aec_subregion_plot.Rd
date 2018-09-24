@@ -26,22 +26,18 @@ it relies on the presence of several variables to that data frame:
 Both of the last two are used for the plotting of the labels within the polygon.
 }
 \examples{
-\dontrun{
-dat <- structure(list(ODS_CD = c("Q70", "Q71", "Q72", "Q73", "Q74", "Q75",
-"Q76", "Q77", "Q78", "Q79", "Q80", "Q81", "Q82"),
-rate = c(0.541357619, 0.509643862, 0.976268126, 0.480329843, 0.704037304,
-0.962522235, 0.601202076, 0.582732042, 0.292755103, 0.460313728, 0.914434938,
-0.858357928, 0.959438418)),
-.Names = c("ODS_CD", "rate"), class = "data.frame", row.names = c(NA, -13L))
-data("subregions_sp_df")
+data(subregion_test_data)
 
-subregions_sp_df <- dplyr::left_join(subregions_sp_df, dat)
-# Need to convert rate to factor and correctly label levels
+# Join example data to subregions_sp_df based on ODS_CD variable
+subregions_sp_df <- dplyr::left_join(subregions_sp_df, subregion_test_data)
+
+# Need to convert rand_val to factor and correctly label levels
 # Can't do this before left_join as factors are coerced to characters.
-subregions_sp_df$rate <- cut(subregions_sp_df$rate, c(0, 0.2, 0.4, 0.6, 0.8, 1.0),
-labels = c("0.0-0.2", "0.21-0.4", "0.41-0.6", "0.61-0.8", "0.81-1.0" ))
+subregions_sp_df$rand_val <- cut(subregions_sp_df$rand_val,
+  c(0, 0.2, 0.4, 0.6, 0.8, 1.0),
+  labels = c("0.0-0.2", "0.21-0.4", "0.41-0.6", "0.61-0.8", "0.81-1.0" ))
+# Rename for plotting
+subregions_sp_df <- dplyr::rename(subregions_sp_df, rate = rand_val)
 p <- aec_subregion_plot(subregions_sp_df)
 p
-
-}
 }
