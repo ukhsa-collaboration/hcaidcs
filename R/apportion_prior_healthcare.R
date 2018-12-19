@@ -129,6 +129,10 @@ apportion_prior_healthcare <- function(patient_location, patient_category,
   adm_12_weeks <- tolower(adm_12_weeks)
   adm_3_mo <- tolower(adm_3_mo)
 
+  adm_4_weeks <- ifelse(adm_4_weeks == "", NA_character_, adm_4_weeks)
+  adm_12_weeks <- ifelse(adm_12_weeks == "", NA_character_, adm_12_weeks)
+  adm_3_mo <- ifelse(adm_3_mo == "", NA_character_, adm_3_mo)
+
   hoha <- is_hoha(patient_location, patient_category, adm_date, spec_date, days_diff,
                   date_record_created)
   coha <- is_coha(days_diff, date_record_created, adm_3_mo, adm_4_weeks)
