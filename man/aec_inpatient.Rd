@@ -4,7 +4,8 @@
 \alias{aec_inpatient}
 \title{Determine whether record is from an acute Trust inpatient for AEC}
 \usage{
-aec_inpatient(patient_location, patient_category, specimen_date, date_admitted)
+aec_inpatient(patient_location, patient_category, specimen_date,
+  date_admitted)
 }
 \arguments{
 \item{patient_location}{Location of patient at time of specimen.}

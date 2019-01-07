@@ -296,7 +296,7 @@ aec_age_trend_rate_pc_change <- function(data, collection){
     dplyr::select(fyear6, age_group_new, sex, rate) %>%
     dplyr::group_by(sex, age_group_new) %>%
     dplyr::arrange(sex, age_group_new,fyear6) %>%
-    dplyr::mutate(start_value = rate[row_number() == 1],
+    dplyr::mutate(start_value = rate[dplyr::row_number() == 1],
            change_from_start = (rate/start_value - 1) * 100) %>%
     dplyr::ungroup() %>%
     dplyr::mutate(age_group_new = ifelse(age_group_new == "ge85",

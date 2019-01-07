@@ -41,13 +41,13 @@ mf_fig1_fun <- function(data, collection){
   # )
 
   collection_title <- switch(collection,
-    mssa = "MSSA",
-    mrsa = "MRSA",
+    mssa = expression("MSSA"),
+    mrsa = expression("MRSA"),
     cdi = expression(italic("C. difficile")),
     ecoli = expression(italic("E. coli")),
     kleb = expression(paste(italic("Klebsiella"), " spp.") ),
     paer = expression(italic("P. aeruginosa")),
-    ecoli_ta = expression(paste("Trust-apportioned ", (italic("E. coli"))))
+    ecoli_ta = expression(paste("Hospital-onset ", (italic("E. coli"))))
   )
 
   z <- ggplot2::ggplot(data, ggplot2::aes_string(x = "t", y = collection)) +
@@ -61,7 +61,9 @@ mf_fig1_fun <- function(data, collection){
                        limits = c(0, max(data[, collection]) * 1.05)
     ) + # force y to zero and NA gives max y. expand = c(0,0) at J. Giltrow's request
     ggplot2::labs(title = collection_title) +
-    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0)) +
+    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0),
+                   axis.text.x = ggplot2::element_text(angle = 45,
+                                                       hjust = 1, vjust = 1)) +
     cowplot::background_grid(major = "xy", minor = "x", colour.major = "grey82",
                     colour.minor = "grey92")
   return(z)

@@ -129,6 +129,10 @@ apportion_prior_healthcare <- function(patient_location, patient_category,
   adm_12_weeks <- tolower(adm_12_weeks)
   adm_3_mo <- tolower(adm_3_mo)
 
+  adm_4_weeks <- ifelse(adm_4_weeks == "", NA_character_, adm_4_weeks)
+  adm_12_weeks <- ifelse(adm_12_weeks == "", NA_character_, adm_12_weeks)
+  adm_3_mo <- ifelse(adm_3_mo == "", NA_character_, adm_3_mo)
+
   hoha <- is_hoha(patient_location, patient_category, adm_date, spec_date, days_diff,
                   date_record_created)
   coha <- is_coha(days_diff, date_record_created, adm_3_mo, adm_4_weeks)
@@ -140,15 +144,47 @@ apportion_prior_healthcare <- function(patient_location, patient_category,
                      ifelse(hoha == 0 & coha == 0 & coia == 1, "coia",
                             ifelse(hoha == 0 & coha == 0 & coia == 0 & coca == 1, "coca", NA)
                      )))
+  # z <- ifelse(adm_3_mo == "don't know" & !is.na(adm_3_mo) & z != "hoha", "unknown_3_mo", z)
+  # z <- ifelse((adm_3_mo == "no"  & !is.na(adm_3_mo)) &
+  #               (adm_4_weeks == "no"  & !is.na(adm_4_weeks)) &
+  #               (adm_12_weeks == "yes" & !is.na(adm_4_weeks)), "coia", z)
+  # z <- ifelse((adm_3_mo == "no"  & !is.na(adm_3_mo)) &
+  #               (adm_4_weeks == "yes"  & !is.na(adm_4_weeks)) &
+  #               (adm_12_weeks == "yes" & !is.na(adm_12_weeks)), "coha", z)
+  # z <- ifelse(z != "hoha" & is.na(adm_3_mo) & is.na(adm_4_weeks) &
+  #               is.na(adm_12_weeks), "all_blank", z)
+
   z <- ifelse(adm_3_mo == "don't know" & !is.na(adm_3_mo) & z != "hoha", "unknown_3_mo", z)
-  z <- ifelse((adm_3_mo == "no"  & !is.na(adm_3_mo)) &
-                (adm_4_weeks == "no"  & !is.na(adm_4_weeks)) &
-                (adm_12_weeks == "yes" & !is.na(adm_4_weeks)), "coia", z)
-  z <- ifelse((adm_3_mo == "no"  & !is.na(adm_3_mo)) &
-                (adm_4_weeks == "yes"  & !is.na(adm_4_weeks)) &
-                (adm_12_weeks == "yes" & !is.na(adm_12_weeks)), "coha", z)
-  z <- ifelse(z != "hoha" & is.na(adm_3_mo) & is.na(adm_4_weeks) &
-                is.na(adm_12_weeks), "all_blank", z)
+  z <- ifelse(adm_3_mo == "no" & !is.na(adm_3_mo) & z != "hoha", "coca", z)
+  z <- ifelse(is.na(adm_3_mo) & z != "hoha" &
+                !(is.na(adm_3_mo) & is.na(adm_4_weeks) & is.na(adm_12_weeks)),
+              "coca", z)
+  z <- ifelse(z != "hoha" & (is.na(adm_3_mo) & is.na(adm_4_weeks) & is.na(adm_12_weeks)),
+                             "all_blank", z)
+  # z <- ifelse((adm_3_mo == "no"  & !is.na(adm_3_mo)) &
+  #               (adm_4_weeks == "no"  & !is.na(adm_4_weeks)) &
+  #               (adm_12_weeks == "yes" & !is.na(adm_4_weeks)), "coca", z)
+  # z <- ifelse((adm_3_mo == "no"  & !is.na(adm_3_mo)) &
+  #               (adm_4_weeks == "yes"  & !is.na(adm_4_weeks)) &
+  #               (adm_12_weeks == "no" & !is.na(adm_4_weeks) | is.na(adm_4_weeks)), "coca", z)
+  # z <- ifelse((adm_3_mo == "no"  & !is.na(adm_3_mo)) &
+  #               (adm_4_weeks == "yes"  & !is.na(adm_4_weeks)) &
+  #               (adm_12_weeks == "yes" & !is.na(adm_12_weeks)), "coca", z)
+  #
+  # z <- ifelse(is.na(adm_3_mo) &
+  #               (adm_4_weeks == "no"  & !is.na(adm_4_weeks)) &
+  #               (adm_12_weeks == "yes" & !is.na(adm_4_weeks)), "coca", z)
+  # z <- ifelse(is.na(adm_3_mo) &
+  #               (adm_4_weeks == "yes"  & !is.na(adm_4_weeks)) &
+  #               ((adm_12_weeks == "no" & !is.na(adm_12_weeks)) | is.na(adm_12_weeks)),
+  #             "coca", z)
+  # z <- ifelse(is.na(adm_3_mo) &
+  #               (adm_4_weeks == "yes"  & !is.na(adm_4_weeks)) &
+  #               (adm_12_weeks == "yes" & !is.na(adm_12_weeks)), "coca", z)
+  #
+  # z <- ifelse(z != "hoha" & is.na(adm_3_mo) & is.na(adm_4_weeks) &
+  #               is.na(adm_12_weeks), "all_blank", z)
+
   return(z)
 }
 

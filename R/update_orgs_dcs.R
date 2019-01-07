@@ -1,7 +1,7 @@
 # update organisation details on the DCS
 
 # A collection of functions that will take data from ODS and write zip files that can be used to update the DCS.
-
+# These functions are intended for internal Mandatory Surveillance use and will not be useful for other organisations.
 
 #' Update independent sector providers and independent sector sites.
 #'

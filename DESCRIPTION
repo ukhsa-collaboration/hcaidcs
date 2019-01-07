@@ -1,7 +1,7 @@
 Package: hcaidcs
 Type: Package
 Title: R functions for the mandatory surveillance of bacteraemia and C. difficile infection
-Version: 0.0.0.9000
+Version: 0.1.1.9000
 Authors@R: c(
     person("Simon", "Thelwall", , "simon.thelwall@phe.gov.uk", role = c("aut", "cre"), 
       comment = c(ORCID = "0000-0002-0434-2724")
@@ -12,7 +12,7 @@ Depends:
     R (>= 2.10)
 License: OGL
 LazyData: TRUE
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 URL: https://github.com/PublicHealthEngland/hcaidcs
 BugReports: https://github.com/PublicHealthEngland/hcaidcs/issues
 Imports:
@@ -50,7 +50,6 @@ Collate:
     'cyear_to_cq.R'
     'cyear_to_fyear.R'
     'data.R'
-    'data_compare.R'
     'date_end_period.R'
     'date_start_period.R'
     'date_to_fmonth.R'
