@@ -119,8 +119,8 @@ apportion_prior_healthcare <- function(patient_location, patient_category,
                           msg = "date_record_created must be a date")
 
   assertthat::assert_that(
-    length(adm_3_mo[!(tolower(adm_3_mo) %in% c("yes", "no", "don't know", NA))]) == 0,
-    msg = "adm_3_mo must be one of yes, no, don't know or NA")
+    length(adm_3_mo[!(tolower(adm_3_mo) %in% c("yes", "no", "don't know", "", NA))]) == 0,
+    msg = "adm_3_mo must be one of yes, no, don't know, \"\" or NA")
 
 
 

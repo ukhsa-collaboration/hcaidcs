@@ -457,6 +457,26 @@ test_that("Missings are correctly labelled", {
       adm_3_mo = testdat$adm_3_mos, testdat$adm_4_wks,
       testdat$adm_12_wks, testdat$date_entered
     ), "all_blank")
+
+  testdat <- data.frame(
+    patient_location = "NHS Acute Trust",
+    patient_category = "Outpatient",
+    date_admitted = as.Date(NA_character_, format = "%d/%m/%Y"),
+    date_specimen = as.Date("13/12/2018", format = "%d/%m/%Y"),
+    adm_3_mos = NA_character_,
+    adm_4_wks = "",
+    adm_12_wks = NA,
+    date_entered = as.Date("14/12/2018", format = "%d/%m/%Y"),
+    stringsAsFactors = FALSE)
+
+  expect_equal(
+    apportion_prior_healthcare(
+      patient_location = testdat$patient_location,
+      patient_category = testdat$patient_category,
+      testdat$date_admitted, testdat$date_specimen,
+      adm_3_mo = testdat$adm_3_mos, testdat$adm_4_wks,
+      testdat$adm_12_wks, testdat$date_entered
+    ), "all_blank")
 })
 
 test_that("Apportioning by prior health care is vectorised", {
