@@ -31,6 +31,9 @@ test_that("mf_create_text_values outputs expected data for 3_month", {
   )
 })
 
-test_that("mf_create_text_values outputs expected data for 12_avg", {
-
+test_that("mf_create_text_values outputs expected data for sum_12", {
+  expect_equal(mf_create_text_values(data = mf_trend_data, collection = "cdi",
+                                     output_reqd = "sum_12"),
+               ((14595 - 13800) / 13800) * 100
+  )
 })

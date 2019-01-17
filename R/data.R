@@ -163,7 +163,6 @@
 #' A sample data set from the preparation of the monthly HCAI factsheet giving the monthly counts of collections under mandatory surveillance over time.
 #' @format A data frame with 24 rows of 9 variables
 #' \describe{
-#'  \item{t}{A date giving the first of the month}
 #'  \item{year}{Integer giving year}
 #'  \item{month}{Integer for month}
 #'  \item{cdi}{Integer giving counts of cases}
@@ -173,5 +172,6 @@
 #'  \item{kleb}{Integer giving counts of cases}
 #'  \item{paer}{Integer giving counts of cases}
 #'  \item{ecoli_ta}{Integer giving counts of E. coli hospital onset cases}
+#'  \item{t}{A date giving the first of the month}
 #'  #' }
 "mf_trend_data"

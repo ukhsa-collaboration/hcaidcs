@@ -23,5 +23,6 @@ mf_trend_data <-
                    616, 581, 650, 625, 598, 635, 646, 655, 665, 709, 657, 587)
   )
 
-
+mf_trend_data$t <- as.Date(
+  paste0("01/", mf_trend_data$month, "/", mf_trend_data$year), "%d/%m/%Y")
 usethis::use_data(mf_trend_data, overwrite = TRUE)
