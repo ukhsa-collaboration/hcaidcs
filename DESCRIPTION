@@ -28,7 +28,8 @@ Imports:
     cowplot,
     assertthat,
     rlang,
-    ggrepel
+    ggrepel,
+    RcppRoll
 Collate:
     'aec_age_sex_plot.R'
     'aec_age_trends_plots.R'
