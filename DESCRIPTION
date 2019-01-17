@@ -1,7 +1,7 @@
 Package: hcaidcs
 Type: Package
 Title: R functions for the mandatory surveillance of bacteraemia and C. difficile infection
-Version: 0.1.1.9000
+Version: 0.1.1.9001
 Authors@R: c(
     person("Simon", "Thelwall", , "simon.thelwall@phe.gov.uk", role = c("aut", "cre"), 
       comment = c(ORCID = "0000-0002-0434-2724")
@@ -87,6 +87,8 @@ Collate:
     'mandatory_age_group_bacteraemia.R'
     'mandatory_age_group_cdi.R'
     'mf_fig1_fun.R'
+    'mf_create_text_values.R'
+    'mf_lag_trend.R'
     'mo_curr_months.R'
     'mo_gnabsi_table.R'
     'mo_next_pub_date.R'

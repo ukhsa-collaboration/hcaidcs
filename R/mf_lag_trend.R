@@ -7,6 +7,7 @@
 #'   "kleb", "paer" and "ecoli_ta".
 #' @return The same dataframe, but with new lagged variables added
 #'
+#' @export
 #' @examples
 #' data(mf_trend_data)
 #' mf_trend_data <- mf_trend_data %>% mf_lag_trend()

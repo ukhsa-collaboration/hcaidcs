@@ -9,12 +9,13 @@
 #'
 #' @return A numeric value giving the percentage difference to different comparisons.
 #'
+#' @export
 #' @examples
 #'
 #' data("mf_trend_data")
 #' mf_trend_data <- mf_lag_trend(mf_trend_data)
 #'
-#' cdi_12_month <- create_mf_text(data = mf_trend_data, collection = "cdi",
+#' cdi_12_month <- mf_create_text_values(data = mf_trend_data, collection = "cdi",
 #'   output_reqd = "12_month")
 
 mf_create_text_values <- function(data = trend, collection, output_reqd){
@@ -38,7 +39,7 @@ mf_create_text_values <- function(data = trend, collection, output_reqd){
 
     denominator <- data %>%
       dplyr::filter(dplyr::row_number() == max(dplyr::row_number())) %>%
-      dplyr::select(contains(denom_col)) %>%
+      dplyr::select(dplyr::contains(denom_col)) %>%
       dplyr::pull()
 
   }else if(output_reqd == "3_month"){
