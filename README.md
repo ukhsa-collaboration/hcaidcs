@@ -13,7 +13,7 @@ The quickest way to install the package is to use `install_git` from the devtool
 install.packages("devtools")
 
 # then install the hcaidcs package
-devtools::install_git('https://github.com/publichealthengland/hcaidcs.git')
+devtools::install_github(repo = 'publichealthengland/hcaidcs', ref = "master")
 ```
 
 ### Github installation problems
@@ -35,7 +35,7 @@ set_config(
   use_proxy(url="ddd.ddd.ddd.dd", port=dddd, username="windowsuser.name", 
             password="windows_pwdtext")
 )
-devtools::install_git('https://github.com/publichealthengland/hcaidcs.git')
+devtools::install_github(repo = 'publichealthengland/hcaidcs', ref = "master")
 ```
 
 where `d` is a digit, url is the address you recorded above and port is the port, commonly 8080.

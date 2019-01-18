@@ -19,6 +19,7 @@ twelve month sum, lagged by 12 months.
 }
 \examples{
 data(mf_trend_data)
+library(dplyr)
 mf_trend_data <- mf_trend_data \%>\% mf_lag_trend()
 head(mf_trend_data)
 }
