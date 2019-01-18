@@ -66,7 +66,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hcaidcs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9001</span>
       </span>
     </div>
 
@@ -115,12 +115,25 @@
       <small>Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="version-0-1-1-9999" class="section level1">
+    <div id="version-0-1-1-9001" class="section level1">
 <h1 class="page-header">
-<a href="#version-0-1-1-9999" class="anchor"></a>Version 0.1.1.9999</h1>
+<a href="#version-0-1-1-9001" class="anchor"></a>Version 0.1.1.9001</h1>
 <div id="minor-changes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#minor-changes" class="anchor"></a>Minor changes</h2>
+<p>Added two new functions for the preparation of the monthly factsheet and expanded mf_trend_data to add observations and organisms.</p>
+<p>Functions added:</p>
+<ul>
+<li>
+<code>mf_lag_trend</code> preps the data so that lagged values are calculated</li>
+<li>
+<code>mf_create_text_values</code> creates objects giving changes in counts of cases for use in factsheet</li>
+</ul>
+<p>Also minor fix to <code>apportion_prior_hc</code></p>
+</div>
+<div id="minor-changes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h2>
 <p>Tweaks to <code>mf_fig1_fun</code> so that the x axis labels are at a 45 degree angle and so that MRSA and MSSA are no longer bold face.</p>
 <p>Updated <code>subregions_sp_df</code> to 2018 geography. Previously 2017 geography.</p>
 <p>Updated <code>apportion_phc</code> so that if the case is not HOHA and admitted in past three months is No or NA, then the result goes to COCA.</p>
@@ -168,7 +181,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#version-0-1-1-9999">0.1.1.9999</a></li>
+        <li><a href="#version-0-1-1-9001">0.1.1.9001</a></li>
         <li><a href="#version-0-1-0">0.1.0</a></li>
       </ul>
     </div>

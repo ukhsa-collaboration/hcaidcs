@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>date_to_fq — date_to_fq • hcaidcs</title>
+<title>function to create text objects for monthly factsheets — mf_create_text_values • hcaidcs</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -36,9 +36,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="date_to_fq — date_to_fq" />
+<meta property="og:title" content="function to create text objects for monthly factsheets — mf_create_text_values" />
 
-<meta property="og:description" content="Convert a date to a five-character financial quarter" />
+<meta property="og:description" content="The factsheet creates object which contain percentage change in the count of cases for use within the bullet points of the text.
+These bullet points compare the count of cases with the counts of cases at various different time points." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -114,36 +115,48 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>date_to_fq</h1>
-    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/date_to_fq.R'><code>R/date_to_fq.R</code></a></small>
-    <div class="hidden name"><code>date_to_fq.Rd</code></div>
+    <h1>function to create text objects for monthly factsheets</h1>
+    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/mf_create_text_values.R'><code>R/mf_create_text_values.R</code></a></small>
+    <div class="hidden name"><code>mf_create_text_values.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Convert a date to a five-character financial quarter</p>
+    <p>The factsheet creates object which contain percentage change in the count of cases for use within the bullet points of the text.
+These bullet points compare the count of cases with the counts of cases at various different time points.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>date_to_fq</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>mf_create_text_values</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>trend</span>, <span class='no'>collection</span>, <span class='no'>output_reqd</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A date</p></td>
+      <th>data</th>
+      <td><p>A dataframe, in the context of the monthly factsheet, this will almost certainly be 'trend'</p></td>
+    </tr>
+    <tr>
+      <th>collection</th>
+      <td><p>A character string, one of "mrsa", "mssa", "ecoli", "kleb", "paer", "cdi"</p></td>
+    </tr>
+    <tr>
+      <th>output_reqd</th>
+      <td><p>A character string, one of "12_month", "3_month", "sum_12"</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A numeric value giving YYYYQ</p>
+    <p>A numeric value giving the percentage difference to different comparisons.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"01/01/2017"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"%d/%m/%Y"</span>)
-<span class='fu'>date_to_fq</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] 20164</div></pre>
+    <pre class="examples"><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='st'>"mf_trend_data"</span>)
+<span class='no'>mf_trend_data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mf_lag_trend.html'>mf_lag_trend</a></span>(<span class='no'>mf_trend_data</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='input'>
+<span class='no'>cdi_12_month</span> <span class='kw'>&lt;-</span> <span class='fu'>mf_create_text_values</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mf_trend_data</span>, <span class='kw'>collection</span> <span class='kw'>=</span> <span class='st'>"cdi"</span>,
+  <span class='kw'>output_reqd</span> <span class='kw'>=</span> <span class='st'>"12_month"</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

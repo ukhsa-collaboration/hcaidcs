@@ -79,7 +79,7 @@ Both of the last two are used for the plotting of the labels within the polygon.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hcaidcs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9001</span>
       </span>
     </div>
 
@@ -165,14 +165,14 @@ Both of the last two are used for the plotting of the labels within the polygon.
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>subregion_test_data</span>)
 
 <span class='co'># Join example data to subregions_sp_df based on ODS_CD variable</span>
-<span class='no'>subregions_sp_df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/join.html'>left_join</a></span>(<span class='no'>subregions_sp_df</span>, <span class='no'>subregion_test_data</span>)</div><div class='output co'>#&gt; <span class='message'>Joining, by = "ODS_CD"</span></div><div class='input'>
+<span class='no'>subregions_sp_df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/join.html'>left_join</a></span>(<span class='no'>subregions_sp_df</span>, <span class='no'>subregion_test_data</span>)</div><div class='output co'>#&gt; <span class='message'>Joining, by = "ODS_CD"</span></div><div class='input'>
 <span class='co'># Need to convert rand_val to factor and correctly label levels</span>
 <span class='co'># Can't do this before left_join as factors are coerced to characters.</span>
 <span class='no'>subregions_sp_df</span>$<span class='no'>rand_val</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/cut'>cut</a></span>(<span class='no'>subregions_sp_df</span>$<span class='no'>rand_val</span>,
   <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0.2</span>, <span class='fl'>0.4</span>, <span class='fl'>0.6</span>, <span class='fl'>0.8</span>, <span class='fl'>1.0</span>),
   <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"0.0-0.2"</span>, <span class='st'>"0.21-0.4"</span>, <span class='st'>"0.41-0.6"</span>, <span class='st'>"0.61-0.8"</span>, <span class='st'>"0.81-1.0"</span> ))
 <span class='co'># Rename for plotting</span>
-<span class='no'>subregions_sp_df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>rename</a></span>(<span class='no'>subregions_sp_df</span>, <span class='kw'>rate</span> <span class='kw'>=</span> <span class='no'>rand_val</span>)
+<span class='no'>subregions_sp_df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>rename</a></span>(<span class='no'>subregions_sp_df</span>, <span class='kw'>rate</span> <span class='kw'>=</span> <span class='no'>rand_val</span>)
 <span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'>aec_subregion_plot</span>(<span class='no'>subregions_sp_df</span>)
 <span class='no'>p</span></div><div class='img'><img src='aec_subregion_plot-1.png' alt='' width='700' height='433' /></div></pre>
   </div>

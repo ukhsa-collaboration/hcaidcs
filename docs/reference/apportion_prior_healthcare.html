@@ -76,7 +76,7 @@ Records created prior to 01/04/2017 should not be apportioned." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hcaidcs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9001</span>
       </span>
     </div>
 
@@ -225,7 +225,7 @@ This new apportioning algorithm takes into account prior healthcare interactions
   <span class='kw'>adm_12_wks</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"no"</span>, <span class='st'>"yes"</span>, <span class='st'>"no"</span>),
   <span class='kw'>date_entered</span> <span class='kw'>=</span> <span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span>(<span class='st'>"01-04-2017"</span>),
   <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-<span class='no'>testdat</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/bind.html'>bind_rows</a></span>(<span class='no'>testdat</span>, <span class='no'>testdat2</span>)
+<span class='no'>testdat</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_rows</a></span>(<span class='no'>testdat</span>, <span class='no'>testdat2</span>)
 <span class='no'>testdat</span>
 
 <span class='no'>testdat</span>$<span class='no'>apportioned_prior_hc</span> <span class='kw'>&lt;-</span> <span class='fu'>apportion_prior_healthcare</span>(

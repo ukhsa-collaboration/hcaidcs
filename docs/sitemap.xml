@@ -208,7 +208,13 @@
     <loc>http://publichealthengland.github.io/hcaidcs/reference/mandatory_age_group_cdi.html</loc>
   </url>
   <url>
+    <loc>http://publichealthengland.github.io/hcaidcs/reference/mf_create_text_values.html</loc>
+  </url>
+  <url>
     <loc>http://publichealthengland.github.io/hcaidcs/reference/mf_fig1_fun.html</loc>
+  </url>
+  <url>
+    <loc>http://publichealthengland.github.io/hcaidcs/reference/mf_lag_trend.html</loc>
   </url>
   <url>
     <loc>http://publichealthengland.github.io/hcaidcs/reference/mf_trend_data.html</loc>

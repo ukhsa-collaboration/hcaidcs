@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hcaidcs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9001</span>
       </span>
     </div>
 
@@ -148,22 +148,21 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>mf_trend_data</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>mf_trend_data</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6 x 7</span><span>
-#&gt;   t           year month   cdi ecoli  mrsa  mssa
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> 2015-01-01  </span><span style='text-decoration: underline;'>2</span><span>015     1  </span><span style='text-decoration: underline;'>1</span><span>129  </span><span style='text-decoration: underline;'>2</span><span>865    79   874
-#&gt; </span><span style='color: #555555;'>2</span><span> 2015-02-01  </span><span style='text-decoration: underline;'>2</span><span>015     2  </span><span style='text-decoration: underline;'>1</span><span>051  </span><span style='text-decoration: underline;'>2</span><span>702    65   743
-#&gt; </span><span style='color: #555555;'>3</span><span> 2015-03-01  </span><span style='text-decoration: underline;'>2</span><span>015     3  </span><span style='text-decoration: underline;'>1</span><span>218  </span><span style='text-decoration: underline;'>2</span><span>941    78   909
-#&gt; </span><span style='color: #555555;'>4</span><span> 2015-04-01  </span><span style='text-decoration: underline;'>2</span><span>015     4  </span><span style='text-decoration: underline;'>1</span><span>164  </span><span style='text-decoration: underline;'>2</span><span>924    76   850
-#&gt; </span><span style='color: #555555;'>5</span><span> 2015-05-01  </span><span style='text-decoration: underline;'>2</span><span>015     5  </span><span style='text-decoration: underline;'>1</span><span>253  </span><span style='text-decoration: underline;'>3</span><span>052    73   851
-#&gt; </span><span style='color: #555555;'>6</span><span> 2015-06-01  </span><span style='text-decoration: underline;'>2</span><span>015     6  </span><span style='text-decoration: underline;'>1</span><span>235  </span><span style='text-decoration: underline;'>3</span><span>193    60   866</div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>mf_trend_data</span>)</div><div class='output co'>#&gt;   year month  cdi ecoli mrsa mssa kleb paer ecoli_ta          t
+#&gt; 1 2014     1  996  2878   70  803   NA   NA      644 2014-01-01
+#&gt; 2 2014     2  913  2625   59  764   NA   NA      601 2014-02-01
+#&gt; 3 2014     3 1098  2877   77  837   NA   NA      636 2014-03-01
+#&gt; 4 2014     4 1042  2873   49  792   NA   NA      615 2014-04-01
+#&gt; 5 2014     5 1214  3025   64  772   NA   NA      603 2014-05-01
+#&gt; 6 2014     6 1193  2988   68  753   NA   NA      584 2014-06-01</div><div class='input'>
 <span class='no'>my_plot</span> <span class='kw'>&lt;-</span> <span class='fu'>mf_fig1_fun</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mf_trend_data</span>, <span class='kw'>collection</span> <span class='kw'>=</span> <span class='st'>"mrsa"</span>)
 <span class='no'>my_plot</span></div><div class='img'><img src='mf_fig1_fun-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>my_plot</span> <span class='kw'>&lt;-</span> <span class='fu'>mf_fig1_fun</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mf_trend_data</span>, <span class='kw'>collection</span> <span class='kw'>=</span> <span class='st'>"mssa"</span>)
 <span class='no'>my_plot</span></div><div class='img'><img src='mf_fig1_fun-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>my_plot</span> <span class='kw'>&lt;-</span> <span class='fu'>mf_fig1_fun</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mf_trend_data</span>, <span class='kw'>collection</span> <span class='kw'>=</span> <span class='st'>"ecoli"</span>)
-<span class='no'>my_plot</span></div><div class='img'><img src='mf_fig1_fun-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>mf_trend_data</span>)[<span class='fl'>5</span>] <span class='kw'>&lt;-</span> <span class='st'>"kleb"</span>
+<span class='no'>my_plot</span></div><div class='img'><img src='mf_fig1_fun-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='no'>mf_trend_data</span>$<span class='no'>kleb</span> <span class='kw'>&lt;-</span> <span class='kw'>NULL</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>mf_trend_data</span>)[<span class='fl'>5</span>] <span class='kw'>&lt;-</span> <span class='st'>"kleb"</span>
 <span class='no'>my_plot</span> <span class='kw'>&lt;-</span> <span class='fu'>mf_fig1_fun</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mf_trend_data</span>, <span class='kw'>collection</span> <span class='kw'>=</span> <span class='st'>"kleb"</span>)
 <span class='no'>my_plot</span></div><div class='img'><img src='mf_fig1_fun-4.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></span></pre>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
