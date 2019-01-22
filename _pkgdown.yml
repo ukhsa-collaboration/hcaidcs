@@ -12,6 +12,7 @@ reference:
     desc: Functions used in preparation of monthly outputs
     contents:
     - starts_with("mo_")
+    - starts_with("mf_")
   - title: Date functions
     desc: Functions used to manipulate dates and time periods into those used in routine outputs
     contents:

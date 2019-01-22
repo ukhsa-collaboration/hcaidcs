@@ -27,4 +27,5 @@ mf_trend_data <- mf_lag_trend(mf_trend_data)
 
 cdi_12_month <- mf_create_text_values(data = mf_trend_data, collection = "cdi",
   output_reqd = "12_month")
+cdi_12_month
 }

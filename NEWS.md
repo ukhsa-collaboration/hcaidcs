@@ -8,7 +8,7 @@ Functions added:
  * `mf_lag_trend` preps the data so that lagged values are calculated
  * `mf_create_text_values` creates objects giving changes in counts of cases for use in factsheet
  
-Also minor fix to `apportion_prior_hc`
+Also minor fix to `apportion_prior_hc`.
 
 ## Minor changes 
 Tweaks to `mf_fig1_fun` so that the x axis labels are at a 45 degree angle and so that MRSA and MSSA are no longer bold face.
