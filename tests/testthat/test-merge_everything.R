@@ -1,16 +1,14 @@
 context("merge_everything")
 
 #Basic setup
-save.image(file = "temp_ge.RData")
-original_dir = getwd()
-library(testthat)
-#library(rstudioapi)
-#current_path = rstudioapi::getActiveDocumentContext()$path
-#current_dir = dirname(current_path)
-current_dir = getwd()
-temp_dir = tempdir()
-file.copy(file.path(current_dir, "test-merge_everything_MRSA.xlsx"), temp_dir, overwrite = T)
-file.copy(file.path(current_dir, "test-merge_everything_NON_MRSA.xlsx"), temp_dir, overwrite = T)
+save.image(file <- "temp_ge.RData")
+original_dir <- getwd()
+current_path <- system.file(package = "hcaidcs")
+#current_dir <- dirname(current_path)
+#current_dir = getwd()
+temp_dir <- tempdir()
+file.copy(file.path(current_path, "test-merge_everything_MRSA.xlsx"), temp_dir, overwrite = T)
+file.copy(file.path(current_path, "test-merge_everything_NON_MRSA.xlsx"), temp_dir, overwrite = T)
 setwd(temp_dir )
 
 #Temp variables & files
@@ -50,15 +48,15 @@ test_that("Cell is correctly calculated for non-MRSA type w2", {
 })
 
 test_that("Cell is correctly calculated for non-MRSA type w3", {
-  expect_equal(as.numeric(non_mrsa_w3[5,5]), 50)
+  expect_equal(as.numeric(non_mrsa_w3[5,5]), 100000)
 })
 
 test_that("Cell is correctly calculated for non-MRSA type w4", {
-  expect_equal(as.numeric(non_mrsa_w4[9,5]), 1995)
+  expect_equal(as.numeric(non_mrsa_w4[9,5]), 10)
 })
 
 test_that("Cell is correctly calculated for non-MRSA type w5", {
-  expect_equal(as.numeric(non_mrsa_w5[9,7]), 22)
+  expect_equal(as.numeric(non_mrsa_w5[9,7]), 18.863275896583101)
 })
 
 test_that("Cell is correctly calculated for MRSA type w3", {
