@@ -98,3 +98,25 @@ test_that("Summation works as expected", {
   )
 
 })
+
+# test bug with line listings where E. coli has a trailing space
+
+test_that("Trailing white space problem has been addressed",{
+          line_listing$collection[line_listing$collection == "E. coli"] <- "E. coli "
+
+          out <- ann_tab_long(dat = line_listing, collection_var = collection,
+                              collection_string = "E. coli",
+                              org_code = reporting_organisation_code,
+                              metric_type = "prior_hc", metric_var = prior_hc,
+                              output = "quarterly",
+                              spec_date = specimen_date)
+          expect_equal(
+            out %>% dplyr::filter(metric == "Total cases" &
+                                    as.character(period) == "April to June 2015" &
+                                    organisation == "E17") %>% dplyr::pull(count_cases),
+            nrow(line_listing[line_listing$reporting_organisation_code == "E17" &
+                                line_listing$collection == "E. coli " &
+                                line_listing$specimen_date >= lubridate::dmy("01-04-2015") &
+                                line_listing$specimen_date <= lubridate::dmy("30-06-2015") ,]))
+          }
+)

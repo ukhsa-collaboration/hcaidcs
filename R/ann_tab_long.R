@@ -99,7 +99,7 @@ ann_tab_long <- function(dat, collection_var, collection_string, org_code,
       dplyr::mutate(period = factor(fy_six(!!spec_date), levels  = period_levels))
 
     totals <- dat %>%
-      dplyr::filter(!!collection_var == collection_string) %>%
+      dplyr::filter(stringr::str_trim(!!collection_var) == collection_string) %>%
       dplyr::group_by(!!org_code, period) %>%
       dplyr::summarise(total_cases = dplyr::n()) %>%
       dplyr::mutate(metric = "Total cases") %>%
@@ -108,7 +108,7 @@ ann_tab_long <- function(dat, collection_var, collection_string, org_code,
       dplyr::ungroup()
 
     dat <- dat %>%
-      dplyr::filter(!!collection_var == collection_string) %>%
+      dplyr::filter(stringr::str_trim(!!collection_var) == collection_string) %>%
       dplyr::mutate(n_cases = 1) %>%
       dplyr::group_by(!!org_code, period, !!metric_var) %>%
       dplyr::summarise(count_cases = sum(n_cases)) %>%
@@ -140,7 +140,7 @@ ann_tab_long <- function(dat, collection_var, collection_string, org_code,
                     fq = fq_short(!!spec_date))
 
     totals <- dat %>%
-      dplyr::filter(!!collection_var == collection_string) %>%
+      dplyr::filter(stringr::str_trim(!!collection_var) == collection_string) %>%
       dplyr::group_by(!!org_code, period, fyear, fq) %>%
       dplyr::summarise(total_cases = dplyr::n()) %>%
       dplyr::mutate(metric = "Total cases") %>%
@@ -150,7 +150,7 @@ ann_tab_long <- function(dat, collection_var, collection_string, org_code,
       dplyr::ungroup()
 
     dat <- dat %>%
-      dplyr::filter(!!collection_var == collection_string) %>%
+      dplyr::filter(stringr::str_trim(!!collection_var) == collection_string) %>%
       dplyr::mutate(n_cases = 1) %>%
       dplyr::group_by(!!org_code, period, !!metric_var, fyear, fq) %>%
       dplyr::summarise(count_cases = sum(n_cases)) %>%
