@@ -2,7 +2,7 @@
 % Please edit documentation in R/aec_inpatient.R
 \name{aec_inpatient}
 \alias{aec_inpatient}
-\title{Determine whether record is from an acute Trust inpatient for AEC}
+\title{Determine whether record is from an acute trust inpatient for AEC}
 \usage{
 aec_inpatient(patient_location, patient_category, specimen_date,
   date_admitted)

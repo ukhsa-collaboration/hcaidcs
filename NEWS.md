@@ -1,3 +1,17 @@
+# Version 0.1.1.9002
+
+## Minor changes
+
+Added tidyr dependency, so that the new function `ant_tab_long` expands data to include unobserved periods for organisations. 
+
+Functions added:
+
+ * `ann_tab_long` Function to create long annual and quarterly tables 
+
+Data added
+
+ * `line_listing` Data giving simulated line listing data to be used in examples and function testing
+
 # Version 0.1.1.9001
 
 ## Minor changes
