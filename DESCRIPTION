@@ -39,6 +39,7 @@ Collate:
     'aec_subregion_plot.R'
     'aec_tto_plot.R'
     'ann_tab_ccg_names.R'
+    'ann_tab_long.R'
     'ann_tab_onset.R'
     'ann_tab_pir_org_type.R'
     'apportion.R'

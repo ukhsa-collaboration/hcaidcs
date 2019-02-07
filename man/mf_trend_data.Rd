@@ -16,7 +16,7 @@
  \item{paer}{Integer giving counts of cases}
  \item{ecoli_ta}{Integer giving counts of E. coli hospital onset cases}
  \item{t}{A date giving the first of the month}
- #' }}
+}}
 \usage{
 mf_trend_data
 }

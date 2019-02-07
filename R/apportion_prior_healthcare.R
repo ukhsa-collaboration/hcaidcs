@@ -104,7 +104,7 @@ apportion_prior_healthcare <- function(patient_location, patient_category,
   }
 
   if(!requireNamespace("assertthat", quietly = TRUE)) {
-    stop("ggplot2 needed for this function to work. Please install it.",
+    stop("assertthat needed for this function to work. Please install it.",
          call. = FALSE)
   }
 

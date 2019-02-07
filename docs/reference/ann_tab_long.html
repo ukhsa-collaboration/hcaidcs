@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create months for monthly outputs — mo_curr_months • hcaidcs</title>
+<title>Create long annual tables from line listing data — ann_tab_long • hcaidcs</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -36,9 +36,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Create months for monthly outputs — mo_curr_months" />
+<meta property="og:title" content="Create long annual tables from line listing data — ann_tab_long" />
 
-<meta property="og:description" content="Use this to create a vector containing the 13 months covered by the mandatory surveillance monthly outputs." />
+<meta property="og:description" content="From FY 2018/19, annual tables will be moving to a long format rather than a
+wide format. This function takes line-listing data and aggregates by
+organisation and time period, producing counts of cases by a given metric
+(apportioning or prior healthcare exposure)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -114,38 +117,95 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create months for monthly outputs</h1>
-    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/mo_curr_months.R'><code>R/mo_curr_months.R</code></a></small>
-    <div class="hidden name"><code>mo_curr_months.Rd</code></div>
+    <h1>Create long annual tables from line listing data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/ann_tab_long.R'><code>R/ann_tab_long.R</code></a></small>
+    <div class="hidden name"><code>ann_tab_long.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Use this to create a vector containing the 13 months covered by the mandatory surveillance monthly outputs.</p>
+    <p>From FY 2018/19, annual tables will be moving to a long format rather than a
+wide format. This function takes line-listing data and aggregates by
+organisation and time period, producing counts of cases by a given metric
+(apportioning or prior healthcare exposure).</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>mo_curr_months</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>ann_tab_long</span>(<span class='no'>dat</span>, <span class='no'>collection_var</span>, <span class='no'>collection_string</span>, <span class='no'>org_code</span>, <span class='no'>metric_type</span>,
+  <span class='no'>metric_var</span>, <span class='no'>output</span>, <span class='no'>spec_date</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A date</p></td>
+      <th>dat</th>
+      <td><p>A dataframe containing line-listing data</p></td>
+    </tr>
+    <tr>
+      <th>collection_var</th>
+      <td><p>A string giving the data collection</p></td>
+    </tr>
+    <tr>
+      <th>collection_string</th>
+      <td><p>A string giving the data collection</p></td>
+    </tr>
+    <tr>
+      <th>org_code</th>
+      <td><p>The variable giving the organisation code</p></td>
+    </tr>
+    <tr>
+      <th>metric_type</th>
+      <td><p>A string giving the metric to be tabulated, one of "onset", "pir" or "prior_hc"</p></td>
+    </tr>
+    <tr>
+      <th>metric_var</th>
+      <td><p>Column in dat giving column for the metric</p></td>
+    </tr>
+    <tr>
+      <th>output</th>
+      <td><p>A string giving the output required. Either an annual table or quarterly</p></td>
+    </tr>
+    <tr>
+      <th>spec_date</th>
+      <td><p>Column in dat giving specimen date</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A vector containing 13 months</p>
+    <p>A dataframe with counts of cases in long format, by organisation and time period</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The data are expanded to cover time periods in the data, but there may well
+be organisations that are not in the line-listing data that will be merged in
+later to make a complete table.</p>
+<p>In addition, PHEC and organisation names will need to be merged in, as will
+denominator data, and rates will need to be calculated.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>mo_curr_months</span>(<span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/today.html'>today</a></span>())</div><div class='output co'>#&gt;  [1] February 2018  March 2018     April 2018     May 2018       June 2018     
-#&gt;  [6] July 2018      August 2018    September 2018 October 2018   November 2018 
-#&gt; [11] December 2018  January 2019   February 2019 
-#&gt; 13 Levels: February 2018 March 2018 April 2018 May 2018 June 2018 ... February 2019</div></pre>
+    <pre class="examples"><div class='input'><span class='co'>#library(dplyr)</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>line_listing</span>)
+<span class='no'>line_listing</span>$<span class='no'>fy_long</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fy_long.html'>fy_long</a></span>(<span class='no'>line_listing</span>$<span class='no'>specimen_date</span>)
+
+<span class='fu'>ann_tab_long</span>(<span class='kw'>dat</span> <span class='kw'>=</span> <span class='no'>line_listing</span>, <span class='kw'>collection_var</span> <span class='kw'>=</span> <span class='no'>collection</span>,
+  <span class='kw'>collection_string</span> <span class='kw'>=</span> <span class='st'>"C. difficile"</span>, <span class='kw'>org_code</span> <span class='kw'>=</span> <span class='no'>reporting_organisation_code</span>,
+  <span class='kw'>metric_type</span> <span class='kw'>=</span> <span class='st'>"prior_hc"</span>, <span class='kw'>metric_var</span> <span class='kw'>=</span> <span class='no'>prior_hc</span>, <span class='kw'>output</span> <span class='kw'>=</span> <span class='st'>"annual"</span>,
+  <span class='kw'>spec_date</span> <span class='kw'>=</span> <span class='no'>specimen_date</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 28 x 4</span><span>
+#&gt;    organisation period metric           count_cases
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>                  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> E17          201516 Total cases               48
+#&gt; </span><span style='color: #555555;'> 2</span><span> E17          201516 HOHA, HA                   6
+#&gt; </span><span style='color: #555555;'> 3</span><span> E17          201516 COHA, HA                  11
+#&gt; </span><span style='color: #555555;'> 4</span><span> E17          201516 COIA                      10
+#&gt; </span><span style='color: #555555;'> 5</span><span> E17          201516 COCA                       1
+#&gt; </span><span style='color: #555555;'> 6</span><span> E17          201516 Unknown 3 months           9
+#&gt; </span><span style='color: #555555;'> 7</span><span> E17          201516 No information            11
+#&gt; </span><span style='color: #555555;'> 8</span><span> E17          201617 Total cases                5
+#&gt; </span><span style='color: #555555;'> 9</span><span> E17          201617 HOHA, HA                   1
+#&gt; </span><span style='color: #555555;'>10</span><span> E17          201617 COHA, HA                   1
+#&gt; </span><span style='color: #555555;'># ... with 18 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -153,6 +213,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

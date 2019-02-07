@@ -173,5 +173,29 @@
 #'  \item{paer}{Integer giving counts of cases}
 #'  \item{ecoli_ta}{Integer giving counts of E. coli hospital onset cases}
 #'  \item{t}{A date giving the first of the month}
-#'  #' }
+#' }
 "mf_trend_data"
+
+#' Data simulating output from the HCAI DCS line listing report
+#'
+#' The line-listing report of the HCAI DCS provides data on cases entered onto
+#' the system. There is one row per case of infection. This dataset replicates
+#' the data structure of the line listing report for a selection of variables
+#' for use in testing and in examples.
+#'
+#' All the data in the data set are simulated and do not represent actual
+#' patient data.
+#' @format A dataframe with 500 rows of 10 variables
+#' \describe{
+#'   \item{id}{Integer to simulate the record id}
+#'   \item{collection}{A string giving the name of the organism collection}
+#'   \item{age}{Patient age in years}
+#'   \item{sex}{String giving patient sex}
+#'   \item{specimen_date}{Date giving the date the specimen was taken}
+#'   \item{onset_status}{String, whether hospital-onset or community-onset}
+#'   \item{reporting_organisation_code}{A three-letter code for the reporting organisation}
+#'   \item{ccg_code}{A three-letter code giving the attributed CCG}
+#'   \item{pir_status}{A string giving the PIR status (only relevant to MRSA)}
+#'   \item{prior_hc}{A string giving the prior healthcare group of the case (CDI only)}
+#'}
+"line_listing"
