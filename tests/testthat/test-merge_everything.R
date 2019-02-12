@@ -4,8 +4,6 @@ context("merge_everything")
 save.image(file <- "temp_ge.RData")
 original_dir <- getwd()
 current_path <- system.file(package = "hcaidcs")
-#current_dir <- dirname(current_path)
-#current_dir = getwd()
 temp_dir <- tempdir()
 file.copy(file.path(current_path, "test-merge_everything_MRSA.xlsx"), temp_dir, overwrite = T)
 file.copy(file.path(current_path, "test-merge_everything_NON_MRSA.xlsx"), temp_dir, overwrite = T)
@@ -36,7 +34,7 @@ test_that("Function does nothing when codes are null", {
 })
 
 test_that("Number of worksheets in workbook is correct", {
-  expect_equal(length(getSheetNames("NON_MRSA.xlsx")), 5)
+  expect_equal(length(openxlsx::getSheetNames("NON_MRSA.xlsx")), 5)
 })
 
 test_that("Correct number of rows/columns in output file", {
@@ -67,6 +65,7 @@ test_that("Cell is correctly calculated for MRSA type w4", {
   expect_equal(as.numeric(mrsa_w4[6,6]), 11.5)
 })
 
+#Clean and revert to original environment
 setwd(original_dir)
 remove(list = ls())
 invisible(gc())

@@ -15,6 +15,8 @@ merge_everything(merge_file, file_type, trust_list = NULL,
 \item{trust_list}{A list of Trust codes to be merged.}
 
 \item{ccg_list}{A list of CCG codes to be merged.}
+
+\item{result_file}{Name for output file in "name.xlsx" format.}
 }
 \value{
 "Result.xlsx" file with applied merges.
@@ -31,17 +33,4 @@ could results in wrong calculations/errors. Structure of input code(s) is very i
 }
 \note{
 Some warnings are hidden with SupressWarnings() function.
-}
-\examples{
-Excel file with the right structure must be used. Function works differently for MRSA and non-MRSA files:
-MRSA_file <- "C:/My Documents/MRSA.xlsx"
-
-Trust codes RCF, RFF and RAE will be merged into RCF and RF4, R1H into R1H.
-MRSA_trust <- list(list(c("RCF", "RFF", "RAE"), "RCF"), list(c("RF4", "R1H"), "R1H"))
-
-CCG codes 07L, 07M and 07N will be merged into 07L.
-MRSA_ccg <- list(list(c("07L", "07M", "07N"), "07L"))
-
-Execute function by, remember to choose the right file type:
-merge_everything(MRSA_file, 2, MRSA_trust, MRSA_ccg)
 }

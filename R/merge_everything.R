@@ -12,26 +12,9 @@
 #' @param file_type Character string ("other", "mrsa") or corresponding numerical value (1, 2)
 #' @param trust_list A list of Trust codes to be merged.
 #' @param ccg_list A list of CCG codes to be merged.
-#'
+#' @param result_file Name for output file in "name.xlsx" format.
 #' @return "Result.xlsx" file with applied merges.
-#'
 #' @note Some warnings are hidden with SupressWarnings() function.
-#'
-#' @examples
-#' Excel file with the right structure must be used. Function works differently for MRSA and non-MRSA files:
-#' MRSA_file <- "C:/My Documents/MRSA.xlsx"
-#'
-#' Trust codes RCF, RFF and RAE will be merged into RCF and RF4, R1H into R1H.
-#' MRSA_trust <- list(list(c("RCF", "RFF", "RAE"), "RCF"), list(c("RF4", "R1H"), "R1H"))
-#'
-#' CCG codes 07L, 07M and 07N will be merged into 07L.
-#' MRSA_ccg <- list(list(c("07L", "07M", "07N"), "07L"))
-#'
-#' Execute function by, remember to choose the right file type:
-#' merge_everything(MRSA_file, 2, MRSA_trust, MRSA_ccg)
-#' @import assertthat
-#' @import crayon
-#' @import openxlsx
 #' @export
 
 #Main function.
@@ -150,6 +133,11 @@ merge_everything <- function (merge_file, file_type, trust_list = NULL,
 #' Essential function for merge_everything.
 #'
 #' Operates on worksheets, returns worksheet.
+#' @param worksheet_tbm Worksheet to be merged.
+#' @param codes Codes to be used.
+#' @param is_SSRSS Indicator for MRSA special worksheets. Default is false.
+#'
+#' @return Returns input for merge_all function (worksheet).
 #'
 #' @export
 
@@ -259,6 +247,12 @@ merge_one <- function (worksheet_tbm, codes, is_SSRSS = FALSE) {
 #' Essential function for merge_everything.
 #'
 #' Operates on files, returns file.
+#' @param merge_file Workbook to be merged.
+#' @param file_type Non-MRSA (1) or MRSA (2) file type.
+#' @param trust_code Codes for Trusts.
+#' @param ccg_code Codes for CCG.
+#'
+#' @return Returns input for merge_everything function (workbook).
 #'
 #' @export
 
@@ -283,7 +277,7 @@ merge_all <- function (merge_file, file_type, trust_code, ccg_code) {
          #Process non-MRSA file when main function argument "file_type" is "1" or "other".
          other = {
            for (i in sheet_number) {
-             addWorksheet(temp_workbook, i)
+             openxlsx::addWorksheet(temp_workbook, i)
            }
            if (!is.null(trust_code)) {
              worksheet2 <- merge_one(worksheet_tbm = worksheet2,
@@ -298,16 +292,16 @@ merge_all <- function (merge_file, file_type, trust_code, ccg_code) {
                                      codes = ccg_code, is_SSRSS = F)
            }
            for (i in sheet_number) {
-             writeData(temp_workbook, i, get(paste0("worksheet", i)))
+             openxlsx::writeData(temp_workbook, i, get(paste0("worksheet", i)))
            }
-           saveWorkbook(temp_workbook, result_file, overwrite = T)
+           openxlsx::saveWorkbook(temp_workbook, result_file, overwrite = T)
            return(result_file)
          },
 
          #Process MRSA file when main function argument "file_type" is "2" or "mrsa".
          mrsa = {
            for (i in sheet_number) {
-             addWorksheet(temp_workbook, i)
+             openxlsx::addWorksheet(temp_workbook, i)
            }
            if (!is.null(trust_code)) {
              worksheet2 <- merge_one(worksheet_tbm = worksheet2,

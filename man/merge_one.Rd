@@ -6,6 +6,16 @@
 \usage{
 merge_one(worksheet_tbm, codes, is_SSRSS = FALSE)
 }
+\arguments{
+\item{worksheet_tbm}{Worksheet to be merged.}
+
+\item{codes}{Codes to be used.}
+
+\item{is_SSRSS}{Indicator for MRSA special worksheets. Default is false.}
+}
+\value{
+Returns input for merge_all function (worksheet).
+}
 \description{
 Operates on worksheets, returns worksheet.
 }

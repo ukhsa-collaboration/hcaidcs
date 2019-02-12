@@ -6,6 +6,18 @@
 \usage{
 merge_all(merge_file, file_type, trust_code, ccg_code)
 }
+\arguments{
+\item{merge_file}{Workbook to be merged.}
+
+\item{file_type}{Non-MRSA (1) or MRSA (2) file type.}
+
+\item{trust_code}{Codes for Trusts.}
+
+\item{ccg_code}{Codes for CCG.}
+}
+\value{
+Returns input for merge_everything function (workbook).
+}
 \description{
 Operates on files, returns file.
 }
