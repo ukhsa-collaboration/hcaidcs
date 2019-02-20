@@ -44,12 +44,13 @@ data_compare <- function(currentdf, lastdf) {
 #'
 #' @param old_file An excel file with old data.
 #' @param new_file An excel file with new data.
+#' @param result_file Name for output file.
 #' @return Modified excel file.
 #' @export
 
 
 # Highligh function - main function for applying red font colour to changes in the workbooks
-highlight <- function(old_file, new_file){
+highlight <- function(old_file, new_file, result_file){
 
   #Font colour red
   red_style = openxlsx::createStyle(fontColour =  "#FF0000")
@@ -83,5 +84,5 @@ highlight <- function(old_file, new_file){
     openxlsx::addStyle(wb = temp_workbook, sheet = i, style = red_style, rows = rows_com, cols = cols_com, stack = T)
   }
   #save workbook with highlighted cells
-  openxlsx::saveWorkbook(wb = temp_workbook, file = "highlight_results.xlsx", overwrite = T)
+  openxlsx::saveWorkbook(wb = temp_workbook, file = result_file, overwrite = T)
     }

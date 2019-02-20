@@ -4,12 +4,14 @@
 \alias{highlight}
 \title{Compare workbooks for differences and highlight in red cells that are different.}
 \usage{
-highlight(old_file, new_file)
+highlight(old_file, new_file, result_file)
 }
 \arguments{
 \item{old_file}{An excel file with old data.}
 
 \item{new_file}{An excel file with new data.}
+
+\item{result_file}{Name for output file.}
 }
 \value{
 Modified excel file.
