@@ -29,6 +29,9 @@ Imports:
     assertthat,
     rlang,
     ggrepel,
+    crayon,
+    openxlsx,
+    testthat,
     RcppRoll
 Collate:
     'aec_age_sex_plot.R'
@@ -52,6 +55,7 @@ Collate:
     'cyear_to_cq.R'
     'cyear_to_fyear.R'
     'data.R'
+    'data_compare.R'
     'date_end_period.R'
     'date_start_period.R'
     'date_to_fmonth.R'
@@ -87,6 +91,7 @@ Collate:
     'mandatory_age_group.R'
     'mandatory_age_group_bacteraemia.R'
     'mandatory_age_group_cdi.R'
+    'merge_everything.R'
     'mf_fig1_fun.R'
     'mf_create_text_values.R'
     'mf_lag_trend.R'
