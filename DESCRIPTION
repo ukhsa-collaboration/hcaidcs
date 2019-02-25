@@ -46,6 +46,8 @@ Collate:
     'apportion_prior_healthcare.R'
     'area_team_names.R'
     'assignment_algorithm.R'
+    'bed_days_fq.R'
+    'bed_days_fy.R'
     'change.R'
     'cmonth_to_fmonth.R'
     'cq_long.R'
