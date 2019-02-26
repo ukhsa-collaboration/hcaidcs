@@ -81,6 +81,7 @@ Collate:
     'group_tto_bacteraemia.R'
     'group_tto_cdi.R'
     'is_sch.R'
+    'IS_modified_bed_days.R'
     'is_third_party.R'
     'kh03_boilerplate.R'
     'kh03_year.R'
