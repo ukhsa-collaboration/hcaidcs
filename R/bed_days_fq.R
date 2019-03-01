@@ -1,6 +1,6 @@
 #' @title Calculates inpatient bed-days from Actue Trust KH03 returns
 #'
-#' @description This package calculates NHS Acute Trusts's inpatient bed-days using NHSI's published mandatory KH03 return
+#' @description This function calculates NHS Acute Trusts's inpatient bed-days using NHSI's published mandatory KH03 return
 #'
 #'
 #'
