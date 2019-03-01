@@ -17,7 +17,7 @@ bed_days_fy(data, kh03, fyear)
 Dataframe with the number of days in each financial year with corresponding inpatient bed-days for the same period
 }
 \description{
-This package calculates NHS Acute Trusts's inpatient bed-days using NHSI's published mandatory KH03 return
+This function calculates NHS Acute Trusts's inpatient bed-days using NHSI's published mandatory KH03 return
 }
 \examples{
 average_kh03 <- data.frame(
