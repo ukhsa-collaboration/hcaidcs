@@ -7,13 +7,28 @@
 convert_csv2R(trust_file, ccg_file)
 }
 \arguments{
-\item{trust_file}{A file with CCG codes.}
+\item{trust_file}{A file with Trust codes.}
 
 \item{ccg_file}{A file with CCG codes.}
 }
 \value{
-R objects (lists of list) to be used in merge_everything function.
+R objects with the structure: \cr
+(list(list(old codes 1), new code 1), list((old codes 2), new code 2), ...) \cr
 }
 \description{
-Create trust_list and ccg_list objects.
+Creates trust_list and ccg_list objects from ".csv" files.
+Csv files must contain CCG and Trust codes (separately).
+These files need to be formatted using following specification:
+\itemize{
+\item first row contains only column names, such as "old codes", "new code" etc.
+\item "odd" columns (1, 3, 5...) contains old codes in a separate cells
+\item "even" columns (2, 4, 6...) contains new code in 1 cell only
+\item "odd" column 1 corresponds to "even" column 2, 3 to 4, 5 to 6 ...
+\item there should be no empty spaces between the cells with data
+\item there should be only data necessary for conversion, for example to convert 2 merge events with 3 and 4 codes
+you will need to use csv with data in 4 columns, where first row is description only (no codes). First column
+would have 4 rows (description + 3 codes), second column 2 rows (description + new code), third column 5 rows (description
++ 4 codes) and final fourth column 2 rows(description + new code)
+}
+Examples how properly format files can be found in the main directory of HCAIDCS package.
 }

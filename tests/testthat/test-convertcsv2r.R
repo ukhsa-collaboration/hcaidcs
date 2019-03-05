@@ -17,7 +17,7 @@ compare_ccg <- list(list(c("07L", "07M", "07N"), "07L"), list(c("00T", "00R", "0
 hcaidcs::convert_csv2R(trust_file = Trust_file, ccg_file = CCG_file)
 
 #Tests
-testthat::test_that("Function works", {
+testthat::test_that("Convert_csv2R produce correct output variables", {
   testthat::expect_equal(ccg_list, compare_ccg)
   testthat::expect_equal(trust_list, compare_trust)
 
