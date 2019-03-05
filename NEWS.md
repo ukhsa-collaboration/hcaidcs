@@ -1,3 +1,37 @@
+# Version 0.1.1.9002
+
+## Minor changes
+
+Added tidyr dependency, so that the new function `ant_tab_long` expands data to include unobserved periods for organisations. 
+
+Functions added:
+
+ * `ann_tab_long` Function to create long annual and quarterly tables 
+
+Data added
+
+ * `line_listing` Data giving simulated line listing data to be used in examples and function testing
+
+# Version 0.1.1.9001
+
+## Minor changes
+Added two new functions for the preparation of the monthly factsheet and expanded mf_trend_data to add observations and organisms.
+
+Functions added:
+
+ * `mf_lag_trend` preps the data so that lagged values are calculated
+ * `mf_create_text_values` creates objects giving changes in counts of cases for use in factsheet
+ 
+Also minor fix to `apportion_prior_hc`.
+
+## Minor changes 
+Tweaks to `mf_fig1_fun` so that the x axis labels are at a 45 degree angle and so that MRSA and MSSA are no longer bold face.
+
+Updated `subregions_sp_df` to 2018 geography. 
+Previously 2017 geography. 
+
+Updated `apportion_phc` so that if the case is not HOHA and admitted in past three months is No or NA, then the result goes to COCA.
+
 # Version 0.1.0
 
 This is the first public release of the HCAIDCS package.

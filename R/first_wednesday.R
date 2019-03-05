@@ -19,7 +19,7 @@
 
 first_wednesday <- function(x){
   # Returns first wednesday of a month
-  # from http://stackoverflow.com/a/13449787/2633645
+  # from http://stackoverflow.com/a/13449787/
   date <- lubridate::ymd(x)
   first <- lubridate::floor_date(date, "month")
   dow <- sapply(seq(0, 6), function(x) lubridate::wday(first + lubridate::days(x)))

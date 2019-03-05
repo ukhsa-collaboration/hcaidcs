@@ -1,7 +1,7 @@
 Package: hcaidcs
 Type: Package
 Title: R functions for the mandatory surveillance of bacteraemia and C. difficile infection
-Version: 0.0.0.9000
+Version: 0.1.1.9001
 Authors@R: c(
     person("Simon", "Thelwall", , "simon.thelwall@phe.gov.uk", role = c("aut", "cre"), 
       comment = c(ORCID = "0000-0002-0434-2724")
@@ -33,6 +33,7 @@ Imports:
     openxlsx,
     testthat,
     utils
+    RcppRoll
 Collate:
     'aec_age_sex_plot.R'
     'aec_age_trends_plots.R'
@@ -42,9 +43,9 @@ Collate:
     'aec_subregion_plot.R'
     'aec_tto_plot.R'
     'ann_tab_ccg_names.R'
+    'ann_tab_long.R'
     'ann_tab_onset.R'
     'ann_tab_pir_org_type.R'
-    'check_date_class.R'
     'apportion.R'
     'apportion_prior_healthcare.R'
     'area_team_names.R'
@@ -94,6 +95,8 @@ Collate:
     'mandatory_age_group_cdi.R'
     'merge_everything.R'
     'mf_fig1_fun.R'
+    'mf_create_text_values.R'
+    'mf_lag_trend.R'
     'mo_curr_months.R'
     'mo_gnabsi_table.R'
     'mo_next_pub_date.R'
@@ -118,5 +121,6 @@ Collate:
 Suggests:
     knitr,
     rmarkdown,
+    testthat,
     covr
 VignetteBuilder: knitr

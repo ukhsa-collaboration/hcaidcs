@@ -4,25 +4,31 @@
 \name{subregions_sp_df}
 \alias{subregions_sp_df}
 \title{NHS subregion geographies for England}
-\format{A data frame with ~71.5k observations and 16 columns:
+\format{A data frame with ~71.3k observations and 23 columns:
 \describe{
  \item{long}{Longitude}
  \item{lat}{Lattitude}
- \item{OBJECTID}{Id for an object. Only used for plotting}
+ \item{order}{Gives plotting order}
  \item{hole}{Logical value for whether geography is a hole. Only used for plotting}
  \item{piece}{Only used for plotting}
- \item{order}{Gives plotting order}
+ \item{id}{Numeric id for subregion, 3-16}
  \item{group}{Group id for polygons}
- \item{id}{Numeric id for subregion, 0-9}
- \item{GSS_CD}{ONS code for subregion}
- \item{GSS_NM}{ONS name for subregion}
  \item{Shape_STAr}{Only used for plotting}
  \item{Shape_STLe}{Only used for plotting}
- \item{centroid_lat}{Latitude values for subregion centroids for plotting labels}
+ \item{GSS_CD}{ONS code for subregion}
+ \item{GSS_NM}{ONS name for subregion}
+ \item{InPoly_FID}{Used for plotting only}
+ \item{SimPgnFlag}{Used for plotting only}
+ \item{MaxSimpTol}{Used for plotting only}
+ \item{MinSimpTol}{Used for plotting only}
+ \item{Shape_ST_1}{Used for plotting only}
+ \item{Shape_ST_2}{Used for plotting only}
  \item{centroid_long}{Longitude values for subregion centroids for plotting labels}
+ \item{centroid_lat}{Latitude values for subregion centroids for plotting labels}
+ \item{ONS_P_CD}{ONS Parent Code}
  \item{ONS_P_NM}{ONS Parent Name}
- \item{ODS_CD}{ODS ODS code for subregion}
- \item{ODS_P_CD}{ODS ODS code for parent region}
+ \item{ODS_CD}{ODS code for subregion}
+ \item{ODS_P_CD}{ODS code for parent region}
  \item{ONS_P_CD}{ONS Parent Code}
 }}
 \source{

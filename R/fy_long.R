@@ -3,7 +3,6 @@
 #' Formats date from date or POSIX class to a text string giving the financial
 #' year as 'April yyyy to March yyyy'
 #'
-#' @include check_date_class.R
 #' @param date_var A date variable in class Date or POSIX
 #' @return A text string giving the financial year.
 #' @seealso \code{\link{fy_short}}
@@ -22,8 +21,8 @@ fy_long <- function(date_var){
     stop("lubridate is needed for this function to work. Please install it.",
          call. = FALSE)
   }
-  assertthat::assert_that(lubridate::is.Date(date_var), msg = "date_var is not a date")
-  # check_date_class(date_var)
+  assertthat::assert_that(lubridate::is.Date(date_var),
+                          msg = "date_var is not a date")
   qtr <- lubridate::quarter(date_var)
   this_year <- as.numeric(lubridate::year(date_var))
   start_year <- ifelse(qtr > 1, this_year, this_year - 1)
@@ -38,7 +37,6 @@ fy_long <- function(date_var){
 #' year as 'April yyyy to March yyyy'.
 #' Assumes that all dates will be >= 2000
 #'
-#' @include check_date_class.R
 #' @param x Either a numeric or character variable giving the financial year as
 #' YYYYYY or YYYY/YY
 #' @return A text string giving the financial year.

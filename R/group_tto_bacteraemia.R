@@ -1,6 +1,5 @@
 #' Provides grouped time to onset for bacteraemia cases
 #'
-#' @include check_date_class.R
 #' @param time_diff The time to onset as calculated by \code{\link{time_to_onset}}
 #' @return An ordered factor
 #' @seealso \code{\link{time_to_onset}}

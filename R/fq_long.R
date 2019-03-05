@@ -3,7 +3,6 @@
 #' Formats date from date or POSIX class to a text string giving the the quarter
 #' as 'January to March yyyy'
 #'
-#' @include check_date_class.R
 #' @param date_var A date variable in class Date or POSIX
 #' @return A text string giving the quarter and year.
 #' @seealso \code{\link{fy_short}}
@@ -17,6 +16,8 @@
 fq_long <- function(date_var){
   qtr <- lubridate::quarter(date_var)
   year <- lubridate::year(date_var)
+  assertthat::assert_that(lubridate::is.Date(date_var),
+                          msg = "date_var must be a date object")
   text <- ifelse(qtr == 1, "January to March",
                  ifelse(qtr == 2, "April to June",
                         ifelse(qtr == 3, "July to September",

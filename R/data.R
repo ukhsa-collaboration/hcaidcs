@@ -24,29 +24,45 @@
 #'
 #' A dataframe containing the geographies for NHS subregions.
 #'
-#' @format A data frame with ~71.5k observations and 16 columns:
+#' @format A data frame with ~71.3k observations and 23 columns:
 #' \describe{
 #'  \item{long}{Longitude}
 #'  \item{lat}{Lattitude}
-#'  \item{OBJECTID}{Id for an object. Only used for plotting}
+#'  \item{order}{Gives plotting order}
 #'  \item{hole}{Logical value for whether geography is a hole. Only used for plotting}
 #'  \item{piece}{Only used for plotting}
-#'  \item{order}{Gives plotting order}
+#'  \item{id}{Numeric id for subregion, 3-16}
 #'  \item{group}{Group id for polygons}
-#'  \item{id}{Numeric id for subregion, 0-9}
-#'  \item{GSS_CD}{ONS code for subregion}
-#'  \item{GSS_NM}{ONS name for subregion}
 #'  \item{Shape_STAr}{Only used for plotting}
 #'  \item{Shape_STLe}{Only used for plotting}
-#'  \item{centroid_lat}{Latitude values for subregion centroids for plotting labels}
+#'  \item{GSS_CD}{ONS code for subregion}
+#'  \item{GSS_NM}{ONS name for subregion}
+#'  \item{InPoly_FID}{Used for plotting only}
+#'  \item{SimPgnFlag}{Used for plotting only}
+#'  \item{MaxSimpTol}{Used for plotting only}
+#'  \item{MinSimpTol}{Used for plotting only}
+#'  \item{Shape_ST_1}{Used for plotting only}
+#'  \item{Shape_ST_2}{Used for plotting only}
 #'  \item{centroid_long}{Longitude values for subregion centroids for plotting labels}
+#'  \item{centroid_lat}{Latitude values for subregion centroids for plotting labels}
+#'  \item{ONS_P_CD}{ONS Parent Code}
 #'  \item{ONS_P_NM}{ONS Parent Name}
-#'  \item{ODS_CD}{ODS ODS code for subregion}
-#'  \item{ODS_P_CD}{ODS ODS code for parent region}
+#'  \item{ODS_CD}{ODS code for subregion}
+#'  \item{ODS_P_CD}{ODS code for parent region}
 #'  \item{ONS_P_CD}{ONS Parent Code}
 #' }
 #' @source Office for National Statistics
 "subregions_sp_df"
+
+#' subregion_test_data
+#'
+#' A data frame with random data for plotting on subregions
+#' @format A data frame with 14 observations on two columns
+#' \describe{
+#' \item{ODS_CD}{ODS code of subregion for joining}
+#' \item{rand_val}{A random value for filling the areas}
+#' }
+"subregion_test_data"
 
 #' Trends in age of patients with *C. difficile* infection
 #'
@@ -145,14 +161,41 @@
 #' Data for monthly factsheet figure 1 function
 #'
 #' A sample data set from the preparation of the monthly HCAI factsheet giving the monthly counts of collections under mandatory surveillance over time.
-#' @format
+#' @format A data frame with 24 rows of 9 variables
 #' \describe{
-#'  \item{t}{A date giving the first of the month}
 #'  \item{year}{Integer giving year}
 #'  \item{month}{Integer for month}
 #'  \item{cdi}{Integer giving counts of cases}
 #'  \item{ecoli}{Integer giving counts of cases}
 #'  \item{mrsa}{Integer giving counts of cases}
 #'  \item{mssa}{Integer giving counts of cases}
+#'  \item{kleb}{Integer giving counts of cases}
+#'  \item{paer}{Integer giving counts of cases}
+#'  \item{ecoli_ta}{Integer giving counts of E. coli hospital onset cases}
+#'  \item{t}{A date giving the first of the month}
 #' }
 "mf_trend_data"
+
+#' Data simulating output from the HCAI DCS line listing report
+#'
+#' The line-listing report of the HCAI DCS provides data on cases entered onto
+#' the system. There is one row per case of infection. This dataset replicates
+#' the data structure of the line listing report for a selection of variables
+#' for use in testing and in examples.
+#'
+#' All the data in the data set are simulated and do not represent actual
+#' patient data.
+#' @format A dataframe with 500 rows of 10 variables
+#' \describe{
+#'   \item{id}{Integer to simulate the record id}
+#'   \item{collection}{A string giving the name of the organism collection}
+#'   \item{age}{Patient age in years}
+#'   \item{sex}{String giving patient sex}
+#'   \item{specimen_date}{Date giving the date the specimen was taken}
+#'   \item{onset_status}{String, whether hospital-onset or community-onset}
+#'   \item{reporting_organisation_code}{A three-letter code for the reporting organisation}
+#'   \item{ccg_code}{A three-letter code giving the attributed CCG}
+#'   \item{pir_status}{A string giving the PIR status (only relevant to MRSA)}
+#'   \item{prior_hc}{A string giving the prior healthcare group of the case (CDI only)}
+#'}
+"line_listing"

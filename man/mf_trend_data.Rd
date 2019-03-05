@@ -4,14 +4,18 @@
 \name{mf_trend_data}
 \alias{mf_trend_data}
 \title{Data for monthly factsheet figure 1 function}
-\format{\describe{
- \item{t}{A date giving the first of the month}
+\format{A data frame with 24 rows of 9 variables
+\describe{
  \item{year}{Integer giving year}
  \item{month}{Integer for month}
  \item{cdi}{Integer giving counts of cases}
  \item{ecoli}{Integer giving counts of cases}
  \item{mrsa}{Integer giving counts of cases}
  \item{mssa}{Integer giving counts of cases}
+ \item{kleb}{Integer giving counts of cases}
+ \item{paer}{Integer giving counts of cases}
+ \item{ecoli_ta}{Integer giving counts of E. coli hospital onset cases}
+ \item{t}{A date giving the first of the month}
 }}
 \usage{
 mf_trend_data

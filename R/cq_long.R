@@ -3,7 +3,6 @@
 #' Formats date from date or POSIX class to a text string giving the calendar
 #' quarter
 #'
-#' @include check_date_class.R
 #' @param date_var A date variable in class Date or POSIX
 #' @return A text string giving the quarter and calendar year.
 #' @seealso \code{\link{fy_long}}
@@ -17,7 +16,8 @@ cal_q_long <- function(date_var){
     stop("lubridate is needed for this function to work. Please install it.",
          call. = FALSE)
   }
-  check_date_class(date_var)
+  assertthat::assert_that(lubridate::is.Date(date_var))
+
   qtr <- lubridate::quarter(date_var)
   year <- lubridate::year(date_var)
   text <- ifelse(qtr == 1, "January to March",

@@ -21,10 +21,14 @@ rm(list = ls())
 
 # Create subregions ####
 
-subregions <- readOGR(dsn = ".", layer = "nhs_subregions")
+subregions <- readOGR(dsn = ".", layer = "nhs_subregions_and_das_2018")
 subregions@data$id = rownames(subregions@data)
 subregions_points <- fortify(subregions)
 subregions_sp_df <- join(subregions_points, subregions@data, by = "id")
+subregions_sp_df <- subregions_sp_df[!(subregions_sp_df$CTRYNM %in% c("Northern Ireland", "Scotland", "Wales")), ]
+table(subregions_sp_df$CTRYNM)
+table(subregions_sp_df$GSS_CD)
+table(subregions_sp_df$GSS_CD, subregions_sp_df$GSS_NM) %>% View()
 
 centroids_df <- data.frame(gCentroid(subregions, byid=TRUE, id = subregions@data$id))
 centroids_df <- data.frame(rownames(centroids_df),centroids_df)
@@ -42,13 +46,16 @@ subregions_sp_df <- left_join(subregions_sp_df, centroids_df)
 # Add in ODS codes here
 # Need ODS parent code and ODS code for region
 # codes is manually created from ODS and PHE GIS data
-codes <- read.csv("H:/hcaidcs/data-raw/subregion_lut.csv",
+codes <- read.csv("H:/hcaidcs/data-raw/subregion_lut_2018.csv",
                   stringsAsFactors = FALSE)
 
 subregions_sp_df <- subregions_sp_df %>%
   left_join(., select(codes, -GSS_NM))
 
 names(subregions_sp_df)
+length(unique(subregions_sp_df$ODS_CD))
+table(subregions_sp_df$ODS_CD)
+
 rm(codes)
 
 ggplot(subregions_sp_df, aes(long, lat, group = group, label = GSS_CD)) +
@@ -56,8 +63,29 @@ ggplot(subregions_sp_df, aes(long, lat, group = group, label = GSS_CD)) +
   geom_path(colour = "white") + coord_equal() +
   geom_text(aes(x = centroid_long, y = centroid_lat), colour = "white")
 
+ggplot(subregions_sp_df, aes(long, lat, group = group, label = ODS_CD)) +
+  geom_polygon() +
+  geom_path(colour = "white") + coord_equal() +
+  geom_text(aes(x = centroid_long, y = centroid_lat), colour = "white")
+
+subregions_sp_df$CTRYCD  <- NULL
+subregions_sp_df$CTRYCDO  <- NULL
+subregions_sp_df$CTRYNM <- NULL
+
 setwd("H:/hcaidcs/")
 devtools::use_data(subregions_sp_df, overwrite = TRUE)
 # save(subregions_sp_df, file = "H:\\hcaidcs\\data\\subregions_sp_df.RData")
+
+subregion_test_data <- data.frame(stringsAsFactors=FALSE,
+           ODS_CD = c("Q71", "Q75", "Q72", "Q78", "Q79", "Q76", "Q77", "Q83", "Q74",
+                      "Q84", "Q87", "Q88", "Q86", "Q85"),
+           rand_val = c(0.302020973, 0.006223132, 0.156590506, 0.045990521,
+                        0.35983688, 0.148314024, 0.497859566, 0.673062958,
+                        0.317183955, 0.757254947, 0.800067725, 0.926615495, 0.591537639,
+                        0.951676355)
+)
+
+devtools::use_data(subregion_test_data, overwrite = TRUE)
+
 setwd("H:/spatial/")
 rm(list = ls())

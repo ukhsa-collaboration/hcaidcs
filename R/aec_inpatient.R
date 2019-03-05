@@ -1,4 +1,4 @@
-#' Determine whether record is from an acute Trust inpatient for AEC
+#' Determine whether record is from an acute trust inpatient for AEC
 #'
 #' Inpatients have a patient location of 'NHS Acute Trust' and are one of:
 #' inpatient, day patient or emergency assessment.
