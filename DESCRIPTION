@@ -6,7 +6,8 @@ Authors@R: c(
     person("Simon", "Thelwall", , "simon.thelwall@phe.gov.uk", role = c("aut", "cre"), 
       comment = c(ORCID = "0000-0002-0434-2724")
     ),
-    person("Olisaeloka", "Nsonwu", , "olisaeloka.nsonwu@phe.gov.uk", role = "aut")
+    person("Olisaeloka", "Nsonwu", , "olisaeloka.nsonwu@phe.gov.uk", role = "ctb"),
+    person("Piotr", "Patrzylas", , "piotr.patrzylas@phe.gov.uk", role = "ctb")
     )
 Description: Functions for working with data from the HCAI DCS.
 Depends:
