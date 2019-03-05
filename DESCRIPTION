@@ -32,6 +32,7 @@ Imports:
     crayon,
     openxlsx,
     testthat,
+    utils,
     RcppRoll
 Collate:
     'aec_age_sex_plot.R'
@@ -51,6 +52,7 @@ Collate:
     'assignment_algorithm.R'
     'change.R'
     'cmonth_to_fmonth.R'
+    'convert_csv2r.R'
     'cq_long.R'
     'cyear_to_cq.R'
     'cyear_to_fyear.R'
