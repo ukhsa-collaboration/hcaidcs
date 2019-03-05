@@ -32,7 +32,7 @@ Imports:
     crayon,
     openxlsx,
     testthat,
-    utils
+    utils,
     RcppRoll
 Collate:
     'aec_age_sex_plot.R'
