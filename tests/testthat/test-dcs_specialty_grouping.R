@@ -23,9 +23,24 @@ test_that("Any other name not blank or NA goes to other"  , {
 
 test_that("Blanks or NAs are grouped under not reported"  , {
   expect_equal(dcs_speciality_grouping(NA), "not available")
+  expect_equal(dcs_speciality_grouping(NA_real_), "not available")
+  expect_equal(dcs_speciality_grouping(NA_character_), "not available")
+  expect_equal(dcs_speciality_grouping(NA_complex_), "not available")
+  expect_equal(dcs_speciality_grouping(NA_integer_), "not available")
   expect_equal(dcs_speciality_grouping(""), "not available")
   expect_equal(dcs_speciality_grouping("   "), "not available")
 
+})
+
+test_that("Factors are evaluated in the same way as characters"  , {
+  expect_equal(dcs_speciality_grouping(factor("A paediatric")), "paediatrics")
+  expect_equal(dcs_speciality_grouping(factor("Paediatric C")), "paediatrics")
+})
+
+test_that("Numbers evaluate to \" others\""  , {
+  expect_equal(dcs_speciality_grouping(1), "others")
+  expect_equal(dcs_speciality_grouping(1.1), "others")
+  expect_equal(dcs_speciality_grouping(-1.1), "others")
 })
 
 

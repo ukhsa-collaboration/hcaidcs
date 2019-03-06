@@ -2,9 +2,14 @@
 #'
 #' @description Group specialties from the HCAI DCS
 #'
-#' @param df Character. Specialty name
+#' @param spec_nm Character. Specialty name
 #'
 #' @examples
+#'
+#' # The function categorises specialties into groups by string matching on `spec_nm`.
+#' # Numbers will be compared as characters
+#' # NAs of all types will evaluate to "not available"
+#' # Any value supplied that does not meet any of the string matching conditions evaluate to "others"
 #'
 #' dcs_speciality_grouping("Clinical oncology (radiotherapy)")
 #'
@@ -19,6 +24,12 @@
 #' dcs_speciality_grouping(NA)
 #'
 #' dcs_speciality_grouping("xds")
+#'
+#' dcs_speciality_grouping(1)
+#'
+#' dcs_speciality_grouping(2.1)
+#'
+#' dcs_speciality_grouping(-2.1)
 #'
 #'
 #' @export
@@ -37,6 +48,6 @@ dcs_speciality_grouping <- function(spec_nm){
                                          "gastroenterology", "trauma & orthopaedics", "not available", "general medicine",
                                          "urology", "general surgery", "geriatric medicine") , "others", ward)
 
-  ward
+  return(ward)
 }
 
