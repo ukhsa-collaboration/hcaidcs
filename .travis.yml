@@ -9,9 +9,9 @@ sudo: false
 warnings_are_errors: false
 
 #cache: packages
-r_packages:
-  - covr
-  - devtools
+#r_packages:
+#  - covr
+#  - devtools
 
 after_success:
   - Rscript -e 'library(covr); codecov()'
