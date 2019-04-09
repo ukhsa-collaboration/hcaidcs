@@ -3,6 +3,9 @@
 language: R
 sudo: false
 
+install:
+- R -e 'devtools::install_deps(dep = T)'
+
 warnings_are_errors: false
 
 cache: packages
