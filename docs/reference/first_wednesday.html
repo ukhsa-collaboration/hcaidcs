@@ -71,7 +71,7 @@ Relies on lubridate for date calculations." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hcaidcs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9003</span>
       </span>
     </div>
 
@@ -146,7 +146,7 @@ Relies on lubridate for date calculations.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>first_wednesday</span>(<span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/round_date.html'>floor_date</a></span>(<span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/today.html'>today</a></span>(), <span class='st'>"month"</span>))</div><div class='output co'>#&gt; [1] "2019-01-02"</div><span class='co'># NOT RUN {</span>
+    <pre class="examples"><div class='input'><span class='fu'>first_wednesday</span>(<span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/round_date.html'>floor_date</a></span>(<span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/today.html'>today</a></span>(), <span class='st'>"month"</span>))</div><div class='output co'>#&gt; [1] "2019-04-03"</div><span class='co'># NOT RUN {</span>
 <span class='fu'>first_wednesday</span>(<span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/round_date.html'>floor_date</a></span>(<span class='fu'>today</span>(), <span class='st'>"month"</span>) <span class='kw'>%m+%</span>
     <span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='fu'>months</span>(<span class='fl'>1</span>))
 

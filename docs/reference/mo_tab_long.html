@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Provides grouped time to onset for bacteraemia cases — group_tto_bacteraemia • hcaidcs</title>
+<title>mo_tab_long — mo_tab_long • hcaidcs</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -36,9 +36,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Provides grouped time to onset for bacteraemia cases — group_tto_bacteraemia" />
+<meta property="og:title" content="mo_tab_long — mo_tab_long" />
 
-<meta property="og:description" content="Provides grouped time to onset for bacteraemia cases" />
+<meta property="og:description" content="Takes line list data and aggregates to long data for saving as long-format monthly tables.
+Outputs are also sorted by organisation, time and metric." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -114,58 +115,56 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Provides grouped time to onset for bacteraemia cases</h1>
-    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/group_tto_bacteraemia.R'><code>R/group_tto_bacteraemia.R</code></a></small>
-    <div class="hidden name"><code>group_tto_bacteraemia.Rd</code></div>
+    <h1>mo_tab_long</h1>
+    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/mo_tab_long.R'><code>R/mo_tab_long.R</code></a></small>
+    <div class="hidden name"><code>mo_tab_long.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Provides grouped time to onset for bacteraemia cases</p>
+    <p>Takes line list data and aggregates to long data for saving as long-format monthly tables.
+Outputs are also sorted by organisation, time and metric.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>group_tto_bacteraemia</span>(<span class='no'>time_diff</span>)</pre>
+    <pre class="usage"><span class='fu'>mo_tab_long</span>(<span class='no'>dat</span>, <span class='no'>collection_var</span>, <span class='no'>metric_var</span>, <span class='no'>org_var</span>, <span class='no'>year_var</span>, <span class='no'>month_var</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>time_diff</th>
-      <td><p>The time to onset as calculated by <code><a href='time_to_onset.html'>time_to_onset</a></code></p></td>
+      <th>dat</th>
+      <td><p>A dataframe containing line-listing data</p></td>
+    </tr>
+    <tr>
+      <th>collection_var</th>
+      <td><p>A string giving the data collection</p></td>
+    </tr>
+    <tr>
+      <th>metric_var</th>
+      <td><p>Column in dat giving column for the metric</p></td>
+    </tr>
+    <tr>
+      <th>org_var</th>
+      <td><p>The variable giving the organisation code</p></td>
+    </tr>
+    <tr>
+      <th>year_var</th>
+      <td><p>The variable giving the calendar year</p></td>
+    </tr>
+    <tr>
+      <th>month_var</th>
+      <td><p>The variable giving the calendar month</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An ordered factor</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='time_to_onset.html'>time_to_onset</a></code></p>
-<p><code><a href='group_tto_cdi.html'>group_tto_cdi</a></code></p></div>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>onset</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span>(<span class='st'>"05-01-2011"</span>)
-<span class='no'>admitted</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span>(<span class='st'>"01-01-2011"</span>)
-<span class='no'>patient_cat</span> <span class='kw'>&lt;-</span> <span class='st'>"In-patient"</span>
-<span class='no'>patient_loc</span> <span class='kw'>&lt;-</span> <span class='st'>"NHS Acute Trust"</span>
-<span class='no'>tto</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='time_to_onset.html'>time_to_onset</a></span>(<span class='no'>admitted</span>, <span class='no'>onset</span>, <span class='no'>patient_cat</span>, <span class='no'>patient_loc</span>)
-<span class='fu'>group_tto_bacteraemia</span>(<span class='no'>tto</span>)</div><div class='output co'>#&gt; [1] 2 - 6 days
-#&gt; Levels: &lt; 2 days 2 - 6 days = 7</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+                </ul>
 
   </div>
 </div>
