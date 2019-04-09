@@ -94,10 +94,16 @@
     <loc>http://publichealthengland.github.io/hcaidcs/reference/cyear_to_fyear.html</loc>
   </url>
   <url>
+    <loc>http://publichealthengland.github.io/hcaidcs/reference/data_compare.html</loc>
+  </url>
+  <url>
     <loc>http://publichealthengland.github.io/hcaidcs/reference/date_end_period.html</loc>
   </url>
   <url>
     <loc>http://publichealthengland.github.io/hcaidcs/reference/date_start_period.html</loc>
+  </url>
+  <url>
+    <loc>http://publichealthengland.github.io/hcaidcs/reference/date_to_cmonth.html</loc>
   </url>
   <url>
     <loc>http://publichealthengland.github.io/hcaidcs/reference/date_to_fmonth.html</loc>
@@ -184,6 +190,9 @@
     <loc>http://publichealthengland.github.io/hcaidcs/reference/group_tto_cdi.html</loc>
   </url>
   <url>
+    <loc>http://publichealthengland.github.io/hcaidcs/reference/highlight.html</loc>
+  </url>
+  <url>
     <loc>http://publichealthengland.github.io/hcaidcs/reference/is_sch.html</loc>
   </url>
   <url>
@@ -212,6 +221,15 @@
   </url>
   <url>
     <loc>http://publichealthengland.github.io/hcaidcs/reference/mandatory_age_group_cdi.html</loc>
+  </url>
+  <url>
+    <loc>http://publichealthengland.github.io/hcaidcs/reference/merge_all.html</loc>
+  </url>
+  <url>
+    <loc>http://publichealthengland.github.io/hcaidcs/reference/merge_everything.html</loc>
+  </url>
+  <url>
+    <loc>http://publichealthengland.github.io/hcaidcs/reference/merge_one.html</loc>
   </url>
   <url>
     <loc>http://publichealthengland.github.io/hcaidcs/reference/mf_create_text_values.html</loc>
@@ -245,6 +263,9 @@
   </url>
   <url>
     <loc>http://publichealthengland.github.io/hcaidcs/reference/mo_std_table.html</loc>
+  </url>
+  <url>
+    <loc>http://publichealthengland.github.io/hcaidcs/reference/mo_tab_long.html</loc>
   </url>
   <url>
     <loc>http://publichealthengland.github.io/hcaidcs/reference/mrsa_source_bacteraemia.html</loc>

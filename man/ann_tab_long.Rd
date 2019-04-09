@@ -4,23 +4,18 @@
 \alias{ann_tab_long}
 \title{Create long annual tables from line listing data}
 \usage{
-ann_tab_long(dat, collection_var, collection_string, org_code, metric_type,
-  metric_var, output, spec_date)
+ann_tab_long(dat, collection_var, org_var, metric_var, period_var)
 }
 \arguments{
 \item{dat}{A dataframe containing line-listing data}
 
 \item{collection_var}{A string giving the data collection}
 
-\item{collection_string}{A string giving the data collection}
-
-\item{org_code}{The variable giving the organisation code}
-
-\item{metric_type}{A string giving the metric to be tabulated, one of "onset", "pir" or "prior_hc"}
+\item{org_var}{The variable giving the organisation code}
 
 \item{metric_var}{Column in dat giving column for the metric}
 
-\item{output}{A string giving the output required. Either an annual table or quarterly}
+\item{period_var}{Column giving the period by which counts should be aggregated}
 
 \item{spec_date}{Column in dat giving specimen date}
 }
@@ -42,12 +37,13 @@ In addition, PHEC and organisation names will need to be merged in, as will
 denominator data, and rates will need to be calculated.
 }
 \examples{
-#library(dplyr)
+library(dplyr)
 data(line_listing)
 line_listing$fy_long <- fy_long(line_listing$specimen_date)
 
-ann_tab_long(dat = line_listing, collection_var = collection,
-  collection_string = "C. difficile", org_code = reporting_organisation_code,
-  metric_type = "prior_hc", metric_var = prior_hc, output = "annual",
-  spec_date = specimen_date)
+line_listing \%>\%
+  filter(collection == "C. difficile") \%>\%
+  ann_tab_long(dat = ., collection_var = collection,
+    org_var = reporting_organisation_code,
+    metric_var = prior_hc, period_var = fy_long)
 }

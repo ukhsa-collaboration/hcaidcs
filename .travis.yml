@@ -3,11 +3,15 @@
 language: R
 sudo: false
 
+#install:
+#  - R -e 'devtools::install_deps(dep = T)'
+
 warnings_are_errors: false
 
-cache: packages
-r_packages:
-  - covr
+#cache: packages
+#r_packages:
+#  - covr
+#  - devtools
 
 after_success:
   - Rscript -e 'library(covr); codecov()'
