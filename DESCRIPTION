@@ -1,7 +1,7 @@
 Package: hcaidcs
 Type: Package
 Title: R functions for the mandatory surveillance of bacteraemia and C. difficile infection
-Version: 0.1.1.9001
+Version: 0.1.1.9003
 Authors@R: c(
     person("Simon", "Thelwall", , "simon.thelwall@phe.gov.uk", role = c("aut", "cre"), 
       comment = c(ORCID = "0000-0002-0434-2724")
@@ -61,6 +61,7 @@ Collate:
     'date_to_fmonth.R'
     'date_to_fq.R'
     'date_to_fyear.R'
+    'date_to_cmonth.R'
     'days_in_cyear.R'
     'days_in_fmonth.R'
     'days_in_fq.R'
@@ -101,6 +102,7 @@ Collate:
     'mo_prior_hc_table.R'
     'mo_pub_date.R'
     'mo_std_table.R'
+    'mo_tab_long.R'
     'month_to_string.R'
     'mrsa_source_bacteraemia.R'
     'ordered_fin_qtr.R'

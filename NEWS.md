@@ -1,3 +1,17 @@
+# Version 0.1.1.9003
+
+## Functions added
+
+ * `date_to_cmonth` Function to convert a date to a calendar month, either as numeric (default), or factor, with levels in calendar year order
+ * `mo_tab_long` Function to create long-format monthly tables
+ 
+## Minor changes
+
+ * `ann_tab_long` Simplified syntax for this function. This will make it more flexible. 
+ Following arguments have been removed: collection_string, org_code, metric_type, output
+ `period_var` argument added
+ The expectation is that the user will supply the period as an ordered factor and the function will then sort the data by that variable. The same applies to the `metric_var` argument.
+
 # Version 0.1.1.9002
 
 ## Minor changes
