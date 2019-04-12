@@ -1,10 +1,9 @@
-# could use this function to produce long tables in looped prep file, then
-# use separate function to export tables as currently.
-
 #' mo_tab_long
 #'
 #' Takes line list data and aggregates to long data for saving as long-format monthly tables.
 #' Outputs are also sorted by organisation, time and metric.
+#'
+#' It is expected that the metric variable is an ordered factor prior to the creation of the long tables.
 #'
 #' @param dat A dataframe containing line-listing data
 #' @param collection_var A string giving the data collection
@@ -13,9 +12,9 @@
 #' @param year_var The variable giving the calendar year
 #' @param month_var The variable giving the calendar month
 #'
-#' @examples
-#' @export
+#' @seealso \code{\link{ann_tab_long}}, \code{\link{factor_apportioned}}, \code{\link{factor_prior_hc}}
 #'
+#' @examples
 #' library(dplyr)
 #' data(line_listing)
 #' line_listing <- line_listing %>%
@@ -27,6 +26,7 @@
 #'   metric_var = prior_hc,
 #'   year_var = cyear, month_var = cmonth
 #'   )
+#' @export
 
 mo_tab_long <- function(dat, collection_var, metric_var, org_var, year_var, month_var){
   # assertthat::assert_that(metric_string %in% c("onset", "pir", "prior_hc"),

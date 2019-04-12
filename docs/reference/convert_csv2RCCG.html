@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Authors • hcaidcs</title>
+<title>Convert .csv file to global variable that can be used in merge_everything function. — convert_csv2RCCG • hcaidcs</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -25,18 +25,33 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script>
 
 
 <!-- docsearch -->
-<script src="docsearch.js"></script>
+<script src="../docsearch.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
-<link href="docsearch.css" rel="stylesheet">
+<link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Authors" />
+<meta property="og:title" content="Convert .csv file to global variable that can be used in merge_everything function. — convert_csv2RCCG" />
+
+<meta property="og:description" content="Creates ccg_list object from &quot;.csv&quot; file. Csv files must contain only CCG codes to be merged.
+This file needs to be formatted using following specification:
+first row contains only column names, such as &quot;old codes&quot;, &quot;new code&quot; etc.
+&quot;odd&quot; columns (1, 3, 5...) contains old codes in a separate cells
+&quot;even&quot; columns (2, 4, 6...) contains new code in 1 cell only
+&quot;odd&quot; column 1 corresponds to &quot;even&quot; column 2, 3 to 4, 5 to 6 ...
+there should be no empty spaces between the cells with data
+there should be only data necessary for conversion, for example to convert 2 merge events with 3 and 4 codes
+you will need to use csv with data in 4 columns, where first row is description only (no codes). First column
+would have 4 rows (description + 3 codes), second column 2 rows (description + new code), third column 5 rows (description
++ 4 codes) and final fourth column 2 rows(description + new code)
+For example how properly format file please see  &quot;test_convertcsv2rCCG.csv&quot; file in the main directory
+of HCAIDCS package." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -53,7 +68,7 @@
   </head>
 
   <body>
-    <div class="container template-authors">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -65,7 +80,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">hcaidcs</a>
+        <a class="navbar-link" href="../index.html">hcaidcs</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9003</span>
       </span>
     </div>
@@ -73,16 +88,16 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="news/index.html">Changelog</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -109,30 +124,59 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Authors</h1>
+    <h1>Convert .csv file to global variable that can be used in merge_everything function.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/convert_csv2r.R'><code>R/convert_csv2r.R</code></a></small>
+    <div class="hidden name"><code>convert_csv2RCCG.Rd</code></div>
     </div>
 
-    <ul class="list-unstyled">
-      <li>
-        <p><strong>Simon Thelwall</strong>. Author, maintainer. <a href='https://orcid.org/0000-0002-0434-2724' target='orcid.widget'><img src='https://members.orcid.org/sites/default/files/vector_iD_icon.svg' class='orcid' alt='ORCID' height='16'></a>
-        </p>
-      </li>
-      <li>
-        <p><strong>Olisaeloka Nsonwu</strong>. Contributor. 
-        </p>
-      </li>
-      <li>
-        <p><strong>Piotr Patrzylas</strong>. Contributor. 
-        </p>
-      </li>
-    </ul>
+    <div class="ref-description">
+    
+    <p>Creates ccg_list object from ".csv" file. Csv files must contain only CCG codes to be merged.
+This file needs to be formatted using following specification:</p><ul>
+<li><p>first row contains only column names, such as "old codes", "new code" etc.</p></li>
+<li><p>"odd" columns (1, 3, 5...) contains old codes in a separate cells</p></li>
+<li><p>"even" columns (2, 4, 6...) contains new code in 1 cell only</p></li>
+<li><p>"odd" column 1 corresponds to "even" column 2, 3 to 4, 5 to 6 ...</p></li>
+<li><p>there should be no empty spaces between the cells with data</p></li>
+<li><p>there should be only data necessary for conversion, for example to convert 2 merge events with 3 and 4 codes
+you will need to use csv with data in 4 columns, where first row is description only (no codes). First column
+would have 4 rows (description + 3 codes), second column 2 rows (description + new code), third column 5 rows (description
++ 4 codes) and final fourth column 2 rows(description + new code)</p></li>
+</ul><p>For example how properly format file please see  "test_convertcsv2rCCG.csv" file in the main directory
+of HCAIDCS package.</p>
+    
+    </div>
+
+    <pre class="usage"><span class='fu'>convert_csv2RCCG</span>(<span class='no'>ccg_file</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>ccg_file</th>
+      <td><p>A file with CCG codes.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>R object with the structure: <br />
+(list(list(old codes 1), new code 1), list((old codes 2), new code 2), ...) <br /></p>
+    
 
   </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
+  </div>
 </div>
-
 
       <footer>
       <div class="copyright">

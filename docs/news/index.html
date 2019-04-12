@@ -132,8 +132,8 @@
 <h2 class="hasAnchor">
 <a href="#minor-changes" class="anchor"></a>Minor changes</h2>
 <ul>
-<li>
-<code>ann_tab_long</code> Simplified syntax for this function. This will make it more flexible. Following arguments have been removed: collection_string, org_code, metric_type, output <code>period_var</code> argument added The expectation is that the user will supply the period as an ordered factor and the function will then sort the data by that variable. The same applies to the <code>metric_var</code> argument.</li>
+<li><p><code>ann_tab_long</code> Simplified syntax for this function. This will make it more flexible. Following arguments have been removed: collection_string, org_code, metric_type, output <code>period_var</code> argument added The expectation is that the user will supply the period as an ordered factor and the function will then sort the data by that variable. The same applies to the <code>metric_var</code> argument.</p></li>
+<li><p>Functions for comparing wide data tables have been moved out to a separate branch (<code>merge_everything</code>, <code>merge_one</code>, <code>data_compare</code>, <code>highlight</code>, <code>convert_csv2r</code>). The change to reporting long format tables has obviated these functions.</p></li>
 </ul>
 </div>
 </div>

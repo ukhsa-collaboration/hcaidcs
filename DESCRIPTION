@@ -33,7 +33,6 @@ Imports:
     ggrepel,
     crayon,
     openxlsx,
-    testthat,
     utils,
     RcppRoll
 Collate:
@@ -56,12 +55,10 @@ Collate:
     'bed_days_fy.R'
     'change.R'
     'cmonth_to_fmonth.R'
-    'convert_csv2r.R'
     'cq_long.R'
     'cyear_to_cq.R'
     'cyear_to_fyear.R'
     'data.R'
-    'data_compare.R'
     'date_end_period.R'
     'date_start_period.R'
     'date_to_fmonth.R'
@@ -90,7 +87,7 @@ Collate:
     'group_tto_bacteraemia.R'
     'group_tto_cdi.R'
     'independent_sector_denominator.R'
-	'is_sch.R'
+    'is_sch.R'
     'is_third_party.R'
     'kh03_boilerplate.R'
     'kh03_year.R'
@@ -99,7 +96,6 @@ Collate:
     'mandatory_age_group.R'
     'mandatory_age_group_bacteraemia.R'
     'mandatory_age_group_cdi.R'
-    'merge_everything.R'
     'mf_fig1_fun.R'
     'mf_create_text_values.R'
     'mf_lag_trend.R'

@@ -11,6 +11,8 @@
  Following arguments have been removed: collection_string, org_code, metric_type, output
  `period_var` argument added
  The expectation is that the user will supply the period as an ordered factor and the function will then sort the data by that variable. The same applies to the `metric_var` argument.
+ 
+ * Functions for comparing wide data tables have been moved out to a separate branch (`merge_everything`,  `merge_one`, `data_compare`, `highlight`, `convert_csv2r`). The change to reporting long format tables has obviated these functions. 
 
 # Version 0.1.1.9002
 

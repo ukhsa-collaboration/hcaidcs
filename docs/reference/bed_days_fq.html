@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate patient age in manner that conforms to mandatory surveillance requirements — mandatory_age • hcaidcs</title>
+<title>Calculates inpatient bed-days from Actue Trust KH03 returns — bed_days_fq • hcaidcs</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -36,10 +36,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Calculate patient age in manner that conforms to mandatory surveillance requirements — mandatory_age" />
+<meta property="og:title" content="Calculates inpatient bed-days from Actue Trust KH03 returns — bed_days_fq" />
 
-<meta property="og:description" content="Calculates age as integer based on number of years lived.
-Takes into account leap years." />
+<meta property="og:description" content="This function calculates NHS Acute Trusts's inpatient bed-days using NHSI's published mandatory KH03 return" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -115,44 +114,59 @@ Takes into account leap years." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate patient age in manner that conforms to mandatory surveillance requirements</h1>
-    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/mandatory_age.R'><code>R/mandatory_age.R</code></a></small>
-    <div class="hidden name"><code>mandatory_age.Rd</code></div>
+    <h1>Calculates inpatient bed-days from Actue Trust KH03 returns</h1>
+    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/bed_days_fq.R'><code>R/bed_days_fq.R</code></a></small>
+    <div class="hidden name"><code>bed_days_fq.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Calculates age as integer based on number of years lived.
-Takes into account leap years.</p>
+    <p>This function calculates NHS Acute Trusts's inpatient bed-days using NHSI's published mandatory KH03 return</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>mandatory_age</span>(<span class='no'>date_of_birth</span>, <span class='no'>specimen_date</span>)</pre>
+    <pre class="usage"><span class='fu'>bed_days_fq</span>(<span class='no'>data</span>, <span class='no'>kh03</span>, <span class='no'>qtr</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>date_of_birth</th>
-      <td><p>Patient's date of birth in date format</p></td>
+      <th>data</th>
+      <td><p>A dataframe</p></td>
     </tr>
     <tr>
-      <th>specimen_date</th>
-      <td><p>Date of specimen in date format</p></td>
+      <th>kh03</th>
+      <td><p>Trust specific KH03 mandatory return</p></td>
+    </tr>
+    <tr>
+      <th>qtr</th>
+      <td><p>Financial quarter. Example format; 20171 (Apr-Jun 2017), 20172 (Jul-Sep 2017), 20173 (Oct-Dec 2017) and 20172 (Jan-Mar 2018)</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Vector of integer ages</p>
+    <p>Dataframe with the number of days in each quarter with corresponding inpatient bed-days for the same period</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>lubridate</span>)
-<span class='no'>dob</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span>(<span class='st'>"31/01/2000"</span>)
-<span class='no'>spec</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span>(<span class='st'>"21/01/2001"</span>)
-<span class='fu'>mandatory_age</span>(<span class='no'>dob</span>, <span class='no'>spec</span>)</div><div class='output co'>#&gt; [1] 0</div><div class='input'><span class='co'># Counter example :</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Round'>round</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/numeric'>as.numeric</a></span>(<span class='no'>spec</span>-<span class='no'>dob</span>)/<span class='fl'>365.25</span>, <span class='fl'>1</span>)</div><div class='output co'>#&gt; [1] 1</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>average_kh03</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(
+<span class='kw'>fq</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>20171</span>,<span class='fl'>20172</span>,<span class='fl'>20173</span>,<span class='fl'>20174</span>,<span class='fl'>20151</span>,<span class='fl'>20152</span>,<span class='fl'>20153</span>,<span class='fl'>20154</span>),
+<span class='kw'>trust_code</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='st'>"RX1"</span>,<span class='fl'>4</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='st'>"RYJ"</span>,<span class='fl'>4</span>)),
+<span class='kw'>trust_name</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='st'>"Nottingham University Hospitals"</span>,<span class='fl'>4</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='st'>"Imperial College Healthcare"</span>,<span class='fl'>4</span>)),
+<span class='kw'>kh03_avg</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1425</span>,<span class='fl'>1357</span>,<span class='fl'>1392</span>,<span class='fl'>1481</span>,<span class='fl'>965</span>,<span class='fl'>940</span>,<span class='fl'>933</span>,<span class='fl'>970</span>)
+)
+
+<span class='fu'>bed_days_fq</span>(<span class='no'>average_kh03</span>,<span class='st'>"kh03_avg"</span>,<span class='st'>"fq"</span>)</div><div class='output co'>#&gt;   days bed_days
+#&gt; 1   91   129675
+#&gt; 2   92   124844
+#&gt; 3   92   128064
+#&gt; 4   91   134771
+#&gt; 5   91    87815
+#&gt; 6   92    86480
+#&gt; 7   92    85836
+#&gt; 8   90    87300</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

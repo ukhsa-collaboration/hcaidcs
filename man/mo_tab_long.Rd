@@ -23,3 +23,22 @@ mo_tab_long(dat, collection_var, metric_var, org_var, year_var, month_var)
 Takes line list data and aggregates to long data for saving as long-format monthly tables.
 Outputs are also sorted by organisation, time and metric.
 }
+\details{
+It is expected that the metric variable is an ordered factor prior to the creation of the long tables.
+}
+\examples{
+library(dplyr)
+data(line_listing)
+line_listing <- line_listing \%>\%
+  mutate(cyear = format(specimen_date, "\%Y"),
+    cmonth = date_to_cmonth(specimen_date))
+
+mo_tab_long(dat = line_listing, collection_var = collection,
+  org_var = reporting_organisation_code,
+  metric_var = prior_hc,
+  year_var = cyear, month_var = cmonth
+  )
+}
+\seealso{
+\code{\link{ann_tab_long}}, \code{\link{factor_apportioned}}, \code{\link{factor_prior_hc}}
+}

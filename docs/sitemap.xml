@@ -73,6 +73,12 @@
     <loc>http://publichealthengland.github.io/hcaidcs/reference/at_sp_df.html</loc>
   </url>
   <url>
+    <loc>http://publichealthengland.github.io/hcaidcs/reference/bed_days_fq.html</loc>
+  </url>
+  <url>
+    <loc>http://publichealthengland.github.io/hcaidcs/reference/bed_days_fy.html</loc>
+  </url>
+  <url>
     <loc>http://publichealthengland.github.io/hcaidcs/reference/cal_q_long.html</loc>
   </url>
   <url>
@@ -92,9 +98,6 @@
   </url>
   <url>
     <loc>http://publichealthengland.github.io/hcaidcs/reference/cyear_to_fyear.html</loc>
-  </url>
-  <url>
-    <loc>http://publichealthengland.github.io/hcaidcs/reference/data_compare.html</loc>
   </url>
   <url>
     <loc>http://publichealthengland.github.io/hcaidcs/reference/date_end_period.html</loc>
@@ -190,7 +193,7 @@
     <loc>http://publichealthengland.github.io/hcaidcs/reference/group_tto_cdi.html</loc>
   </url>
   <url>
-    <loc>http://publichealthengland.github.io/hcaidcs/reference/highlight.html</loc>
+    <loc>http://publichealthengland.github.io/hcaidcs/reference/independent_sector_denominator.html</loc>
   </url>
   <url>
     <loc>http://publichealthengland.github.io/hcaidcs/reference/is_sch.html</loc>
@@ -221,15 +224,6 @@
   </url>
   <url>
     <loc>http://publichealthengland.github.io/hcaidcs/reference/mandatory_age_group_cdi.html</loc>
-  </url>
-  <url>
-    <loc>http://publichealthengland.github.io/hcaidcs/reference/merge_all.html</loc>
-  </url>
-  <url>
-    <loc>http://publichealthengland.github.io/hcaidcs/reference/merge_everything.html</loc>
-  </url>
-  <url>
-    <loc>http://publichealthengland.github.io/hcaidcs/reference/merge_one.html</loc>
   </url>
   <url>
     <loc>http://publichealthengland.github.io/hcaidcs/reference/mf_create_text_values.html</loc>
