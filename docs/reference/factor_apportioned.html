@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>mo_tab_long — mo_tab_long • hcaidcs</title>
+<title>factor_apportioned — factor_apportioned • hcaidcs</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -36,10 +36,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="mo_tab_long — mo_tab_long" />
+<meta property="og:title" content="factor_apportioned — factor_apportioned" />
 
-<meta property="og:description" content="Takes line list data and aggregates to long data for saving as long-format monthly tables.
-Outputs are also sorted by organisation, time and metric." />
+<meta property="og:description" content="Converts apportioned column into a factor for production of long format tables." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -115,90 +114,48 @@ Outputs are also sorted by organisation, time and metric." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>mo_tab_long</h1>
-    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/mo_tab_long.R'><code>R/mo_tab_long.R</code></a></small>
-    <div class="hidden name"><code>mo_tab_long.Rd</code></div>
+    <h1>factor_apportioned</h1>
+    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/factor_apportioned.R'><code>R/factor_apportioned.R</code></a></small>
+    <div class="hidden name"><code>factor_apportioned.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Takes line list data and aggregates to long data for saving as long-format monthly tables.
-Outputs are also sorted by organisation, time and metric.</p>
+    <p>Converts apportioned column into a factor for production of long format tables.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>mo_tab_long</span>(<span class='no'>dat</span>, <span class='no'>collection_var</span>, <span class='no'>metric_var</span>, <span class='no'>org_var</span>, <span class='no'>year_var</span>, <span class='no'>month_var</span>)</pre>
+    <pre class="usage"><span class='fu'>factor_apportioned</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dat</th>
-      <td><p>A dataframe containing line-listing data</p></td>
-    </tr>
-    <tr>
-      <th>collection_var</th>
-      <td><p>A string giving the data collection</p></td>
-    </tr>
-    <tr>
-      <th>metric_var</th>
-      <td><p>Column in dat giving column for the metric</p></td>
-    </tr>
-    <tr>
-      <th>org_var</th>
-      <td><p>The variable giving the organisation code</p></td>
-    </tr>
-    <tr>
-      <th>year_var</th>
-      <td><p>The variable giving the calendar year</p></td>
-    </tr>
-    <tr>
-      <th>month_var</th>
-      <td><p>The variable giving the calendar month</p></td>
+      <th>x</th>
+      <td><p>a column giving the apportioned status of a case. One of 1, 0, HO or CO</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>It is expected that the metric variable is an ordered factor prior to the creation of the long tables.</p>
+    <p>A factor with levels "Hospital-onset", "Community-onset" and "Total cases"</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='ann_tab_long.html'>ann_tab_long</a></code>, <code><a href='factor_apportioned.html'>factor_apportioned</a></code>, <code><a href='factor_prior_hc.html'>factor_prior_hc</a></code></p></div>
+    <div class='dont-index'><p><code><a href='mo_tab_long.html'>mo_tab_long</a></code>, <code><a href='ann_tab_long.html'>ann_tab_long</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>line_listing</span>)
-<span class='no'>line_listing</span> <span class='kw'>&lt;-</span> <span class='no'>line_listing</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>cyear</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/format'>format</a></span>(<span class='no'>specimen_date</span>, <span class='st'>"%Y"</span>),
-    <span class='kw'>cmonth</span> <span class='kw'>=</span> <span class='fu'><a href='date_to_cmonth.html'>date_to_cmonth</a></span>(<span class='no'>specimen_date</span>))
-
-<span class='fu'>mo_tab_long</span>(<span class='kw'>dat</span> <span class='kw'>=</span> <span class='no'>line_listing</span>, <span class='kw'>collection_var</span> <span class='kw'>=</span> <span class='no'>collection</span>,
-  <span class='kw'>org_var</span> <span class='kw'>=</span> <span class='no'>reporting_organisation_code</span>,
-  <span class='kw'>metric_var</span> <span class='kw'>=</span> <span class='no'>prior_hc</span>,
-  <span class='kw'>year_var</span> <span class='kw'>=</span> <span class='no'>cyear</span>, <span class='kw'>month_var</span> <span class='kw'>=</span> <span class='no'>cmonth</span>
-  )</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 551 x 6</span><span>
-#&gt;    collection   organisation cyear cmont metric           count_cases
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> C. difficile E17          2015      5 all blank                  1
-#&gt; </span><span style='color: #555555;'> 2</span><span> C. difficile E17          2015      5 coha, ha                   1
-#&gt; </span><span style='color: #555555;'> 3</span><span> C. difficile E17          2015      5 coia                       2
-#&gt; </span><span style='color: #555555;'> 4</span><span> C. difficile E17          2015      5 Total cases                5
-#&gt; </span><span style='color: #555555;'> 5</span><span> C. difficile E17          2015      5 unknown 3 months           1
-#&gt; </span><span style='color: #555555;'> 6</span><span> C. difficile E17          2015      6 all blank                  2
-#&gt; </span><span style='color: #555555;'> 7</span><span> C. difficile E17          2015      6 coha, ha                   2
-#&gt; </span><span style='color: #555555;'> 8</span><span> C. difficile E17          2015      6 coia                       1
-#&gt; </span><span style='color: #555555;'> 9</span><span> C. difficile E17          2015      6 Total cases                6
-#&gt; </span><span style='color: #555555;'>10</span><span> C. difficile E17          2015      6 unknown 3 months           1
-#&gt; </span><span style='color: #555555;'># ... with 541 more rows</span><span></div></span></pre>
+    <pre class="examples"><div class='input'><span class='fu'>factor_apportioned</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt; [1] Hospital-onset
+#&gt; Levels: Hospital-onset Community-onset Total cases</div><div class='input'><span class='fu'>factor_apportioned</span>(<span class='st'>"CO"</span>)</div><div class='output co'>#&gt; [1] Community-onset
+#&gt; Levels: Hospital-onset Community-onset Total cases</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#details">Details</a></li>
+      <li><a href="#value">Value</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

@@ -4,6 +4,8 @@
 
  * `date_to_cmonth` Function to convert a date to a calendar month, either as numeric (default), or factor, with levels in calendar year order
  * `mo_tab_long` Function to create long-format monthly tables
+ * `factor_apportioned` Creates an ordered factor from apportioned vector
+ * `factor_prior_hc` Creates an ordered factor from vector giving prior healthcare status 
  
 ## Minor changes
 
