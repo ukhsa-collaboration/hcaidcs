@@ -1,7 +1,7 @@
 Package: hcaidcs
 Type: Package
 Title: R functions for the mandatory surveillance of bacteraemia and C. difficile infection
-Version: 0.1.1.9003
+Version: 0.1.1.9004
 Authors@R: c(
     person("Simon", "Thelwall", , "simon.thelwall@phe.gov.uk", role = c("aut", "cre"), 
       comment = c(ORCID = "0000-0002-0434-2724")
@@ -14,6 +14,7 @@ Depends:
     R (>= 2.10)
 License: OGL
 LazyData: TRUE
+Encoding: UTF-8
 RoxygenNote: 6.1.1
 URL: https://github.com/PublicHealthEngland/hcaidcs
 BugReports: https://github.com/PublicHealthEngland/hcaidcs/issues
@@ -34,7 +35,8 @@ Imports:
     crayon,
     openxlsx,
     utils,
-    RcppRoll
+    RcppRoll,
+    forcats
 Collate:
     'aec_age_sex_plot.R'
     'aec_age_trends_plots.R'
@@ -48,6 +50,7 @@ Collate:
     'ann_tab_onset.R'
     'ann_tab_pir_org_type.R'
     'apportion.R'
+    'apportion_phc_date.R'
     'apportion_prior_healthcare.R'
     'area_team_names.R'
     'assignment_algorithm.R'
@@ -89,6 +92,7 @@ Collate:
     'group_tto_bacteraemia.R'
     'group_tto_cdi.R'
     'independent_sector_denominator.R'
+    'inpatient.R'
     'is_sch.R'
     'is_third_party.R'
     'kh03_boilerplate.R'

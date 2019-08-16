@@ -66,6 +66,7 @@ mf_fig1_fun <- function(data, collection){
                    axis.text.x = ggplot2::element_text(angle = 45,
                                                        hjust = 1, vjust = 1)) +
     cowplot::background_grid(major = "xy", minor = "x", colour.major = "grey82",
-                    colour.minor = "grey92")
+                    colour.minor = "grey92") +
+    cowplot::theme_cowplot()
   return(z)
 }

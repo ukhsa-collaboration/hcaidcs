@@ -70,7 +70,8 @@ aec_age_sex_plot <- function(x, collection = NULL){
                      strip.text.x = ggplot2::element_text(face = "bold"),
                      panel.margin = ggplot2::unit(1.5, "lines")
                      ) +
-      ggplot2::guides(fill = ggplot2::guide_legend(nrow = 1))
+      ggplot2::guides(fill = ggplot2::guide_legend(nrow = 1)) +
+      cowplot::theme_cowplot()
   }else{
     if(collection == "cdi"){
       ggplot2::ggplot(data = x,
@@ -92,7 +93,8 @@ aec_age_sex_plot <- function(x, collection = NULL){
                        strip.text.x = ggplot2::element_text(face = "bold"),
           panel.spacing = ggplot2::unit(1.5, "lines")
                        ) +
-        ggplot2::guides(fill = ggplot2::guide_legend(nrow = 1))
+        ggplot2::guides(fill = ggplot2::guide_legend(nrow = 1)) +
+        cowplot::theme_cowplot()
     }
   }
 }

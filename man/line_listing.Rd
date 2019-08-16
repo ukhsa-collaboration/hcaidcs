@@ -16,6 +16,8 @@
   \item{ccg_code}{A three-letter code giving the attributed CCG}
   \item{pir_status}{A string giving the PIR status (only relevant to MRSA)}
   \item{prior_hc}{A string giving the prior healthcare group of the case (CDI only)}
+  \item{patient_location}{A string giving location of patient at time of specimen}
+  \item{patient_category}{A string giving admission status of patient at time of specimen}
 }}
 \usage{
 line_listing

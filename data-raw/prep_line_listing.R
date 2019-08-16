@@ -19,7 +19,15 @@ line_listing <- r_data_frame(n = 500,
   pir_status = r_sample_factor(x = c("Trust-assigned", "CCG-assigned",
                                      "Third-party")),
   prior_hc = r_sample_factor(x = c("hoha, ha", "coha, ha", "coia", "coca",
-                                     "unknown_3_mo", "all_blank"))
+                                     "unknown_3_mo", "all_blank")),
+  patient_location = r_sample_factor(
+    x = c("GP", "Independent Sector Provider", "Mental Health Provider",
+          "NHS Acute Trust", "Non-acute NHS Provider", "Nursing Home",
+          "Other", "Penal Establishment", "Residential Home", "Unknown")),
+  patient_category = r_sample_factor(
+    x = c(c("A&E only", "Day patient", "Emergency Assessment", "In-patient",
+            "Other", "Outpatient", "Regular Attender", "Unknown")
+))
 )
 
 names(line_listing) <- tolower(names(line_listing))

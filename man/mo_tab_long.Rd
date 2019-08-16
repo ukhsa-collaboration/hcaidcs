@@ -31,7 +31,8 @@ library(dplyr)
 data(line_listing)
 line_listing <- line_listing \%>\%
   mutate(cyear = format(specimen_date, "\%Y"),
-    cmonth = date_to_cmonth(specimen_date))
+    cmonth = date_to_cmonth(specimen_date),
+    prior_hc = factor(prior_hc))
 
 mo_tab_long(dat = line_listing, collection_var = collection,
   org_var = reporting_organisation_code,

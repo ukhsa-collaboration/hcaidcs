@@ -58,3 +58,42 @@ factor_prior_hc <- function(x){
                          "Unknown 3 months", "No information", "Total cases"))
   return(x)
 }
+
+#' factor_apportion_both
+#'
+#' Converts apportioning data into combined factor for use in tables containing both onset status and prior healthcare exposure
+#'
+#' @seealso \code{\link{mo_tab_long}}, \code{\link{ann_tab_long}}, \code{\link{factor_prior_hc}} and \code{\link{factor_apportioned}}
+#' @param x A character variable from an apportioning algorithm
+#' @return An ordered factor variable
+#' @export
+#' @examples
+#' factor_apportion_both(1)
+#' factor_apportion_both("HO")
+#' factor_apportion_both("hoha")
+
+factor_apportion_both <- function(x){
+
+  x <- dplyr::case_when(
+    x == 1 ~ "Hospital-onset",
+    x == 0 ~ "Community-onset",
+    x == "HO" ~ "Hospital-onset",
+    x == "CO" ~ "Community-onset",
+    x == "hoha" ~ "Hospital-onset, healthcare associated",
+    x == "coha" ~ "Community-onset, healthcare associated",
+    x == "coia" ~ "Community-onset, indeterminate association",
+    x == "coca" ~ "Community-onset, community associated",
+    x == "unknown_3_mo" ~ "Unknown 3 months",
+    x == "all_blank" ~    "No information"
+  )
+
+  x <- factor(x,
+              levels = c("Hospital-onset", "Community-onset",
+                         "Hospital-onset, healthcare associated",
+                         "Community-onset, healthcare associated",
+                         "Community-onset, indeterminate association",
+                         "Community-onset, community associated",
+                         "Unknown 3 months", "No information", "Total cases"
+              ))
+  return(x)
+}

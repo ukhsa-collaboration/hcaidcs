@@ -1,3 +1,26 @@
+# Version 0.1.1.9004
+
+## Major change
+
+From 01 April 2019, the mandatory surveillance introduced a date of most recent previous discharge for *C. difficile* infections. 
+This replaced the old set of three questions which asked for yes or no answers around previous trust exposure. 
+Answers to these questions provided the data for the apportioning by prior healthcare.
+The new function `apportion_phc_date` performs the apportioning by date and results can be merged with the `apportion_phc` results. 
+
+## Minor changes
+
+Added dependcy on cowplot so that annual graphs remain consistently formatted. 
+Mostly this means I've added ` + theme_cowplot()` everywhere.
+This does not change the input or output of the functions, but for reference this affects the following functions:
+
+ * `aec_age_sex_plot`
+ * `aec_age_trend_rate_pc_change`
+ * `aec_age_trend_rate_bar`
+ * `aec_ec_source_plot`
+ * `aec_subregion_plot`
+ * `aec_tto_plot`
+ * `mf_fig1_fun`
+ 
 # Version 0.1.1.9003
 
 ## Functions added
@@ -6,6 +29,11 @@
  * `mo_tab_long` Function to create long-format monthly tables
  * `factor_apportioned` Creates an ordered factor from apportioned vector
  * `factor_prior_hc` Creates an ordered factor from vector giving prior healthcare status 
+ * `factor_apportion_both` Creates an ordered factor from output of either normal apportioning or prior trust exposure.
+
+## Functions deprecated
+
+ * `up_or_down` has been moved out to the [nicethings](https://simonthelwall.github.io/nicethings/) package.
  
 ## Minor changes
 

@@ -144,7 +144,8 @@ aec_age_trend_rate <- function(collection, data, x, y, sex, group,log_scale = FA
                                                        vjust = 1),
                    strip.background = ggplot2::element_rect(fill="white"),
                    strip.text.x = ggplot2::element_text(face = "bold")
-    )
+    ) +
+    cowplot::theme_cowplot()
   return(q)
 }
 
@@ -230,6 +231,7 @@ aec_age_trend_rate_bar <- function(collection, data, x, y, sex, group,log_scale 
       strip.text.x = ggplot2::element_text(face = "bold"),
       panel.spacing = ggplot2::unit(1.5, "lines")
     ) +
+    cowplot::theme_cowplot() +
     NULL # this is added for tinkering, allows commenting out lines without breaking
 
   return(p)
@@ -325,7 +327,8 @@ aec_age_trend_rate_pc_change <- function(data, collection){
     ggplot2::theme(legend.position = "none",
           axis.text.x = ggplot2::element_text(angle = 45, hjust = 1, vjust = 1),
           strip.background = ggplot2::element_rect(fill="white"),
-          strip.text.x = ggplot2::element_text(face = "bold"))
+          strip.text.x = ggplot2::element_text(face = "bold")) +
+    cowplot::theme_cowplot()
 
   return(p)
 }

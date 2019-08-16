@@ -76,7 +76,7 @@ Records created prior to 01/04/2017 should not be apportioned." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hcaidcs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9004</span>
       </span>
     </div>
 
@@ -239,27 +239,8 @@ This new apportioning algorithm takes into account prior healthcare interactions
   <span class='kw'>date_record_created</span> <span class='kw'>=</span> <span class='no'>testdat</span>$<span class='no'>date_entered</span>
 )
 <span class='no'>testdat</span>
-
-<span class='no'>testdat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/structure'>structure</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
-<span class='kw'>adm_3_mo</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Don't know"</span>, <span class='st'>"Don't know"</span>, <span class='st'>"Don't know"</span>, <span class='st'>"Don't know"</span>, <span class='st'>"No"</span>, <span class='st'>"No"</span>, <span class='st'>"No"</span>, <span class='st'>"No"</span>, <span class='st'>"Yes"</span>, <span class='st'>"Yes"</span>, <span class='st'>"Yes"</span>, <span class='st'>"Yes"</span>),
-<span class='kw'>adm_12</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"No"</span>, <span class='st'>"No"</span>, <span class='st'>"Yes"</span>, <span class='st'>"Yes"</span>, <span class='st'>"No"</span>, <span class='st'>"No"</span>, <span class='st'>"Yes"</span>, <span class='st'>"Yes"</span>, <span class='st'>"No"</span>, <span class='st'>"No"</span>, <span class='st'>"Yes"</span>, <span class='st'>"Yes"</span>),
-<span class='kw'>adm_4</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"No"</span>, <span class='st'>"Yes"</span>, <span class='st'>"No"</span>, <span class='st'>"Yes"</span>, <span class='st'>"No"</span>, <span class='st'>"Yes"</span>, <span class='st'>"No"</span>, <span class='st'>"Yes"</span>, <span class='st'>"No"</span>, <span class='st'>"Yes"</span>, <span class='st'>"No"</span>, <span class='st'>"Yes"</span>),
-<span class='kw'>date_admitted</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/structure'>structure</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>17287</span>,  <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>), <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"Date"</span>),
-<span class='kw'>date_specimen</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/structure'>structure</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17291</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>), <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"Date"</span>),
-<span class='kw'>date_created</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/structure'>structure</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>, <span class='fl'>17287</span>), <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"Date"</span>)),
-<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"data.frame"</span>, <span class='kw'>.Names</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"adm_3_mo"</span>, <span class='st'>"adm_12"</span>, <span class='st'>"adm_4"</span>,
-<span class='st'>"date_admitted"</span>, <span class='st'>"date_specimen"</span>, <span class='st'>"date_created"</span>),
-<span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>NA</span>, -<span class='fl'>12L</span>))
-
-<span class='no'>testdat</span>$<span class='no'>apportioned_prior_hc</span> <span class='kw'>&lt;-</span> <span class='fu'>apportion_prior_healthcare</span>(
-   <span class='kw'>adm_date</span> <span class='kw'>=</span> <span class='no'>testdat</span>$<span class='no'>date_admitted</span>,
-   <span class='kw'>spec_date</span> <span class='kw'>=</span> <span class='no'>testdat</span>$<span class='no'>date_specimen</span>,
-   <span class='kw'>adm_3_mo</span> <span class='kw'>=</span> <span class='no'>testdat</span>$<span class='no'>adm_3_mo</span>,
-   <span class='kw'>adm_4_weeks</span> <span class='kw'>=</span> <span class='no'>testdat</span>$<span class='no'>adm_4</span>,
-   <span class='kw'>adm_12_weeks</span> <span class='kw'>=</span> <span class='no'>testdat</span>$<span class='no'>adm_12</span>,
-   <span class='kw'>date_record_created</span> <span class='kw'>=</span> <span class='no'>testdat</span>$<span class='no'>date_created</span>)
-<span class='no'>testdat</span>
-<span class='co'># }</span></pre>
+<span class='co'># }</span><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

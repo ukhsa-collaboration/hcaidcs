@@ -23,7 +23,7 @@
 #' 10)), .Names = c("tto_group", "primary_focus", "pc"),
 #' class = "data.frame", row.names = c(NA, -18L))
 #'
-#' pal <- brewer_phe("phe", length(levels(dat$primary_focus)))
+#' pal <- phecharts::brewer_phe("phe", length(levels(dat$primary_focus)))
 #'
 #' p <- aec_ec_source_plot(dat)
 #' p
@@ -52,5 +52,6 @@ aec_ec_source_plot <- function(x){
     ggplot2::scale_fill_manual(
       "Primary focus\nof infection",
       values = cc,
-      guide = ggplot2::guide_legend(reverse = TRUE))
+      guide = ggplot2::guide_legend(reverse = TRUE)) +
+    cowplot::theme_cowplot()
 }

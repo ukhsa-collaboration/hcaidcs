@@ -55,6 +55,9 @@
     <loc>http://publichealthengland.github.io/hcaidcs/reference/apportion.html</loc>
   </url>
   <url>
+    <loc>http://publichealthengland.github.io/hcaidcs/reference/apportion_phc_date.html</loc>
+  </url>
+  <url>
     <loc>http://publichealthengland.github.io/hcaidcs/reference/apportion_prior_healthcare.html</loc>
   </url>
   <url>
@@ -142,6 +145,9 @@
     <loc>http://publichealthengland.github.io/hcaidcs/reference/factor_apportioned.html</loc>
   </url>
   <url>
+    <loc>http://publichealthengland.github.io/hcaidcs/reference/factor_apportion_both.html</loc>
+  </url>
+  <url>
     <loc>http://publichealthengland.github.io/hcaidcs/reference/factor_prior_hc.html</loc>
   </url>
   <url>
@@ -203,6 +209,9 @@
   </url>
   <url>
     <loc>http://publichealthengland.github.io/hcaidcs/reference/independent_sector_denominator.html</loc>
+  </url>
+  <url>
+    <loc>http://publichealthengland.github.io/hcaidcs/reference/inpatient.html</loc>
   </url>
   <url>
     <loc>http://publichealthengland.github.io/hcaidcs/reference/is_sch.html</loc>

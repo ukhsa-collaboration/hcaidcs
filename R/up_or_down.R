@@ -11,6 +11,8 @@
 #' @export
 
 up_or_down <- function(from, to){
+  .Deprecated("up_or_down", package = "nicethings",
+              msg = "I've moved up_or_down out of the hcaidcs package as it is a better fit for the nicethings package")
   z <- ifelse(to - from < 0, "decrease",
          ifelse(to - from > 0, "increase", "no change"))
   return(z)

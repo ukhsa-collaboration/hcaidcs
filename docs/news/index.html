@@ -66,7 +66,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hcaidcs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9004</span>
       </span>
     </div>
 
@@ -115,9 +115,32 @@
       <small>Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="version-0-1-1-9003" class="section level1">
+    <div id="version-0119004" class="section level1">
 <h1 class="page-header">
-<a href="#version-0-1-1-9003" class="anchor"></a>Version 0.1.1.9003</h1>
+<a href="#version-0119004" class="anchor"></a>Version 0.1.1.9004</h1>
+<div id="major-change" class="section level2">
+<h2 class="hasAnchor">
+<a href="#major-change" class="anchor"></a>Major change</h2>
+<p>From 01 April 2019, the mandatory surveillance introduced a date of most recent previous discharge for <em>C. difficile</em> infections. This replaced the old set of three questions which asked for yes or no answers around previous trust exposure. Answers to these questions provided the data for the apportioning by prior healthcare. The new function <code>apportion_phc_date</code> performs the apportioning by date and results can be merged with the <code>apportion_phc</code> results.</p>
+</div>
+<div id="minor-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-changes" class="anchor"></a>Minor changes</h2>
+<p>Added dependcy on cowplot so that annual graphs remain consistently formatted. Mostly this means I’ve added <code>+ theme_cowplot()</code> everywhere. This does not change the input or output of the functions, but for reference this affects the following functions:</p>
+<ul>
+<li><code>aec_age_sex_plot</code></li>
+<li><code>aec_age_trend_rate_pc_change</code></li>
+<li><code>aec_age_trend_rate_bar</code></li>
+<li><code>aec_ec_source_plot</code></li>
+<li><code>aec_subregion_plot</code></li>
+<li><code>aec_tto_plot</code></li>
+<li><code>mf_fig1_fun</code></li>
+</ul>
+</div>
+</div>
+    <div id="version-0119003" class="section level1">
+<h1 class="page-header">
+<a href="#version-0119003" class="anchor"></a>Version 0.1.1.9003</h1>
 <div id="functions-added" class="section level2">
 <h2 class="hasAnchor">
 <a href="#functions-added" class="anchor"></a>Functions added</h2>
@@ -130,23 +153,33 @@
 <code>factor_apportioned</code> Creates an ordered factor from apportioned vector</li>
 <li>
 <code>factor_prior_hc</code> Creates an ordered factor from vector giving prior healthcare status</li>
+<li>
+<code>factor_apportion_both</code> Creates an ordered factor from output of either normal apportioning or prior trust exposure.</li>
 </ul>
 </div>
-<div id="minor-changes" class="section level2">
+<div id="functions-deprecated" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes" class="anchor"></a>Minor changes</h2>
+<a href="#functions-deprecated" class="anchor"></a>Functions deprecated</h2>
+<ul>
+<li>
+<code>up_or_down</code> has been moved out to the <a href="https://simonthelwall.github.io/nicethings/">nicethings</a> package.</li>
+</ul>
+</div>
+<div id="minor-changes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#minor-changes-1" class="anchor"></a>Minor changes</h2>
 <ul>
 <li><p><code>ann_tab_long</code> Simplified syntax for this function. This will make it more flexible. Following arguments have been removed: collection_string, org_code, metric_type, output <code>period_var</code> argument added The expectation is that the user will supply the period as an ordered factor and the function will then sort the data by that variable. The same applies to the <code>metric_var</code> argument.</p></li>
 <li><p>Functions for comparing wide data tables have been moved out to a separate branch (<code>merge_everything</code>, <code>merge_one</code>, <code>data_compare</code>, <code>highlight</code>, <code>convert_csv2r</code>). The change to reporting long format tables has obviated these functions.</p></li>
 </ul>
 </div>
 </div>
-    <div id="version-0-1-1-9002" class="section level1">
+    <div id="version-0119002" class="section level1">
 <h1 class="page-header">
-<a href="#version-0-1-1-9002" class="anchor"></a>Version 0.1.1.9002</h1>
-<div id="minor-changes-1" class="section level2">
+<a href="#version-0119002" class="anchor"></a>Version 0.1.1.9002</h1>
+<div id="minor-changes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-1" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-2" class="anchor"></a>Minor changes</h2>
 <p>Added tidyr dependency, so that the new function <code>ant_tab_long</code> expands data to include unobserved periods for organisations.</p>
 <p>Functions added:</p>
 <ul>
@@ -160,12 +193,12 @@
 </ul>
 </div>
 </div>
-    <div id="version-0-1-1-9001" class="section level1">
+    <div id="version-0119001" class="section level1">
 <h1 class="page-header">
-<a href="#version-0-1-1-9001" class="anchor"></a>Version 0.1.1.9001</h1>
-<div id="minor-changes-2" class="section level2">
+<a href="#version-0119001" class="anchor"></a>Version 0.1.1.9001</h1>
+<div id="minor-changes-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-2" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-3" class="anchor"></a>Minor changes</h2>
 <p>Added two new functions for the preparation of the monthly factsheet and expanded mf_trend_data to add observations and organisms.</p>
 <p>Functions added:</p>
 <ul>
@@ -176,17 +209,17 @@
 </ul>
 <p>Also minor fix to <code>apportion_prior_hc</code>.</p>
 </div>
-<div id="minor-changes-3" class="section level2">
+<div id="minor-changes-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#minor-changes-3" class="anchor"></a>Minor changes</h2>
+<a href="#minor-changes-4" class="anchor"></a>Minor changes</h2>
 <p>Tweaks to <code>mf_fig1_fun</code> so that the x axis labels are at a 45 degree angle and so that MRSA and MSSA are no longer bold face.</p>
 <p>Updated <code>subregions_sp_df</code> to 2018 geography. Previously 2017 geography.</p>
 <p>Updated <code>apportion_phc</code> so that if the case is not HOHA and admitted in past three months is No or NA, then the result goes to COCA.</p>
 </div>
 </div>
-    <div id="version-0-1-0" class="section level1">
+    <div id="version-010" class="section level1">
 <h1 class="page-header">
-<a href="#version-0-1-0" class="anchor"></a>Version 0.1.0</h1>
+<a href="#version-010" class="anchor"></a>Version 0.1.0</h1>
 <p>This is the first public release of the HCAIDCS package.</p>
 <div id="major-changes" class="section level2">
 <h2 class="hasAnchor">
@@ -226,10 +259,11 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#version-0-1-1-9003">0.1.1.9003</a></li>
-        <li><a href="#version-0-1-1-9002">0.1.1.9002</a></li>
-        <li><a href="#version-0-1-1-9001">0.1.1.9001</a></li>
-        <li><a href="#version-0-1-0">0.1.0</a></li>
+        <li><a href="#version-0119004">0.1.1.9004</a></li>
+        <li><a href="#version-0119003">0.1.1.9003</a></li>
+        <li><a href="#version-0119002">0.1.1.9002</a></li>
+        <li><a href="#version-0119001">0.1.1.9001</a></li>
+        <li><a href="#version-010">0.1.0</a></li>
       </ul>
     </div>
   </div>

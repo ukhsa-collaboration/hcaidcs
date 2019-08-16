@@ -73,27 +73,8 @@
 #'   date_record_created = testdat$date_entered
 #' )
 #' testdat
-#'
-#' testdat <- structure(list(
-#' adm_3_mo = c("Don't know", "Don't know", "Don't know", "Don't know", "No", "No", "No", "No", "Yes", "Yes", "Yes", "Yes"),
-#' adm_12 = c("No", "No", "Yes", "Yes", "No", "No", "Yes", "Yes", "No", "No", "Yes", "Yes"),
-#' adm_4 = c("No", "Yes", "No", "Yes", "No", "Yes", "No", "Yes", "No", "Yes", "No", "Yes"),
-#' date_admitted = structure(c(17287,  17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287), class = "Date"),
-#' date_specimen = structure(c(17287, 17287, 17287, 17287, 17291, 17287, 17287, 17287, 17287, 17287, 17287, 17287), class = "Date"),
-#' date_created = structure(c(17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287, 17287), class = "Date")),
-#' class = "data.frame", .Names = c("adm_3_mo", "adm_12", "adm_4",
-#' "date_admitted", "date_specimen", "date_created"),
-#' row.names = c(NA, -12L))
-#'
-#' testdat$apportioned_prior_hc <- apportion_prior_healthcare(
-#'    adm_date = testdat$date_admitted,
-#'    spec_date = testdat$date_specimen,
-#'    adm_3_mo = testdat$adm_3_mo,
-#'    adm_4_weeks = testdat$adm_4,
-#'    adm_12_weeks = testdat$adm_12,
-#'    date_record_created = testdat$date_created)
-#' testdat
 #' }
+#'
 
 apportion_prior_healthcare <- function(patient_location, patient_category,
                                       adm_date, spec_date, adm_3_mo, adm_4_weeks,
@@ -144,15 +125,6 @@ apportion_prior_healthcare <- function(patient_location, patient_category,
                      ifelse(hoha == 0 & coha == 0 & coia == 1, "coia",
                             ifelse(hoha == 0 & coha == 0 & coia == 0 & coca == 1, "coca", NA)
                      )))
-  # z <- ifelse(adm_3_mo == "don't know" & !is.na(adm_3_mo) & z != "hoha", "unknown_3_mo", z)
-  # z <- ifelse((adm_3_mo == "no"  & !is.na(adm_3_mo)) &
-  #               (adm_4_weeks == "no"  & !is.na(adm_4_weeks)) &
-  #               (adm_12_weeks == "yes" & !is.na(adm_4_weeks)), "coia", z)
-  # z <- ifelse((adm_3_mo == "no"  & !is.na(adm_3_mo)) &
-  #               (adm_4_weeks == "yes"  & !is.na(adm_4_weeks)) &
-  #               (adm_12_weeks == "yes" & !is.na(adm_12_weeks)), "coha", z)
-  # z <- ifelse(z != "hoha" & is.na(adm_3_mo) & is.na(adm_4_weeks) &
-  #               is.na(adm_12_weeks), "all_blank", z)
 
   z <- ifelse(adm_3_mo == "don't know" & !is.na(adm_3_mo) & z != "hoha", "unknown_3_mo", z)
   z <- ifelse(adm_3_mo == "no" & !is.na(adm_3_mo) & z != "hoha", "coca", z)
@@ -161,29 +133,6 @@ apportion_prior_healthcare <- function(patient_location, patient_category,
               "coca", z)
   z <- ifelse(z != "hoha" & (is.na(adm_3_mo) & is.na(adm_4_weeks) & is.na(adm_12_weeks)),
                              "all_blank", z)
-  # z <- ifelse((adm_3_mo == "no"  & !is.na(adm_3_mo)) &
-  #               (adm_4_weeks == "no"  & !is.na(adm_4_weeks)) &
-  #               (adm_12_weeks == "yes" & !is.na(adm_4_weeks)), "coca", z)
-  # z <- ifelse((adm_3_mo == "no"  & !is.na(adm_3_mo)) &
-  #               (adm_4_weeks == "yes"  & !is.na(adm_4_weeks)) &
-  #               (adm_12_weeks == "no" & !is.na(adm_4_weeks) | is.na(adm_4_weeks)), "coca", z)
-  # z <- ifelse((adm_3_mo == "no"  & !is.na(adm_3_mo)) &
-  #               (adm_4_weeks == "yes"  & !is.na(adm_4_weeks)) &
-  #               (adm_12_weeks == "yes" & !is.na(adm_12_weeks)), "coca", z)
-  #
-  # z <- ifelse(is.na(adm_3_mo) &
-  #               (adm_4_weeks == "no"  & !is.na(adm_4_weeks)) &
-  #               (adm_12_weeks == "yes" & !is.na(adm_4_weeks)), "coca", z)
-  # z <- ifelse(is.na(adm_3_mo) &
-  #               (adm_4_weeks == "yes"  & !is.na(adm_4_weeks)) &
-  #               ((adm_12_weeks == "no" & !is.na(adm_12_weeks)) | is.na(adm_12_weeks)),
-  #             "coca", z)
-  # z <- ifelse(is.na(adm_3_mo) &
-  #               (adm_4_weeks == "yes"  & !is.na(adm_4_weeks)) &
-  #               (adm_12_weeks == "yes" & !is.na(adm_12_weeks)), "coca", z)
-  #
-  # z <- ifelse(z != "hoha" & is.na(adm_3_mo) & is.na(adm_4_weeks) &
-  #               is.na(adm_12_weeks), "all_blank", z)
 
   return(z)
 }

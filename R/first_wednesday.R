@@ -9,10 +9,6 @@
 #' @importFrom lubridate "%m-%"
 #' @examples
 #' first_wednesday(lubridate::floor_date(lubridate::today(), "month"))
-#' \dontrun{
-#' first_wednesday(lubridate::floor_date(today(), "month") %m+%
-#'     lubridate::months(1))
-#'     }
 #' x <- as.Date("01/01/2017", format = "%d/%m/%Y")
 #' weekdays(first_wednesday(x))
 #' @export

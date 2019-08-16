@@ -46,6 +46,9 @@ aec_subregion_plot <- function(x){
     ggplot2::scale_y_continuous("", labels = NULL, breaks = NULL) +
     ggplot2::scale_fill_brewer("Rate, per\n100,000\npopulation", palette = "Blues") +
     ggplot2::guides(fill = ggplot2::guide_legend(reverse=TRUE)) +
-    ggplot2::theme(legend.position = c(0.1, 0.5), legend.justification = c(0.5,0.5) ) +
+    ggplot2::theme(legend.position = c(0.1, 0.5),
+                   legend.justification = c(0.5,0.5),
+                   panel.background = ggplot2::element_rect(fill = "white",
+                                                   colour = "white")) +
     ggplot2::coord_equal()
 }

@@ -73,7 +73,7 @@ it relies on the presence of several variables to that data frame:
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hcaidcs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9004</span>
       </span>
     </div>
 
@@ -168,7 +168,7 @@ it relies on the presence of several variables to that data frame:
 <span class='fl'>10</span>)), <span class='kw'>.Names</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"tto_group"</span>, <span class='st'>"primary_focus"</span>, <span class='st'>"pc"</span>),
 <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"data.frame"</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>NA</span>, -<span class='fl'>18L</span>))
 
-<span class='no'>pal</span> <span class='kw'>&lt;-</span> <span class='fu'>brewer_phe</span>(<span class='st'>"phe"</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/levels'>levels</a></span>(<span class='no'>dat</span>$<span class='no'>primary_focus</span>)))
+<span class='no'>pal</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>phecharts</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/phecharts/topics/brewer_phe'>brewer_phe</a></span>(<span class='st'>"phe"</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/levels'>levels</a></span>(<span class='no'>dat</span>$<span class='no'>primary_focus</span>)))
 
 <span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'>aec_ec_source_plot</span>(<span class='no'>dat</span>)
 <span class='no'>p</span>

@@ -1,0 +1,278 @@
+context("Testing apportioning on prior healthcare exposure, by date")
+
+# Does hoha apportion? ####
+
+test_that("Cases which are hoha are appropriately apportioned", {
+  dat <- data.frame(pat_loc = "NHS Acute Trust", pat_cat = "In-patient",
+                    dat_admit = as.Date(NA_real_, origin = "01-01-1970"),
+                    spec_date = as.Date("14/08/2017", "%d/%m/%Y"),
+                    dat_ent = as.Date("14/08/2017", "%d/%m/%Y"),
+                    dat_dis = as.Date(NA_real_, origin = "01-01-1970"),
+                    admitted_at_3_mo = "no",
+                    stringsAsFactors = FALSE
+                    )
+  expect_equal(
+    apportion_phc_date(patient_location = dat$pat_loc,
+                       patient_category = dat$pat_cat,
+              adm_date = dat$dat_admit, spec_date = dat$spec_date,
+              adm_3_mo = dat$admitted_at_3_mo,
+              date_discharge = dat$dat_dis,
+              date_record_created = dat$dat_ent),
+    "hoha")
+
+  # test works with date admission at two days
+  dat <- data.frame(pat_loc = "NHS Acute Trust", pat_cat = "In-patient",
+                    dat_admit = as.Date("12/08/2017", "%d/%m/%Y"),
+                    spec_date = as.Date("14/08/2017", "%d/%m/%Y"),
+                    dat_ent = as.Date("14/08/2017", "%d/%m/%Y"),
+                    dat_dis = as.Date(NA_real_, origin = "01-01-1970"),
+                    admitted_at_3_mo = "no",
+                    stringsAsFactors = FALSE
+  )
+  expect_equal(
+    apportion_phc_date(patient_location = dat$pat_loc,
+                       patient_category = dat$pat_cat,
+                       adm_date = dat$dat_admit, spec_date = dat$spec_date,
+                       adm_3_mo = dat$admitted_at_3_mo,
+                       date_discharge = dat$dat_dis,
+                       date_record_created = dat$dat_ent),
+    "hoha")
+
+  # testing situation where user has supplied prior admissions, but should still be hoha
+
+  dat <- data.frame(pat_loc = "NHS Acute Trust", pat_cat = "In-patient",
+                    dat_admit = as.Date("12/08/2017", "%d/%m/%Y"),
+                    spec_date = as.Date("14/08/2017", "%d/%m/%Y"),
+                    dat_ent = as.Date("14/08/2017", "%d/%m/%Y"),
+                    # COHA is <28 days
+                    dat_dis = as.Date("18/07/2017", "%d/%m/%Y"),
+                    admitted_at_3_mo = "yes",
+                    stringsAsFactors = FALSE
+  )
+  expect_equal(
+    apportion_phc_date(patient_location = dat$pat_loc,
+                       patient_category = dat$pat_cat,
+                       adm_date = dat$dat_admit, spec_date = dat$spec_date,
+                       adm_3_mo = dat$admitted_at_3_mo,
+                       date_discharge = dat$dat_dis,
+                       date_record_created = dat$dat_ent),
+    "hoha")
+})
+
+test_that("Let's test the COHAs", {
+  dat <- data.frame(pat_loc = "NHS Acute Trust", pat_cat = "In-patient",
+                    dat_admit = as.Date("14/08/2017", "%d/%m/%Y"),
+                    spec_date = as.Date("14/08/2017", "%d/%m/%Y"),
+                    dat_ent = as.Date("14/08/2017", "%d/%m/%Y"),
+                    # COHA is <28 days
+                    dat_dis = as.Date("12/08/2017", "%d/%m/%Y"),
+                    admitted_at_3_mo = "yes",
+                    stringsAsFactors = FALSE
+  )
+  expect_equal(
+    apportion_phc_date(patient_location = dat$pat_loc,
+                       patient_category = dat$pat_cat,
+                       adm_date = dat$dat_admit, spec_date = dat$spec_date,
+                       adm_3_mo = dat$admitted_at_3_mo,
+                       date_discharge = dat$dat_dis,
+                       date_record_created = dat$dat_ent),
+    "coha")
+
+  # let's try a date difference of 27 days
+  dat <- data.frame(pat_loc = "NHS Acute Trust", pat_cat = "In-patient",
+                    dat_admit = as.Date("14/08/2017", "%d/%m/%Y"),
+                    spec_date = as.Date("14/08/2017", "%d/%m/%Y"),
+                    dat_ent = as.Date("14/08/2017", "%d/%m/%Y"),
+                    # COHA is <28 days
+                    dat_dis = as.Date("18/07/2017", "%d/%m/%Y"),
+                    admitted_at_3_mo = "yes",
+                    stringsAsFactors = FALSE
+  )
+  expect_equal(
+    apportion_phc_date(patient_location = dat$pat_loc,
+                       patient_category = dat$pat_cat,
+                       adm_date = dat$dat_admit, spec_date = dat$spec_date,
+                       adm_3_mo = dat$admitted_at_3_mo,
+                       date_discharge = dat$dat_dis,
+                       date_record_created = dat$dat_ent),
+    "coha")
+
+  # let's try a date difference of 28 days
+  # This is not true, which is good.
+  # dat <- data.frame(pat_loc = "NHS Acute Trust", pat_cat = "In-patient",
+  #                   dat_admit = as.Date("14/08/2017", "%d/%m/%Y"),
+  #                   spec_date = as.Date("14/08/2017", "%d/%m/%Y"),
+  #                   dat_ent = as.Date("14/08/2017", "%d/%m/%Y"),
+  #                   # COHA is <28 days
+  #                   dat_dis = as.Date("17/07/2017", "%d/%m/%Y"),
+  #                   admitted_at_3_mo = "yes",
+  #                   stringsAsFactors = FALSE
+  # )
+  # expect_false(
+  #   apportion_phc_date(patient_location = dat$pat_loc,
+  #                      patient_category = dat$pat_cat,
+  #                      adm_date = dat$dat_admit, spec_date = dat$spec_date,
+  #                      adm_3_mo = dat$admitted_at_3_mo,
+  #                      date_discharge = dat$dat_dis,
+  #                      date_record_created = dat$dat_ent),
+  #   "coha")
+
+})
+
+test_that("COIAs work", {
+  # let's try a date difference of 28 days
+
+  dat <- data.frame(pat_loc = "NHS Acute Trust", pat_cat = "In-patient",
+                    dat_admit = as.Date("14/08/2017", "%d/%m/%Y"),
+                    spec_date = as.Date("14/08/2017", "%d/%m/%Y"),
+                    dat_ent = as.Date("14/08/2017", "%d/%m/%Y"),
+                    # COHA is <28 days
+                    dat_dis = as.Date("17/07/2017", "%d/%m/%Y"),
+                    admitted_at_3_mo = "yes",
+                    stringsAsFactors = FALSE
+  )
+  expect_equal(
+    apportion_phc_date(patient_location = dat$pat_loc,
+                       patient_category = dat$pat_cat,
+                       adm_date = dat$dat_admit, spec_date = dat$spec_date,
+                       adm_3_mo = dat$admitted_at_3_mo,
+                       date_discharge = dat$dat_dis,
+                       date_record_created = dat$dat_ent),
+    "coia")
+
+  # 83 days
+  dat <- data.frame(pat_loc = "NHS Acute Trust", pat_cat = "In-patient",
+                    dat_admit = as.Date("14/08/2017", "%d/%m/%Y"),
+                    spec_date = as.Date("14/08/2017", "%d/%m/%Y"),
+                    dat_ent = as.Date("14/08/2017", "%d/%m/%Y"),
+                    # COHA is <28 days
+                    dat_dis = as.Date("23/05/2017", "%d/%m/%Y"),
+                    admitted_at_3_mo = "yes",
+                    stringsAsFactors = FALSE
+  )
+  expect_equal(
+    apportion_phc_date(patient_location = dat$pat_loc,
+                       patient_category = dat$pat_cat,
+                       adm_date = dat$dat_admit, spec_date = dat$spec_date,
+                       adm_3_mo = dat$admitted_at_3_mo,
+                       date_discharge = dat$dat_dis,
+                       date_record_created = dat$dat_ent),
+    "coia")
+})
+
+test_that("COCAs work", {
+  # 84 days
+  dat <- data.frame(pat_loc = "NHS Acute Trust", pat_cat = "In-patient",
+                    dat_admit = as.Date("14/08/2017", "%d/%m/%Y"),
+                    spec_date = as.Date("14/08/2017", "%d/%m/%Y"),
+                    dat_ent = as.Date("14/08/2017", "%d/%m/%Y"),
+                    # COHA is <28 days
+                    dat_dis = as.Date("22/05/2017", "%d/%m/%Y"),
+                    admitted_at_3_mo = "yes",
+                    stringsAsFactors = FALSE
+  )
+  expect_equal(
+    apportion_phc_date(patient_location = dat$pat_loc,
+                       patient_category = dat$pat_cat,
+                       adm_date = dat$dat_admit, spec_date = dat$spec_date,
+                       adm_3_mo = dat$admitted_at_3_mo,
+                       date_discharge = dat$dat_dis,
+                       date_record_created = dat$dat_ent),
+    "coca")
+})
+
+test_that("Let's test those awkward cases", {
+  # adm_3_mo == "no" & hoha != 1 should be coca
+  dat <- data.frame(pat_loc = "NHS Acute Trust", pat_cat = "In-patient",
+                    dat_admit = as.Date("14/08/2017", "%d/%m/%Y"),
+                    spec_date = as.Date("14/08/2017", "%d/%m/%Y"),
+                    dat_ent = as.Date("14/08/2017", "%d/%m/%Y"),
+                    # COHA is <28 days
+                    dat_dis = as.Date("12/08/2017", "%d/%m/%Y"),
+                    admitted_at_3_mo = "no",
+                    stringsAsFactors = FALSE
+  )
+  expect_equal(
+    apportion_phc_date(patient_location = dat$pat_loc,
+                       patient_category = dat$pat_cat,
+                       adm_date = dat$dat_admit, spec_date = dat$spec_date,
+                       adm_3_mo = dat$admitted_at_3_mo,
+                       date_discharge = dat$dat_dis,
+                       date_record_created = dat$dat_ent),
+    "coca")
+  # same but for hoha case which takes precedent
+  dat <- data.frame(pat_loc = "NHS Acute Trust", pat_cat = "In-patient",
+                    dat_admit = as.Date("12/08/2017", "%d/%m/%Y"),
+                    spec_date = as.Date("14/08/2017", "%d/%m/%Y"),
+                    dat_ent = as.Date("14/08/2017", "%d/%m/%Y"),
+                    # COHA is <28 days
+                    dat_dis = as.Date("10/08/2017", "%d/%m/%Y"),
+                    admitted_at_3_mo = "no",
+                    stringsAsFactors = FALSE
+  )
+  expect_equal(
+    apportion_phc_date(patient_location = dat$pat_loc,
+                       patient_category = dat$pat_cat,
+                       adm_date = dat$dat_admit, spec_date = dat$spec_date,
+                       adm_3_mo = dat$admitted_at_3_mo,
+                       date_discharge = dat$dat_dis,
+                       date_record_created = dat$dat_ent),
+    "hoha")
+
+  #adm_3_mo == "don't know" & !is.na(adm_3_mo) & z != "hoha"
+  dat <- data.frame(pat_loc = "NHS Acute Trust", pat_cat = "In-patient",
+                    dat_admit = as.Date("14/08/2017", "%d/%m/%Y"),
+                    spec_date = as.Date("14/08/2017", "%d/%m/%Y"),
+                    dat_ent = as.Date("14/08/2017", "%d/%m/%Y"),
+                    # COHA is <28 days
+                    dat_dis = as.Date("12/08/2017", "%d/%m/%Y"),
+                    admitted_at_3_mo = "don't know",
+                    stringsAsFactors = FALSE
+  )
+  expect_equal(
+    apportion_phc_date(patient_location = dat$pat_loc,
+                       patient_category = dat$pat_cat,
+                       adm_date = dat$dat_admit, spec_date = dat$spec_date,
+                       adm_3_mo = dat$admitted_at_3_mo,
+                       date_discharge = dat$dat_dis,
+                       date_record_created = dat$dat_ent),
+    "unknown_3_mo")
+  # same but for hoha case which takes precedent
+  dat <- data.frame(pat_loc = "NHS Acute Trust", pat_cat = "In-patient",
+                    dat_admit = as.Date("12/08/2017", "%d/%m/%Y"),
+                    spec_date = as.Date("14/08/2017", "%d/%m/%Y"),
+                    dat_ent = as.Date("14/08/2017", "%d/%m/%Y"),
+                    # COHA is <28 days
+                    dat_dis = as.Date("10/08/2017", "%d/%m/%Y"),
+                    admitted_at_3_mo = "don't know",
+                    stringsAsFactors = FALSE
+  )
+  expect_equal(
+    apportion_phc_date(patient_location = dat$pat_loc,
+                       patient_category = dat$pat_cat,
+                       adm_date = dat$dat_admit, spec_date = dat$spec_date,
+                       adm_3_mo = dat$admitted_at_3_mo,
+                       date_discharge = dat$dat_dis,
+                       date_record_created = dat$dat_ent),
+    "hoha")
+})
+
+test_that("all_blank works", {
+  dat <- data.frame(pat_loc = "NHS Acute Trust", pat_cat = "In-patient",
+                    dat_admit = as.Date("14/08/2017", "%d/%m/%Y"),
+                    spec_date = as.Date("14/08/2017", "%d/%m/%Y"),
+                    dat_ent = as.Date("14/08/2017", "%d/%m/%Y"),
+                    # missing date of discharge
+                    dat_dis = as.Date(NA_real_, origin = "01-01-1970"),
+                    admitted_at_3_mo = "",
+                    stringsAsFactors = FALSE
+  )
+  expect_equal(
+    apportion_phc_date(patient_location = dat$pat_loc,
+                       patient_category = dat$pat_cat,
+                       adm_date = dat$dat_admit, spec_date = dat$spec_date,
+                       adm_3_mo = dat$admitted_at_3_mo,
+                       date_discharge = dat$dat_dis,
+                       date_record_created = dat$dat_ent),
+    "all_blank")
+})
