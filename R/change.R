@@ -3,6 +3,7 @@
 #' @param from The starting value
 #' @param to The finishing value
 #' @param type Either "percent" or "value"
+#' @return A numeric value giving the percent change or absolute change between the two values
 #' @examples
 #' change(200, 100, "percent")
 #' change(200, 100, "value")
