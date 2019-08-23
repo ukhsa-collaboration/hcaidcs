@@ -2,8 +2,7 @@
 % Please edit documentation in R/mo_next_pub_date.R
 \name{mo_next_pub_date}
 \alias{mo_next_pub_date}
-\title{Returns the next publication date of the monthly outputs
-Used in construction of file paths to get to raw data and also for printing in text of monthly factsheet.}
+\title{Returns the next publication date of the monthly outputs.}
 \usage{
 mo_next_pub_date(x)
 }
@@ -14,7 +13,6 @@ mo_next_pub_date(x)
 A data frame giving publication date, date for relevant data and month as a number for data
 }
 \description{
-Returns the next publication date of the monthly outputs
 Used in construction of file paths to get to raw data and also for printing in text of monthly factsheet.
 }
 \examples{

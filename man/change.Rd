@@ -13,6 +13,9 @@ change(from, to, type)
 
 \item{type}{Either "percent" or "value"}
 }
+\value{
+A numeric value giving the percent change or absolute change between the two values
+}
 \description{
 Gives the absolute value of the per cent or total change between two values
 }
