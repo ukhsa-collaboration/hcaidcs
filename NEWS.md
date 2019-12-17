@@ -1,3 +1,15 @@
+# Version 0.1.1.9005
+
+## Minor changes and bug fix
+
+Added function `graph_species_names` which will generate italicised species names for plotting. 
+
+Fixed bug in `apportion_phc_date`. 
+Previously this function only worked for CDI. 
+It is now available for bacteraemias too. 
+
+Some minor fixes to function documentation were added too. 
+
 # Version 0.1.1.9004
 
 ## Major change
