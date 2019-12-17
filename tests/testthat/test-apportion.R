@@ -280,6 +280,26 @@ test_that("Apportioning to coca works", {
     date_admitted = as.Date("01/01/2017", format = "%d/%m/%Y"),
     date_specimen = as.Date("01/01/2017", format = "%d/%m/%Y"),
     adm_3_mos = "no",
+    adm_4_wks = "yes",
+    adm_12_wks = "yes",
+    date_entered = as.Date("01/04/2017", format = "%d/%m/%Y"),
+    stringsAsFactors = FALSE)
+
+  expect_equal(
+    apportion_prior_healthcare(
+      patient_location = testdat$patient_location,
+      patient_category = testdat$patient_category,
+      testdat$date_admitted, testdat$date_specimen,
+      adm_3_mo = testdat$adm_3_mos, testdat$adm_4_wks,
+      testdat$adm_12_wks, testdat$date_entered
+    ), "coca")
+
+  testdat <- data.frame(
+    patient_location = "NHS Acute Trust",
+    patient_category = "In-patient",
+    date_admitted = as.Date("01/01/2017", format = "%d/%m/%Y"),
+    date_specimen = as.Date("01/01/2017", format = "%d/%m/%Y"),
+    adm_3_mos = "no",
     adm_4_wks = NA,
     adm_12_wks = NA,
     date_entered = as.Date("01/04/2017", format = "%d/%m/%Y"),

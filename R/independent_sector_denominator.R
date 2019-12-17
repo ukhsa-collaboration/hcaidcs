@@ -3,10 +3,11 @@
 #' @description This function calculates inpatient modified bed-days as used in Public Health England's Independent Sector reports
 #'
 #'
+#' @param data  A data frame
 #' @param bd_start_dt A date vector. The first day of the period of interest
-#' @param end_start_dt A date vector. The last day of the period of interest
+#' @param bd_end_dt A date vector. The last day of the period of interest
 #' @param admitted_dt A date vector. Date of patient admission
-#' @param end_start_dt A date vector. Date of patient discharge
+#' @param discharge_dt A date vector. Date patient was discharged
 #'
 #' @return A dataframe containing the modified bed-days, number of days admitted and discharge for the period of interest
 #'

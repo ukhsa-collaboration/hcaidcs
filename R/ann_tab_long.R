@@ -17,7 +17,6 @@
 #' @param org_var The variable giving the organisation code
 #' @param metric_var Column in dat giving column for the metric
 #' @param period_var Column giving the period by which counts should be aggregated
-#' @param spec_date Column in dat giving specimen date
 #'
 #' @return A dataframe with counts of cases in long format, by organisation and time period
 #'

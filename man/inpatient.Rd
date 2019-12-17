@@ -9,7 +9,7 @@ inpatient(patient_category, patient_location)
 \arguments{
 \item{patient_category}{character giving the admission category}
 
-\item{patient_locationcharacter}{giving the patient location at time of specimen}
+\item{patient_location}{character giving the patient location at time of specimen}
 }
 \value{
 Numeric variable 1 for inpatients, 0 for other

@@ -46,7 +46,7 @@ aec_ec_source_plot <- function(x){
     #facet_wrap(~tto_group) +
     ggplot2::scale_x_discrete("Days between admission and positive specimen",
                               labels = c("<2", "2-6", "\u2265 7")) +
-    ggplot2::scale_y_continuous("Percent inpatient cases") +
+    ggplot2::scale_y_continuous("Percent cases") +
     # ggplot2::theme(axis.ticks = element_blank(), axis.text.x = element_blank()) +
     # scale_fill_discrete("Primary focus\n of infection")
     ggplot2::scale_fill_manual(

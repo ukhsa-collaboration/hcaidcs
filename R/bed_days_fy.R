@@ -6,7 +6,7 @@
 #'
 #' @param data A dataframe
 #' @param kh03 Trust specific KH03 mandatory return
-#' @param fy Financial year. Example format; 201718 (Apr 2017 to March 2018) and 201819 (Apr 2018 to March 2019)
+#' @param fyear Financial year. Example format; 201718 (Apr 2017 to March 2018) and 201819 (Apr 2018 to March 2019)
 #'
 #' @return Dataframe with the number of days in each financial year with corresponding inpatient bed-days for the same period
 #'

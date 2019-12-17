@@ -16,8 +16,6 @@ ann_tab_long(dat, collection_var, org_var, metric_var, period_var)
 \item{metric_var}{Column in dat giving column for the metric}
 
 \item{period_var}{Column giving the period by which counts should be aggregated}
-
-\item{spec_date}{Column in dat giving specimen date}
 }
 \value{
 A dataframe with counts of cases in long format, by organisation and time period

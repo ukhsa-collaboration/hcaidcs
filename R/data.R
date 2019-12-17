@@ -49,7 +49,6 @@
 #'  \item{ONS_P_NM}{ONS Parent Name}
 #'  \item{ODS_CD}{ODS code for subregion}
 #'  \item{ODS_P_CD}{ODS code for parent region}
-#'  \item{ONS_P_CD}{ONS Parent Code}
 #' }
 #' @source Office for National Statistics
 "subregions_sp_df"

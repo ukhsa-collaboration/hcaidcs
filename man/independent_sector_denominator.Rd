@@ -8,13 +8,15 @@ independent_sector_denominator(data, bd_start_dt, bd_end_dt, admitted_dt,
   discharge_dt)
 }
 \arguments{
+\item{data}{A data frame}
+
 \item{bd_start_dt}{A date vector. The first day of the period of interest}
+
+\item{bd_end_dt}{A date vector. The last day of the period of interest}
 
 \item{admitted_dt}{A date vector. Date of patient admission}
 
-\item{end_start_dt}{A date vector. The last day of the period of interest}
-
-\item{end_start_dt}{A date vector. Date of patient discharge}
+\item{discharge_dt}{A date vector. Date patient was discharged}
 }
 \value{
 A dataframe containing the modified bed-days, number of days admitted and discharge for the period of interest

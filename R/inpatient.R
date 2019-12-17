@@ -5,7 +5,7 @@
 #' assessment and is in an NHS acute trust at time of specimen.
 #'
 #' @param patient_category character giving the admission category
-#' @param patient_locationcharacter giving the patient location at time of specimen
+#' @param patient_location character giving the patient location at time of specimen
 #' @export
 #'
 #' @return Numeric variable 1 for inpatients, 0 for other

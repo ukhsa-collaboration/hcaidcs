@@ -10,18 +10,20 @@
 #' \itemize{
 #'  \item Healthcare onset - healthcare associated
 #'  \item Community onset - healthcare associated
-#'  \item Community onset - indeterminate association
+#'  \item Community onset - indeterminate association (CDI only)
 #'  \item Community onset - community associated
 #'  \item Community onset - missing
 #'  \item Community onset - unknown
 #' }
 #'
+#' @param data_collection String giving "CDI" or any other value - CDI has a different PTE rule
 #' @param patient_location The patient's location at time of sample
 #' @param patient_category The patient's category at time of sample
 #' @param adm_date Date of admission
 #' @param spec_date Date of specimen
 #' @param adm_3_mo Was the patient an inpatient at the trust in previous three months. String yes, no or don't know
 #' @param date_discharge date the patient was most recently discharged from the reporting trust
+#' @param date_record_created date the record was entered onto the system
 #'
 #' @return A string variable giving the apportioning type; one of hoha, coha,
 #'   coia or coca, all_blank if all of the prior healthcare exposures were NA,
@@ -32,6 +34,7 @@
 #'
 #' phc_dat <- data.frame(stringsAsFactors=FALSE,
 #'  id = c(1, 2, 3, 4, 5),
+#'  organism = rep("CDI", 5),
 #'  patient_location = c("NHS acute trust", "NHS acute trust",
 #'                       "NHS acute trust", "NHS acute trust",
 #'                       "NHS acute trust"),
@@ -53,6 +56,7 @@
 #'
 #' phc_dat$days_diff <- phc_dat$specimen_date - phc_dat$date_most_recent_discharge
 #' phc_dat$apportion_phc_date <- apportion_phc_date(
+#'     data_collection = phc_dat$organism,
 #'     patient_location = phc_dat$patient_location,
 #'     patient_category = phc_dat$patient_category,
 #'     adm_date = phc_dat$admission_date,
@@ -66,7 +70,8 @@
 #'
 #' @export
 
-apportion_phc_date <- function(patient_location, patient_category, adm_date,
+apportion_phc_date <- function(data_collection,
+  patient_location, patient_category, adm_date,
                                spec_date, adm_3_mo, date_discharge,
                                date_record_created){
   if(!requireNamespace("lubridate", quietly = TRUE)) {
@@ -125,6 +130,12 @@ apportion_phc_date <- function(patient_location, patient_category, adm_date,
   z <- ifelse(adm_3_mo == "don't know" & !is.na(adm_3_mo) &
                 (z != "hoha" | is.na(z)),
                 "unknown_3_mo", z)
+
+  # fix Dec 2019 so that this can be used for bacteraemia collections
+  z <- ifelse(
+    !(data_collection %in% c("CDI", "C. difficile", "Clostridioides difficile")) & z == "coia",
+    "coca", z
+    )
 
   return(z)
 }

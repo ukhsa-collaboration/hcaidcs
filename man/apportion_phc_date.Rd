@@ -4,10 +4,12 @@
 \alias{apportion_phc_date}
 \title{Apportion cases on basis of prior healthcare interactions by date of most recent discharge}
 \usage{
-apportion_phc_date(patient_location, patient_category, adm_date, spec_date,
-  adm_3_mo, date_discharge, date_record_created)
+apportion_phc_date(data_collection, patient_location, patient_category,
+  adm_date, spec_date, adm_3_mo, date_discharge, date_record_created)
 }
 \arguments{
+\item{data_collection}{String giving "CDI" or any other value - CDI has a different PTE rule}
+
 \item{patient_location}{The patient's location at time of sample}
 
 \item{patient_category}{The patient's category at time of sample}
@@ -19,6 +21,8 @@ apportion_phc_date(patient_location, patient_category, adm_date, spec_date,
 \item{adm_3_mo}{Was the patient an inpatient at the trust in previous three months. String yes, no or don't know}
 
 \item{date_discharge}{date the patient was most recently discharged from the reporting trust}
+
+\item{date_record_created}{date the record was entered onto the system}
 }
 \value{
 A string variable giving the apportioning type; one of hoha, coha,
@@ -38,7 +42,7 @@ are then apportioned to one of the following groups:
 \itemize{
  \item Healthcare onset - healthcare associated
  \item Community onset - healthcare associated
- \item Community onset - indeterminate association
+ \item Community onset - indeterminate association (CDI only)
  \item Community onset - community associated
  \item Community onset - missing
  \item Community onset - unknown
@@ -48,6 +52,7 @@ are then apportioned to one of the following groups:
 
 phc_dat <- data.frame(stringsAsFactors=FALSE,
  id = c(1, 2, 3, 4, 5),
+ organism = rep("CDI", 5),
  patient_location = c("NHS acute trust", "NHS acute trust",
                       "NHS acute trust", "NHS acute trust",
                       "NHS acute trust"),
@@ -69,6 +74,7 @@ phc_dat <- data.frame(stringsAsFactors=FALSE,
 
 phc_dat$days_diff <- phc_dat$specimen_date - phc_dat$date_most_recent_discharge
 phc_dat$apportion_phc_date <- apportion_phc_date(
+    data_collection = phc_dat$organism,
     patient_location = phc_dat$patient_location,
     patient_category = phc_dat$patient_category,
     adm_date = phc_dat$admission_date,
