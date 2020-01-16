@@ -4,8 +4,7 @@
 \alias{aec_age_trend_rate_bar}
 \title{aec_age_trend_rate}
 \usage{
-aec_age_trend_rate_bar(collection, data, x, y, sex, group,
-  log_scale = FALSE)
+aec_age_trend_rate_bar(collection, data, x, y, sex, group, log_scale = FALSE)
 }
 \arguments{
 \item{collection}{One of CDI or Bacteraemia}

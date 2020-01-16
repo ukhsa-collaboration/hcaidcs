@@ -4,8 +4,16 @@
 \alias{apportion_phc_date}
 \title{Apportion cases on basis of prior healthcare interactions by date of most recent discharge}
 \usage{
-apportion_phc_date(data_collection, patient_location, patient_category,
-  adm_date, spec_date, adm_3_mo, date_discharge, date_record_created)
+apportion_phc_date(
+  data_collection,
+  patient_location,
+  patient_category,
+  adm_date,
+  spec_date,
+  adm_3_mo,
+  date_discharge,
+  date_record_created
+)
 }
 \arguments{
 \item{data_collection}{String giving "CDI" or any other value - CDI has a different PTE rule}

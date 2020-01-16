@@ -4,9 +4,14 @@
 \alias{assignment_algorithm}
 \title{Replicate the PIR assignment algorithm}
 \usage{
-assignment_algorithm(pircasestatus, assignmentmethodcode, patientlocation,
-  patientcategory, provisionalorganisationname,
-  finalpirassignedorganisationtype)
+assignment_algorithm(
+  pircasestatus,
+  assignmentmethodcode,
+  patientlocation,
+  patientcategory,
+  provisionalorganisationname,
+  finalpirassignedorganisationtype
+)
 }
 \arguments{
 \item{pircasestatus}{Text string of either 'Final assignment' or 'Provisional assignment'}

@@ -24,7 +24,7 @@ changed with the introducion  new risk factor collection on the DCS.
 Previously, the field name was risk_factors_most_likely_primary_focus
 the new field name is source_primary_focus_of_bacteraemia
 
-The general approach when analysing the data is to combine the information
+ The general approach when analysing the data is to combine the information
 from both fields into one.
 This may cause problems where there is contradictory information.
 New information is copied into old, but only when new information is not

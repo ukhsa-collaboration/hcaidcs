@@ -4,8 +4,13 @@
 \alias{independent_sector_denominator}
 \title{Inpatient modified bed-days from Independent Sector Providers}
 \usage{
-independent_sector_denominator(data, bd_start_dt, bd_end_dt, admitted_dt,
-  discharge_dt)
+independent_sector_denominator(
+  data,
+  bd_start_dt,
+  bd_end_dt,
+  admitted_dt,
+  discharge_dt
+)
 }
 \arguments{
 \item{data}{A data frame}

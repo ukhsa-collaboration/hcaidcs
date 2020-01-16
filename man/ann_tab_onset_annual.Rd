@@ -4,8 +4,16 @@
 \alias{ann_tab_onset_annual}
 \title{ann_tab_onset_annual}
 \usage{
-ann_tab_onset_annual(dat, timeperiod, org_code, denominator, total, ho, co,
-  org_type)
+ann_tab_onset_annual(
+  dat,
+  timeperiod,
+  org_code,
+  denominator,
+  total,
+  ho,
+  co,
+  org_type
+)
 }
 \arguments{
 \item{dat}{A dataframe in long format}

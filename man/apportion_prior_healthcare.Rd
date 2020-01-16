@@ -4,8 +4,16 @@
 \alias{apportion_prior_healthcare}
 \title{Apportion CDI cases on basis of prior healthcare interactions}
 \usage{
-apportion_prior_healthcare(patient_location, patient_category, adm_date,
-  spec_date, adm_3_mo, adm_4_weeks, adm_12_weeks, date_record_created)
+apportion_prior_healthcare(
+  patient_location,
+  patient_category,
+  adm_date,
+  spec_date,
+  adm_3_mo,
+  adm_4_weeks,
+  adm_12_weeks,
+  date_record_created
+)
 }
 \arguments{
 \item{patient_location}{The patient's location at time of sample}

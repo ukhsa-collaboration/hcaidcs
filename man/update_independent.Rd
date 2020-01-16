@@ -4,9 +4,13 @@
 \alias{update_independent}
 \title{Update independent sector providers and independent sector sites.}
 \usage{
-update_independent(organisation,
-  input_file_path = "K:/Mandatory databases/maintaining_new_org_structure_new/ods_files/",
-  output_file_path = "K:/Mandatory databases/maintaining_new_org_structure_new/ods_files/updates/")
+update_independent(
+  organisation,
+ 
+    input_file_path = "K:/Mandatory databases/maintaining_new_org_structure_new/ods_files/",
+ 
+    output_file_path = "K:/Mandatory databases/maintaining_new_org_structure_new/ods_files/updates/"
+)
 }
 \arguments{
 \item{organisation}{A character giving the organisation to be updated.}

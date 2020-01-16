@@ -4,8 +4,14 @@
 \alias{apportion}
 \title{Apportion CDI and MSSA records}
 \usage{
-apportion(collection, patient_location, patient_category, date_admitted,
-  specimen_date, date_entered)
+apportion(
+  collection,
+  patient_location,
+  patient_category,
+  date_admitted,
+  specimen_date,
+  date_entered
+)
 }
 \arguments{
 \item{collection}{The collection (MRSA, MSSA, CDI, E. coli) to which the record belongs.}

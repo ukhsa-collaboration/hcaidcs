@@ -4,8 +4,7 @@
 \alias{time_to_onset}
 \title{Calculates time to onset for inpatients}
 \usage{
-time_to_onset(date_admitted, date_specimen, patient_category,
-  patient_location)
+time_to_onset(date_admitted, date_specimen, patient_category, patient_location)
 }
 \arguments{
 \item{date_admitted}{Admission date in date format}
