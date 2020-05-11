@@ -37,64 +37,65 @@
 #' @export
 
 
-apportion <- function(collection, patient_location, patient_category, date_admitted, specimen_date, date_entered){
+apportion <- function (collection, patient_location, patient_category, date_admitted,
+                       specimen_date, date_entered)
+{
   if (!requireNamespace("lubridate", quietly = TRUE)) {
     stop("lubridate is needed for this function to work. Please install it.",
          call. = FALSE)
   }
-
   collection <- tolower(collection)
-
   assertthat::assert_that(assertthat::is.date(date_admitted))
   assertthat::assert_that(assertthat::is.date(specimen_date))
   assertthat::assert_that(assertthat::is.date(date_entered))
   assertthat::assert_that(all(collection %in%
-                            c("mssa", "mrsa", "e. coli", "cdi", "c. difficile",
-                              "klebsiella spp", "klebsiella spp.",
-                              "p. aeruginosa")),
-                          msg = "Collection must be one of MRSA, MSSA, E. coli,
-                          CDI, Klebsiella spp or P. aeruginosa")
-
-  if(length(collection) == 1) {
+                                c("mssa", "mrsa", "e. coli", "cdi",
+                                  "c. difficile", "klebsiella spp",
+                                  "klebsiella spp.", "pseudomonas aeruginosa", "p. aeruginosa")),
+                          msg = "Collection must be one of MRSA, MSSA, E. coli, C. difficile,\n
+                          CDI, Klebsiella spp, Pseudomonas aeruginosa or P. aeruginosa")
+  if (length(collection) == 1) {
     collection <- rep(collection, length(patient_location))
   }
   trust <- ifelse(collection %in% c("mssa", "mrsa", "e. coli",
-                                    "klebsiella spp", "klebsiella spp.",
-                                    "p. aeruginosa"),
-                  mssa_appt(patient_location, patient_category, date_admitted, specimen_date, date_entered),
-                  cdi_appt(patient_location, patient_category, date_admitted, specimen_date, date_entered)
-                  )
-
+                                    "klebsiella spp", "klebsiella spp.", "pseudomonas aeruginosa", "p. aeruginosa"),
+                  mssa_appt(patient_location, patient_category, date_admitted,
+                            specimen_date, date_entered), cdi_appt(patient_location,
+                                                                   patient_category, date_admitted, specimen_date,
+                                                                   date_entered))
   return(trust)
 }
 
-
-mssa_appt <- function(patient_location, patient_category, date_admitted, specimen_date, date_entered){
-  trust_cats <- c("In-patient", "Day patient", "Emergency Assessment", "Unknown", "", NA_character_)
-  # trust_locs <- c("NHS Acute Trust", "", "Unknown")
+mssa_appt <- function (patient_location, patient_category, date_admitted,
+                       specimen_date, date_entered)
+{
+  trust_cats <- c("In-patient", "Day patient", "Emergency Assessment",
+                  "Unknown", "", NA_character_)
   trust_locs <- c("NHS Acute Trust", "", NA_character_)
   z <- ifelse(is.na(date_admitted) == TRUE,
-              # value if is.na(date_admitted) == TRUE
-              ifelse( (patient_location %in% trust_locs | (patient_location == "Unknown" & date_entered >= lubridate::dmy("26-10-2015")) ) &
-                  (patient_category %in% trust_cats | is.na(patient_category)), 1, 0),
-              # value if is.na(date_admitted) == FALSE
-              ifelse( (specimen_date - date_admitted + 1 >= 3) &
-                (patient_location %in% trust_locs | (patient_location == "Unknown" & date_entered >= lubridate::dmy("26-10-2015")) ) &
-                patient_category %in% trust_cats,
-                1, 0))
+              ifelse((patient_location %in%
+                        trust_locs |
+                        (patient_location == "Unknown" & date_entered >= lubridate::dmy("26-10-2015"))) & (patient_category %in% trust_cats |
+                                                                                                             is.na(patient_category)), 1, 0),
+              ifelse((specimen_date - date_admitted + 1 >= 3) & (patient_location %in% trust_locs |
+                                                                   (patient_location == "Unknown" & date_entered >= lubridate::dmy("26-10-2015"))) & patient_category %in% trust_cats, 1, 0))
   return(z)
 }
 
-cdi_appt <- function(patient_location, patient_category, date_admitted, specimen_date, date_entered){
-  trust_cats <- c("In-patient", "Day patient", "Emergency Assessment", "Unknown", "", NA_character_)
-  # trust_locs <- c("NHS Acute Trust", "", "Unknown")
+cdi_appt <- function (patient_location, patient_category, date_admitted,
+                      specimen_date, date_entered)
+{
+  trust_cats <- c("In-patient", "Day patient", "Emergency Assessment",
+                  "Unknown", "", NA_character_)
   trust_locs <- c("NHS Acute Trust", "", NA_character_)
   z <- ifelse(is.na(date_admitted) == TRUE,
-              ifelse( (patient_location %in% trust_locs | (patient_location == "Unknown" & date_entered >= lubridate::dmy("26-10-2015")) ) &
-                        (patient_category %in% trust_cats | is.na(patient_category)), 1, 0),
-              ifelse( (specimen_date - date_admitted + 1 >= 4) &
-                        (patient_location %in% trust_locs | (patient_location == "Unknown" & date_entered >= lubridate::dmy("26-10-2015")) ) &
-                        patient_category %in% trust_cats,
-              1, 0))
+              ifelse((patient_location %in% trust_locs |
+                        (patient_location == "Unknown" &
+                           date_entered >= lubridate::dmy("26-10-2015"))) &
+                       (patient_category %in% trust_cats | is.na(patient_category)), 1, 0),
+              ifelse((specimen_date - date_admitted + 1 >= 4) & (patient_location %in% trust_locs |
+                                                                   (patient_location == "Unknown" &
+                                                                      date_entered >= lubridate::dmy("26-10-2015"))) &
+                       patient_category %in% trust_cats, 1, 0))
   return(z)
 }

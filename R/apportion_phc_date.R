@@ -98,8 +98,6 @@ apportion_phc_date <- function(data_collection,
     length(adm_3_mo[!(tolower(adm_3_mo) %in% c("yes", "no", "don't know", "", NA))]) == 0,
     msg = "adm_3_mo must be one of yes, no, don't know, \"\" or NA")
 
-
-
   days_diff <- spec_date - adm_date
   adm_3_mo <- tolower(adm_3_mo)
   adm_3_mo <- ifelse(adm_3_mo == "", NA_character_, adm_3_mo)
@@ -124,9 +122,12 @@ apportion_phc_date <- function(data_collection,
   z <- ifelse(adm_3_mo == "yes" & dis_diff >= 84 & !is.na(dis_diff) &
                   hoha != 1, "coca", z)
   z <- ifelse((adm_3_mo == "" | is.na(adm_3_mo)) & is.na(dis_diff) &
-                hoha != 1, "all_blank", z)
+                (hoha != 1 | is.na(hoha)), "all_blank", z)
+  z <- ifelse(is.na(dis_diff) & (hoha != 1 | is.na(hoha)), "all_blank", z)
     # cases without prior hc admission and are not hoha are coca
   z <- ifelse(adm_3_mo == "no" & !is.na(adm_3_mo) & hoha != 1, "coca", z)
+  z <- ifelse(hoha != 1 & (dis_diff < 0 | is.na(dis_diff)) &
+                (tolower(adm_3_mo) != "no" & !is.na(adm_3_mo)), "all_blank", z)
   z <- ifelse(adm_3_mo == "don't know" & !is.na(adm_3_mo) &
                 (z != "hoha" | is.na(z)),
                 "unknown_3_mo", z)

@@ -445,3 +445,26 @@ test_that("COIAs aren't returned", {
                        date_record_created = dat$dat_ent),
     "coca")
 })
+
+test_that("COCA works if not previously admitted", {
+  dat <- data.frame(organism = "E. coli",
+                    pat_loc = "NHS Acute Trust", pat_cat = "In-patient",
+                    dat_admit = as.Date("14/08/2017", "%d/%m/%Y"),
+                    spec_date = as.Date("14/08/2017", "%d/%m/%Y"),
+                    dat_ent = as.Date("14/08/2017", "%d/%m/%Y"),
+                    # COHA is <28 days
+                    dat_dis = as.Date("NA", "%d/%m/%Y"),
+                    admitted_at_3_mo = "No",
+                    stringsAsFactors = FALSE
+  )
+
+  expect_equal(
+    apportion_phc_date(data_collection = dat$organism,
+                       patient_location = dat$pat_loc,
+                       patient_category = dat$pat_cat,
+                       adm_date = dat$dat_admit, spec_date = dat$spec_date,
+                       adm_3_mo = dat$admitted_at_3_mo,
+                       date_discharge = dat$dat_dis,
+                       date_record_created = dat$dat_ent),
+    "coca")
+})
