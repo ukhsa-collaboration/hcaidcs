@@ -4,7 +4,8 @@
 \name{subregions_sp_df}
 \alias{subregions_sp_df}
 \title{NHS subregion geographies for England}
-\format{A data frame with ~71.3k observations and 23 columns:
+\format{
+A data frame with ~71.3k observations and 23 columns:
 \describe{
  \item{long}{Longitude}
  \item{lat}{Lattitude}
@@ -29,7 +30,8 @@
  \item{ONS_P_NM}{ONS Parent Name}
  \item{ODS_CD}{ODS code for subregion}
  \item{ODS_P_CD}{ODS code for parent region}
-}}
+}
+}
 \source{
 Office for National Statistics
 }

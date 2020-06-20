@@ -4,11 +4,13 @@
 \name{subregion_test_data}
 \alias{subregion_test_data}
 \title{subregion_test_data}
-\format{A data frame with 14 observations on two columns
+\format{
+A data frame with 14 observations on two columns
 \describe{
 \item{ODS_CD}{ODS code of subregion for joining}
 \item{rand_val}{A random value for filling the areas}
-}}
+}
+}
 \usage{
 subregion_test_data
 }

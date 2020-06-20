@@ -4,7 +4,8 @@
 \name{assignment_data}
 \alias{assignment_data}
 \title{Data for testing assignement algorithm}
-\format{A data frame with 14 rows of 6 variables:
+\format{
+A data frame with 14 rows of 6 variables:
 \describe{
  \item{pircasestatus}{string}
  \item{assignmentmethodcode}{Numeric giving assignment method}
@@ -12,7 +13,8 @@
  \item{provisionalorganisationname}{string}
  \item{finalpirassignedorganisation}{string}
  \item{patient_category}{string}
-}}
+}
+}
 \usage{
 assignment_data
 }

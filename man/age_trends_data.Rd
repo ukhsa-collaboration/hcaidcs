@@ -4,7 +4,8 @@
 \name{age_trends_data}
 \alias{age_trends_data}
 \title{Trends in age of patients with *C. difficile* infection}
-\format{A data frame with 108 rows and 7 variables:
+\format{
+A data frame with 108 rows and 7 variables:
 \describe{
   \item{fyear6}{Financial year}
   \item{age_group_new}{Mandatory surveillance age group}
@@ -13,7 +14,8 @@
   \item{rate}{Rate of CDI per 100,000 population}
   \item{age_sex_pc}{Per cent of cases for age group-year}
   \item{sex}{Sex}
-}}
+}
+}
 \source{
 \url{https://hcaidcs.phe.org.uk/WebPages/GeneralHomePage.aspx}
 }

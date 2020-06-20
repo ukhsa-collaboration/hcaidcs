@@ -4,7 +4,8 @@
 \name{at_sp_df}
 \alias{at_sp_df}
 \title{NHS Area Team geographies for England}
-\format{A data frame with ~87.5k observations and 12 columns:
+\format{
+A data frame with ~87.5k observations and 12 columns:
 \describe{
  \item{long}{Longitude}
  \item{lat}{Lattitude}
@@ -18,7 +19,8 @@
  \item{order}{Gives plotting order}
  \item{Shape_STAr}{Only used for plotting}
  \item{Shape_STLe}{Only used for plotting}
-}}
+}
+}
 \source{
 Office for National Statistics
 }

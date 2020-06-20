@@ -4,7 +4,8 @@
 \name{line_listing}
 \alias{line_listing}
 \title{Data simulating output from the HCAI DCS line listing report}
-\format{A dataframe with 500 rows of 10 variables
+\format{
+A dataframe with 500 rows of 10 variables
 \describe{
   \item{id}{Integer to simulate the record id}
   \item{collection}{A string giving the name of the organism collection}
@@ -18,7 +19,8 @@
   \item{prior_hc}{A string giving the prior healthcare group of the case (CDI only)}
   \item{patient_location}{A string giving location of patient at time of specimen}
   \item{patient_category}{A string giving admission status of patient at time of specimen}
-}}
+}
+}
 \usage{
 line_listing
 }

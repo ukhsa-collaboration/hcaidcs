@@ -4,7 +4,8 @@
 \name{cdi_prior_hc_data}
 \alias{cdi_prior_hc_data}
 \title{Data for testing prior healthcare exposure monthly table}
-\format{A data frame with 13 rows of 16 variables
+\format{
+A data frame with 13 rows of 16 variables
 \describe{
  \item{org_code}{Organisation code (CCG or NHS trust)}
  \item{year_no}{Four-digit year}
@@ -24,7 +25,8 @@
  \item{phc_unknown_3_mo}{Count of cases for which the three-month prior health care fields is blank}
  \item{fmonth}{Numeric financial year month (i.e. 1 = April)}
  \item{month_string}{String cal month}
-}}
+}
+}
 \usage{
 cdi_prior_hc_data
 }

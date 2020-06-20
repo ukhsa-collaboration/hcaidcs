@@ -28,8 +28,8 @@ qec_age_table <- function(df, age_var, denom){
   z <- df %>%
     dplyr::group_by(!!group_var) %>%
     dplyr::summarise(
-      # a_count = "dplyr::n()",
-      a_count = n(),
+      a_count = dplyr::n(),
+      # a_count = n(),
       denom = min(!!denom_var)
                )  %>%
     dplyr::mutate(rate_per_100k = (a_count / denom) * 100000)

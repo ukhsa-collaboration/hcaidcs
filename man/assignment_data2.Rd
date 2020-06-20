@@ -4,7 +4,8 @@
 \name{assignment_data2}
 \alias{assignment_data2}
 \title{Data for testing assignement algorithm}
-\format{A data frame with 15 rows of 7 variables:
+\format{
+A data frame with 15 rows of 7 variables:
 \describe{
  \item{pir_case_status}{string}
  \item{assignment_method_code}{Numeric giving assignment method}
@@ -13,7 +14,8 @@
  \item{provisional_organisation_name}{string}
  \item{final_pir_assigned_organisation_type}{string}
  \item{id}{A numeric variable giving an anonymous HCAIDCS case id}
-}}
+}
+}
 \usage{
 assignment_data2
 }

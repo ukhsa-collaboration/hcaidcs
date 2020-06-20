@@ -4,7 +4,8 @@
 \name{monthly_ccg_data_raw}
 \alias{monthly_ccg_data_raw}
 \title{Data for monthly CCG table for MRSA}
-\format{A data frame with 714 rows and 12 variables:
+\format{
+A data frame with 714 rows and 12 variables:
 \describe{
     \item{data_collection}{String giving the data collection}
     \item{ccg_code}{String giving the ccg code}
@@ -18,7 +19,8 @@
     \item{third_party_pir}{Count of third party-assigned PIR cases}
     \item{fmonth}{Numeric giving financial year month, i.e. April = 1}
     \item{month_string}{Character string giving name of month}
-}}
+}
+}
 \usage{
 monthly_ccg_data_raw
 }

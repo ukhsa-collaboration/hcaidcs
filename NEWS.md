@@ -1,3 +1,10 @@
+# Version 0.1.1.9006
+
+## New functions
+
+Two new functions have been added: `age_sex_pyramid` and `graph_age_group`. 
+`age_sex_pyramid` draws age-sex pyramids and `graph_age_group` produces ordered factors so that axes are plotted in order and the greater that/equal to operator is plotted correctly.
+
 # Version 0.1.1.9005
 
 ## Minor changes and bug fix
