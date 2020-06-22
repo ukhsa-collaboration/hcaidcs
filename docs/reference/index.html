@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -35,7 +39,7 @@
 
 <!-- docsearch -->
 <script src="../docsearch.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
@@ -59,7 +63,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-index">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -73,7 +77,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hcaidcs</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9005</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9006</span>
       </span>
     </div>
 
@@ -94,7 +98,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/PublicHealthEngland/hcaidcs">
+  <a href="https://github.com/PublicHealthEngland/hcaidcs/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -136,6 +140,11 @@
           <p class="section-desc"><p>Functions used in the preparation of the Annual Epidemiological Commentary</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -234,6 +243,11 @@
           <p class="section-desc"><p>Functions used in preparation of monthly outputs</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -308,6 +322,11 @@
           <p class="section-desc"><p>Functions used to manipulate dates and time periods into those used in routine outputs</p></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -472,102 +491,23 @@
           <p class="section-desc"></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
-          <p><code><a href="aec_age_sex_plot.html">aec_age_sex_plot()</a></code> </p>
+          <p><code><a href="age_sex_pyramid.html">age_sex_pyramid()</a></code> </p>
         </td>
-        <td><p>Plot rates by age and sex structure, faceted by financial year.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="aec_age_trend_pc.html">aec_age_trend_pc()</a></code> </p>
-        </td>
-        <td><p>Graph trend in percentage of cases by age group</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="aec_age_trend_rate.html">aec_age_trend_rate()</a></code> </p>
-        </td>
-        <td><p>Graph trend in rate of cases by age and sex</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="aec_age_trend_rate_bar.html">aec_age_trend_rate_bar()</a></code> </p>
-        </td>
-        <td><p>aec_age_trend_rate</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="aec_age_trend_rate_pc_change.html">aec_age_trend_rate_pc_change()</a></code> </p>
-        </td>
-        <td><p>aec_age_trend_rate_pc_change</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="aec_create_folder_structure.html">aec_create_folder_structure()</a></code> </p>
-        </td>
-        <td><p>Set up empty folders for Annual publication</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="aec_ec_source_plot.html">aec_ec_source_plot()</a></code> </p>
-        </td>
-        <td><p>Plot the most likely primary focus for E. coli bacteraemia by time to onset</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="aec_inpatient.html">aec_inpatient()</a></code> </p>
-        </td>
-        <td><p>Determine whether record is from an acute trust inpatient for AEC</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="aec_subregion_plot.html">aec_subregion_plot()</a></code> </p>
-        </td>
-        <td><p>Plot rates by NHS subregion</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="aec_tto_plot.html">aec_tto_plot()</a></code> </p>
-        </td>
-        <td><p>AEC time to onset plot</p></td>
+        <td><p>Age sex pyramid</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="age_trends_data.html">age_trends_data</a></code> </p>
         </td>
         <td><p>Trends in age of patients with *C. difficile* infection</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ann_tab_ccg_names.html">ann_tab_ccg_names()</a></code> </p>
-        </td>
-        <td><p>Format CCG names for printing in the annual tables.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ann_tab_long.html">ann_tab_long()</a></code> </p>
-        </td>
-        <td><p>Create long annual tables from line listing data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ann_tab_onset_annual.html">ann_tab_onset_annual()</a></code> </p>
-        </td>
-        <td><p>ann_tab_onset_annual</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ann_tab_onset_qtrly.html">ann_tab_onset_qtrly()</a></code> </p>
-        </td>
-        <td><p>ann_tab_onset_qtrly</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ann_tab_pir_org_type.html">ann_tab_pir_org_type()</a></code> </p>
-        </td>
-        <td><p>Format pir org type for annual tables</p></td>
       </tr><tr>
         
         <td>
@@ -661,78 +601,6 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="cyear_to_cq.html">cyear_to_cq()</a></code> </p>
-        </td>
-        <td><p>Cyear to long calendar quarter</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="cyear_to_fyear.html">cyear_to_fyear()</a></code> </p>
-        </td>
-        <td><p>Convert calendar year to financial year</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="date_end_period.html">date_end_period()</a></code> </p>
-        </td>
-        <td><p>Get the string of the first date in a period</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="date_start_period.html">date_start_period()</a></code> </p>
-        </td>
-        <td><p>Get the string of the first date in a period</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="date_to_cmonth.html">date_to_cmonth()</a></code> </p>
-        </td>
-        <td><p>date_to_cmonth</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="date_to_fmonth.html">date_to_fmonth()</a></code> </p>
-        </td>
-        <td><p>date_to_fmonth</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="date_to_fq.html">date_to_fq()</a></code> </p>
-        </td>
-        <td><p>date_to_fq</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="date_to_fyear.html">date_to_fyear()</a></code> </p>
-        </td>
-        <td><p>date_to_fyear</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="days_in_cy.html">days_in_cy()</a></code> </p>
-        </td>
-        <td><p>Get the number of days in a calendar year</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="days_in_fmonth.html">days_in_fmonth()</a></code> </p>
-        </td>
-        <td><p>Calculates number of days in a financial month.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="days_in_fq.html">days_in_fq()</a></code> </p>
-        </td>
-        <td><p>Get the number of days in the quarter of a financial year</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="days_in_fy.html">days_in_fy()</a></code> </p>
-        </td>
-        <td><p>Get the number of days in a financial year</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="dcs_popn_boilerplate.html">dcs_popn_boilerplate()</a></code> </p>
         </td>
         <td><p>Create population boilerplate columns for DCS denominator upload</p></td>
@@ -787,81 +655,15 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="fq_long.html">fq_long()</a></code> </p>
-        </td>
-        <td><p>Format date into long quarter.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fq_short.html">fq_short()</a></code> </p>
-        </td>
-        <td><p>Format date into short text financial quarter.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fq_short_to_date.html">fq_short_to_date()</a></code> </p>
-        </td>
-        <td><p>fq_short_to_date</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fq_to_cq.html">fq_to_cq()</a></code> </p>
-        </td>
-        <td><p>Convert financial year quarters to calendar year quarters</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fq_to_fyear.html">fq_to_fyear()</a></code> </p>
-        </td>
-        <td><p>Convert financial quarter to six-character financial year</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fyear_to_cyear.html">fyear_to_cyear()</a></code> </p>
-        </td>
-        <td><p>Convert financial year to calendar year</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fyear_to_fq.html">fyear_to_fq()</a></code> </p>
-        </td>
-        <td><p>Fyear to long financial quarter</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="fyq_to_fq.html">fyq_to_fq()</a></code> </p>
         </td>
         <td><p>Fyear-quarter to long financial quarter</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="fy_long.html">fy_long()</a></code> </p>
+          <p><code><a href="graph_age_groups.html">graph_age_groups()</a></code> </p>
         </td>
-        <td><p>Format date into long text financial year.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fy_long_short.html">fy_long_short()</a></code> </p>
-        </td>
-        <td><p>Format fy_long into short financial year.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fy_short.html">fy_short()</a></code> </p>
-        </td>
-        <td><p>Format date into short text financial year.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fy_six.html">fy_six()</a></code> </p>
-        </td>
-        <td><p>Create six character financial year from date</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fy_six_to_long.html">fy_six_to_long()</a></code> </p>
-        </td>
-        <td><p>Format date into long text financial year.</p></td>
+        <td><p>graph_age_groups</p></td>
       </tr><tr>
         
         <td>
@@ -964,93 +766,15 @@ Calculates the mandatory age grouping based on numeric age</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="mf_create_text_values.html">mf_create_text_values()</a></code> </p>
-        </td>
-        <td><p>function to create text objects for monthly factsheets</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mf_fig1_fun.html">mf_fig1_fun()</a></code> </p>
-        </td>
-        <td><p>Monthly factsheet figure 1 function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mf_lag_trend.html">mf_lag_trend()</a></code> </p>
-        </td>
-        <td><p>lag mf trend data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mf_trend_data.html">mf_trend_data</a></code> </p>
-        </td>
-        <td><p>Data for monthly factsheet figure 1 function</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="monthly_ccg_data_raw.html">monthly_ccg_data_raw</a></code> </p>
         </td>
         <td><p>Data for monthly CCG table for MRSA</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="mo_curr_months.html">mo_curr_months()</a></code> </p>
-        </td>
-        <td><p>Create months for monthly outputs</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mo_gnabsi_table.html">mo_gnabsi_table()</a></code> </p>
-        </td>
-        <td><p>Monthly table for Gram-negative blood stream infection data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mo_next_pub_date.html">mo_next_pub_date()</a></code> </p>
-        </td>
-        <td><p>Returns the next publication date of the monthly outputs.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mo_prior_hc_table.html">mo_prior_hc_table()</a></code> </p>
-        </td>
-        <td><p>mo_prior_hc_table</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mo_pub_date.html">mo_pub_date()</a></code> </p>
-        </td>
-        <td><p>Nicely formats date of publication for monthly data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mo_std_table.html">mo_std_table()</a></code> </p>
-        </td>
-        <td><p>Monthly CCG table</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mo_tab_long.html">mo_tab_long()</a></code> </p>
-        </td>
-        <td><p>mo_tab_long</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="mrsa_source_bacteraemia.html">mrsa_source_bacteraemia()</a></code> </p>
         </td>
         <td><p>Classify the source of bacteramia for MRSA</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ordered_fin_qtr.html">ordered_fin_qtr()</a></code> </p>
-        </td>
-        <td><p>Create factor variable from financial quarter</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ordered_m_y.html">ordered_m_y()</a></code> </p>
-        </td>
-        <td><p>Add ordered month and calendar year to a data frame</p></td>
       </tr><tr>
         
         <td>
@@ -1129,14 +853,10 @@ between two values</p></td>
     </table>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-aec-functions">AEC functions</a></li>
-      <li><a href="#section-monthly-output-functions">Monthly output functions</a></li>
-      <li><a href="#section-date-functions">Date functions</a></li>
-      <li><a href="#section-other-functions">Other functions</a></li>
-    </ul>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -1147,7 +867,7 @@ between two values</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

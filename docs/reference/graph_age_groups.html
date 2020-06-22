@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Format date into long quarter. — fq_long • hcaidcs</title>
+<title>graph_age_groups — graph_age_groups • hcaidcs</title>
 
 
 <!-- jquery -->
@@ -45,9 +45,9 @@
 
 
 
-<meta property="og:title" content="Format date into long quarter. — fq_long" />
-<meta property="og:description" content="Formats date from date or POSIX class to a text string giving the the quarter
-as 'January to March yyyy'" />
+<meta property="og:title" content="graph_age_groups — graph_age_groups" />
+<meta property="og:description" content="Produces nice age groups for plotting on graphs. Different output for
+CDI and BSI" />
 
 
 
@@ -124,39 +124,52 @@ as 'January to March yyyy'" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Format date into long quarter.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/fq_long.R'><code>R/fq_long.R</code></a></small>
-    <div class="hidden name"><code>fq_long.Rd</code></div>
+    <h1>graph_age_groups</h1>
+    <small class="dont-index">Source: <a href='https://github.com/PublicHealthEngland/hcaidcs/blob/master/R/graph_age_groups.R'><code>R/graph_age_groups.R</code></a></small>
+    <div class="hidden name"><code>graph_age_groups.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Formats date from date or POSIX class to a text string giving the the quarter
-as 'January to March yyyy'</p>
+    <p>Produces nice age groups for plotting on graphs. Different output for
+CDI and BSI</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fq_long</span>(<span class='no'>date_var</span>)</pre>
+    <pre class="usage"><span class='fu'>graph_age_groups</span>(<span class='no'>x</span>, <span class='no'>data_collection</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>date_var</th>
-      <td><p>A date variable in class Date or POSIX</p></td>
+      <th>x</th>
+      <td><p>A character vector of age groups</p></td>
+    </tr>
+    <tr>
+      <th>data_collection</th>
+      <td><p>a string giving the data collection of the labels to
+be converted.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A text string giving the quarter and year.</p>
+    <p>A factor with labels that can be printed in ggplot2</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='fy_short.html'>fy_short</a></code></p>
-<p><code><a href='fy_long_short.html'>fy_long_short</a></code></p>
-<p><code><a href='ordered_fin_qtr.html'>ordered_fin_qtr</a></code></p></div>
+    <div class='dont-index'><p><code><a href='age_sex_pyramid.html'>age_sex_pyramid</a></code> for its use in a graph.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span>(<span class='st'>"01/01/2001"</span>)
-<span class='fu'>fq_long</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "January to March 2001"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>age_trends_data</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>age_trends_data</span>)</div><div class='output co'>#&gt;   fyear6 age_group_new    sex     n       popn   rate age_sex_pc
+#&gt; 1 200708          2-14 Female   157  3858142.2    4.1  0.4920859
+#&gt; 2 200708         15-44 Female  1539 10721325.4   14.4  4.8236953
+#&gt; 3 200708         45-64 Female  3333  6463536.8   51.6 10.4466385
+#&gt; 4 200708         65-74 Female  4904  2205682.2  222.3 15.3706316
+#&gt; 5 200708         75-84 Female 10721  1655252.5  647.7 33.6028836
+#&gt; 6 200708          ge85 Female 11251   755018.8 1490.2 35.2640652</div><div class='input'>
+<span class='co'>## To get the right sorting and labels for the age groups</span>
+
+<span class='no'>age_trends_data</span>$<span class='no'>age_group2</span> <span class='kw'>&lt;-</span> <span class='fu'>graph_age_groups</span>(<span class='no'>age_trends_data</span>$<span class='no'>age_group_new</span>,
+  <span class='kw'>data_collection</span> <span class='kw'>=</span> <span class='st'>"cdi"</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

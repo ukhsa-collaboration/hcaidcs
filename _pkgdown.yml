@@ -25,7 +25,17 @@ reference:
     - starts_with("ordered_")
   - title: "Other functions"
     contents:
-    - matches('^(?!.*(aec_|ann_|mo_)).*$')
+    - -starts_with("aec_")
+    - -starts_with("ann_")
+    - -starts_with("mo_")
+    - -starts_with("mf_")
+    - -starts_with("cyear_")
+    - -starts_with("date_")
+    - -starts_with("days_")
+    - -starts_with("fq_")
+    - -starts_with("fy_")
+    - -starts_with("fyear_")
+    - -starts_with("ordered_")
 template:
   params:
     docsearch:
