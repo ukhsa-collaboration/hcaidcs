@@ -14,8 +14,8 @@ test_that("fmonth_to_string returns expected results", {
 })
 
 test_that("fmonth_to_string works in a mutate chain", {
-  out <- dplyr::tbl_df(data.frame(x = c("April", "March"), stringsAsFactors = FALSE))
-  in_df <- dplyr::tbl_df(data.frame(x = c(1.0, 12.0)))
+  out <- tibble::as_tibble(data.frame(x = c("April", "March"), stringsAsFactors = FALSE))
+  in_df <- tibble::as_tibble(data.frame(x = c(1.0, 12.0)))
   expect_equal(in_df %>% dplyr::mutate(x = fmonth_to_string(x)),
                out)
 })
