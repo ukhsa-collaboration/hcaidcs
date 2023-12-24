@@ -1,3 +1,8 @@
+# version 0.1.1.9007
+
+## bug fixes
+Updated `mf_lag_trend` to remove deprecated function mutate_at from dplyr. 
+
 # Version 0.1.1.9006
 
 ## New functions

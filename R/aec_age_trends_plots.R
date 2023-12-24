@@ -41,7 +41,7 @@ aec_age_trend_pc <- function(collection, data, x, y, sex, group, log_scale = FAL
     #                       labels = c("2-14", "15-44", "45-64", "65-74", "75-84",
     #                                  expression(phantom(x) >=85))) +
     ggplot2::scale_y_continuous("Per cent cases") +
-    ggplot2::guides(fill = FALSE) +
+    ggplot2::guides(fill = "none") +
     ggplot2::scale_x_continuous("Financial year",
                        breaks = unique(data$fyear6),
                        labels = paste0(substr(unique(data$fyear6), 1,4), "/",
